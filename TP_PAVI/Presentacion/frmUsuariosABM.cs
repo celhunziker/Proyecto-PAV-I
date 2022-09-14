@@ -48,7 +48,9 @@ namespace AppBTS.Presentacion
         {
             DataTable tabla = oUsuario.traerPorId(idUsuario);
             txtId.Text = tabla.Rows[0]["id_usuario"].ToString();
-            txtNombre.Text = tabla.Rows[0]["usuario"].ToString();
+            txtNombreUsuario.Text = tabla.Rows[0]["nombreUsuario"].ToString();
+            txtNombre.Text = tabla.Rows[0]["nombre"].ToString();
+            txtApellido.Text = tabla.Rows[0]["apellido"].ToString();
             txtPassword.Text = tabla.Rows[0]["password"].ToString();
             txtEmail.Text = tabla.Rows[0]["email"].ToString();
             cboPerfil.SelectedValue = tabla.Rows[0]["id_perfil"];
@@ -57,7 +59,9 @@ namespace AppBTS.Presentacion
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario();
+            usuario.NombreUsuario = txtNombreUsuario.Text;
             usuario.Nombre = txtNombre.Text;
+            usuario.Apellido = txtApellido.Text;
             usuario.Password = txtPassword.Text;
             usuario.Email = txtEmail.Text;
             usuario.Id_perfil = new Perfil();

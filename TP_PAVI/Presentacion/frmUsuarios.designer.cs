@@ -36,10 +36,6 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.grdUsuarios = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Perfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnConsultar = new System.Windows.Forms.Button();
@@ -47,6 +43,16 @@
             this.btnBorrar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
+            this.txtNombreUsuario = new System.Windows.Forms.TextBox();
+            this.lblNombreUsuario = new System.Windows.Forms.Label();
+            this.txtApellido = new System.Windows.Forms.TextBox();
+            this.lblApellido = new System.Windows.Forms.Label();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Perfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,50 +60,56 @@
             // 
             this.cboPerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPerfil.FormattingEnabled = true;
-            this.cboPerfil.Location = new System.Drawing.Point(185, 100);
+            this.cboPerfil.Location = new System.Drawing.Point(237, 169);
+            this.cboPerfil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboPerfil.Name = "cboPerfil";
-            this.cboPerfil.Size = new System.Drawing.Size(283, 21);
+            this.cboPerfil.Size = new System.Drawing.Size(376, 24);
             this.cboPerfil.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(100, 24);
+            this.label2.Location = new System.Drawing.Point(123, 53);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.Size = new System.Drawing.Size(56, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "Nombre";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(109, 65);
+            this.label4.Location = new System.Drawing.Point(135, 126);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.Size = new System.Drawing.Size(45, 16);
             this.label4.TabIndex = 6;
             this.label4.Text = "E-mail";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(114, 103);
+            this.label5.Location = new System.Drawing.Point(142, 173);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(30, 13);
+            this.label5.Size = new System.Drawing.Size(37, 16);
             this.label5.TabIndex = 7;
             this.label5.Text = "Perfil";
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(185, 21);
+            this.txtNombre.Location = new System.Drawing.Point(237, 52);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(283, 20);
+            this.txtNombre.Size = new System.Drawing.Size(376, 22);
             this.txtNombre.TabIndex = 1;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(185, 62);
+            this.txtEmail.Location = new System.Drawing.Point(237, 130);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(283, 20);
+            this.txtEmail.Size = new System.Drawing.Size(376, 22);
             this.txtEmail.TabIndex = 3;
             // 
             // grdUsuarios
@@ -107,17 +119,128 @@
             this.grdUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
+            this.NombreUsuario,
             this.Nombre,
+            this.Apellido,
             this.Email,
             this.Perfil});
-            this.grdUsuarios.Location = new System.Drawing.Point(16, 205);
+            this.grdUsuarios.Location = new System.Drawing.Point(21, 252);
+            this.grdUsuarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grdUsuarios.MultiSelect = false;
             this.grdUsuarios.Name = "grdUsuarios";
             this.grdUsuarios.ReadOnly = true;
             this.grdUsuarios.RowHeadersWidth = 51;
             this.grdUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdUsuarios.Size = new System.Drawing.Size(661, 122);
+            this.grdUsuarios.Size = new System.Drawing.Size(929, 150);
             this.grdUsuarios.TabIndex = 5;
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Image = global::AppBTS.Properties.Resources.actualizar;
+            this.btnLimpiar.Location = new System.Drawing.Point(739, 91);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(100, 58);
+            this.btnLimpiar.TabIndex = 9;
+            this.toolTip1.SetToolTip(this.btnLimpiar, "Actualizar");
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // btnConsultar
+            // 
+            this.btnConsultar.Image = global::AppBTS.Properties.Resources.buscar1;
+            this.btnConsultar.Location = new System.Drawing.Point(739, 26);
+            this.btnConsultar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(99, 58);
+            this.btnConsultar.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.btnConsultar, "Buscar");
+            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Image = global::AppBTS.Properties.Resources.logout_door;
+            this.btnSalir.Location = new System.Drawing.Point(837, 427);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(65, 58);
+            this.btnSalir.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.btnSalir, "Salir");
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // btnBorrar
+            // 
+            this.btnBorrar.Image = global::AppBTS.Properties.Resources.delete_exit;
+            this.btnBorrar.Location = new System.Drawing.Point(237, 427);
+            this.btnBorrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBorrar.Name = "btnBorrar";
+            this.btnBorrar.Size = new System.Drawing.Size(99, 58);
+            this.btnBorrar.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.btnBorrar, "Borrar");
+            this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Image = global::AppBTS.Properties.Resources.documentediting;
+            this.btnEditar.Location = new System.Drawing.Point(129, 427);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(100, 58);
+            this.btnEditar.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.btnEditar, "Editar");
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Image = global::AppBTS.Properties.Resources.new_file;
+            this.btnNuevo.Location = new System.Drawing.Point(21, 427);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(100, 58);
+            this.btnNuevo.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.btnNuevo, "Nuevo");
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // txtNombreUsuario
+            // 
+            this.txtNombreUsuario.Location = new System.Drawing.Point(237, 13);
+            this.txtNombreUsuario.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNombreUsuario.Name = "txtNombreUsuario";
+            this.txtNombreUsuario.Size = new System.Drawing.Size(376, 22);
+            this.txtNombreUsuario.TabIndex = 12;
+            // 
+            // lblNombreUsuario
+            // 
+            this.lblNombreUsuario.AutoSize = true;
+            this.lblNombreUsuario.Location = new System.Drawing.Point(73, 16);
+            this.lblNombreUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombreUsuario.Name = "lblNombreUsuario";
+            this.lblNombreUsuario.Size = new System.Drawing.Size(106, 16);
+            this.lblNombreUsuario.TabIndex = 13;
+            this.lblNombreUsuario.Text = "Nombre Usuario";
+            // 
+            // txtApellido
+            // 
+            this.txtApellido.Location = new System.Drawing.Point(237, 91);
+            this.txtApellido.Margin = new System.Windows.Forms.Padding(4);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(376, 22);
+            this.txtApellido.TabIndex = 14;
+            // 
+            // lblApellido
+            // 
+            this.lblApellido.AutoSize = true;
+            this.lblApellido.Location = new System.Drawing.Point(123, 88);
+            this.lblApellido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblApellido.Name = "lblApellido";
+            this.lblApellido.Size = new System.Drawing.Size(57, 16);
+            this.lblApellido.TabIndex = 15;
+            this.lblApellido.Text = "Apellido";
             // 
             // ID
             // 
@@ -127,6 +250,14 @@
             this.ID.ReadOnly = true;
             this.ID.Width = 50;
             // 
+            // NombreUsuario
+            // 
+            this.NombreUsuario.HeaderText = "Nombre Usuario";
+            this.NombreUsuario.MinimumWidth = 6;
+            this.NombreUsuario.Name = "NombreUsuario";
+            this.NombreUsuario.ReadOnly = true;
+            this.NombreUsuario.Width = 125;
+            // 
             // Nombre
             // 
             this.Nombre.HeaderText = "Nombre";
@@ -134,6 +265,14 @@
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
             this.Nombre.Width = 200;
+            // 
+            // Apellido
+            // 
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.MinimumWidth = 6;
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            this.Apellido.Width = 125;
             // 
             // Email
             // 
@@ -146,80 +285,20 @@
             // Perfil
             // 
             this.Perfil.HeaderText = "Perfil";
+            this.Perfil.MinimumWidth = 6;
             this.Perfil.Name = "Perfil";
             this.Perfil.ReadOnly = true;
-            // 
-            // btnLimpiar
-            // 
-            this.btnLimpiar.Image = global::AppBTS.Properties.Resources.actualizar;
-            this.btnLimpiar.Location = new System.Drawing.Point(554, 74);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(75, 47);
-            this.btnLimpiar.TabIndex = 9;
-            this.toolTip1.SetToolTip(this.btnLimpiar, "Actualizar");
-            this.btnLimpiar.UseVisualStyleBackColor = true;
-            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
-            // 
-            // btnConsultar
-            // 
-            this.btnConsultar.Image = global::AppBTS.Properties.Resources.buscar1;
-            this.btnConsultar.Location = new System.Drawing.Point(554, 21);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(74, 47);
-            this.btnConsultar.TabIndex = 10;
-            this.toolTip1.SetToolTip(this.btnConsultar, "Buscar");
-            this.btnConsultar.UseVisualStyleBackColor = true;
-            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Image = global::AppBTS.Properties.Resources.logout_door;
-            this.btnSalir.Location = new System.Drawing.Point(628, 347);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(49, 47);
-            this.btnSalir.TabIndex = 11;
-            this.toolTip1.SetToolTip(this.btnSalir, "Salir");
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // btnBorrar
-            // 
-            this.btnBorrar.Image = global::AppBTS.Properties.Resources.delete_exit;
-            this.btnBorrar.Location = new System.Drawing.Point(178, 347);
-            this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Size = new System.Drawing.Size(74, 47);
-            this.btnBorrar.TabIndex = 8;
-            this.toolTip1.SetToolTip(this.btnBorrar, "Borrar");
-            this.btnBorrar.UseVisualStyleBackColor = true;
-            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Image = global::AppBTS.Properties.Resources.documentediting;
-            this.btnEditar.Location = new System.Drawing.Point(97, 347);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 47);
-            this.btnEditar.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.btnEditar, "Editar");
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Image = global::AppBTS.Properties.Resources.new_file;
-            this.btnNuevo.Location = new System.Drawing.Point(16, 347);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(75, 47);
-            this.btnNuevo.TabIndex = 6;
-            this.toolTip1.SetToolTip(this.btnNuevo, "Nuevo");
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            this.Perfil.Width = 125;
             // 
             // frmUsuarios
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(708, 447);
+            this.ClientSize = new System.Drawing.Size(968, 550);
+            this.Controls.Add(this.txtApellido);
+            this.Controls.Add(this.lblApellido);
+            this.Controls.Add(this.txtNombreUsuario);
+            this.Controls.Add(this.lblNombreUsuario);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.grdUsuarios);
@@ -233,6 +312,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.cboPerfil);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmUsuarios";
             this.Text = "ABM Usuarios";
             this.Load += new System.EventHandler(this.frmUsuarios_Load);
@@ -256,10 +336,16 @@
         private System.Windows.Forms.DataGridView grdUsuarios;
         private System.Windows.Forms.Button btnConsultar;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.TextBox txtNombreUsuario;
+        private System.Windows.Forms.Label lblNombreUsuario;
+        private System.Windows.Forms.TextBox txtApellido;
+        private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Perfil;
-        private System.Windows.Forms.Button btnLimpiar;
     }
 }

@@ -61,7 +61,9 @@ namespace AppBTS.Presentacion
             for (int i = 0; i < tabla.Rows.Count; i++)
             {
                 grilla.Rows.Add(tabla.Rows[i]["id_usuario"],
-                                tabla.Rows[i]["usuario"],
+                                tabla.Rows[i]["nombreUsuario"],
+                                tabla.Rows[i]["nombre"],
+                                tabla.Rows[i]["apellido"],
                                 tabla.Rows[i]["email"],
                                 tabla.Rows[i]["nombre"]);
             }
@@ -101,14 +103,14 @@ namespace AppBTS.Presentacion
         {
             if (cboPerfil.SelectedValue != null)
             {
-                DataTable dt = oUsuario.RecuperarFiltrados(txtNombre.Text, txtEmail.Text, (int)cboPerfil.SelectedValue);
+                DataTable dt = oUsuario.RecuperarFiltrados(txtNombreUsuario.Text, txtNombre.Text, txtApellido.Text, txtEmail.Text, (int)cboPerfil.SelectedValue);
                 CargarGrilla(grdUsuarios, dt);
                 
 
             }
             else
             {
-                DataTable dt = oUsuario.RecuperarFiltrados(txtNombre.Text, txtEmail.Text, null);
+                DataTable dt = oUsuario.RecuperarFiltrados(txtNombreUsuario.Text, txtNombre.Text, txtApellido.Text, txtEmail.Text, null);
                 CargarGrilla(grdUsuarios, dt);
             }
         

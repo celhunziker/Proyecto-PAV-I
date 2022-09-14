@@ -18,9 +18,9 @@ namespace AppBTS.Servicios
         {
             dao = new UsuarioDao();
         }
-        public int encontrarUsuario(string nombre, string clave)
+        public int encontrarUsuario(string nombreUsuario, string clave)
         {
-            return dao.validarUsuario(nombre, clave);
+            return dao.validarUsuario(nombreUsuario, clave);
         }
         public DataTable traerTodos()
         {
@@ -31,10 +31,10 @@ namespace AppBTS.Servicios
             return dao.RecuperarPorId(idUsuario);
         }
 
-        internal object ObtenerUsuario(string usuario)
+        internal object ObtenerUsuario(string nombre)
         {
             //SIN PARAMETROS
-            return dao.GetUserSinParametros(usuario);
+            return dao.GetUserSinParametros(nombre);
 
             //CON PARAMETROS
             //return dao.GetUserConParametros(usuario);
@@ -48,9 +48,9 @@ namespace AppBTS.Servicios
             return dao.GetByFiltersSinParametros(condiciones);
         }
 
-        public DataTable RecuperarFiltrados(string nombre, string email, int? perfil)
+        public DataTable RecuperarFiltrados(string nombreUsuario, string nombre, string apellido, string email, int? perfil)
         {
-            return dao.RecuperarFiltrados(nombre, email, perfil);
+            return dao.RecuperarFiltrados(nombreUsuario, nombre, apellido, email, perfil);
         }
 
         internal bool ModificarUsuario(Usuario usuario)

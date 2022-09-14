@@ -13,9 +13,9 @@ namespace AppBTS.Datos.Daos
 {
     class UsuarioDao : IUsuario
     {
-        public int validarUsuario(string nombre, string clave)
+        public int validarUsuario(string nombreUsuario, string clave)
         {
-            string consulta = "SELECT * FROM Usuarios WHERE usuario='" + nombre + "' AND password='" + clave + "'  AND borrado = 0 AND estado = 'S'";
+            string consulta = "SELECT * FROM Usuarios WHERE nombreUsuario='" + nombreUsuario + "' AND password='" + clave + "'  AND borrado = 0 AND estado = 'S'";
             //ACA NO DEBERIA HABER CONDICION PARA borrado=0 y habilitado=S?
 
             DataTable tabla = BDHelper.obtenerInstancia().consultar(consulta);
@@ -27,7 +27,9 @@ namespace AppBTS.Datos.Daos
         public DataTable RecuperarTodos()
         {
             String strSql = string.Concat(" SELECT id_usuario, ",
-                                              "        usuario, ",
+                                              "        nombreUsuario, ",
+                                              "        u.nombre, ",
+                                              "        apellido, ",
                                               "        email, ",
                                               "        estado, ",
                                               "        password, ",
@@ -44,7 +46,9 @@ namespace AppBTS.Datos.Daos
         {
             string condicion = "WHERE u.borrado = 0  AND estado = 'S' AND id_usuario =" + idUsuario;
             String strSql = string.Concat(" SELECT id_usuario, ",
-                                              "        usuario, ",
+                                              "        nombreUsuario, ",
+                                              "        u.nombre, ",
+                                              "        apellido, ",
                                               "        email, ",
                                               "        estado, ",
                                               "        password, ",
@@ -61,9 +65,11 @@ namespace AppBTS.Datos.Daos
 
         bool IUsuario.Create(Usuario usuario)
         {
-            string consulta = "INSERT INTO Usuarios (usuario, password, email, estado, id_perfil, borrado)" +
+            string consulta = "INSERT INTO Usuarios (nombreUsuario, u.nombre, apellido, password, email, estado, id_perfil, borrado)" +
                             " VALUES (" +
+                            "'" + usuario.NombreUsuario + "'" + "," +
                             "'" + usuario.Nombre + "'" + "," +
+                            "'" + usuario.Apellido + "'" + "," +
                             "'" + usuario.Password + "'" + "," +
                             "'" + usuario.Email + "'" + "," +
                             "'" + usuario.Estado + "'" + "," +
@@ -73,10 +79,12 @@ namespace AppBTS.Datos.Daos
             return (BDHelper.obtenerInstancia().actualizar(consulta) == 1);
         }
 
-        public Usuario GetUserSinParametros(string nombreUsuario)
+        public Usuario GetUserSinParametros(string nombre)
         {
             String strSql = string.Concat(" SELECT id_usuario, ",
-                                          "        usuario, ",
+                                          "        nombreUsuario, ",
+                                          "        u.nombre, ",
+                                          "        apellido, ",
                                           "        email, ",
                                           "        estado, ",
                                           "        password, ",
@@ -86,7 +94,7 @@ namespace AppBTS.Datos.Daos
                                           "  INNER JOIN Perfiles p ON u.id_perfil= p.id_perfil ",
                                           "  WHERE u.borrado =0  AND estado = 'S'");
 
-            strSql += " AND usuario=" + "'" + nombreUsuario + "'";
+            strSql += " AND u.nombre " + "'" + nombre + "'";
 
 
             //Usando el método GetDBHelper obtenemos la instancia unica de DBHelper (Patrón Singleton) y ejecutamos el método ConsultaSQL()
@@ -106,7 +114,9 @@ namespace AppBTS.Datos.Daos
 
             List<Usuario> lst = new List<Usuario>();
             String strSql = string.Concat(" SELECT id_usuario, ",
-                                              "        usuario, ",
+                                              "        nombreUsuario, ",
+                                              "        u.nombre as nombre, ",
+                                              "        apellido, ",
                                               "        email, ",
                                               "        estado, ",
                                               "        password, ",
@@ -126,11 +136,13 @@ namespace AppBTS.Datos.Daos
             return lst;
         }
 
-        public DataTable RecuperarFiltrados(string nombre, string email, int? perfil)
+        public DataTable RecuperarFiltrados(string nombreUsuario, string nombre, string apellido, string email, int? perfil)
         {
             List<Usuario> lst = new List<Usuario>();
             string strSql = string.Concat(" SELECT id_usuario, ",
-                                              "        usuario, ",
+                                              "        nombreUsuario, ",
+                                              "        u.nombre as nombre, ",
+                                              "        apellido, ",
                                               "        email, ",
                                               "        estado, ",
                                               "        password, ",
@@ -139,13 +151,21 @@ namespace AppBTS.Datos.Daos
                                               "   FROM Usuarios u",
                                               "  INNER JOIN Perfiles p ON u.id_perfil= p.id_perfil ",
                                               "  WHERE u.borrado =0 AND u.estado = 'S'");
+            if (nombreUsuario != "")
+            {
+                strSql = strSql + " AND nombreUsuario LIKE '%" + nombreUsuario + "%'";
+            }
             if (nombre != "")
             {
-                strSql = strSql + " AND usuario LIKE '" + nombre + "%'";
-            } 
+                strSql = strSql + " AND u.nombre LIKE '%" + nombre + "%'";
+            }
+            if (apellido != "")
+            {
+                strSql = strSql + " AND apellido LIKE '%" + apellido + "%'";
+            }
             if (email != "")
             {
-                strSql = strSql + " AND email LIKE '" + email + "%'";
+                strSql = strSql + " AND email LIKE '%" + email + "%'";
             }
             if (perfil != null)
             {
@@ -156,8 +176,8 @@ namespace AppBTS.Datos.Daos
 
         public bool Modificar(Usuario usuario)
         {
-            string consulta = "UPDATE Usuarios SET usuario='" 
-                + usuario.Nombre + "', password='" +
+            string consulta = "UPDATE Usuarios SET nombreUsuario='" 
+                + usuario.NombreUsuario + "', nombre='" + usuario.Nombre + "', apellido='" + usuario.Apellido + "', password='" +
                 usuario.Password + "', id_perfil = " + 
                 usuario.Id_perfil.IdPerfil + ", email = '" +usuario.Email + "' , estado = 'S' " + 
                 " WHERE id_usuario = " + usuario.Id_usuario;
@@ -176,7 +196,9 @@ namespace AppBTS.Datos.Daos
             Usuario oUsuario = new Usuario
             {
                 Id_usuario = Convert.ToInt32(row["id_usuario"].ToString()),
-                Nombre = row["usuario"].ToString(),
+                NombreUsuario = row["nombreUsuario"].ToString(),
+                Nombre = row["nombre"].ToString(),
+                Apellido = row["apellido"].ToString(),
                 Email = row["email"].ToString(),
                 Estado = row["estado"].ToString(),
                 Password = row.Table.Columns.Contains("password") ? row["password"].ToString() : null,
