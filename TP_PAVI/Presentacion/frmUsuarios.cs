@@ -33,7 +33,7 @@ namespace AppBTS.Presentacion
         private void frmUsuarios_Load(object sender, EventArgs e)
         {
             CargarCombo(cboPerfil, oPerfil.traerTodos());
-            CargarGrilla(grdUsuarios, oUsuario.traerTodos());
+            //CargarGrilla(grdUsuarios, oUsuario.traerTodos());
             miAccion = Acciones.Modificacion;
             grdUsuarios.Enabled = true;
 
@@ -45,7 +45,11 @@ namespace AppBTS.Presentacion
             txtEmail.Text = String.Empty;
             cboPerfil.SelectedIndex = -1;
         }
-       
+        private void LimpiarGrilla()
+        {
+            grdUsuarios.Rows.Clear();
+        }
+
 
         private void CargarCombo(ComboBox combo, DataTable tabla)
         {
@@ -118,8 +122,11 @@ namespace AppBTS.Presentacion
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
-            CargarGrilla(grdUsuarios, oUsuario.traerTodos());
+            LimpiarGrilla();
+            //CargarGrilla(grdUsuarios, oUsuario.traerTodos());
         }
+
+        
     }
 }
 
