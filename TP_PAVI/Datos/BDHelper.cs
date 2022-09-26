@@ -19,11 +19,7 @@ namespace AppBTS.Datos
         {
             conexion = new SqlConnection();
             comando = new SqlCommand();
-<<<<<<< HEAD
             cadenaConexion = @"Data Source=DESKTOP-DF98FFV\SQLEXPRESS;Initial Catalog=TPPAV;Integrated Security=True"; //Properties.Resources.StringConexion;
-=======
-            cadenaConexion = @"Data Source=valentina\sqlexpress;Initial Catalog=TPPAV;Integrated Security=True"; //Properties.Resources.StringConexion;
->>>>>>> 78c76ba06bed7854e671a904dee162a16e97f909
         }
         public static BDHelper obtenerInstancia()
         {

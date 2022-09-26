@@ -8,11 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using AppBTS.Servicios.Interfaces;
+using AppBTS.Servicios;
 
 namespace AppBTS.Datos.Daos
 {
     class UsuarioDao : IUsuario
     {
+        //ESTO ESTA BIEN? DEBERIA SER DE ESTA MANERA U OTRA? BOTTA NO MOSTRO TODAVIA
+        //TAMBIEN LA CARGA DE COMBOS Y GRILLAS TIRO UNAS IDEAS
+        //PERO NO TERMINO DE IMPLEMENTAR
+        private IPerfilService oPerfil = new PerfilService();
         public int validarUsuario(string nombreUsuario, string clave)
         {
             string consulta = "SELECT * FROM Usuarios WHERE nombreUsuario='" + nombreUsuario + "' AND password='" + clave + "'  AND borrado = 0 AND estado = 'S'";
@@ -24,8 +30,9 @@ namespace AppBTS.Datos.Daos
             else
                 return 0;
         }
-        public DataTable RecuperarTodos()
+        public List<Usuario> RecuperarTodos()
         {
+            List<Usuario> lista = new List<Usuario>();
             String strSql = string.Concat(" SELECT id_usuario, ",
                                               "        nombreUsuario, ",
                                               "        u.nombre, ",
@@ -39,10 +46,34 @@ namespace AppBTS.Datos.Daos
                                               "  INNER JOIN Perfiles p ON u.id_perfil= p.id_perfil ",
                                               " WHERE u.borrado = 0 AND estado = 'S'");
 
-            return BDHelper.obtenerInstancia().consultar(strSql);
+            DataTable tabla = BDHelper.obtenerInstancia().consultar(strSql);
+            //LLAMAMOS A LOS PERFILES Y LOS VAMOS ASIGNANDO CON RESPECTO A ID PERFIL?
+            List<Perfil> listaPerfil = oPerfil.traerTodos();
+            foreach(DataRow fila in tabla.Rows)
+            {
+                Usuario oUsuario = new Usuario();
+                oUsuario.Id_usuario = (int)fila["id_usuario"];
+                oUsuario.NombreUsuario = fila["nombreUsuario"].ToString();
+                oUsuario.Nombre = fila["nombre"].ToString();
+                oUsuario.Apellido = fila["apellido"].ToString();
+                oUsuario.Password = fila["password"].ToString();
+                oUsuario.Email = fila["estado"].ToString();
+                oUsuario.Borrado = false;
+                //PATRON O DIRECTAMENTE PONEMOS UN IF?
+                foreach(Perfil perfil in listaPerfil)
+                {
+                    if (perfil.IdPerfil == (int)fila["id_perfil"])
+                    {
+                        oUsuario.Id_perfil = perfil;
+                        break;
+                    }
+                }
+                lista.Add(oUsuario);
+            }
+            return lista;
         }
 
-        public DataTable RecuperarPorId(int idUsuario)
+        public Usuario RecuperarPorId(int idUsuario)
         {
             string condicion = "WHERE u.borrado = 0  AND estado = 'S' AND id_usuario =" + idUsuario;
             String strSql = string.Concat(" SELECT id_usuario, ",
@@ -58,7 +89,28 @@ namespace AppBTS.Datos.Daos
                                               "  INNER JOIN Perfiles p ON u.id_perfil= p.id_perfil ",
                                               condicion);
 
-            return BDHelper.obtenerInstancia().consultar(strSql);
+            DataTable tabla = BDHelper.obtenerInstancia().consultar(strSql);
+            //IMPLEMENTACION TOSCA -> PODRIAMOS TRAER SOLO UNO O SACARLO DIRECTO DESDE COMBOBOX?
+            
+            Usuario usuario = new Usuario();
+            usuario.Id_usuario = (int)tabla.Rows[0]["id_usuario"];
+            usuario.NombreUsuario = tabla.Rows[0]["nombreUsuario"].ToString();
+            usuario.Nombre = tabla.Rows[0]["nombre"].ToString();
+            usuario.Apellido = tabla.Rows[0]["apellido"].ToString();
+            usuario.Password = tabla.Rows[0]["password"].ToString();
+            usuario.Email = tabla.Rows[0]["estado"].ToString();
+            usuario.Borrado = false;
+
+            List<Perfil> lista = oPerfil.traerTodos();
+            foreach (Perfil perfil in lista)
+            {
+                if (perfil.IdPerfil == (int)tabla.Rows[0]["id_perfil"])
+                {
+                    usuario.Id_perfil = perfil;
+                    break;
+                }
+            }
+            return usuario;
         }
 
  
@@ -136,9 +188,9 @@ namespace AppBTS.Datos.Daos
             return lst;
         }
 
-        public DataTable RecuperarFiltrados(string nombreUsuario, string nombre, string apellido, string email, int? perfil)
+        public List<Usuario> RecuperarFiltrados(string nombreUsuario, string nombre, string apellido, string email, int? perfil)
         {
-            List<Usuario> lst = new List<Usuario>();
+            List<Usuario> lista = new List<Usuario>();
             string strSql = string.Concat(" SELECT id_usuario, ",
                                               "        nombreUsuario, ",
                                               "        u.nombre as nombre, ",
@@ -171,7 +223,32 @@ namespace AppBTS.Datos.Daos
             {
                 strSql = strSql + " AND p.id_perfil = " + perfil ;
             }
-            return BDHelper.obtenerInstancia().consultar(strSql);
+
+
+            DataTable tabla = BDHelper.obtenerInstancia().consultar(strSql);
+            List<Perfil> listaPerfil = oPerfil.traerTodos();
+            foreach (DataRow fila in tabla.Rows)
+            {
+                Usuario oUsuario = new Usuario();
+                oUsuario.Id_usuario = (int)fila["id_usuario"];
+                oUsuario.NombreUsuario = fila["nombreUsuario"].ToString();
+                oUsuario.Nombre = fila["nombre"].ToString();
+                oUsuario.Apellido = fila["apellido"].ToString();
+                oUsuario.Password = fila["password"].ToString();
+                oUsuario.Email = fila["estado"].ToString();
+                oUsuario.Borrado = false;
+                //PATRON O DIRECTAMENTE PONEMOS UN IF?
+                foreach (Perfil oPerfil in listaPerfil)
+                {
+                    if (oPerfil.IdPerfil == (int)fila["id_perfil"])
+                    {
+                        oUsuario.Id_perfil = oPerfil;
+                        break;
+                    }
+                }
+                lista.Add(oUsuario);
+            }
+            return lista;
         }
 
         public bool Modificar(Usuario usuario)
@@ -191,6 +268,7 @@ namespace AppBTS.Datos.Daos
             return (BDHelper.obtenerInstancia().actualizar(consulta) == 1);
         }
 
+        //VER BIEN ESTO
         public Usuario ObjectMapping(DataRow row)
         {
             Usuario oUsuario = new Usuario

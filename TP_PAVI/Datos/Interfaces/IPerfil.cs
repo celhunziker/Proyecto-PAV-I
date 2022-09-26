@@ -1,9 +1,11 @@
-﻿using System.Data;
+﻿using AppBTS.Entidades;
+using System.Collections.Generic;
+using System.Data;
 
 namespace AppBTS.Datos.Interfaces
 {
     interface IPerfil
     {
-        DataTable RecuperarTodos();
+        List<Perfil> RecuperarTodos();
     }
 }

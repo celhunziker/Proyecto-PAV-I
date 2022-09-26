@@ -1,6 +1,7 @@
 ﻿using AppBTS.Entidades;
 using AppBTS.Negocio;
 using AppBTS.Servicios;
+using AppBTS.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,8 +18,8 @@ namespace AppBTS.Presentacion
     {
         private string accion;
         private int? idUsuario;
-        UsuarioService oUsuario = new UsuarioService();
-        PerfilService oPerfil = new PerfilService();
+        private UsuarioService oUsuario = new UsuarioService();
+        private IPerfilService oPerfil = new PerfilService();
         public frmUsuariosABM(string Accion, int? IdUsuario)
         {
             InitializeComponent();
@@ -36,24 +37,24 @@ namespace AppBTS.Presentacion
             }
 
         }
-        private void CargarCombo(ComboBox combo, DataTable tabla)
+        private void CargarCombo(ComboBox combo, List<Perfil> lista)
         {
-            combo.DataSource = tabla;
-            combo.DisplayMember = tabla.Columns[1].ColumnName;
-            combo.ValueMember = tabla.Columns[0].ColumnName;
+            combo.DataSource = lista;
+            combo.DisplayMember = "Nombre";
+            combo.ValueMember = "IdPerfil";
             combo.SelectedIndex = -1;
             combo.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         private void CargarCampos(int idUsuario)
         {
-            DataTable tabla = oUsuario.traerPorId(idUsuario);
-            txtId.Text = tabla.Rows[0]["id_usuario"].ToString();
-            txtNombreUsuario.Text = tabla.Rows[0]["nombreUsuario"].ToString();
-            txtNombre.Text = tabla.Rows[0]["nombre"].ToString();
-            txtApellido.Text = tabla.Rows[0]["apellido"].ToString();
-            txtPassword.Text = tabla.Rows[0]["password"].ToString();
-            txtEmail.Text = tabla.Rows[0]["email"].ToString();
-            cboPerfil.SelectedValue = tabla.Rows[0]["id_perfil"];
+            Usuario usuario = oUsuario.traerPorId(idUsuario);
+            txtId.Text = usuario.Id_usuario.ToString();
+            txtNombreUsuario.Text = usuario.NombreUsuario;
+            txtNombre.Text = usuario.Nombre;
+            txtApellido.Text = usuario.Apellido;
+            txtPassword.Text = usuario.Password;
+            txtEmail.Text = usuario.Email;
+            cboPerfil.SelectedValue = usuario.Id_perfil.IdPerfil;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
