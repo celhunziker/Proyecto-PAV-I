@@ -53,6 +53,10 @@
             this.lblNombreUsuario = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.lblApellido = new System.Windows.Forms.Label();
+<<<<<<< HEAD
+=======
+            this.chkTodos = new System.Windows.Forms.CheckBox();
+>>>>>>> 78c76ba06bed7854e671a904dee162a16e97f909
             ((System.ComponentModel.ISupportInitialize)(this.grdUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,7 +130,11 @@
             this.grdUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdUsuarios.Size = new System.Drawing.Size(697, 122);
             this.grdUsuarios.TabIndex = 5;
+<<<<<<< HEAD
             this.grdUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdUsuarios_CellContentClick);
+=======
+            this.grdUsuarios.SelectionChanged += new System.EventHandler(this.grdUsuarios_SelectionChanged);
+>>>>>>> 78c76ba06bed7854e671a904dee162a16e97f909
             // 
             // ID
             // 
@@ -274,11 +282,29 @@
             this.lblApellido.TabIndex = 15;
             this.lblApellido.Text = "Apellido";
             // 
+<<<<<<< HEAD
+=======
+            // chkTodos
+            // 
+            this.chkTodos.AutoSize = true;
+            this.chkTodos.Location = new System.Drawing.Point(178, 174);
+            this.chkTodos.Name = "chkTodos";
+            this.chkTodos.Size = new System.Drawing.Size(88, 17);
+            this.chkTodos.TabIndex = 16;
+            this.chkTodos.Text = "Buscar todos";
+            this.chkTodos.UseVisualStyleBackColor = true;
+            this.chkTodos.CheckedChanged += new System.EventHandler(this.chkTodos_CheckedChanged);
+            // 
+>>>>>>> 78c76ba06bed7854e671a904dee162a16e97f909
             // frmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(726, 447);
+<<<<<<< HEAD
+=======
+            this.Controls.Add(this.chkTodos);
+>>>>>>> 78c76ba06bed7854e671a904dee162a16e97f909
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.lblApellido);
             this.Controls.Add(this.txtNombreUsuario);
@@ -330,5 +356,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Perfil;
+        private System.Windows.Forms.CheckBox chkTodos;
     }
 }

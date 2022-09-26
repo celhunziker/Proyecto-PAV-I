@@ -24,7 +24,7 @@ namespace AppBTS.Presentacion
             InitializeComponent();
             this.Text = Accion + " de usuario";
             accion = Accion;
-            idUsuario =  IdUsuario;
+            idUsuario = IdUsuario;
 
         }
         private void frmUsuariosABM_Load(object sender, EventArgs e)
@@ -34,7 +34,7 @@ namespace AppBTS.Presentacion
             {
                 CargarCampos((int)idUsuario);
             }
-            
+
         }
         private void CargarCombo(ComboBox combo, DataTable tabla)
         {
@@ -59,34 +59,64 @@ namespace AppBTS.Presentacion
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario();
-            usuario.NombreUsuario = txtNombreUsuario.Text;
-            usuario.Nombre = txtNombre.Text;
-            usuario.Apellido = txtApellido.Text;
-            usuario.Password = txtPassword.Text;
-            usuario.Email = txtEmail.Text;
-            usuario.Id_perfil = new Perfil();
-            usuario.Id_perfil.IdPerfil = (int)cboPerfil.SelectedValue;
-            usuario.Estado = "S";
-            
-            if (accion == "Alta")
+            if (validarCamposUsuario(txtNombreUsuario.Text, txtNombre.Text,
+                txtApellido.Text, txtPassword.Text, txtEmail.Text,
+                (int)cboPerfil.SelectedIndex))
             {
-                oUsuario.CrearUsuario(usuario);
-                MessageBox.Show("Usuario creado.", "Alta de Usuario en el Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                usuario.NombreUsuario = txtNombreUsuario.Text;
+                usuario.Nombre = txtNombre.Text;
+                usuario.Apellido = txtApellido.Text;
+                usuario.Password = txtPassword.Text;
+                usuario.Email = txtEmail.Text;
+                usuario.Id_perfil = new Perfil();
+                usuario.Id_perfil.IdPerfil = (int)cboPerfil.SelectedValue;
+                usuario.Estado = "S";
+                if (accion == "Alta")
+                {
+                    oUsuario.CrearUsuario(usuario);
+                    MessageBox.Show("Usuario creado.", "Alta de Usuario en el Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                }
+                else
+                {
+                    usuario.Id_usuario = (int)idUsuario;
+                    oUsuario.ModificarUsuario(usuario);
+                    MessageBox.Show("Usuario modificado.", "Modificación de Usuario en el Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                this.Close();
             }
             else
             {
-                usuario.Id_usuario = (int) idUsuario;
-                oUsuario.ModificarUsuario(usuario);
-                MessageBox.Show("Usuario modificado.", "Modificación de Usuario en el Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                MessageBox.Show("Faltan completar campos.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            this.Close();
+            
+            
+
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private bool validarCampo(string campo)
+        {
+           return campo != "";
+        }
+
+        private bool validarCampo(int campo)
+        {
+            return campo != -1;
+        }
+
+        private bool validarCamposUsuario(string nombreUsuario, string nombre,
+            string apellido, string password, string email, int perfil)
+        {
+            return validarCampo(nombreUsuario)&& validarCampo(nombre)
+                && validarCampo(apellido) && validarCampo(password)
+                && validarCampo(email) && validarCampo(perfil);
         }
     }
 }
