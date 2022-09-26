@@ -120,6 +120,11 @@ namespace AppBTS.Presentacion
             LimpiarCampos();
             CargarGrilla(grdUsuarios, oUsuario.traerTodos());
         }
+
+        private void grdUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 
