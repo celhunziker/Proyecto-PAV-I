@@ -14,7 +14,7 @@ namespace AppBTS.Datos
         private SqlConnection conexion;
         private SqlCommand comando;
         private string cadenaConexion;
-
+        //COMENTARIO PARA PULL
         private BDHelper()
         {
             conexion = new SqlConnection();
