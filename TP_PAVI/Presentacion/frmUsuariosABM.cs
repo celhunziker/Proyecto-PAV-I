@@ -18,7 +18,7 @@ namespace AppBTS.Presentacion
     {
         private string accion;
         private int? idUsuario;
-        private UsuarioService oUsuario = new UsuarioService();
+        private IUsuarioService oUsuario = new UsuarioService();
         private IPerfilService oPerfil = new PerfilService();
         public frmUsuariosABM(string Accion, int? IdUsuario)
         {

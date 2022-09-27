@@ -26,7 +26,7 @@ namespace AppBTS.Presentacion
         Acciones miAccion;
         IPerfilService oPerfil = new PerfilService();
         //CAMBIAR CUANDO IMPLEMENTE TODO A INTERFAZ
-        UsuarioService oUsuario = new UsuarioService();
+        IUsuarioService oUsuario = new UsuarioService();
 
         public frmUsuarios()
         {
