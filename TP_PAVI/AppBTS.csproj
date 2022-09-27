@@ -80,8 +80,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Servicios\PerfilService.cs" />
-    <Compile Include="Servicios\UsuarioService.cs" />
+    <Compile Include="Servicios\Implementaciones\PerfilService.cs" />
+    <Compile Include="Servicios\Implementaciones\UsuarioService.cs" />
+    <Compile Include="Servicios\Interfaces\IPerfilService.cs" />
+    <Compile Include="Servicios\Interfaces\IUsuarioService.cs" />
     <EmbeddedResource Include="Presentacion\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>

@@ -37,7 +37,9 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.grdUsuarios = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Perfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -47,6 +49,11 @@
             this.btnBorrar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
+            this.txtNombreUsuario = new System.Windows.Forms.TextBox();
+            this.lblNombreUsuario = new System.Windows.Forms.Label();
+            this.txtApellido = new System.Windows.Forms.TextBox();
+            this.lblApellido = new System.Windows.Forms.Label();
+            this.chkTodos = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +61,7 @@
             // 
             this.cboPerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPerfil.FormattingEnabled = true;
-            this.cboPerfil.Location = new System.Drawing.Point(185, 100);
+            this.cboPerfil.Location = new System.Drawing.Point(178, 137);
             this.cboPerfil.Name = "cboPerfil";
             this.cboPerfil.Size = new System.Drawing.Size(283, 21);
             this.cboPerfil.TabIndex = 4;
@@ -62,7 +69,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(100, 24);
+            this.label2.Location = new System.Drawing.Point(92, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 4;
@@ -71,7 +78,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(109, 65);
+            this.label4.Location = new System.Drawing.Point(101, 102);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 6;
@@ -80,7 +87,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(114, 103);
+            this.label5.Location = new System.Drawing.Point(106, 141);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(30, 13);
             this.label5.TabIndex = 7;
@@ -88,14 +95,14 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(185, 21);
+            this.txtNombre.Location = new System.Drawing.Point(178, 42);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(283, 20);
             this.txtNombre.TabIndex = 1;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(185, 62);
+            this.txtEmail.Location = new System.Drawing.Point(178, 106);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(283, 20);
             this.txtEmail.TabIndex = 3;
@@ -107,7 +114,9 @@
             this.grdUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
+            this.NombreUsuario,
             this.Nombre,
+            this.Apellido,
             this.Email,
             this.Perfil});
             this.grdUsuarios.Location = new System.Drawing.Point(16, 205);
@@ -116,8 +125,9 @@
             this.grdUsuarios.ReadOnly = true;
             this.grdUsuarios.RowHeadersWidth = 51;
             this.grdUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdUsuarios.Size = new System.Drawing.Size(661, 122);
+            this.grdUsuarios.Size = new System.Drawing.Size(697, 122);
             this.grdUsuarios.TabIndex = 5;
+            this.grdUsuarios.SelectionChanged += new System.EventHandler(this.grdUsuarios_SelectionChanged);
             // 
             // ID
             // 
@@ -127,6 +137,14 @@
             this.ID.ReadOnly = true;
             this.ID.Width = 50;
             // 
+            // NombreUsuario
+            // 
+            this.NombreUsuario.HeaderText = "Nombre Usuario";
+            this.NombreUsuario.MinimumWidth = 6;
+            this.NombreUsuario.Name = "NombreUsuario";
+            this.NombreUsuario.ReadOnly = true;
+            this.NombreUsuario.Width = 125;
+            // 
             // Nombre
             // 
             this.Nombre.HeaderText = "Nombre";
@@ -134,6 +152,14 @@
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
             this.Nombre.Width = 200;
+            // 
+            // Apellido
+            // 
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.MinimumWidth = 6;
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            this.Apellido.Width = 125;
             // 
             // Email
             // 
@@ -146,8 +172,10 @@
             // Perfil
             // 
             this.Perfil.HeaderText = "Perfil";
+            this.Perfil.MinimumWidth = 6;
             this.Perfil.Name = "Perfil";
             this.Perfil.ReadOnly = true;
+            this.Perfil.Width = 125;
             // 
             // btnLimpiar
             // 
@@ -215,11 +243,58 @@
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
+            // txtNombreUsuario
+            // 
+            this.txtNombreUsuario.Location = new System.Drawing.Point(178, 11);
+            this.txtNombreUsuario.Name = "txtNombreUsuario";
+            this.txtNombreUsuario.Size = new System.Drawing.Size(283, 20);
+            this.txtNombreUsuario.TabIndex = 12;
+            // 
+            // lblNombreUsuario
+            // 
+            this.lblNombreUsuario.AutoSize = true;
+            this.lblNombreUsuario.Location = new System.Drawing.Point(55, 13);
+            this.lblNombreUsuario.Name = "lblNombreUsuario";
+            this.lblNombreUsuario.Size = new System.Drawing.Size(83, 13);
+            this.lblNombreUsuario.TabIndex = 13;
+            this.lblNombreUsuario.Text = "Nombre Usuario";
+            // 
+            // txtApellido
+            // 
+            this.txtApellido.Location = new System.Drawing.Point(178, 74);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(283, 20);
+            this.txtApellido.TabIndex = 14;
+            // 
+            // lblApellido
+            // 
+            this.lblApellido.AutoSize = true;
+            this.lblApellido.Location = new System.Drawing.Point(92, 72);
+            this.lblApellido.Name = "lblApellido";
+            this.lblApellido.Size = new System.Drawing.Size(44, 13);
+            this.lblApellido.TabIndex = 15;
+            this.lblApellido.Text = "Apellido";
+            // 
+            // chkTodos
+            // 
+            this.chkTodos.AutoSize = true;
+            this.chkTodos.Location = new System.Drawing.Point(178, 174);
+            this.chkTodos.Name = "chkTodos";
+            this.chkTodos.Size = new System.Drawing.Size(56, 17);
+            this.chkTodos.TabIndex = 16;
+            this.chkTodos.Text = "Todos";
+            this.chkTodos.UseVisualStyleBackColor = true;
+            // 
             // frmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(708, 447);
+            this.ClientSize = new System.Drawing.Size(726, 447);
+            this.Controls.Add(this.chkTodos);
+            this.Controls.Add(this.txtApellido);
+            this.Controls.Add(this.lblApellido);
+            this.Controls.Add(this.txtNombreUsuario);
+            this.Controls.Add(this.lblNombreUsuario);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.grdUsuarios);
@@ -256,10 +331,17 @@
         private System.Windows.Forms.DataGridView grdUsuarios;
         private System.Windows.Forms.Button btnConsultar;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.TextBox txtNombreUsuario;
+        private System.Windows.Forms.Label lblNombreUsuario;
+        private System.Windows.Forms.TextBox txtApellido;
+        private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Perfil;
-        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.CheckBox chkTodos;
     }
 }

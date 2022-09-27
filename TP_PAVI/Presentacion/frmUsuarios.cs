@@ -1,6 +1,7 @@
 ﻿using AppBTS.Entidades;
 using AppBTS.Negocio;
 using AppBTS.Servicios;
+using AppBTS.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,7 +24,8 @@ namespace AppBTS.Presentacion
             Baja
         }
         Acciones miAccion;
-        PerfilService oPerfil = new PerfilService();
+        IPerfilService oPerfil = new PerfilService();
+        //CAMBIAR CUANDO IMPLEMENTE TODO A INTERFAZ
         UsuarioService oUsuario = new UsuarioService();
  
         public frmUsuarios()
@@ -33,38 +35,50 @@ namespace AppBTS.Presentacion
         private void frmUsuarios_Load(object sender, EventArgs e)
         {
             CargarCombo(cboPerfil, oPerfil.traerTodos());
-            CargarGrilla(grdUsuarios, oUsuario.traerTodos());
+            //CargarGrilla(grdUsuarios, oUsuario.traerTodos());
             miAccion = Acciones.Modificacion;
             grdUsuarios.Enabled = true;
+            habilitarEdicionYBorrado(false);
 
         }
 
         private void LimpiarCampos()
         {
+            txtNombreUsuario.Text = String.Empty;
             txtNombre.Text = String.Empty;
             txtEmail.Text = String.Empty;
+            txtApellido.Text = String.Empty;
             cboPerfil.SelectedIndex = -1;
         }
-       
-
-        private void CargarCombo(ComboBox combo, DataTable tabla)
+        private void LimpiarGrilla()
         {
-            combo.DataSource = tabla;
-            combo.DisplayMember = tabla.Columns[1].ColumnName;
-            combo.ValueMember = tabla.Columns[0].ColumnName;
+            grdUsuarios.Rows.Clear();
+            habilitarEdicionYBorrado(false);
+        }
+
+
+        private void CargarCombo(ComboBox combo, List<Perfil> lista)
+        {
+            combo.DataSource = lista;
+            combo.DisplayMember = "Nombre";
+            combo.ValueMember = "IdPerfil";
             combo.SelectedIndex = -1;
             combo.DropDownStyle = ComboBoxStyle.DropDownList;
         }
-        private void CargarGrilla(DataGridView grilla, DataTable tabla)
+        private void CargarGrilla(DataGridView grilla, List<Usuario> lista)
         {
             grilla.Rows.Clear();
-            for (int i = 0; i < tabla.Rows.Count; i++)
+
+            foreach (Usuario oUsuario in lista)
             {
-                grilla.Rows.Add(tabla.Rows[i]["id_usuario"],
-                                tabla.Rows[i]["usuario"],
-                                tabla.Rows[i]["email"],
-                                tabla.Rows[i]["nombre"]);
+                grilla.Rows.Add(oUsuario.Id_usuario,
+                                oUsuario.NombreUsuario,
+                                oUsuario.Nombre,
+                                oUsuario.Apellido,
+                                oUsuario.Email,
+                                oUsuario.Id_perfil.Nombre);
             }
+            
         }
         private void btnNuevo_Click(object sender, EventArgs e)
         {
@@ -101,23 +115,81 @@ namespace AppBTS.Presentacion
         {
             if (cboPerfil.SelectedValue != null)
             {
-                DataTable dt = oUsuario.RecuperarFiltrados(txtNombre.Text, txtEmail.Text, (int)cboPerfil.SelectedValue);
-                CargarGrilla(grdUsuarios, dt);
-                
+                List<Usuario> lista = oUsuario.RecuperarFiltrados(txtNombreUsuario.Text, txtNombre.Text, txtApellido.Text, txtEmail.Text, (int)cboPerfil.SelectedValue);
+                CargarGrilla(grdUsuarios, lista);
+
 
             }
             else
             {
-                DataTable dt = oUsuario.RecuperarFiltrados(txtNombre.Text, txtEmail.Text, null);
-                CargarGrilla(grdUsuarios, dt);
+                    if (validarCamposUsuario(txtNombreUsuario.Text, txtNombre.Text,
+                txtApellido.Text, txtEmail.Text) || (chkTodos.Checked))
+                {
+                    List<Usuario> lista = oUsuario.RecuperarFiltrados(txtNombreUsuario.Text, txtNombre.Text, txtApellido.Text, txtEmail.Text, null);
+                    CargarGrilla(grdUsuarios, lista);
+                }
+                else
+                {
+                    MessageBox.Show("No está filtrando por ninguna opción.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                }
+
+
             }
         
         }
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
-            CargarGrilla(grdUsuarios, oUsuario.traerTodos());
+            LimpiarGrilla();
+            chkTodos.Checked = false;
         }
+
+        private bool validarCampo(string campo)
+        {
+            return campo != "";
+        }
+
+        private bool validarCamposUsuario(string nombreUsuario, string nombre,
+            string apellido, string email)
+        {
+            return ((validarCampo(nombreUsuario) || validarCampo(nombre)
+                || validarCampo(apellido) || validarCampo(email))) ;
+        }
+
+        private void chkTodos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkTodos.Checked)
+            {
+                LimpiarCampos();
+                habilitarCampos(false);
+            }
+            else
+            {
+                habilitarCampos(true);
+            }
+        }
+        private void habilitarEdicionYBorrado(bool opcion)
+        {
+            btnEditar.Enabled = opcion;
+            btnBorrar.Enabled = opcion;
+        }
+        private void habilitarCampos(bool opcion)
+        {
+            txtNombreUsuario.Enabled = opcion;
+            txtNombre.Enabled = opcion;
+            txtApellido.Enabled = opcion;
+            txtEmail.Enabled = opcion;
+            cboPerfil.Enabled = opcion;
+        }
+
+        private void grdUsuarios_SelectionChanged(object sender, EventArgs e)
+        {
+            if (grdUsuarios.SelectedCells.Count > 0)
+            {
+                habilitarEdicionYBorrado(true);
+            }
+        }
+
     }
 }
 

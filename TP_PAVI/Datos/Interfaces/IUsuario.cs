@@ -10,15 +10,15 @@ namespace AppBTS.Datos.Interfaces
 {
     interface IUsuario
     {
-        int validarUsuario(string nombre, string clave);
-        DataTable RecuperarTodos();
-        DataTable RecuperarPorId(int idUsuario);
+        int validarUsuario(string nombreUsuario, string clave);
+        List<Usuario> RecuperarTodos();
+        Usuario RecuperarPorId(int idUsuario);
         Usuario ObjectMapping(DataRow row);
         bool Create(Usuario usuario);
         Usuario GetUserSinParametros(string nombreUsuario);
         IList<Usuario> GetByFiltersSinParametros(string condiciones);
 
-        DataTable RecuperarFiltrados(string nombre, string email, int? perfil);
+        List<Usuario> RecuperarFiltrados(string nombreUsuario, string nombre, string apellido, string email, int? perfil);
         bool Modificar(Usuario usuario);
         bool Eliminar(int idUsuario);
     }

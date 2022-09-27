@@ -1,5 +1,7 @@
 ﻿using AppBTS.Datos.Daos;
 using AppBTS.Datos.Interfaces;
+using AppBTS.Entidades;
+using AppBTS.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace AppBTS.Servicios
 {
-    class PerfilService
+    class PerfilService : IPerfilService
     {
         private IPerfil dao;
         public PerfilService()
         {
             dao = new PerfilDao();
         }
-        public DataTable traerTodos()
+        public List<Perfil> traerTodos()
         {
             return dao.RecuperarTodos();
         }

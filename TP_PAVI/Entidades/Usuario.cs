@@ -18,12 +18,14 @@ namespace AppBTS.Negocio
             set { id_usuario = value; }
         }
 
+        public string NombreUsuario { get; set; }
         public string Nombre { get; set; }
+        public string Apellido { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
         public Perfil Id_perfil { get; set; }
         public string Estado { get; set; }
         public bool Borrado { get; set; }
-        
+       
     }
 }
