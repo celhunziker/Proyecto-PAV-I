@@ -16,5 +16,10 @@ namespace AppBTS.Presentacion
         {
             InitializeComponent();
         }
+
+        private void frmProductosABM_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
