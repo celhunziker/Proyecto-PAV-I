@@ -41,33 +41,17 @@ namespace AppBTS.Datos.Daos
                                               "        estado, ",
                                               "        password, ",
                                               "        p.id_perfil, ",
-                                              "        p.nombre ",
+                                              "        p.nombre as perfil ",
                                               "   FROM Usuarios u",
                                               "  INNER JOIN Perfiles p ON u.id_perfil= p.id_perfil ",
                                               " WHERE u.borrado = 0 AND estado = 'S'");
 
             DataTable tabla = BDHelper.obtenerInstancia().consultar(strSql);
             //LLAMAMOS A LOS PERFILES Y LOS VAMOS ASIGNANDO CON RESPECTO A ID PERFIL?
-            List<Perfil> listaPerfil = oPerfil.traerTodos();
+            //List<Perfil> listaPerfil = oPerfil.traerTodos();
             foreach(DataRow fila in tabla.Rows)
             {
-                Usuario oUsuario = new Usuario();
-                oUsuario.Id_usuario = (int)fila["id_usuario"];
-                oUsuario.NombreUsuario = fila["nombreUsuario"].ToString();
-                oUsuario.Nombre = fila["nombre"].ToString();
-                oUsuario.Apellido = fila["apellido"].ToString();
-                oUsuario.Password = fila["password"].ToString();
-                oUsuario.Email = fila["estado"].ToString();
-                oUsuario.Borrado = false;
-                //PATRON O DIRECTAMENTE PONEMOS UN IF?
-                foreach(Perfil perfil in listaPerfil)
-                {
-                    if (perfil.IdPerfil == (int)fila["id_perfil"])
-                    {
-                        oUsuario.Id_perfil = perfil;
-                        break;
-                    }
-                }
+                Usuario oUsuario = ObjectMapping(fila);
                 lista.Add(oUsuario);
             }
             return lista;
@@ -84,33 +68,13 @@ namespace AppBTS.Datos.Daos
                                               "        estado, ",
                                               "        password, ",
                                               "        p.id_perfil, ",
-                                              "        p.nombre ",
+                                              "        p.nombre as perfil ",
                                               "   FROM Usuarios u",
                                               "  INNER JOIN Perfiles p ON u.id_perfil= p.id_perfil ",
                                               condicion);
 
             DataTable tabla = BDHelper.obtenerInstancia().consultar(strSql);
-            //IMPLEMENTACION TOSCA -> PODRIAMOS TRAER SOLO UNO O SACARLO DIRECTO DESDE COMBOBOX?
-            
-            Usuario usuario = new Usuario();
-            usuario.Id_usuario = (int)tabla.Rows[0]["id_usuario"];
-            usuario.NombreUsuario = tabla.Rows[0]["nombreUsuario"].ToString();
-            usuario.Nombre = tabla.Rows[0]["nombre"].ToString();
-            usuario.Apellido = tabla.Rows[0]["apellido"].ToString();
-            usuario.Password = tabla.Rows[0]["password"].ToString();
-            usuario.Email = tabla.Rows[0]["estado"].ToString();
-            usuario.Borrado = false;
-
-            List<Perfil> lista = oPerfil.traerTodos();
-            foreach (Perfil perfil in lista)
-            {
-                if (perfil.IdPerfil == (int)tabla.Rows[0]["id_perfil"])
-                {
-                    usuario.Id_perfil = perfil;
-                    break;
-                }
-            }
-            return usuario;
+            return ObjectMapping(tabla.Rows[0]);
         }
 
  
@@ -141,7 +105,7 @@ namespace AppBTS.Datos.Daos
                                           "        estado, ",
                                           "        password, ",
                                           "        p.id_perfil, ",
-                                          "        p.nombre ",
+                                          "        p.nombre as perfil ",
                                           "   FROM Usuarios u",
                                           "  INNER JOIN Perfiles p ON u.id_perfil= p.id_perfil ",
                                           "  WHERE u.borrado =0  AND estado = 'S'");
@@ -173,7 +137,7 @@ namespace AppBTS.Datos.Daos
                                               "        estado, ",
                                               "        password, ",
                                               "        p.id_perfil, ",
-                                              "        p.nombre ",
+                                              "        p.nombre as perfil ",
                                               "   FROM Usuarios u",
                                               "  INNER JOIN Perfiles p ON u.id_perfil= p.id_perfil ",
                                               "  WHERE u.borrado =0 AND estado = 'S'");
@@ -199,7 +163,7 @@ namespace AppBTS.Datos.Daos
                                               "        estado, ",
                                               "        password, ",
                                               "        p.id_perfil, ",
-                                              "        p.nombre ",
+                                              "        p.nombre as perfil ",
                                               "   FROM Usuarios u",
                                               "  INNER JOIN Perfiles p ON u.id_perfil= p.id_perfil ",
                                               "  WHERE u.borrado =0 AND u.estado = 'S'");
@@ -226,26 +190,9 @@ namespace AppBTS.Datos.Daos
 
 
             DataTable tabla = BDHelper.obtenerInstancia().consultar(strSql);
-            List<Perfil> listaPerfil = oPerfil.traerTodos();
             foreach (DataRow fila in tabla.Rows)
             {
-                Usuario oUsuario = new Usuario();
-                oUsuario.Id_usuario = (int)fila["id_usuario"];
-                oUsuario.NombreUsuario = fila["nombreUsuario"].ToString();
-                oUsuario.Nombre = fila["nombre"].ToString();
-                oUsuario.Apellido = fila["apellido"].ToString();
-                oUsuario.Password = fila["password"].ToString();
-                oUsuario.Email = fila["estado"].ToString();
-                oUsuario.Borrado = false;
-                //PATRON O DIRECTAMENTE PONEMOS UN IF?
-                foreach (Perfil oPerfil in listaPerfil)
-                {
-                    if (oPerfil.IdPerfil == (int)fila["id_perfil"])
-                    {
-                        oUsuario.Id_perfil = oPerfil;
-                        break;
-                    }
-                }
+                Usuario oUsuario = ObjectMapping(fila);
                 lista.Add(oUsuario);
             }
             return lista;
@@ -289,6 +236,18 @@ namespace AppBTS.Datos.Daos
 
             return oUsuario; ;
         }
+
+        public bool ExisteNombreUsuario(string NombreUsuario, int? IdUsuario)
+        {
+            string consulta = "SELECT * FROM Usuarios WHERE nombreUsuario = '" +
+                NombreUsuario + "'";
+            if (IdUsuario != null)
+            {
+                consulta = consulta + " AND id_usuario != " + IdUsuario;
+            }
+            return (BDHelper.obtenerInstancia().consultar(consulta).Rows.Count > 0);
+        }
+
     }
 }
 

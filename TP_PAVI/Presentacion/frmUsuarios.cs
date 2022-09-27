@@ -27,7 +27,7 @@ namespace AppBTS.Presentacion
         IPerfilService oPerfil = new PerfilService();
         //CAMBIAR CUANDO IMPLEMENTE TODO A INTERFAZ
         UsuarioService oUsuario = new UsuarioService();
- 
+
         public frmUsuarios()
         {
             InitializeComponent();
@@ -39,7 +39,6 @@ namespace AppBTS.Presentacion
             miAccion = Acciones.Modificacion;
             grdUsuarios.Enabled = true;
             habilitarEdicionYBorrado(false);
-
         }
 
         private void LimpiarCampos()
@@ -84,14 +83,17 @@ namespace AppBTS.Presentacion
         {
             miAccion = Acciones.Alta;
             frmUsuariosABM fabm = new frmUsuariosABM(miAccion.ToString(),null);
-            fabm.Show();
+            fabm.ShowDialog();
+            cargarConConsulta();
+
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
             miAccion = Acciones.Modificacion;
             frmUsuariosABM fabm = new frmUsuariosABM(miAccion.ToString(), (int) grdUsuarios.CurrentRow.Cells[0].Value);
-            fabm.Show();
+            fabm.ShowDialog();
+            cargarConConsulta();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -110,20 +112,17 @@ namespace AppBTS.Presentacion
             }
 
         }
-
-        private void btnConsultar_Click(object sender, EventArgs e)
+        private void cargarConConsulta()
         {
             if (cboPerfil.SelectedValue != null)
             {
                 List<Usuario> lista = oUsuario.RecuperarFiltrados(txtNombreUsuario.Text, txtNombre.Text, txtApellido.Text, txtEmail.Text, (int)cboPerfil.SelectedValue);
                 CargarGrilla(grdUsuarios, lista);
-
-
             }
             else
             {
-                    if (validarCamposUsuario(txtNombreUsuario.Text, txtNombre.Text,
-                txtApellido.Text, txtEmail.Text) || (chkTodos.Checked))
+                if (validarCamposUsuario(txtNombreUsuario.Text, txtNombre.Text,
+            txtApellido.Text, txtEmail.Text) || (chkTodos.Checked))
                 {
                     List<Usuario> lista = oUsuario.RecuperarFiltrados(txtNombreUsuario.Text, txtNombre.Text, txtApellido.Text, txtEmail.Text, null);
                     CargarGrilla(grdUsuarios, lista);
@@ -132,9 +131,12 @@ namespace AppBTS.Presentacion
                 {
                     MessageBox.Show("No está filtrando por ninguna opción.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 }
-
-
             }
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            cargarConConsulta();
         
         }
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -190,6 +192,7 @@ namespace AppBTS.Presentacion
             }
         }
 
+        
     }
 }
 

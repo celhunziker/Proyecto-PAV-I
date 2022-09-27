@@ -21,5 +21,6 @@ namespace AppBTS.Datos.Interfaces
         List<Usuario> RecuperarFiltrados(string nombreUsuario, string nombre, string apellido, string email, int? perfil);
         bool Modificar(Usuario usuario);
         bool Eliminar(int idUsuario);
+        bool ExisteNombreUsuario(string Nombreusuario, int? IdUsuario);
     }
 }

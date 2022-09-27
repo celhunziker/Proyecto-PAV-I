@@ -71,30 +71,43 @@ namespace AppBTS.Presentacion
                 usuario.Email = txtEmail.Text;
                 usuario.Id_perfil = new Perfil();
                 usuario.Id_perfil.IdPerfil = (int)cboPerfil.SelectedValue;
-                usuario.Estado = "S";
+                usuario.Estado = "S"; 
                 if (accion == "Alta")
                 {
-                    oUsuario.CrearUsuario(usuario);
-                    MessageBox.Show("Usuario creado.", "Alta de Usuario en el Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    if (oUsuario.ExisteNombreUsuario(usuario.NombreUsuario, null)) 
+                    {
+                        MessageBox.Show("YA EXISTE UN USUARIO CON ESE NOMBRE.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtNombreUsuario.Clear();
+                        txtNombreUsuario.Focus();
+                    }
+                    else
+                    {
+                        oUsuario.CrearUsuario(usuario);
+                        MessageBox.Show("Usuario creado.", "Alta de Usuario en el Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }   
                 }
                 else
                 {
                     usuario.Id_usuario = (int)idUsuario;
-                    oUsuario.ModificarUsuario(usuario);
-                    MessageBox.Show("Usuario modificado.", "Modificación de Usuario en el Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    if (oUsuario.ExisteNombreUsuario(usuario.NombreUsuario, usuario.Id_usuario))
+                    {
+                        MessageBox.Show("YA EXISTE OTRO USUARIO CON ESE NOMBRE.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtNombreUsuario.Clear();
+                        txtNombreUsuario.Focus();
+                    }
+                    else
+                    {
+                        oUsuario.ModificarUsuario(usuario);
+                        MessageBox.Show("Usuario modificado.", "Modificación de Usuario en el Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
                 }
-                this.Close();
-            }
+            }   
             else
             {
                 MessageBox.Show("Faltan completar campos.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
-            
-
-            
+            } 
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

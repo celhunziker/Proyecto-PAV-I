@@ -63,5 +63,9 @@ namespace AppBTS.Servicios
         {
             return dao.Eliminar(idUsuario);
         }
+        public bool ExisteNombreUsuario(string NombreUsuario, int? IdUsuario)
+        {
+            return dao.ExisteNombreUsuario(NombreUsuario, IdUsuario);
+        }
     }
 }
