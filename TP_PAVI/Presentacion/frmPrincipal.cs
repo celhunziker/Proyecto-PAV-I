@@ -20,6 +20,7 @@ namespace AppBTS
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            this.Hide();
             frmLogin fl;
             fl = new frmLogin();
             fl.ShowDialog();
@@ -27,6 +28,7 @@ namespace AppBTS
             if (fl.MiUsuario.Id_usuario == 0)
                 this.Close();
             else
+                this.Show();
                 this.Text += " - Usuario: " + fl.MiUsuario.Nombre;
 
             fl.Dispose();
