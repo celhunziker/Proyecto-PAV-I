@@ -193,8 +193,6 @@ namespace AppBTS.Presentacion
                 habilitarEdicionYBorrado(true);
             }
         }
-
-        
     }
 }
 

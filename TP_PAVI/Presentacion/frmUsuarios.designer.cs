@@ -64,33 +64,33 @@
             this.cboPerfil.Location = new System.Drawing.Point(178, 137);
             this.cboPerfil.Name = "cboPerfil";
             this.cboPerfil.Size = new System.Drawing.Size(283, 21);
-            this.cboPerfil.TabIndex = 4;
+            this.cboPerfil.TabIndex = 9;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(92, 43);
+            this.label2.Location = new System.Drawing.Point(128, 44);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Nombre";
+            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Nombre ";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(101, 102);
+            this.label4.Location = new System.Drawing.Point(137, 108);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "E-mail";
+            this.label4.Text = "E-mail ";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(106, 141);
+            this.label5.Location = new System.Drawing.Point(142, 140);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(30, 13);
-            this.label5.TabIndex = 7;
+            this.label5.TabIndex = 8;
             this.label5.Text = "Perfil";
             // 
             // txtNombre
@@ -98,14 +98,14 @@
             this.txtNombre.Location = new System.Drawing.Point(178, 42);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(283, 20);
-            this.txtNombre.TabIndex = 1;
+            this.txtNombre.TabIndex = 3;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(178, 106);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(283, 20);
-            this.txtEmail.TabIndex = 3;
+            this.txtEmail.TabIndex = 7;
             // 
             // grdUsuarios
             // 
@@ -126,7 +126,7 @@
             this.grdUsuarios.RowHeadersWidth = 51;
             this.grdUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdUsuarios.Size = new System.Drawing.Size(697, 122);
-            this.grdUsuarios.TabIndex = 5;
+            this.grdUsuarios.TabIndex = 13;
             this.grdUsuarios.SelectionChanged += new System.EventHandler(this.grdUsuarios_SelectionChanged);
             // 
             // ID
@@ -183,7 +183,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(554, 74);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 47);
-            this.btnLimpiar.TabIndex = 9;
+            this.btnLimpiar.TabIndex = 11;
             this.toolTip1.SetToolTip(this.btnLimpiar, "Actualizar");
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
@@ -205,7 +205,7 @@
             this.btnSalir.Location = new System.Drawing.Point(628, 347);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(49, 47);
-            this.btnSalir.TabIndex = 11;
+            this.btnSalir.TabIndex = 17;
             this.toolTip1.SetToolTip(this.btnSalir, "Salir");
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -216,7 +216,7 @@
             this.btnBorrar.Location = new System.Drawing.Point(178, 347);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(74, 47);
-            this.btnBorrar.TabIndex = 8;
+            this.btnBorrar.TabIndex = 16;
             this.toolTip1.SetToolTip(this.btnBorrar, "Borrar");
             this.btnBorrar.UseVisualStyleBackColor = true;
             this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
@@ -227,7 +227,7 @@
             this.btnEditar.Location = new System.Drawing.Point(97, 347);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 47);
-            this.btnEditar.TabIndex = 7;
+            this.btnEditar.TabIndex = 15;
             this.toolTip1.SetToolTip(this.btnEditar, "Editar");
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
@@ -238,7 +238,7 @@
             this.btnNuevo.Location = new System.Drawing.Point(16, 347);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(75, 47);
-            this.btnNuevo.TabIndex = 6;
+            this.btnNuevo.TabIndex = 14;
             this.toolTip1.SetToolTip(this.btnNuevo, "Nuevo");
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
@@ -248,15 +248,15 @@
             this.txtNombreUsuario.Location = new System.Drawing.Point(178, 11);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.Size = new System.Drawing.Size(283, 20);
-            this.txtNombreUsuario.TabIndex = 12;
+            this.txtNombreUsuario.TabIndex = 1;
             // 
             // lblNombreUsuario
             // 
             this.lblNombreUsuario.AutoSize = true;
-            this.lblNombreUsuario.Location = new System.Drawing.Point(55, 13);
+            this.lblNombreUsuario.Location = new System.Drawing.Point(91, 12);
             this.lblNombreUsuario.Name = "lblNombreUsuario";
             this.lblNombreUsuario.Size = new System.Drawing.Size(83, 13);
-            this.lblNombreUsuario.TabIndex = 13;
+            this.lblNombreUsuario.TabIndex = 0;
             this.lblNombreUsuario.Text = "Nombre Usuario";
             // 
             // txtApellido
@@ -264,16 +264,16 @@
             this.txtApellido.Location = new System.Drawing.Point(178, 74);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(283, 20);
-            this.txtApellido.TabIndex = 14;
+            this.txtApellido.TabIndex = 5;
             // 
             // lblApellido
             // 
             this.lblApellido.AutoSize = true;
-            this.lblApellido.Location = new System.Drawing.Point(92, 72);
+            this.lblApellido.Location = new System.Drawing.Point(128, 76);
             this.lblApellido.Name = "lblApellido";
-            this.lblApellido.Size = new System.Drawing.Size(44, 13);
-            this.lblApellido.TabIndex = 15;
-            this.lblApellido.Text = "Apellido";
+            this.lblApellido.Size = new System.Drawing.Size(47, 13);
+            this.lblApellido.TabIndex = 4;
+            this.lblApellido.Text = "Apellido ";
             // 
             // chkTodos
             // 
@@ -281,7 +281,7 @@
             this.chkTodos.Location = new System.Drawing.Point(178, 174);
             this.chkTodos.Name = "chkTodos";
             this.chkTodos.Size = new System.Drawing.Size(56, 17);
-            this.chkTodos.TabIndex = 16;
+            this.chkTodos.TabIndex = 12;
             this.chkTodos.Text = "Todos";
             this.chkTodos.UseVisualStyleBackColor = true;
             this.chkTodos.CheckedChanged += new System.EventHandler(this.chkTodos_CheckedChanged);
