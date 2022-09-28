@@ -84,8 +84,10 @@ namespace AppBTS.Presentacion
             miAccion = Acciones.Alta;
             frmUsuariosABM fabm = new frmUsuariosABM(miAccion.ToString(),null);
             fabm.ShowDialog();
-            cargarConConsulta();
-
+            if (grdUsuarios.Rows.Count != 0)
+            {
+                cargarConConsulta();
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)

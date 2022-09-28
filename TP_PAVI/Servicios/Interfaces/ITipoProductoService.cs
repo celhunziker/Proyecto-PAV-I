@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace AppBTS.Servicios.Interfaces
 {
-    internal interface ITipoProductoService
+    interface ITipoProductoService
     {
-        List<Tipo_Producto> traerTodos();
+         List<Tipo_Producto> traerTodos();
     }
 }

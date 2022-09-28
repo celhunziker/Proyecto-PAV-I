@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AppBTS.Servicios.Interfaces
 {
-    internal interface IUsuarioService
+    interface IUsuarioService
     {
         //COMO IMPLEMENTAMOS ESTO?
         int encontrarUsuario(string nombreUsuario, string clave);
@@ -23,6 +23,7 @@ namespace AppBTS.Servicios.Interfaces
         IList<Usuario> ConsultarConFiltrosSinParametros(String condiciones);
         List<Usuario> RecuperarFiltrados(string nombreUsuario, string nombre, string apellido, string email, int? perfil);
         bool ModificarUsuario(Usuario usuario);
+        bool ExisteNombreUsuario(string NombreUsuario, int? IdUsuario);
 
         bool Eliminar(int idUsuario);
     }

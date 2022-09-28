@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AppBTS.Servicios.Interfaces
 {
-    internal interface IPerfilService
+    interface IPerfilService
     {
         List<Perfil> traerTodos();
     }

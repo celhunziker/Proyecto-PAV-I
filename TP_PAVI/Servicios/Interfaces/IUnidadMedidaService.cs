@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace AppBTS.Servicios.Interfaces
 {
-    interface IMarcaService
+    interface IUnidadMedidaService
     {
-        List<Marca> traerTodos();
+        List<Unidad_Medida> traerTodos();
     }
 }

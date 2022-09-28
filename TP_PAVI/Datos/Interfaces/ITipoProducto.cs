@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppBTS.Servicios.Interfaces
+namespace AppBTS.Datos.Interfaces
 {
-    interface IMarcaService
+    interface ITipoProducto
     {
-        List<Marca> traerTodos();
+        List<Tipo_Producto> RecuperarTodos();
     }
 }

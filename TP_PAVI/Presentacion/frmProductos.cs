@@ -1,4 +1,5 @@
 ﻿using AppBTS.Entidades;
+using AppBTS.Servicios.Implementaciones;
 using AppBTS.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -88,7 +89,10 @@ namespace AppBTS.Presentacion
             miAccion = Acciones.Alta;
             frmProductosABM fabm = new frmProductosABM(miAccion.ToString(), null);
             fabm.ShowDialog();
-            cargarConConsulta();
+            if (grdProductos.Rows.Count != 0)
+            {
+                cargarConConsulta();
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -116,18 +120,27 @@ namespace AppBTS.Presentacion
         }
         private void cargarConConsulta()
         {
-            if (cboPerfil.SelectedValue != null)
-            {
-                List<Usuario> lista = oUsuario.RecuperarFiltrados(txtNombreUsuario.Text, txtNombre.Text, txtApellido.Text, txtEmail.Text, (int)cboPerfil.SelectedValue);
-                CargarGrilla(grdUsuarios, lista);
+            if (cboMarcas.SelectedValue != null && cboTipoProducto.SelectedValue != null)
+            { //string nombreProducto, int? marca, int? tipo_Producto
+                List<Producto> lista = oProducto.RecuperarFiltrados(txtNombreProducto.Text, (int)cboTipoProducto.SelectedValue, (int)cboMarcas.SelectedValue);
+                CargarGrilla(grdProductos, lista);
+            }
+            else if (cboMarcas.SelectedValue != null && cboTipoProducto.SelectedValue == null)
+            { //string nombreProducto, int? marca, int? tipo_Producto
+                List<Producto> lista = oProducto.RecuperarFiltrados(txtNombreProducto.Text, null, (int)cboMarcas.SelectedValue);
+                CargarGrilla(grdProductos, lista);
+            }
+            else if (cboTipoProducto.SelectedValue != null && cboMarcas.SelectedValue == null)
+            { //string nombreProducto, int? marca, int? tipo_Producto
+                List<Producto> lista = oProducto.RecuperarFiltrados(txtNombreProducto.Text, (int)cboTipoProducto.SelectedValue, null);
+                CargarGrilla(grdProductos, lista);
             }
             else
             {
-                if (validarCamposUsuario(txtNombreUsuario.Text, txtNombre.Text,
-            txtApellido.Text, txtEmail.Text) || (chkTodos.Checked))
+                if (validarCampoProducto(txtNombreProducto.Text) || (chkTodos.Checked))
                 {
-                    List<Usuario> lista = oUsuario.RecuperarFiltrados(txtNombreUsuario.Text, txtNombre.Text, txtApellido.Text, txtEmail.Text, null);
-                    CargarGrilla(grdUsuarios, lista);
+                    List<Producto> lista = oProducto.RecuperarFiltrados(txtNombreProducto.Text, null, null);
+                    CargarGrilla(grdProductos, lista);
                 }
                 else
                 {
