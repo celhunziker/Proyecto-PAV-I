@@ -77,9 +77,10 @@ namespace AppBTS.Presentacion
             {
                 grilla.Rows.Add(oProducto.Id_producto,
                                 oProducto.NombreProducto,
+                                oProducto.Id_Tipo_Producto.NombreTipoProducto,
                                 oProducto.Id_Marca.NombreMarca,
                                 oProducto.Contenido,
-                                oProducto.Id_Tipo_Producto.NombreTipoProducto,
+                                oProducto.Id_Unidad_Medida.Nombre,
                                 oProducto.Descripcion);
             }
         }

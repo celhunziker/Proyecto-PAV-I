@@ -83,7 +83,7 @@ namespace AppBTS.Presentacion
             Producto producto = new Producto();
             float contenido = string.IsNullOrEmpty(txtContenido.Text)?(float)-1:float.Parse(txtContenido.Text);
             if (validarCamposProducto(txtNombreProducto.Text, (int)cboTipoProducto.SelectedIndex, (int)cboMarca.SelectedIndex, contenido,
-                (int)cboUnidadDeMedida.SelectedIndex, txtDescripcion.Text))
+                (int)cboUnidadDeMedida.SelectedIndex))
             {
                 producto.NombreProducto = txtNombreProducto.Text;
                 producto.Id_Tipo_Producto = new Tipo_Producto();
@@ -153,11 +153,11 @@ namespace AppBTS.Presentacion
         }
 
         private bool validarCamposProducto(string nombreProducto, int tipoProducto, int marca, float contenido,
-            int unidadMedida, string descripcion)
+            int unidadMedida)
         {
             return validarCampo(nombreProducto) && validarCampo(marca)
                 && validarCampo(tipoProducto) && validarCampo(contenido)
-                && validarCampo(unidadMedida) && validarCampo(descripcion);
+                && validarCampo(unidadMedida);
         }
     }
 }
