@@ -33,13 +33,6 @@
             this.txtNombreProducto = new System.Windows.Forms.TextBox();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
             this.grdProductos = new System.Windows.Forms.DataGridView();
-            this.IDProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Contenido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnidadDeMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblTipoProducto = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnConsultar = new System.Windows.Forms.Button();
@@ -49,16 +42,22 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.cboTipoProducto = new System.Windows.Forms.ComboBox();
             this.cboMarcas = new System.Windows.Forms.ComboBox();
+            this.IDProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Contenido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnidadDeMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdProductos)).BeginInit();
             this.SuspendLayout();
             // 
             // chkTodos
             // 
             this.chkTodos.AutoSize = true;
-            this.chkTodos.Location = new System.Drawing.Point(277, 169);
-            this.chkTodos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkTodos.Location = new System.Drawing.Point(270, 137);
             this.chkTodos.Name = "chkTodos";
-            this.chkTodos.Size = new System.Drawing.Size(69, 20);
+            this.chkTodos.Size = new System.Drawing.Size(56, 17);
             this.chkTodos.TabIndex = 34;
             this.chkTodos.Text = "Todos";
             this.chkTodos.UseVisualStyleBackColor = true;
@@ -67,28 +66,25 @@
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(223, 121);
-            this.lblMarca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMarca.Location = new System.Drawing.Point(229, 98);
             this.lblMarca.Name = "lblMarca";
-            this.lblMarca.Size = new System.Drawing.Size(45, 16);
+            this.lblMarca.Size = new System.Drawing.Size(37, 13);
             this.lblMarca.TabIndex = 33;
             this.lblMarca.Text = "Marca";
             // 
             // txtNombreProducto
             // 
-            this.txtNombreProducto.Location = new System.Drawing.Point(276, 44);
-            this.txtNombreProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombreProducto.Location = new System.Drawing.Point(269, 36);
             this.txtNombreProducto.Name = "txtNombreProducto";
-            this.txtNombreProducto.Size = new System.Drawing.Size(376, 22);
+            this.txtNombreProducto.Size = new System.Drawing.Size(283, 20);
             this.txtNombreProducto.TabIndex = 30;
             // 
             // lblNombreUsuario
             // 
             this.lblNombreUsuario.AutoSize = true;
-            this.lblNombreUsuario.Location = new System.Drawing.Point(155, 47);
-            this.lblNombreUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombreUsuario.Location = new System.Drawing.Point(178, 38);
             this.lblNombreUsuario.Name = "lblNombreUsuario";
-            this.lblNombreUsuario.Size = new System.Drawing.Size(113, 16);
+            this.lblNombreUsuario.Size = new System.Drawing.Size(90, 13);
             this.lblNombreUsuario.TabIndex = 31;
             this.lblNombreUsuario.Text = "Nombre Producto";
             // 
@@ -105,16 +101,102 @@
             this.Contenido,
             this.UnidadDeMedida,
             this.Descripcion});
-            this.grdProductos.Location = new System.Drawing.Point(16, 197);
-            this.grdProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grdProductos.Location = new System.Drawing.Point(12, 160);
             this.grdProductos.MultiSelect = false;
             this.grdProductos.Name = "grdProductos";
             this.grdProductos.ReadOnly = true;
             this.grdProductos.RowHeadersWidth = 51;
             this.grdProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdProductos.Size = new System.Drawing.Size(1056, 150);
+            this.grdProductos.Size = new System.Drawing.Size(849, 122);
             this.grdProductos.TabIndex = 21;
             this.grdProductos.SelectionChanged += new System.EventHandler(this.grdProductos_SelectionChanged);
+            // 
+            // lblTipoProducto
+            // 
+            this.lblTipoProducto.AutoSize = true;
+            this.lblTipoProducto.Location = new System.Drawing.Point(194, 68);
+            this.lblTipoProducto.Name = "lblTipoProducto";
+            this.lblTipoProducto.Size = new System.Drawing.Size(74, 13);
+            this.lblTipoProducto.TabIndex = 20;
+            this.lblTipoProducto.Text = "Tipo Producto";
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Image = global::AppBTS.Properties.Resources.actualizar;
+            this.btnLimpiar.Location = new System.Drawing.Point(604, 74);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 47);
+            this.btnLimpiar.TabIndex = 27;
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // btnConsultar
+            // 
+            this.btnConsultar.Image = global::AppBTS.Properties.Resources.buscar1;
+            this.btnConsultar.Location = new System.Drawing.Point(604, 21);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(74, 47);
+            this.btnConsultar.TabIndex = 28;
+            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Image = global::AppBTS.Properties.Resources.logout_door;
+            this.btnSalir.Location = new System.Drawing.Point(745, 310);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(49, 47);
+            this.btnSalir.TabIndex = 29;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // btnBorrar
+            // 
+            this.btnBorrar.Image = global::AppBTS.Properties.Resources.delete_exit;
+            this.btnBorrar.Location = new System.Drawing.Point(208, 310);
+            this.btnBorrar.Name = "btnBorrar";
+            this.btnBorrar.Size = new System.Drawing.Size(74, 47);
+            this.btnBorrar.TabIndex = 26;
+            this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Image = global::AppBTS.Properties.Resources.documentediting;
+            this.btnEditar.Location = new System.Drawing.Point(128, 310);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 47);
+            this.btnEditar.TabIndex = 25;
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Image = global::AppBTS.Properties.Resources.new_file;
+            this.btnNuevo.Location = new System.Drawing.Point(46, 310);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(75, 47);
+            this.btnNuevo.TabIndex = 23;
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // cboTipoProducto
+            // 
+            this.cboTipoProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoProducto.FormattingEnabled = true;
+            this.cboTipoProducto.Location = new System.Drawing.Point(269, 67);
+            this.cboTipoProducto.Name = "cboTipoProducto";
+            this.cboTipoProducto.Size = new System.Drawing.Size(283, 21);
+            this.cboTipoProducto.TabIndex = 35;
+            // 
+            // cboMarcas
+            // 
+            this.cboMarcas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMarcas.FormattingEnabled = true;
+            this.cboMarcas.Location = new System.Drawing.Point(269, 98);
+            this.cboMarcas.Name = "cboMarcas";
+            this.cboMarcas.Size = new System.Drawing.Size(283, 21);
+            this.cboMarcas.TabIndex = 36;
             // 
             // IDProducto
             // 
@@ -146,7 +228,6 @@
             this.Marca.MinimumWidth = 6;
             this.Marca.Name = "Marca";
             this.Marca.ReadOnly = true;
-            this.Marca.Width = 200;
             // 
             // Contenido
             // 
@@ -162,7 +243,6 @@
             this.UnidadDeMedida.MinimumWidth = 6;
             this.UnidadDeMedida.Name = "UnidadDeMedida";
             this.UnidadDeMedida.ReadOnly = true;
-            this.UnidadDeMedida.Width = 250;
             // 
             // Descripcion
             // 
@@ -170,109 +250,13 @@
             this.Descripcion.MinimumWidth = 6;
             this.Descripcion.Name = "Descripcion";
             this.Descripcion.ReadOnly = true;
-            this.Descripcion.Width = 125;
-            // 
-            // lblTipoProducto
-            // 
-            this.lblTipoProducto.AutoSize = true;
-            this.lblTipoProducto.Location = new System.Drawing.Point(176, 84);
-            this.lblTipoProducto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTipoProducto.Name = "lblTipoProducto";
-            this.lblTipoProducto.Size = new System.Drawing.Size(92, 16);
-            this.lblTipoProducto.TabIndex = 20;
-            this.lblTipoProducto.Text = "Tipo Producto";
-            // 
-            // btnLimpiar
-            // 
-            this.btnLimpiar.Image = global::AppBTS.Properties.Resources.actualizar;
-            this.btnLimpiar.Location = new System.Drawing.Point(723, 91);
-            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(100, 58);
-            this.btnLimpiar.TabIndex = 27;
-            this.btnLimpiar.UseVisualStyleBackColor = true;
-            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
-            // 
-            // btnConsultar
-            // 
-            this.btnConsultar.Image = global::AppBTS.Properties.Resources.buscar1;
-            this.btnConsultar.Location = new System.Drawing.Point(723, 26);
-            this.btnConsultar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(99, 58);
-            this.btnConsultar.TabIndex = 28;
-            this.btnConsultar.UseVisualStyleBackColor = true;
-            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Image = global::AppBTS.Properties.Resources.logout_door;
-            this.btnSalir.Location = new System.Drawing.Point(877, 382);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(65, 58);
-            this.btnSalir.TabIndex = 29;
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // btnBorrar
-            // 
-            this.btnBorrar.Image = global::AppBTS.Properties.Resources.delete_exit;
-            this.btnBorrar.Location = new System.Drawing.Point(277, 382);
-            this.btnBorrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Size = new System.Drawing.Size(99, 58);
-            this.btnBorrar.TabIndex = 26;
-            this.btnBorrar.UseVisualStyleBackColor = true;
-            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Image = global::AppBTS.Properties.Resources.documentediting;
-            this.btnEditar.Location = new System.Drawing.Point(171, 382);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(100, 58);
-            this.btnEditar.TabIndex = 25;
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Image = global::AppBTS.Properties.Resources.new_file;
-            this.btnNuevo.Location = new System.Drawing.Point(61, 382);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(100, 58);
-            this.btnNuevo.TabIndex = 23;
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // cboTipoProducto
-            // 
-            this.cboTipoProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoProducto.FormattingEnabled = true;
-            this.cboTipoProducto.Location = new System.Drawing.Point(276, 82);
-            this.cboTipoProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cboTipoProducto.Name = "cboTipoProducto";
-            this.cboTipoProducto.Size = new System.Drawing.Size(376, 24);
-            this.cboTipoProducto.TabIndex = 35;
-            // 
-            // cboMarcas
-            // 
-            this.cboMarcas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboMarcas.FormattingEnabled = true;
-            this.cboMarcas.Location = new System.Drawing.Point(276, 121);
-            this.cboMarcas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cboMarcas.Name = "cboMarcas";
-            this.cboMarcas.Size = new System.Drawing.Size(376, 24);
-            this.cboMarcas.TabIndex = 36;
+            this.Descripcion.Width = 170;
             // 
             // frmProductos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1187, 478);
+            this.ClientSize = new System.Drawing.Size(890, 388);
             this.Controls.Add(this.cboMarcas);
             this.Controls.Add(this.cboTipoProducto);
             this.Controls.Add(this.chkTodos);
@@ -287,7 +271,7 @@
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.lblTipoProducto);
             this.Controls.Add(this.btnNuevo);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmProductos";
             this.Text = "Productos";
             this.Load += new System.EventHandler(this.frmProductos_Load);
