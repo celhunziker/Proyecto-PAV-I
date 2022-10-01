@@ -52,6 +52,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(283, 20);
             this.txtEmail.TabIndex = 18;
+            this.txtEmail.Click += new System.EventHandler(this.txtEmail_Click);
             // 
             // txtPassword
             // 
@@ -60,6 +61,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(100, 20);
             this.txtPassword.TabIndex = 17;
+            this.txtPassword.Click += new System.EventHandler(this.txtPassword_Click);
             // 
             // txtNombre
             // 
@@ -67,6 +69,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(283, 20);
             this.txtNombre.TabIndex = 16;
+            this.txtNombre.Click += new System.EventHandler(this.txtNombre_Click);
             // 
             // label5
             // 
@@ -112,6 +115,7 @@
             this.cboPerfil.Name = "cboPerfil";
             this.cboPerfil.Size = new System.Drawing.Size(283, 21);
             this.cboPerfil.TabIndex = 20;
+            this.cboPerfil.Click += new System.EventHandler(this.cboPerfil_Click);
             // 
             // txtId
             // 
@@ -152,10 +156,12 @@
             // 
             // txtNombreUsuario
             // 
+            this.txtNombreUsuario.BackColor = System.Drawing.SystemColors.Window;
             this.txtNombreUsuario.Location = new System.Drawing.Point(222, 80);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.Size = new System.Drawing.Size(283, 20);
             this.txtNombreUsuario.TabIndex = 26;
+            this.txtNombreUsuario.Click += new System.EventHandler(this.txtNombreUsuario_Click);
             // 
             // lblNombreUsuario
             // 
@@ -172,6 +178,7 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(283, 20);
             this.txtApellido.TabIndex = 28;
+            this.txtApellido.Click += new System.EventHandler(this.txtApellido_Click);
             // 
             // lblApellid
             // 

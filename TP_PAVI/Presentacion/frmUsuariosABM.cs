@@ -107,6 +107,7 @@ namespace AppBTS.Presentacion
             else
             {
                 MessageBox.Show("Faltan completar campos.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                marcarNoEscritoUsuario(txtNombreUsuario, txtNombre, txtApellido, txtPassword, txtEmail, cboPerfil);
             } 
         }
 
@@ -131,6 +132,60 @@ namespace AppBTS.Presentacion
             return validarCampo(nombreUsuario)&& validarCampo(nombre)
                 && validarCampo(apellido) && validarCampo(password)
                 && validarCampo(email) && validarCampo(perfil);
+        }
+        public void marcarNoEscritoCampo(TextBox textBox)
+        {
+            if (!validarCampo(textBox.Text))
+            {
+                textBox.BackColor = Color.Red;
+            }
+        }
+        public void marcarNoEscritoCampo(ComboBox comboBox)
+        {
+            if (!validarCampo(comboBox.SelectedIndex))
+            {
+                comboBox.BackColor = Color.Red;
+            }
+        }
+        public void marcarNoEscritoUsuario(TextBox nombreUsuario, TextBox nombre,
+            TextBox apellido, TextBox password, TextBox email, ComboBox perfil)
+        {
+            marcarNoEscritoCampo(nombreUsuario); marcarNoEscritoCampo(nombre);
+            marcarNoEscritoCampo(apellido); marcarNoEscritoCampo(password);
+            marcarNoEscritoCampo(email); marcarNoEscritoCampo(perfil);
+
+        }
+
+   
+
+        private void txtNombreUsuario_Click(object sender, EventArgs e)
+        {
+            txtNombreUsuario.BackColor = Color.White;
+        }
+
+        private void txtNombre_Click(object sender, EventArgs e)
+        {
+            txtNombre.BackColor = Color.White;
+        }
+
+        private void txtApellido_Click(object sender, EventArgs e)
+        {
+            txtApellido.BackColor = Color.White;
+        }
+
+        private void txtPassword_Click(object sender, EventArgs e)
+        {
+            txtPassword.BackColor = Color.White;
+        }
+
+        private void txtEmail_Click(object sender, EventArgs e)
+        {
+            txtEmail.BackColor = Color.White;
+        }
+
+        private void cboPerfil_Click(object sender, EventArgs e)
+        {
+            cboPerfil.BackColor = Color.White;
         }
     }
 }
