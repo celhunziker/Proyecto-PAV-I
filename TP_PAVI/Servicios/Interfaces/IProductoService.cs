@@ -24,7 +24,7 @@ namespace AppBTS.Servicios.Interfaces
         List<Producto> RecuperarFiltrados(string nombreProducto, int? marca, int? tipo_Producto);
         bool ModificarProducto(Producto producto);
 
-        bool ExisteNombreProducto(string nombreProducto, int? idUsuario);
+        bool ExisteNombreProducto(string nombreProducto, int? idProducto);
         bool Eliminar(int idProducto);
     }
 }

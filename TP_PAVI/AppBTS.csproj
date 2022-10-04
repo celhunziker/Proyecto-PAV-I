@@ -66,6 +66,12 @@
     <Compile Include="Entidades\Tipo_Producto.cs" />
     <Compile Include="Entidades\Unidad_Medida.cs" />
     <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Presentacion\frmTipoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmTipoProducto.Designer.cs">
+      <DependentUpon>frmTipoProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,12 @@
     </Compile>
     <Compile Include="Presentacion\frmProductosABM.Designer.cs">
       <DependentUpon>frmProductosABM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmTipoProductoABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmTipoProductoABM.Designer.cs">
+      <DependentUpon>frmTipoProductoABM.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\frmUsuarios.cs">
       <SubType>Form</SubType>
@@ -127,6 +139,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmProductosABM.resx">
       <DependentUpon>frmProductosABM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmTipoProducto.resx">
+      <DependentUpon>frmTipoProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmTipoProductoABM.resx">
+      <DependentUpon>frmTipoProductoABM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmUsuarios.resx">
       <DependentUpon>frmUsuarios.cs</DependentUpon>

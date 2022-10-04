@@ -10,6 +10,8 @@ namespace AppBTS.Entidades
     {
         public int Id_Tipo_Producto { get; set; }
         public string NombreTipoProducto { get; set; }
+
+        public string Descripcion { get; set; }
         public bool Borrado { get; set; }
     }
 }

@@ -66,5 +66,12 @@ namespace AppBTS
             fu = new frmProductos();
             fu.ShowDialog();
         }
+
+        private void tipoProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTipoProducto fu;
+            fu = new frmTipoProducto();
+            fu.ShowDialog();
+        }
     }
 }
