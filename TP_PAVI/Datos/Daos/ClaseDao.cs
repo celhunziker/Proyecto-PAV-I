@@ -43,7 +43,7 @@ namespace AppBTS.Datos.Daos
 
         public Clase RecuperarPorId(int idClase)
         {
-            string condicion = "WHERE c.borrado = 0 AND id_clase =" + idClase;
+            string condicion = "WHERE c.borrado = 0 AND id_clase = " + idClase;
             String strSql = string.Concat(" SELECT id_clase, ",
                                               "        horario, ",
                                               "        diaSemana, ",
@@ -108,7 +108,7 @@ namespace AppBTS.Datos.Daos
                                               "  WHERE c.borrado =0");
 
             //ver si funca el horario
-            if (horario != null)
+            if (horario != DateTime.Today)
             {
                 strSql = strSql + " AND horario LIKE '%" + horario.ToString("HH:mm") + "%'";
             }

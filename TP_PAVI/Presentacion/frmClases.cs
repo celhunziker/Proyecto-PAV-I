@@ -45,7 +45,10 @@ namespace AppBTS.Presentacion
             //ver lo de horario
             cboDisciplinas.SelectedIndex = -1;
             dtpHorario.Value = DateTime.Now;
+            dtpHorario.Enabled = true;
             cboDiasSemana.SelectedIndex = -1;
+            chkSinHorario.Checked = false;
+
         }
         private void LimpiarGrilla()
         {
@@ -76,7 +79,7 @@ namespace AppBTS.Presentacion
                 grilla.Rows.Add(oClase.Id_clase,
                                 oClase.Horario.ToString("HH:mm"),
                                 oClase.DiaSemana,
-                                oClase.Id_disciplina.Id_disciplina);
+                                oClase.Id_disciplina.NombreDisciplina);
             }
         }
 
@@ -116,33 +119,81 @@ namespace AppBTS.Presentacion
         }
         private void cargarConConsulta()
         {
-            if (cboDisciplinas.SelectedValue != null && cboDiasSemana.SelectedValue != null && !chkSinHorario.Checked)
-            { 
-                List<Clase> lista = oClase.RecuperarFiltrados(dtpHorario.Value, (string)cboDiasSemana.SelectedValue, (int)cboDisciplinas.SelectedValue);
-                CargarGrilla(grdClases, lista);
-            }
-            else if (cboDisciplinas.SelectedValue != null && cboDiasSemana.SelectedValue == null && !chkSinHorario.Checked)
-            { 
-                List<Clase> lista = oClase.RecuperarFiltrados(dtpHorario.Value, null, (int)cboDisciplinas.SelectedValue);
-                CargarGrilla(grdClases, lista);
-            }
-            else if (cboDiasSemana.SelectedValue != null && cboDisciplinas.SelectedValue == null && !chkSinHorario.Checked)
-            { 
-                List<Clase> lista = oClase.RecuperarFiltrados(dtpHorario.Value, (string)cboDiasSemana.SelectedValue, null);
+            if (chkTodos.Checked)
+            {
+                List<Clase> lista = oClase.RecuperarFiltrados(DateTime.Today, null, null);
                 CargarGrilla(grdClases, lista);
             }
             else
             {
-                if ((chkTodos.Checked))
-                {
-                    List<Clase> lista = oClase.RecuperarFiltrados(DateTime.Parse(null), null, null);
-                    CargarGrilla(grdClases, lista);
+                if (!chkSinHorario.Checked) {
+                    if (cboDisciplinas.SelectedValue != null && cboDiasSemana.SelectedValue != null)
+                    {
+                        List<Clase> lista = oClase.RecuperarFiltrados(dtpHorario.Value, (string)cboDiasSemana.SelectedValue, (int)cboDisciplinas.SelectedValue);
+                        CargarGrilla(grdClases, lista);
+                    }
+                    else if (cboDisciplinas.SelectedValue != null && cboDiasSemana.SelectedValue == null)
+                    {
+                        List<Clase> lista = oClase.RecuperarFiltrados(dtpHorario.Value, null, (int)cboDisciplinas.SelectedValue);
+                        CargarGrilla(grdClases, lista);
+                    }
+                    else if (cboDiasSemana.SelectedValue != null && cboDisciplinas.SelectedValue == null)
+                    {
+                        List<Clase> lista = oClase.RecuperarFiltrados(dtpHorario.Value, (string)cboDiasSemana.SelectedValue, null);
+                        CargarGrilla(grdClases, lista);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("No está filtrando por ninguna opción.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    if (cboDisciplinas.SelectedValue != null && cboDiasSemana.SelectedValue != null)
+                    {
+                        List<Clase> lista = oClase.RecuperarFiltrados(DateTime.Today, (string)cboDiasSemana.SelectedValue, (int)cboDisciplinas.SelectedValue);
+                        CargarGrilla(grdClases, lista);
+                    }
+                    else if (cboDisciplinas.SelectedValue != null && cboDiasSemana.SelectedValue == null)
+                    {
+                        List<Clase> lista = oClase.RecuperarFiltrados(DateTime.Today, null, (int)cboDisciplinas.SelectedValue);
+                        CargarGrilla(grdClases, lista);
+                    }
+                    else if (cboDiasSemana.SelectedValue != null && cboDisciplinas.SelectedValue == null)
+                    {
+                        List<Clase> lista = oClase.RecuperarFiltrados(DateTime.Today, (string)cboDiasSemana.SelectedValue, null);
+                        CargarGrilla(grdClases, lista);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No está filtrando por ninguna opción.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
                 }
+                
             }
+            //if (cboDisciplinas.SelectedValue != null && cboDiasSemana.SelectedValue != null && !chkSinHorario.Checked)
+            //{
+            //    List<Clase> lista = oClase.RecuperarFiltrados(dtpHorario.Value, (string)cboDiasSemana.SelectedValue, (int)cboDisciplinas.SelectedValue);
+            //    CargarGrilla(grdClases, lista);
+            //}
+            //else if (cboDisciplinas.SelectedValue != null && cboDiasSemana.SelectedValue == null && !chkSinHorario.Checked)
+            //{
+            //    List<Clase> lista = oClase.RecuperarFiltrados(dtpHorario.Value, null, (int)cboDisciplinas.SelectedValue);
+            //    CargarGrilla(grdClases, lista);
+            //}
+            //else if (cboDiasSemana.SelectedValue != null && cboDisciplinas.SelectedValue == null && !chkSinHorario.Checked)
+            //{
+            //    List<Clase> lista = oClase.RecuperarFiltrados(dtpHorario.Value, (string)cboDiasSemana.SelectedValue, null);
+            //    CargarGrilla(grdClases, lista);
+            //}
+            //else
+            //{
+            //    if ((chkTodos.Checked))
+            //    {
+            //        List<Clase> lista = oClase.RecuperarFiltrados(DateTime.Parse(null), null, null);
+            //        CargarGrilla(grdClases, lista);
+            //    }
+            //    else
+            //{
+            //    MessageBox.Show("No está filtrando por ninguna opción.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            //}
+            //}
 
         }
 
@@ -159,7 +210,15 @@ namespace AppBTS.Presentacion
         }
         private void chkSinHorario_CheckedChanged(object sender, EventArgs e)
         {
-            dtpHorario.Enabled = false;
+            if (chkSinHorario.Checked == true) {
+                dtpHorario.Enabled = false;
+            }
+            else
+            {
+                dtpHorario.Enabled = true;
+            }
+            
+
         }
 
         private void chkTodos_CheckedChanged(object sender, EventArgs e)
@@ -184,6 +243,7 @@ namespace AppBTS.Presentacion
             dtpHorario.Enabled = opcion;
             cboDisciplinas.Enabled = opcion;
             cboDiasSemana.Enabled = opcion;
+            chkSinHorario.Enabled = opcion;
         }
 
         private void grdClases_SelectionChanged(object sender, EventArgs e)
