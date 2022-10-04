@@ -12,7 +12,7 @@ namespace AppBTS.Datos.Interfaces
     interface ITarjeta
     {
         List<Tarjeta> RecuperarTodos(int idUsuario);
-        List<Tarjeta> RecuperarListaFiltrada(List<Tarjeta> lista, int id_marca_tarjeta, long nro_tarjeta, DateTime fecha_venc);
+        List<Tarjeta> RecuperarListaFiltrada(int idUsuario, int? id_marca_tarjeta, long? nro_tarjeta, string fecha_venc_mes, string fecha_venc_año);
         Tarjeta ObjectMapping(DataRow row);
         bool Create(Tarjeta tarjeta);
         bool Modificar(Tarjeta tarjeta);

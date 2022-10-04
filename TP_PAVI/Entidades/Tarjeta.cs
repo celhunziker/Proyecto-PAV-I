@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AppBTS.Entidades
 {
-    class Tarjeta
+    public class Tarjeta
     {
         public Marca_tarjeta Id_marca_tarjeta { get; set; }
         public int Nro_tarjeta { get; set;}

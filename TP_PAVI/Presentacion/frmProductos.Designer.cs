@@ -33,15 +33,6 @@
             this.txtNombreProducto = new System.Windows.Forms.TextBox();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
             this.grdProductos = new System.Windows.Forms.DataGridView();
-            this.lblTipoProducto = new System.Windows.Forms.Label();
-            this.btnLimpiar = new System.Windows.Forms.Button();
-            this.btnConsultar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.btnBorrar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.cboTipoProducto = new System.Windows.Forms.ComboBox();
-            this.cboMarcas = new System.Windows.Forms.ComboBox();
             this.IDProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +40,15 @@
             this.Contenido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnidadDeMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblClase = new System.Windows.Forms.Label();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnConsultar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnBorrar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.cboClase = new System.Windows.Forms.ComboBox();
+            this.cboMarcas = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,14 +111,68 @@
             this.grdProductos.TabIndex = 21;
             this.grdProductos.SelectionChanged += new System.EventHandler(this.grdProductos_SelectionChanged);
             // 
-            // lblTipoProducto
+            // IDProducto
             // 
-            this.lblTipoProducto.AutoSize = true;
-            this.lblTipoProducto.Location = new System.Drawing.Point(194, 68);
-            this.lblTipoProducto.Name = "lblTipoProducto";
-            this.lblTipoProducto.Size = new System.Drawing.Size(74, 13);
-            this.lblTipoProducto.TabIndex = 20;
-            this.lblTipoProducto.Text = "Tipo Producto";
+            this.IDProducto.HeaderText = "ID";
+            this.IDProducto.MinimumWidth = 6;
+            this.IDProducto.Name = "IDProducto";
+            this.IDProducto.ReadOnly = true;
+            this.IDProducto.Width = 50;
+            // 
+            // NombreProducto
+            // 
+            this.NombreProducto.HeaderText = "Nombre Producto";
+            this.NombreProducto.MinimumWidth = 6;
+            this.NombreProducto.Name = "NombreProducto";
+            this.NombreProducto.ReadOnly = true;
+            this.NombreProducto.Width = 125;
+            // 
+            // TipoProducto
+            // 
+            this.TipoProducto.HeaderText = "Tipo Producto";
+            this.TipoProducto.MinimumWidth = 6;
+            this.TipoProducto.Name = "TipoProducto";
+            this.TipoProducto.ReadOnly = true;
+            this.TipoProducto.Width = 125;
+            // 
+            // Marca
+            // 
+            this.Marca.HeaderText = "Marca";
+            this.Marca.MinimumWidth = 6;
+            this.Marca.Name = "Marca";
+            this.Marca.ReadOnly = true;
+            // 
+            // Contenido
+            // 
+            this.Contenido.HeaderText = "Contenido";
+            this.Contenido.MinimumWidth = 6;
+            this.Contenido.Name = "Contenido";
+            this.Contenido.ReadOnly = true;
+            this.Contenido.Width = 125;
+            // 
+            // UnidadDeMedida
+            // 
+            this.UnidadDeMedida.HeaderText = "Unidad de Medida";
+            this.UnidadDeMedida.MinimumWidth = 6;
+            this.UnidadDeMedida.Name = "UnidadDeMedida";
+            this.UnidadDeMedida.ReadOnly = true;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.MinimumWidth = 6;
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            this.Descripcion.Width = 170;
+            // 
+            // lblClase
+            // 
+            this.lblClase.AutoSize = true;
+            this.lblClase.Location = new System.Drawing.Point(229, 70);
+            this.lblClase.Name = "lblClase";
+            this.lblClase.Size = new System.Drawing.Size(33, 13);
+            this.lblClase.TabIndex = 20;
+            this.lblClase.Text = "Clase";
             // 
             // btnLimpiar
             // 
@@ -180,14 +234,14 @@
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
-            // cboTipoProducto
+            // cboClase
             // 
-            this.cboTipoProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoProducto.FormattingEnabled = true;
-            this.cboTipoProducto.Location = new System.Drawing.Point(269, 67);
-            this.cboTipoProducto.Name = "cboTipoProducto";
-            this.cboTipoProducto.Size = new System.Drawing.Size(283, 21);
-            this.cboTipoProducto.TabIndex = 35;
+            this.cboClase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboClase.FormattingEnabled = true;
+            this.cboClase.Location = new System.Drawing.Point(269, 67);
+            this.cboClase.Name = "cboClase";
+            this.cboClase.Size = new System.Drawing.Size(283, 21);
+            this.cboClase.TabIndex = 35;
             // 
             // cboMarcas
             // 
@@ -198,67 +252,13 @@
             this.cboMarcas.Size = new System.Drawing.Size(283, 21);
             this.cboMarcas.TabIndex = 36;
             // 
-            // IDProducto
-            // 
-            this.IDProducto.HeaderText = "ID";
-            this.IDProducto.MinimumWidth = 6;
-            this.IDProducto.Name = "IDProducto";
-            this.IDProducto.ReadOnly = true;
-            this.IDProducto.Width = 50;
-            // 
-            // NombreProducto
-            // 
-            this.NombreProducto.HeaderText = "Nombre Producto";
-            this.NombreProducto.MinimumWidth = 6;
-            this.NombreProducto.Name = "NombreProducto";
-            this.NombreProducto.ReadOnly = true;
-            this.NombreProducto.Width = 125;
-            // 
-            // TipoProducto
-            // 
-            this.TipoProducto.HeaderText = "Tipo Producto";
-            this.TipoProducto.MinimumWidth = 6;
-            this.TipoProducto.Name = "TipoProducto";
-            this.TipoProducto.ReadOnly = true;
-            this.TipoProducto.Width = 125;
-            // 
-            // Marca
-            // 
-            this.Marca.HeaderText = "Marca";
-            this.Marca.MinimumWidth = 6;
-            this.Marca.Name = "Marca";
-            this.Marca.ReadOnly = true;
-            // 
-            // Contenido
-            // 
-            this.Contenido.HeaderText = "Contenido";
-            this.Contenido.MinimumWidth = 6;
-            this.Contenido.Name = "Contenido";
-            this.Contenido.ReadOnly = true;
-            this.Contenido.Width = 125;
-            // 
-            // UnidadDeMedida
-            // 
-            this.UnidadDeMedida.HeaderText = "Unidad de Medida";
-            this.UnidadDeMedida.MinimumWidth = 6;
-            this.UnidadDeMedida.Name = "UnidadDeMedida";
-            this.UnidadDeMedida.ReadOnly = true;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.MinimumWidth = 6;
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            this.Descripcion.Width = 170;
-            // 
             // frmProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(890, 388);
             this.Controls.Add(this.cboMarcas);
-            this.Controls.Add(this.cboTipoProducto);
+            this.Controls.Add(this.cboClase);
             this.Controls.Add(this.chkTodos);
             this.Controls.Add(this.lblMarca);
             this.Controls.Add(this.txtNombreProducto);
@@ -269,9 +269,9 @@
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.btnEditar);
-            this.Controls.Add(this.lblTipoProducto);
+            this.Controls.Add(this.lblClase);
             this.Controls.Add(this.btnNuevo);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmProductos";
             this.Text = "Productos";
             this.Load += new System.EventHandler(this.frmProductos_Load);
@@ -293,9 +293,9 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Label lblTipoProducto;
+        private System.Windows.Forms.Label lblClase;
         private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.ComboBox cboTipoProducto;
+        private System.Windows.Forms.ComboBox cboClase;
         private System.Windows.Forms.ComboBox cboMarcas;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreProducto;

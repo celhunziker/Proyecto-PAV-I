@@ -35,7 +35,7 @@ namespace AppBTS.Presentacion
 
         private void frmProductos_Load(object sender, EventArgs e)
         {
-            CargarComboTipoProducto(cboTipoProducto, oTipoProducto.traerTodos());
+            CargarComboTipoProducto(cboClase, oTipoProducto.traerTodos());
             CargarComboMarca(cboMarcas, oMarca.traerTodos());
             //CargarGrilla(grdUsuarios, oUsuario.traerTodos());
             miAccion = Acciones.Modificacion;
@@ -46,7 +46,7 @@ namespace AppBTS.Presentacion
         {
             txtNombreProducto.Text = String.Empty;
             cboMarcas.SelectedIndex = -1;
-            cboTipoProducto.SelectedIndex = -1;
+            cboClase.SelectedIndex = -1;
         }
         private void LimpiarGrilla()
         {
@@ -121,19 +121,19 @@ namespace AppBTS.Presentacion
         }
         private void cargarConConsulta()
         {
-            if (cboMarcas.SelectedValue != null && cboTipoProducto.SelectedValue != null)
+            if (cboMarcas.SelectedValue != null && cboClase.SelectedValue != null)
             { //string nombreProducto, int? marca, int? tipo_Producto
-                List<Producto> lista = oProducto.RecuperarFiltrados(txtNombreProducto.Text, (int)cboTipoProducto.SelectedValue, (int)cboMarcas.SelectedValue);
+                List<Producto> lista = oProducto.RecuperarFiltrados(txtNombreProducto.Text, (int)cboClase.SelectedValue, (int)cboMarcas.SelectedValue);
                 CargarGrilla(grdProductos, lista);
             }
-            else if (cboMarcas.SelectedValue != null && cboTipoProducto.SelectedValue == null)
+            else if (cboMarcas.SelectedValue != null && cboClase.SelectedValue == null)
             { //string nombreProducto, int? marca, int? tipo_Producto
                 List<Producto> lista = oProducto.RecuperarFiltrados(txtNombreProducto.Text, null, (int)cboMarcas.SelectedValue);
                 CargarGrilla(grdProductos, lista);
             }
-            else if (cboTipoProducto.SelectedValue != null && cboMarcas.SelectedValue == null)
+            else if (cboClase.SelectedValue != null && cboMarcas.SelectedValue == null)
             { //string nombreProducto, int? marca, int? tipo_Producto
-                List<Producto> lista = oProducto.RecuperarFiltrados(txtNombreProducto.Text, (int)cboTipoProducto.SelectedValue, null);
+                List<Producto> lista = oProducto.RecuperarFiltrados(txtNombreProducto.Text, (int)cboClase.SelectedValue, null);
                 CargarGrilla(grdProductos, lista);
             }
             else
@@ -189,7 +189,7 @@ namespace AppBTS.Presentacion
         {
             txtNombreProducto.Enabled = opcion;
             cboMarcas.Enabled = opcion;
-            cboTipoProducto.Enabled = opcion;
+            cboClase.Enabled = opcion;
         }
 
         private void grdProductos_SelectionChanged(object sender, EventArgs e)

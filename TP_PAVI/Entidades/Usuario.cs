@@ -9,7 +9,7 @@ using AppBTS.Entidades;
 
 namespace AppBTS.Negocio
 {
-    class Usuario
+    public class Usuario
     {
         private int id_usuario;
         public int Id_usuario
@@ -25,6 +25,8 @@ namespace AppBTS.Negocio
         public string Email { get; set; }
         public Perfil Id_perfil { get; set; }
         public string Estado { get; set; }
+        
+        public List<Tarjeta> Tarjetas { get; set; }
         public bool Borrado { get; set; }
        
     }

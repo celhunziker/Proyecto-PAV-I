@@ -48,21 +48,27 @@
   <ItemGroup>
     <Compile Include="Datos\BDHelper.cs" />
     <Compile Include="Datos\Daos\MarcaDao.cs" />
+    <Compile Include="Datos\Daos\MarcaTarjetaDao.cs" />
     <Compile Include="Datos\Daos\ProductoDao.cs" />
+    <Compile Include="Datos\Daos\TarjetaDao.cs" />
     <Compile Include="Datos\Daos\TipoProductoDao.cs" />
     <Compile Include="Datos\Daos\UnidadMedidaDao.cs" />
     <Compile Include="Datos\Interfaces\IMarca.cs" />
+    <Compile Include="Datos\Interfaces\IMarcaTarjeta.cs" />
     <Compile Include="Datos\Interfaces\IPerfil.cs" />
     <Compile Include="Datos\Daos\PerfilDao.cs" />
     <Compile Include="Datos\Daos\UsuarioDao.cs" />
     <Compile Include="Datos\Interfaces\IProducto.cs" />
+    <Compile Include="Datos\Interfaces\ITarjeta.cs" />
     <Compile Include="Datos\Interfaces\ITipoProducto.cs" />
     <Compile Include="Datos\Interfaces\IUnidadMedida.cs" />
     <Compile Include="Datos\Interfaces\IUsuario.cs" />
     <Compile Include="Entidades\Estado.cs" />
     <Compile Include="Entidades\Marca.cs" />
+    <Compile Include="Entidades\Marca_tarjeta.cs" />
     <Compile Include="Entidades\Perfil.cs" />
     <Compile Include="Entidades\Producto.cs" />
+    <Compile Include="Entidades\Tarjeta.cs" />
     <Compile Include="Entidades\Tipo_Producto.cs" />
     <Compile Include="Entidades\Unidad_Medida.cs" />
     <Compile Include="Entidades\Usuario.cs" />
@@ -89,6 +95,18 @@
     </Compile>
     <Compile Include="Presentacion\frmProductosABM.Designer.cs">
       <DependentUpon>frmProductosABM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmTarjetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmTarjetas.Designer.cs">
+      <DependentUpon>frmTarjetas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmTarjetasABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmTarjetasABM.Designer.cs">
+      <DependentUpon>frmTarjetasABM.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\frmUsuarios.cs">
       <SubType>Form</SubType>
@@ -127,6 +145,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmProductosABM.resx">
       <DependentUpon>frmProductosABM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmTarjetas.resx">
+      <DependentUpon>frmTarjetas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmTarjetasABM.resx">
+      <DependentUpon>frmTarjetasABM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmUsuarios.resx">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
