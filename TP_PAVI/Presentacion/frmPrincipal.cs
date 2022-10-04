@@ -1,4 +1,5 @@
-﻿using AppBTS.Presentacion;
+﻿using AppBTS.Negocio;
+using AppBTS.Presentacion;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace AppBTS
 {
     public partial class frmPrincipal : Form
     {
+        private Usuario usuarioActivo;
         public frmPrincipal()
         {
             InitializeComponent();
@@ -30,6 +32,7 @@ namespace AppBTS
             else
                 this.Show();
                 this.Text += " - Usuario: " + fl.MiUsuario.Nombre;
+                usuarioActivo = fl.MiUsuario;
 
             fl.Dispose();
         }
@@ -65,6 +68,13 @@ namespace AppBTS
             frmProductos fu;
             fu = new frmProductos();
             fu.ShowDialog();
+        }
+
+        private void tarjetasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTarjetas ft;
+            ft = new frmTarjetas(usuarioActivo);
+            ft.ShowDialog();
         }
     }
 }
