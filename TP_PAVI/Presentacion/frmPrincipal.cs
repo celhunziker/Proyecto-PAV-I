@@ -74,11 +74,6 @@ namespace AppBTS
             fu.ShowDialog();
         }
 
-        private void soporteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void marcasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmMarcas fu;
