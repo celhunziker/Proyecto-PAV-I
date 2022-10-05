@@ -80,5 +80,12 @@ namespace AppBTS
             fu = new frmMarcas();
             fu.ShowDialog();
         }
+
+        private void clasesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmClases fc;
+            fc = new frmClases();
+            fc.ShowDialog();
+        }
     }
 }
