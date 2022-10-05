@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cboClase = new System.Windows.Forms.ComboBox();
+            this.cboMarcaTarjeta = new System.Windows.Forms.ComboBox();
             this.chkTodos = new System.Windows.Forms.CheckBox();
             this.lblFechaVenc = new System.Windows.Forms.Label();
-            this.txtNombreProducto = new System.Windows.Forms.TextBox();
+            this.txtNumeroTarjeta = new System.Windows.Forms.TextBox();
             this.lblMarcaTarjeta = new System.Windows.Forms.Label();
             this.grdTarjetas = new System.Windows.Forms.DataGridView();
             this.lblNroTarjeta = new System.Windows.Forms.Label();
@@ -41,22 +41,25 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.lblUsuario = new System.Windows.Forms.Label();
-            this.txtFechaVenc = new System.Windows.Forms.MaskedTextBox();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.txtFechaVencMes = new System.Windows.Forms.TextBox();
+            this.txtFechaVencAnio = new System.Windows.Forms.TextBox();
+            this.lblFechaVencDivisor = new System.Windows.Forms.Label();
             this.IDProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.btnSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdTarjetas)).BeginInit();
             this.SuspendLayout();
             // 
-            // cboClase
+            // cboMarcaTarjeta
             // 
-            this.cboClase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboClase.FormattingEnabled = true;
-            this.cboClase.Location = new System.Drawing.Point(145, 87);
-            this.cboClase.Name = "cboClase";
-            this.cboClase.Size = new System.Drawing.Size(283, 21);
-            this.cboClase.TabIndex = 48;
+            this.cboMarcaTarjeta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMarcaTarjeta.FormattingEnabled = true;
+            this.cboMarcaTarjeta.Location = new System.Drawing.Point(145, 87);
+            this.cboMarcaTarjeta.Name = "cboMarcaTarjeta";
+            this.cboMarcaTarjeta.Size = new System.Drawing.Size(283, 21);
+            this.cboMarcaTarjeta.TabIndex = 48;
             // 
             // chkTodos
             // 
@@ -67,6 +70,7 @@
             this.chkTodos.TabIndex = 47;
             this.chkTodos.Text = "Todos";
             this.chkTodos.UseVisualStyleBackColor = true;
+            this.chkTodos.CheckedChanged += new System.EventHandler(this.chkTodos_CheckedChanged);
             // 
             // lblFechaVenc
             // 
@@ -77,12 +81,14 @@
             this.lblFechaVenc.TabIndex = 46;
             this.lblFechaVenc.Text = "Fecha de Vencimiento";
             // 
-            // txtNombreProducto
+            // txtNumeroTarjeta
             // 
-            this.txtNombreProducto.Location = new System.Drawing.Point(145, 56);
-            this.txtNombreProducto.Name = "txtNombreProducto";
-            this.txtNombreProducto.Size = new System.Drawing.Size(283, 20);
-            this.txtNombreProducto.TabIndex = 44;
+            this.txtNumeroTarjeta.Location = new System.Drawing.Point(145, 56);
+            this.txtNumeroTarjeta.MaxLength = 16;
+            this.txtNumeroTarjeta.Name = "txtNumeroTarjeta";
+            this.txtNumeroTarjeta.Size = new System.Drawing.Size(283, 20);
+            this.txtNumeroTarjeta.TabIndex = 44;
+            this.txtNumeroTarjeta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberOnly_KeyPress);
             // 
             // lblMarcaTarjeta
             // 
@@ -102,14 +108,15 @@
             this.IDProducto,
             this.NombreProducto,
             this.TipoProducto});
-            this.grdTarjetas.Location = new System.Drawing.Point(28, 200);
+            this.grdTarjetas.Location = new System.Drawing.Point(29, 205);
             this.grdTarjetas.MultiSelect = false;
             this.grdTarjetas.Name = "grdTarjetas";
             this.grdTarjetas.ReadOnly = true;
             this.grdTarjetas.RowHeadersWidth = 51;
             this.grdTarjetas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdTarjetas.Size = new System.Drawing.Size(400, 122);
+            this.grdTarjetas.Size = new System.Drawing.Size(501, 122);
             this.grdTarjetas.TabIndex = 38;
+            this.grdTarjetas.SelectionChanged += new System.EventHandler(this.grdTarjetas_SelectionChanged);
             // 
             // lblNroTarjeta
             // 
@@ -128,6 +135,7 @@
             this.btnLimpiar.Size = new System.Drawing.Size(75, 47);
             this.btnLimpiar.TabIndex = 42;
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnConsultar
             // 
@@ -137,6 +145,7 @@
             this.btnConsultar.Size = new System.Drawing.Size(74, 47);
             this.btnConsultar.TabIndex = 43;
             this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // btnBorrar
             // 
@@ -146,6 +155,7 @@
             this.btnBorrar.Size = new System.Drawing.Size(74, 47);
             this.btnBorrar.TabIndex = 41;
             this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
             // btnEditar
             // 
@@ -155,6 +165,7 @@
             this.btnEditar.Size = new System.Drawing.Size(75, 47);
             this.btnEditar.TabIndex = 40;
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnNuevo
             // 
@@ -164,6 +175,7 @@
             this.btnNuevo.Size = new System.Drawing.Size(75, 47);
             this.btnNuevo.TabIndex = 39;
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // lblUsuario
             // 
@@ -174,14 +186,41 @@
             this.lblUsuario.TabIndex = 50;
             this.lblUsuario.Text = "Usuario";
             // 
-            // txtFechaVenc
+            // txtUsuario
             // 
-            this.txtFechaVenc.Location = new System.Drawing.Point(145, 119);
-            this.txtFechaVenc.Mask = "00/00";
-            this.txtFechaVenc.Name = "txtFechaVenc";
-            this.txtFechaVenc.Size = new System.Drawing.Size(42, 20);
-            this.txtFechaVenc.TabIndex = 52;
-            this.txtFechaVenc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.fechaVenc_KeyPress);
+            this.txtUsuario.Enabled = false;
+            this.txtUsuario.Location = new System.Drawing.Point(145, 26);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(283, 20);
+            this.txtUsuario.TabIndex = 53;
+            // 
+            // txtFechaVencMes
+            // 
+            this.txtFechaVencMes.Location = new System.Drawing.Point(145, 119);
+            this.txtFechaVencMes.MaxLength = 2;
+            this.txtFechaVencMes.Name = "txtFechaVencMes";
+            this.txtFechaVencMes.Size = new System.Drawing.Size(41, 20);
+            this.txtFechaVencMes.TabIndex = 54;
+            this.txtFechaVencMes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberOnly_KeyPress);
+            // 
+            // txtFechaVencAnio
+            // 
+            this.txtFechaVencAnio.Location = new System.Drawing.Point(210, 119);
+            this.txtFechaVencAnio.MaxLength = 2;
+            this.txtFechaVencAnio.Name = "txtFechaVencAnio";
+            this.txtFechaVencAnio.Size = new System.Drawing.Size(41, 20);
+            this.txtFechaVencAnio.TabIndex = 55;
+            this.txtFechaVencAnio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberOnly_KeyPress);
+            // 
+            // lblFechaVencDivisor
+            // 
+            this.lblFechaVencDivisor.AutoSize = true;
+            this.lblFechaVencDivisor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaVencDivisor.Location = new System.Drawing.Point(189, 115);
+            this.lblFechaVencDivisor.Name = "lblFechaVencDivisor";
+            this.lblFechaVencDivisor.Size = new System.Drawing.Size(15, 24);
+            this.lblFechaVencDivisor.TabIndex = 56;
+            this.lblFechaVencDivisor.Text = "/";
             // 
             // IDProducto
             // 
@@ -189,7 +228,7 @@
             this.IDProducto.MinimumWidth = 6;
             this.IDProducto.Name = "IDProducto";
             this.IDProducto.ReadOnly = true;
-            this.IDProducto.Width = 50;
+            this.IDProducto.Width = 125;
             // 
             // NombreProducto
             // 
@@ -205,28 +244,33 @@
             this.TipoProducto.MinimumWidth = 6;
             this.TipoProducto.Name = "TipoProducto";
             this.TipoProducto.ReadOnly = true;
-            this.TipoProducto.Width = 125;
+            this.TipoProducto.Width = 150;
             // 
-            // txtUsuario
+            // btnSalir
             // 
-            this.txtUsuario.Enabled = false;
-            this.txtUsuario.Location = new System.Drawing.Point(145, 26);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(283, 20);
-            this.txtUsuario.TabIndex = 53;
+            this.btnSalir.Image = global::AppBTS.Properties.Resources.logout_door;
+            this.btnSalir.Location = new System.Drawing.Point(480, 347);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(49, 47);
+            this.btnSalir.TabIndex = 57;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // frmTarjetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(572, 450);
+            this.Controls.Add(this.btnSalir);
+            this.Controls.Add(this.lblFechaVencDivisor);
+            this.Controls.Add(this.txtFechaVencAnio);
+            this.Controls.Add(this.txtFechaVencMes);
             this.Controls.Add(this.txtUsuario);
-            this.Controls.Add(this.txtFechaVenc);
             this.Controls.Add(this.lblUsuario);
-            this.Controls.Add(this.cboClase);
+            this.Controls.Add(this.cboMarcaTarjeta);
             this.Controls.Add(this.chkTodos);
             this.Controls.Add(this.lblFechaVenc);
-            this.Controls.Add(this.txtNombreProducto);
+            this.Controls.Add(this.txtNumeroTarjeta);
             this.Controls.Add(this.lblMarcaTarjeta);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnConsultar);
@@ -237,6 +281,7 @@
             this.Controls.Add(this.btnNuevo);
             this.Name = "frmTarjetas";
             this.Text = "Tarjetas";
+            this.Load += new System.EventHandler(this.frmTarjetas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdTarjetas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -244,10 +289,10 @@
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox cboClase;
+        private System.Windows.Forms.ComboBox cboMarcaTarjeta;
         private System.Windows.Forms.CheckBox chkTodos;
         private System.Windows.Forms.Label lblFechaVenc;
-        private System.Windows.Forms.TextBox txtNombreProducto;
+        private System.Windows.Forms.TextBox txtNumeroTarjeta;
         private System.Windows.Forms.Label lblMarcaTarjeta;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnConsultar;
@@ -257,10 +302,13 @@
         private System.Windows.Forms.Label lblNroTarjeta;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Label lblUsuario;
-        private System.Windows.Forms.MaskedTextBox txtFechaVenc;
+        private System.Windows.Forms.TextBox txtUsuario;
+        private System.Windows.Forms.TextBox txtFechaVencMes;
+        private System.Windows.Forms.TextBox txtFechaVencAnio;
+        private System.Windows.Forms.Label lblFechaVencDivisor;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn TipoProducto;
-        private System.Windows.Forms.TextBox txtUsuario;
+        private System.Windows.Forms.Button btnSalir;
     }
 }

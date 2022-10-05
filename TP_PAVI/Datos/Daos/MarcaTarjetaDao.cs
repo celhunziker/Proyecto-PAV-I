@@ -14,7 +14,7 @@ namespace AppBTS.Datos.Daos
         public List<Marca_tarjeta> RecuperarTodos()
         {
             List<Marca_tarjeta> lista = new List<Marca_tarjeta>();
-            string consulta = "SELECT * FROM SELECT * FROM Marcas_Tarjetas WHERE borrado = 0;";
+            string consulta = "SELECT * FROM Marcas_Tarjetas WHERE borrado = 0;";
             DataTable tabla = BDHelper.obtenerInstancia().consultar(consulta);
             foreach (DataRow fila in tabla.Rows)
             {
