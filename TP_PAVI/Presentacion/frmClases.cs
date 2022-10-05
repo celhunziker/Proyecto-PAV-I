@@ -142,6 +142,11 @@ namespace AppBTS.Presentacion
                         List<Clase> lista = oClase.RecuperarFiltrados(dtpHorario.Value, (string)cboDiasSemana.SelectedValue, null);
                         CargarGrilla(grdClases, lista);
                     }
+                    else if (cboDiasSemana.SelectedValue == null && cboDisciplinas.SelectedValue == null)
+                    {
+                        List<Clase> lista = oClase.RecuperarFiltrados(dtpHorario.Value, null, null);
+                        CargarGrilla(grdClases, lista);
+                    }
                 }
                 else
                 {

@@ -56,7 +56,6 @@ namespace AppBTS.Presentacion
             Clase clase = oClase.traerPorId(idClase);
             txtId.Text = clase.Id_clase.ToString();
             cboDisciplinas.SelectedValue = clase.Id_disciplina.Id_disciplina;
-            //VER ESTO
             cboDiasSemana.SelectedIndex = encontrarIndice(clase.DiaSemana);
             //ver lo de horario
             dtpHorario.Value = clase.Horario;
