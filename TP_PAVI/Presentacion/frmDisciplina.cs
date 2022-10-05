@@ -1,5 +1,4 @@
-﻿using AppBTS.Datos.Interfaces;
-using AppBTS.Entidades;
+﻿using AppBTS.Entidades;
 using AppBTS.Servicios.Implementaciones;
 using AppBTS.Servicios.Interfaces;
 using System;
@@ -14,7 +13,7 @@ using System.Windows.Forms;
 
 namespace AppBTS.Presentacion
 {
-    public partial class frmMarcas : Form
+    public partial class frmDisciplina : Form
     {
         enum Acciones //enumeración, similar a una bandera
         {
@@ -24,61 +23,61 @@ namespace AppBTS.Presentacion
             Baja
         }
         Acciones miAccion;
-        IMarcaService oMarca = new MarcaService();
-        public frmMarcas()
+        IDisciplinaService oDisciplina = new DisciplinaService();
+        public frmDisciplina()
         {
             InitializeComponent();
         }
-        private void frmMarcas_Load(object sender, EventArgs e)
+
+        private void frmDisciplina_Load(object sender, EventArgs e)
         {
-            //CargarGrilla(grdUsuarios, oUsuario.traerTodos());
             miAccion = Acciones.Modificacion;
-            grdMarcas.Enabled = true;
+            grdDisciplina.Enabled = true;
             habilitarEdicionYBorrado(false);
         }
         private void LimpiarCampos()
         {
-            txtNombreMarca.Text = String.Empty;
+            txtDisciplina.Text = String.Empty;
         }
         private void LimpiarGrilla()
         {
-            grdMarcas.Rows.Clear();
+            grdDisciplina.Rows.Clear();
             habilitarEdicionYBorrado(false);
         }
-        private void CargarGrilla(DataGridView grilla, List<Marca> lista)
+        private void CargarGrilla(DataGridView grilla, List<Disciplina> lista)
         {
             grilla.Rows.Clear();
 
-            foreach (Marca oMarca in lista)
+            foreach (Disciplina oDisciplina in lista)
             {
-                grilla.Rows.Add(oMarca.Id_marca,
-                                oMarca.NombreMarca);
+                grilla.Rows.Add(oDisciplina.Id_disciplina,
+                                oDisciplina.NombreDisciplina);
             }
         }
-
         private void habilitarEdicionYBorrado(bool v)
         {
             btnEditar.Enabled = v;
             btnBorrar.Enabled = v;
         }
+
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             miAccion = Acciones.Alta;
-            frmMarcasABM fabm = new frmMarcasABM(miAccion.ToString(), null);
+            frmDisciplinasABM fabm = new frmDisciplinasABM(miAccion.ToString(), null);
             fabm.ShowDialog();
-            if (grdMarcas.Rows.Count != 0)
+            if (grdDisciplina.Rows.Count != 0)
             {
                 cargarConConsulta();
             }
-        }
 
+        }
         private void cargarConConsulta()
         {
             {
-                if (validarCampoMarca(txtNombreMarca.Text) || (chkTodos.Checked))
+                if (validarCampoDisciplina(txtDisciplina.Text) || (chkTodos.Checked))
                 {
-                    List<Marca> lista = oMarca.RecuperarFiltrados(txtNombreMarca.Text);
-                    CargarGrilla(grdMarcas, lista);
+                    List<Disciplina> lista = oDisciplina.RecuperarFiltrados(txtDisciplina.Text);
+                    CargarGrilla(grdDisciplina, lista);
                 }
                 else
                 {
@@ -86,16 +85,15 @@ namespace AppBTS.Presentacion
                 }
             }
         }
-
-        private bool validarCampoMarca(string nombreMarca)
+        private bool validarCampoDisciplina(string nombreDisciplina)
         {
-            return nombreMarca != "";
+            return nombreDisciplina != "";
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
             miAccion = Acciones.Modificacion;
-            frmMarcasABM fabm = new frmMarcasABM(miAccion.ToString(), (int)grdMarcas.CurrentRow.Cells[0].Value);
+            frmDisciplinasABM fabm = new frmDisciplinasABM(miAccion.ToString(), (int)grdDisciplina.CurrentRow.Cells[0].Value);
             fabm.ShowDialog();
             cargarConConsulta();
         }
@@ -107,12 +105,12 @@ namespace AppBTS.Presentacion
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Está seguro de eliminar esta marca?", "Eliminación de Marcas",
+            if (MessageBox.Show("Está seguro de eliminar esta disciplina?", "Eliminación de Disciplina",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
-                oMarca.Eliminar((int)grdMarcas.CurrentRow.Cells[0].Value);
-                MessageBox.Show("Marca eliminada.", "Baja de Marca en el Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarGrilla(grdMarcas, oMarca.traerTodos());
+                oDisciplina.Eliminar((int)grdDisciplina.CurrentRow.Cells[0].Value);
+                MessageBox.Show("Disciplina eliminada.", "Baja de Disciplina en el Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarGrilla(grdDisciplina, oDisciplina.traerTodos());
             }
         }
 
@@ -127,6 +125,7 @@ namespace AppBTS.Presentacion
             LimpiarGrilla();
             chkTodos.Checked = false;
         }
+
         private void chkTodos_CheckedChanged(object sender, EventArgs e)
         {
             if (chkTodos.Checked)
@@ -139,14 +138,14 @@ namespace AppBTS.Presentacion
                 habilitarCampos(true);
             }
         }
-
         private void habilitarCampos(bool v)
         {
-            txtNombreMarca.Enabled = v;
+            txtDisciplina.Enabled = v;
         }
-        private void grdMarcas_SelectionChanged(object sender, EventArgs e)
+
+        private void grdDisciplina_SelectionChanged(object sender, EventArgs e)
         {
-            if (grdMarcas.SelectedCells.Count > 0)
+            if (grdDisciplina.SelectedCells.Count > 0)
             {
                 habilitarEdicionYBorrado(true);
             }

@@ -72,6 +72,18 @@
     <Compile Include="Entidades\Tipo_Producto.cs" />
     <Compile Include="Entidades\Unidad_Medida.cs" />
     <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Presentacion\frmDisciplina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmDisciplina.Designer.cs">
+      <DependentUpon>frmDisciplina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmDisciplinasABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmDisciplinasABM.Designer.cs">
+      <DependentUpon>frmDisciplinasABM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\frmTipoProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +179,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmClasesABM.resx">
       <DependentUpon>frmClasesABM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmDisciplina.resx">
+      <DependentUpon>frmDisciplina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmDisciplinasABM.resx">
+      <DependentUpon>frmDisciplinasABM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

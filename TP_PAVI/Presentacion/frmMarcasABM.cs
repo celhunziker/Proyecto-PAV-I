@@ -20,16 +20,16 @@ namespace AppBTS.Presentacion
         private string accion;
         private int? id_marca;
         private IMarcaService oMarca = new MarcaService();
-        private object idMarca;
+        //private object idMarca;
 
         public frmMarcasABM(string Accion, int? IdMarca)
         {
             InitializeComponent();
-            this.Text = Accion + " de producto";
+            this.Text = Accion + " de marca";
             accion = Accion;
             id_marca = IdMarca;
         }
-        private void frmProductosABM_Load(object sender, EventArgs e)
+        private void frmMarcasABM_Load(object sender, EventArgs e)
         {
             if (id_marca != null)
             {
@@ -69,7 +69,7 @@ namespace AppBTS.Presentacion
                     marca.Id_marca = (int)id_marca;
                     if (oMarca.ExisteNombreMarca(marca.NombreMarca, marca.Id_marca))
                     {
-                        MessageBox.Show("YA EXISTE OTRO USUARIO CON ESE NOMBRE.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("YA EXISTE OTRA MARCA CON ESE NOMBRE.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtNombreMarca.Clear();
                         txtNombreMarca.Focus();
                     }
@@ -100,6 +100,5 @@ namespace AppBTS.Presentacion
         {
             return campo != "";
         }
-
     }
 }

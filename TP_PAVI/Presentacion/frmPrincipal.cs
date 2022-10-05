@@ -87,5 +87,14 @@ namespace AppBTS
             fc = new frmClases();
             fc.ShowDialog();
         }
+
+        
+
+        private void disciplinasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDisciplina fd;
+            fd = new frmDisciplina();
+            fd.ShowDialog();
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace AppBTS.Datos.Daos
         {
             string condicion = " AND id_marca =" + idMarca;
             String strSql = string.Concat(" SELECT id_marca, ",
-                                              "        nombre, ",
+                                              "        nombre ",
                                               "   FROM Marcas",
                                               " WHERE borrado = 0",
                                               condicion);
@@ -57,7 +57,7 @@ namespace AppBTS.Datos.Daos
         public Marca GetProductoSinParametros(string nombreMarca)
         {
             String strSql = string.Concat(" SELECT id_marca, ",
-                                              "        nombre, ",
+                                              "        nombre ",
                                               "   FROM Marcas",
                                               " WHERE borrado = 0");
 
@@ -81,7 +81,7 @@ namespace AppBTS.Datos.Daos
 
             List<Marca> lst = new List<Marca>();
             String strSql = string.Concat(" SELECT id_marca, ",
-                                              "        nombre, ",
+                                              "        nombre ",
                                               "   FROM Marcas",
                                               " WHERE borrado = 0");
             strSql += condiciones;
