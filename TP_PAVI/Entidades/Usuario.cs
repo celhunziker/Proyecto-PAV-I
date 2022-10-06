@@ -26,6 +26,8 @@ namespace AppBTS.Negocio
         public Perfil Id_perfil { get; set; }
         public string Estado { get; set; }
         public bool Borrado { get; set; }
-       
+        public long CUIT { get; set; }
+        public string Direccion { get; set; }
+
     }
 }

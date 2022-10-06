@@ -18,7 +18,7 @@ namespace AppBTS.Datos.Interfaces
         Usuario GetUserSinParametros(string nombreUsuario);
         IList<Usuario> GetByFiltersSinParametros(string condiciones);
 
-        List<Usuario> RecuperarFiltrados(string nombreUsuario, string nombre, string apellido, string email, int? perfil);
+        List<Usuario> RecuperarFiltrados(string nombreUsuario, string nombre, string apellido, string email, int? perfil, long cuit);
         bool Modificar(Usuario usuario);
         bool Eliminar(int idUsuario);
         bool ExisteNombreUsuario(string Nombreusuario, int? IdUsuario);

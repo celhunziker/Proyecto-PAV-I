@@ -40,6 +40,8 @@ namespace AppBTS.Datos.Daos
                                               "        email, ",
                                               "        estado, ",
                                               "        password, ",
+                                              "        direccion, ",
+                                              "        CUIT, ",
                                               "        p.id_perfil, ",
                                               "        p.nombre as perfil ",
                                               "   FROM Usuarios u",
@@ -67,6 +69,8 @@ namespace AppBTS.Datos.Daos
                                               "        email, ",
                                               "        estado, ",
                                               "        password, ",
+                                              "        direccion, ",
+                                              "        CUIT, ",
                                               "        p.id_perfil, ",
                                               "        p.nombre as perfil ",
                                               "   FROM Usuarios u",
@@ -81,7 +85,7 @@ namespace AppBTS.Datos.Daos
 
         bool IUsuario.Create(Usuario usuario)
         {
-            string consulta = "INSERT INTO Usuarios (nombreUsuario, u.nombre, apellido, password, email, estado, id_perfil, borrado)" +
+            string consulta = "INSERT INTO Usuarios (nombreUsuario, u.nombre, apellido, password, email, estado, id_perfil, borrado, direccion, CUIT)" +
                             " VALUES (" +
                             "'" + usuario.NombreUsuario + "'" + "," +
                             "'" + usuario.Nombre + "'" + "," +
@@ -89,7 +93,8 @@ namespace AppBTS.Datos.Daos
                             "'" + usuario.Password + "'" + "," +
                             "'" + usuario.Email + "'" + "," +
                             "'" + usuario.Estado + "'" + "," +
-                            usuario.Id_perfil.IdPerfil + ",0)";
+                            usuario.Id_perfil.IdPerfil + ",0," +",'" +
+                            usuario.CUIT + "', '"+ usuario.Direccion + "')";
 
 
             return (BDHelper.obtenerInstancia().actualizar(consulta) == 1);
@@ -104,6 +109,8 @@ namespace AppBTS.Datos.Daos
                                           "        email, ",
                                           "        estado, ",
                                           "        password, ",
+                                              "        direccion, ",
+                                              "        CUIT, ",
                                           "        p.id_perfil, ",
                                           "        p.nombre as perfil ",
                                           "   FROM Usuarios u",
@@ -136,6 +143,8 @@ namespace AppBTS.Datos.Daos
                                               "        email, ",
                                               "        estado, ",
                                               "        password, ",
+                                              "        direccion, ",
+                                              "        CUIT, ",
                                               "        p.id_perfil, ",
                                               "        p.nombre as perfil ",
                                               "   FROM Usuarios u",
@@ -152,7 +161,7 @@ namespace AppBTS.Datos.Daos
             return lst;
         }
 
-        public List<Usuario> RecuperarFiltrados(string nombreUsuario, string nombre, string apellido, string email, int? perfil)
+        public List<Usuario> RecuperarFiltrados(string nombreUsuario, string nombre, string apellido, string email, int? perfil, long cuit)
         {
             List<Usuario> lista = new List<Usuario>();
             string strSql = string.Concat(" SELECT id_usuario, ",
@@ -162,6 +171,8 @@ namespace AppBTS.Datos.Daos
                                               "        email, ",
                                               "        estado, ",
                                               "        password, ",
+                                              "        direccion, ",
+                                              "        CUIT, ",
                                               "        p.id_perfil, ",
                                               "        p.nombre as perfil ",
                                               "   FROM Usuarios u",
@@ -187,6 +198,10 @@ namespace AppBTS.Datos.Daos
             {
                 strSql = strSql + " AND p.id_perfil = " + perfil ;
             }
+            if (cuit != 0)
+            {
+                strSql = strSql + " AND CUIT = " + cuit;
+            }
 
 
             DataTable tabla = BDHelper.obtenerInstancia().consultar(strSql);
@@ -203,8 +218,8 @@ namespace AppBTS.Datos.Daos
             string consulta = "UPDATE Usuarios SET nombreUsuario='" 
                 + usuario.NombreUsuario + "', nombre='" + usuario.Nombre + "', apellido='" + usuario.Apellido + "', password='" +
                 usuario.Password + "', id_perfil = " + 
-                usuario.Id_perfil.IdPerfil + ", email = '" +usuario.Email + "' , estado = 'S' " + 
-                " WHERE id_usuario = " + usuario.Id_usuario;
+                usuario.Id_perfil.IdPerfil + ", email = '" +usuario.Email + "' , estado = 'S', CUIT = " + usuario.CUIT
+                + "direccion = '"+ usuario.Direccion + "' WHERE id_usuario = " + usuario.Id_usuario;
             return (BDHelper.obtenerInstancia().actualizar(consulta) == 1);
         }
 
@@ -231,10 +246,12 @@ namespace AppBTS.Datos.Daos
                 {
                     IdPerfil = Convert.ToInt32(row["id_perfil"].ToString()),
                     Nombre = row["perfil"].ToString(),
-                }
+                },
+                CUIT = Convert.ToInt64(row["CUIT"].ToString()),
+                Direccion = row["direccion"].ToString()
             };
 
-            return oUsuario; ;
+            return oUsuario; 
         }
 
         public bool ExisteNombreUsuario(string NombreUsuario, int? IdUsuario)

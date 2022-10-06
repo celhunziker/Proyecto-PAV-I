@@ -48,6 +48,7 @@ namespace AppBTS.Presentacion
             txtEmail.Text = String.Empty;
             txtApellido.Text = String.Empty;
             cboPerfil.SelectedIndex = -1;
+            txtCUIT.Text = String.Empty;
         }
         private void LimpiarGrilla()
         {
@@ -75,7 +76,9 @@ namespace AppBTS.Presentacion
                                 oUsuario.Nombre,
                                 oUsuario.Apellido,
                                 oUsuario.Email,
-                                oUsuario.Id_perfil.Nombre);
+                                oUsuario.Id_perfil.Nombre,
+                                oUsuario.CUIT,
+                                oUsuario.Direccion);
             }
             
         }
@@ -118,15 +121,15 @@ namespace AppBTS.Presentacion
         {
             if (cboPerfil.SelectedValue != null)
             {
-                List<Usuario> lista = oUsuario.RecuperarFiltrados(txtNombreUsuario.Text, txtNombre.Text, txtApellido.Text, txtEmail.Text, (int)cboPerfil.SelectedValue);
+                List<Usuario> lista = oUsuario.RecuperarFiltrados(txtNombreUsuario.Text, txtNombre.Text, txtApellido.Text, txtEmail.Text, (int)cboPerfil.SelectedValue, Convert.ToInt64(txtCUIT.Text));
                 CargarGrilla(grdUsuarios, lista);
             }
             else
             {
                 if (validarCamposUsuario(txtNombreUsuario.Text, txtNombre.Text,
-            txtApellido.Text, txtEmail.Text) || (chkTodos.Checked))
+            txtApellido.Text, txtEmail.Text, txtCUIT.Text) || (chkTodos.Checked))
                 {
-                    List<Usuario> lista = oUsuario.RecuperarFiltrados(txtNombreUsuario.Text, txtNombre.Text, txtApellido.Text, txtEmail.Text, null);
+                    List<Usuario> lista = oUsuario.RecuperarFiltrados(txtNombreUsuario.Text, txtNombre.Text, txtApellido.Text, txtEmail.Text, null, 0);
                     CargarGrilla(grdUsuarios, lista);
                 }
                 else
@@ -152,12 +155,17 @@ namespace AppBTS.Presentacion
         {
             return campo != "";
         }
+        private bool validarCampo(long campo)
+        {
+            return campo != null;
+        }
 
         private bool validarCamposUsuario(string nombreUsuario, string nombre,
-            string apellido, string email)
+            string apellido, string email, string cuit)
         {
             return ((validarCampo(nombreUsuario) || validarCampo(nombre)
-                || validarCampo(apellido) || validarCampo(email))) ;
+                || validarCampo(apellido) || validarCampo(email) || validarCampo(cuit)
+                )) ;
         }
 
         private void chkTodos_CheckedChanged(object sender, EventArgs e)
@@ -184,6 +192,7 @@ namespace AppBTS.Presentacion
             txtApellido.Enabled = opcion;
             txtEmail.Enabled = opcion;
             cboPerfil.Enabled = opcion;
+            txtCUIT.Enabled = opcion;
         }
 
         private void grdUsuarios_SelectionChanged(object sender, EventArgs e)

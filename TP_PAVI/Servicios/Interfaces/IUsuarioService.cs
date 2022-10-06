@@ -21,7 +21,7 @@ namespace AppBTS.Servicios.Interfaces
 
         bool CrearUsuario(Usuario usuario);
         IList<Usuario> ConsultarConFiltrosSinParametros(String condiciones);
-        List<Usuario> RecuperarFiltrados(string nombreUsuario, string nombre, string apellido, string email, int? perfil);
+        List<Usuario> RecuperarFiltrados(string nombreUsuario, string nombre, string apellido, string email, int? perfil, long cuit);
         bool ModificarUsuario(Usuario usuario);
         bool ExisteNombreUsuario(string NombreUsuario, int? IdUsuario);
 

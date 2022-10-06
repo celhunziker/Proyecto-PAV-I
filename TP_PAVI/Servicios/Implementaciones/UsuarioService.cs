@@ -49,9 +49,9 @@ namespace AppBTS.Servicios
             return dao.GetByFiltersSinParametros(condiciones);
         }
 
-        public List<Usuario> RecuperarFiltrados(string nombreUsuario, string nombre, string apellido, string email, int? perfil)
+        public List<Usuario> RecuperarFiltrados(string nombreUsuario, string nombre, string apellido, string email, int? perfil, long cuit)
         {
-            return dao.RecuperarFiltrados(nombreUsuario, nombre, apellido, email, perfil);
+            return dao.RecuperarFiltrados(nombreUsuario, nombre, apellido, email, perfil, cuit);
         }
 
         public bool ModificarUsuario(Usuario usuario)

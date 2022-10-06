@@ -84,6 +84,12 @@
     <Compile Include="Presentacion\frmDisciplinasABM.Designer.cs">
       <DependentUpon>frmDisciplinasABM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\frmFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmFacturas.Designer.cs">
+      <DependentUpon>frmFacturas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\frmTipoProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmDisciplinasABM.resx">
       <DependentUpon>frmDisciplinasABM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmFacturas.resx">
+      <DependentUpon>frmFacturas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
