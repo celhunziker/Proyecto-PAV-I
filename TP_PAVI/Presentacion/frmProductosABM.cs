@@ -76,14 +76,18 @@ namespace AppBTS.Presentacion
             txtContenido.Text = producto.Contenido.ToString();
             cboUnidadDeMedida.SelectedValue = producto.Id_Unidad_Medida.Id_Unidad_Medida;
             txtDescripcion.Text = producto.Descripcion;
+            txtStock.Text = producto.Stock.ToString();
+            txtPrecio.Text = producto.Precio.ToString();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             Producto producto = new Producto();
             float contenido = string.IsNullOrEmpty(txtContenido.Text)?(float)-1:float.Parse(txtContenido.Text);
+            float precio = string.IsNullOrEmpty(txtPrecio.Text) ? (float)-1 : float.Parse(txtPrecio.Text);
+            int stock = string.IsNullOrEmpty(txtStock.Text) ? (int)-1 : int.Parse(txtStock.Text);
             if (validarCamposProducto(txtNombreProducto.Text, (int)cboTipoProducto.SelectedIndex, (int)cboMarca.SelectedIndex, contenido,
-                (int)cboUnidadDeMedida.SelectedIndex))
+                (int)cboUnidadDeMedida.SelectedIndex, stock, precio))
             {
                 producto.NombreProducto = txtNombreProducto.Text;
                 producto.Id_Tipo_Producto = new Tipo_Producto();
@@ -94,6 +98,9 @@ namespace AppBTS.Presentacion
                 producto.Id_Unidad_Medida = new Unidad_Medida();    
                 producto.Id_Unidad_Medida.Id_Unidad_Medida = (int)cboUnidadDeMedida.SelectedValue;
                 producto.Descripcion = txtDescripcion.Text;
+                producto.Stock = stock;
+                producto.Precio = precio;
+
                 if (accion == "Alta")
                 {
                     if (oProducto.ExisteNombreProducto(producto.NombreProducto, null))
@@ -153,11 +160,119 @@ namespace AppBTS.Presentacion
         }
 
         private bool validarCamposProducto(string nombreProducto, int tipoProducto, int marca, float contenido,
-            int unidadMedida)
+            int unidadMedida, int stock, float precio)
         {
             return validarCampo(nombreProducto) && validarCampo(marca)
                 && validarCampo(tipoProducto) && validarCampo(contenido)
-                && validarCampo(unidadMedida);
+                && validarCampo(unidadMedida) && validarCampo(stock) && 
+                validarCampo(precio);
+        }
+        private bool alreadyExist(string _text, ref char KeyChar)
+        {
+            if (_text.IndexOf('.') > -1)
+            {
+                KeyChar = '.';
+                return true;
+            }
+            return false;
+        }
+
+        private void txtContenido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar)
+                    && !char.IsDigit(e.KeyChar)
+                    && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+
+            //check if '.' , ',' pressed
+            char sepratorChar = 's';
+            if (e.KeyChar == '.')
+            {
+                // check if it's in the beginning of text not accept
+                if (txtContenido.Text.Length == 0) e.Handled = true;
+                // check if it's in the beginning of text not accept
+                if (txtContenido.SelectionStart == 0) e.Handled = true;
+                // check if there is already exist a '.' , ','
+                if (alreadyExist(txtContenido.Text, ref sepratorChar)) e.Handled = true;
+                //check if '.' or ',' is in middle of a number and after it is not a number greater than 99
+                if (txtContenido.SelectionStart != txtContenido.Text.Length && e.Handled == false)
+                {
+                    // '.' or ',' is in the middle
+                    string AfterDotString = txtContenido.Text.Substring(txtContenido.SelectionStart);
+
+                    if (AfterDotString.Length > 2)
+                    {
+                        e.Handled = true;
+                    }
+                }
+            }
+            //check if a number pressed
+
+            if (Char.IsDigit(e.KeyChar))
+            {
+                //check if a coma or dot exist
+                if (alreadyExist(txtContenido.Text, ref sepratorChar))
+                {
+                    int sepratorPosition = txtContenido.Text.IndexOf(sepratorChar);
+                    string afterSepratorString = txtContenido.Text.Substring(sepratorPosition + 1);
+                    if (txtContenido.SelectionStart > sepratorPosition && afterSepratorString.Length > 1)
+                    {
+                        e.Handled = true;
+                    }
+
+                }
+            }
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar)
+                    && !char.IsDigit(e.KeyChar)
+                    && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+
+            //check if '.' , ',' pressed
+            char sepratorChar = 's';
+            if (e.KeyChar == '.')
+            {
+                // check if it's in the beginning of text not accept
+                if (txtContenido.Text.Length == 0) e.Handled = true;
+                // check if it's in the beginning of text not accept
+                if (txtContenido.SelectionStart == 0) e.Handled = true;
+                // check if there is already exist a '.' , ','
+                if (alreadyExist(txtContenido.Text, ref sepratorChar)) e.Handled = true;
+                //check if '.' or ',' is in middle of a number and after it is not a number greater than 99
+                if (txtContenido.SelectionStart != txtContenido.Text.Length && e.Handled == false)
+                {
+                    // '.' or ',' is in the middle
+                    string AfterDotString = txtContenido.Text.Substring(txtContenido.SelectionStart);
+
+                    if (AfterDotString.Length > 2)
+                    {
+                        e.Handled = true;
+                    }
+                }
+            }
+            //check if a number pressed
+
+            if (Char.IsDigit(e.KeyChar))
+            {
+                //check if a coma or dot exist
+                if (alreadyExist(txtContenido.Text, ref sepratorChar))
+                {
+                    int sepratorPosition = txtContenido.Text.IndexOf(sepratorChar);
+                    string afterSepratorString = txtContenido.Text.Substring(sepratorPosition + 1);
+                    if (txtContenido.SelectionStart > sepratorPosition && afterSepratorString.Length > 1)
+                    {
+                        e.Handled = true;
+                    }
+
+                }
+            }
         }
     }
 }

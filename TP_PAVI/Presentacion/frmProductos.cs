@@ -81,7 +81,9 @@ namespace AppBTS.Presentacion
                                 oProducto.Id_Marca.NombreMarca,
                                 oProducto.Contenido,
                                 oProducto.Id_Unidad_Medida.Nombre,
-                                oProducto.Descripcion);
+                                oProducto.Descripcion,
+                                oProducto.Precio,
+                                oProducto.Stock);
             }
         }
 

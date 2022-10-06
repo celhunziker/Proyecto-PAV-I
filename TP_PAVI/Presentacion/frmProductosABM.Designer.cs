@@ -44,6 +44,10 @@
             this.cboTipoProducto = new System.Windows.Forms.ComboBox();
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.lblPrecio = new System.Windows.Forms.Label();
+            this.txtStock = new System.Windows.Forms.TextBox();
+            this.lblStock = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblMarca
@@ -66,7 +70,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(379, 361);
+            this.btnCancelar.Location = new System.Drawing.Point(377, 434);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(116, 45);
             this.btnCancelar.TabIndex = 41;
@@ -76,7 +80,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(186, 361);
+            this.btnAceptar.Location = new System.Drawing.Point(184, 434);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(109, 45);
             this.btnAceptar.TabIndex = 40;
@@ -90,6 +94,7 @@
             this.txtContenido.Name = "txtContenido";
             this.txtContenido.Size = new System.Drawing.Size(100, 20);
             this.txtContenido.TabIndex = 33;
+            this.txtContenido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContenido_KeyPress);
             // 
             // txtNombreProducto
             // 
@@ -172,7 +177,7 @@
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(181, 258);
+            this.lblDescripcion.Location = new System.Drawing.Point(180, 336);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(63, 13);
             this.lblDescripcion.TabIndex = 49;
@@ -180,17 +185,54 @@
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(251, 240);
+            this.txtDescripcion.Location = new System.Drawing.Point(250, 318);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(268, 100);
             this.txtDescripcion.TabIndex = 50;
             // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Location = new System.Drawing.Point(250, 247);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(100, 20);
+            this.txtPrecio.TabIndex = 51;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
+            // 
+            // lblPrecio
+            // 
+            this.lblPrecio.AutoSize = true;
+            this.lblPrecio.Location = new System.Drawing.Point(175, 250);
+            this.lblPrecio.Name = "lblPrecio";
+            this.lblPrecio.Size = new System.Drawing.Size(68, 13);
+            this.lblPrecio.TabIndex = 52;
+            this.lblPrecio.Text = "Precio (*)    $";
+            // 
+            // txtStock
+            // 
+            this.txtStock.Location = new System.Drawing.Point(251, 283);
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(100, 20);
+            this.txtStock.TabIndex = 53;
+            // 
+            // lblStock
+            // 
+            this.lblStock.AutoSize = true;
+            this.lblStock.Location = new System.Drawing.Point(178, 281);
+            this.lblStock.Name = "lblStock";
+            this.lblStock.Size = new System.Drawing.Size(48, 13);
+            this.lblStock.TabIndex = 54;
+            this.lblStock.Text = "Stock (*)";
+            // 
             // frmProductosABM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 491);
+            this.Controls.Add(this.txtStock);
+            this.Controls.Add(this.lblStock);
+            this.Controls.Add(this.txtPrecio);
+            this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.cboTipoProducto);
@@ -232,5 +274,9 @@
         private System.Windows.Forms.ComboBox cboTipoProducto;
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.Label lblPrecio;
+        private System.Windows.Forms.TextBox txtStock;
+        private System.Windows.Forms.Label lblStock;
     }
 }

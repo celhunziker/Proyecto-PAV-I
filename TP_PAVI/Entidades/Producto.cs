@@ -22,5 +22,7 @@ namespace AppBTS.Entidades
         public Tipo_Producto Id_Tipo_Producto { get; set; }
         public string Descripcion { get; set; }
         public bool Borrado { get; set; }
+        public float Precio { get; set; }
+        public int Stock { get; set; }
     }
 }

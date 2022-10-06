@@ -30,7 +30,9 @@ namespace AppBTS.Datos.Daos
                                               "        contenido, ",
                                               "        unidad_de_medida, ",
                                               "        tipo_producto, ",
-                                              "        descripcion, ",
+                                              "        pr.descripcion, " +
+                                              "        stock ," +
+                                              "        precio, ",
                                               "        pr.nombre, ",
                                               "        pr.borrado, ",
                                               "        m.id_marca, ",
@@ -64,7 +66,9 @@ namespace AppBTS.Datos.Daos
                                               "        contenido, ",
                                               "        unidad_de_medida, ",
                                               "        tipo_producto, ",
-                                              "        descripcion, ",
+                                              "        pr.descripcion, " +
+                                              "        stock ," +
+                                              "        precio, ",
                                               "        pr.nombre, ",
                                               "        pr.borrado, ",
                                               "        m.id_marca, ",
@@ -88,14 +92,15 @@ namespace AppBTS.Datos.Daos
 
         public bool Create(Producto producto)
         {
-            string consulta = "INSERT INTO Productos (pr.nombre, marca, contenido, unidad_de_medida, tipo_producto, descripcion, borrado)" +
+            string consulta = "INSERT INTO Productos (pr.nombre, marca, contenido, unidad_de_medida, tipo_producto, pr.descripcion, borrado, precio, stock)" +
                             " VALUES (" +
                             "'" + producto.NombreProducto + "'" + "," +
                             producto.Id_Marca.Id_marca +
                             "," + producto.Contenido + "," +
                             producto.Id_Unidad_Medida.Id_Unidad_Medida + "," +
                             producto.Id_Tipo_Producto.Id_Tipo_Producto +
-                            "," + "'" + producto.Descripcion + "'" + ",0)";
+                            "," + "'" + producto.Descripcion + "'" + ",0, " + producto.Precio + "," +
+                            producto.Stock + ")";
 
 
             return (BDHelper.obtenerInstancia().actualizar(consulta) == 1);
@@ -108,7 +113,9 @@ namespace AppBTS.Datos.Daos
                                               "        contenido, ",
                                               "        unidad_de_medida, ",
                                               "        tipo_producto, ",
-                                              "        descripcion, ",
+                                              "        pr.descripcion, " +
+                                              "        stock ," +
+                                              "        precio, ",
                                               "        pr.nombre, ",
                                               "        pr.borrado, ",
                                               "        m.id_marca, ",
@@ -147,7 +154,9 @@ namespace AppBTS.Datos.Daos
                                               "        contenido, ",
                                               "        unidad_de_medida, ",
                                               "        tipo_producto, ",
-                                              "        descripcion, ",
+                                              "        pr.descripcion, " +
+                                              "        stock ," +
+                                              "        precio, ",
                                               "        pr.nombre, ",
                                               "        pr.borrado, ",
                                               "        m.id_marca, ",
@@ -180,7 +189,9 @@ namespace AppBTS.Datos.Daos
                                               "        contenido, ",
                                               "        unidad_de_medida, ",
                                               "        tipo_producto, ",
-                                              "        descripcion, ",
+                                              "        pr.descripcion, " +
+                                              "        stock ," +
+                                              "        precio, ",
                                               "        pr.nombre, ",
                                               "        pr.borrado, ",
                                               "        m.id_marca, ",
@@ -224,7 +235,8 @@ namespace AppBTS.Datos.Daos
                 producto.Id_Marca.Id_marca + ", contenido=" + producto.Contenido + ", unidad_de_medida = " +
                 producto.Id_Unidad_Medida.Id_Unidad_Medida + ", tipo_producto = " +
                 producto.Id_Tipo_Producto.Id_Tipo_Producto + ", descripcion='" + producto.Descripcion +
-                "' WHERE id_producto = " + producto.Id_producto;
+                "', precio=" + producto.Precio + ", stock=" + producto.Stock+
+                " WHERE id_producto = " + producto.Id_producto;
             return (BDHelper.obtenerInstancia().actualizar(consulta) == 1);
         }
 
@@ -259,6 +271,8 @@ namespace AppBTS.Datos.Daos
                     NombreTipoProducto = row["nombreTipoProducto"].ToString(),
                 },
                 Descripcion = row["descripcion"].ToString(),
+                Stock = Convert.ToInt32(row["stock"].ToString()),
+                Precio = (float)Convert.ToDouble(row["precio"].ToString()),
             };
 
             return oProducto; ;

@@ -49,6 +49,8 @@
             this.Contenido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnidadDeMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,7 +102,9 @@
             this.Marca,
             this.Contenido,
             this.UnidadDeMedida,
-            this.Descripcion});
+            this.Descripcion,
+            this.Precio,
+            this.Stock});
             this.grdProductos.Location = new System.Drawing.Point(12, 160);
             this.grdProductos.MultiSelect = false;
             this.grdProductos.Name = "grdProductos";
@@ -252,6 +256,18 @@
             this.Descripcion.ReadOnly = true;
             this.Descripcion.Width = 170;
             // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            // 
+            // Stock
+            // 
+            this.Stock.HeaderText = "Stock";
+            this.Stock.Name = "Stock";
+            this.Stock.ReadOnly = true;
+            // 
             // frmProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,7 +287,7 @@
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.lblTipoProducto);
             this.Controls.Add(this.btnNuevo);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmProductos";
             this.Text = "Productos";
             this.Load += new System.EventHandler(this.frmProductos_Load);
@@ -304,5 +320,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Contenido;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnidadDeMedida;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
     }
 }
