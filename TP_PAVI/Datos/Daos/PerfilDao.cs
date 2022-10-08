@@ -18,6 +18,7 @@ namespace AppBTS.Datos.Daos
             DataTable tabla = BDHelper.obtenerInstancia().consultar(consulta);
             foreach(DataRow fila in tabla.Rows)
             {
+                // IMPLEMENTAR CON OBJECTMAPPING Y GENERAR METODO 
                 Perfil oPerfil = new Perfil();
                 oPerfil.IdPerfil = (int)fila["id_perfil"];
                 oPerfil.Nombre = fila["nombre"].ToString();

@@ -19,10 +19,12 @@ namespace AppBTS.Datos.Daos
             DataTable tabla = BDHelper.obtenerInstancia().consultar(consulta);
             foreach (DataRow fila in tabla.Rows)
             {
-                Marca oMarca = new Marca();
-                oMarca.Id_marca = (int)fila["id_marca"];
-                oMarca.NombreMarca = fila["nombre"].ToString();
-                oMarca.Borrado = (bool)fila["borrado"];
+                Marca oMarca = ObjectMapping(fila);
+                //oMarca.Id_marca = (int)fila["id_marca"];
+                //oMarca.NombreMarca = fila["nombre"].ToString();
+
+                //EL OBJECT MAPPING NO SETEA BORRADO, QUE HACEMOS?
+                //oMarca.Borrado = (bool)fila["borrado"];
 
                 lista.Add(oMarca);
             }
