@@ -10,16 +10,26 @@ namespace AppBTS.Datos
 {
     class BDHelper
     {
+        enum ResultadoTransaccion
+        {
+            exito, fracaso
+        }
+        enum tipoConexion
+        {
+            simple, transaccion
+        }
         private static BDHelper instancia;
         private SqlConnection conexion;
         private SqlCommand comando;
         private string cadenaConexion;
-        //COMENTARIO PARA PULL
+        private SqlTransaction transaccion;
+        private ResultadoTransaccion miEstado = ResultadoTransaccion.exito;
+        private tipoConexion miTipo = tipoConexion.simple;
         private BDHelper()
         {
             conexion = new SqlConnection();
             comando = new SqlCommand();
-            cadenaConexion = @"Data Source=celinita\sqlexpress;Initial Catalog=TPPAV2;Integrated Security=True"; //Properties.Resources.StringConexion;
+            cadenaConexion = @"Data Source=DESKTOP-DF98FFV\SQLEXPRESS;Initial Catalog=TPPAV2;Integrated Security=True"; //Properties.Resources.StringConexion;
         }
         public static BDHelper obtenerInstancia()
         {
@@ -40,8 +50,8 @@ namespace AppBTS.Datos
 
             conexion.Close();
             return tabla;
-        } 
-        
+        }
+
         public int actualizar(string consultaSQL)
         {
             int filasAfectadas = 0;
@@ -55,6 +65,60 @@ namespace AppBTS.Datos
 
             conexion.Close();
             return filasAfectadas;
+        }
+
+        //CAMBIAR CON VARIABLES DE ESTE PROYECTO
+
+        public void EjecutarSQLConTransaccion(string strSql)
+        {
+            //  Se utiliza para sentencias SQL del tipo Insert, Update, Delete con transaccion.
+            try
+            {
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = strSql;
+                comando.ExecuteNonQuery();
+            }
+            catch
+            {
+                miEstado = ResultadoTransaccion.fracaso;
+            }
+        }
+        public void conectarConTransaccion()
+        {
+            miTipo = tipoConexion.transaccion;
+            miEstado = ResultadoTransaccion.exito;
+            conexion.ConnectionString = cadenaConexion;
+            conexion.Open();
+            transaccion = conexion.BeginTransaction();
+            comando.Transaction = transaccion;
+            comando.Connection = conexion;
+        }
+        public void desconectar()
+        {
+            if (miTipo == tipoConexion.transaccion)
+            {
+                if (miEstado == ResultadoTransaccion.exito)
+                {
+                    transaccion.Commit();
+                    
+                    //MessageBox.Show("La trasacción resultó con éxito...");
+                }
+                else
+                {
+                    transaccion.Rollback();
+                    //MessageBox.Show("La trasacción no pudo realizarce...");
+                }
+                miTipo = tipoConexion.simple;
+            }
+
+            if ((conexion.State == ConnectionState.Open))
+            {
+                conexion.Close();
+            }
+
+            // Dispose() libera los recursos asociados a la conexón
+            conexion.Dispose();
+
         }
     }
 }

@@ -18,6 +18,9 @@ namespace AppBTS.Datos.Daos
             DataTable tabla = BDHelper.obtenerInstancia().consultar(consulta);
             foreach (DataRow fila in tabla.Rows)
             {
+
+                //REEMPLAZAR CON OBJECTMAPPING SAME CASE MARCADAO
+
                 Disciplina oDisciplina = new Disciplina();
                 oDisciplina.Id_disciplina= (int)fila["id_disciplina"];
                 oDisciplina.NombreDisciplina = fila["nombre"].ToString();

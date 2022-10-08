@@ -18,6 +18,9 @@ namespace AppBTS.Datos.Daos
             DataTable tabla = BDHelper.obtenerInstancia().consultar(consulta);
             foreach (DataRow fila in tabla.Rows)
             {
+
+                //IMPLEMENTAR CON OBJECTMAPPING Y GENERAR METODO OBJECTMAPPING
+
                 Unidad_Medida oUnidadMedida = new Unidad_Medida();
                 oUnidadMedida.Id_Unidad_Medida = (int)fila["Id_unidad_medida"];
                 oUnidadMedida.Nombre = fila["Nombre"].ToString();

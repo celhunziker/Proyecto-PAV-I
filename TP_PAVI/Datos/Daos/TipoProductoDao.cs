@@ -20,6 +20,9 @@ namespace AppBTS.Datos.Daos
             DataTable tabla = BDHelper.obtenerInstancia().consultar(consulta);
             foreach (DataRow fila in tabla.Rows)
             {
+
+                //IMPLEMENTAR CON OBJECTMAPPING SAME CASE MARCADAO
+
                 Tipo_Producto oTipoProducto = new Tipo_Producto();
                 oTipoProducto.Id_Tipo_Producto = (int)fila["id_tipo_producto"];
                 oTipoProducto.NombreTipoProducto = fila["nombre"].ToString();
