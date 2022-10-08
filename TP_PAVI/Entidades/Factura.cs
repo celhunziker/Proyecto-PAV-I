@@ -17,5 +17,6 @@ namespace AppBTS.Entidades
         public DateTime Fecha { get; set; }
         public Usuario Id_cliente { get; set; }
         public bool Borrado { get; set; }
+        public int Nro_factura { get; set; }
     }
 }

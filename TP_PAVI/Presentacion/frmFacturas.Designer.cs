@@ -44,7 +44,7 @@
             this.lblImporteTotal = new System.Windows.Forms.Label();
             this.lblDescuento = new System.Windows.Forms.Label();
             this.lblSubtotal = new System.Windows.Forms.Label();
-            this._txtCantidad = new System.Windows.Forms.MaskedTextBox();
+            this.txtCantidad = new System.Windows.Forms.MaskedTextBox();
             this.txtImporte = new System.Windows.Forms.TextBox();
             this.lblImporte = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -61,17 +61,19 @@
             this.lblPrecio = new System.Windows.Forms.Label();
             this._lblCantidad = new System.Windows.Forms.Label();
             this.lblProducto = new System.Windows.Forms.Label();
-            this._cboArticulo = new System.Windows.Forms.ComboBox();
+            this.cboProducto = new System.Windows.Forms.ComboBox();
             this.txtNroFact = new System.Windows.Forms.TextBox();
-            this.txtDireccion = new System.Windows.Forms.TextBox();
-            this.cboCliente = new System.Windows.Forms.ComboBox();
+            this.cboTipoCliente = new System.Windows.Forms.ComboBox();
             this.cboTipoFact = new System.Windows.Forms.ComboBox();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
-            this.lblCodDescuento = new System.Windows.Forms.Label();
             this.lblNroFact = new System.Windows.Forms.Label();
             this.lblCliente = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblTipoFact = new System.Windows.Forms.Label();
+            this.txtCUIT = new System.Windows.Forms.MaskedTextBox();
+            this.lblCUIT = new System.Windows.Forms.Label();
+            this.lblCodDescuento = new System.Windows.Forms.Label();
+            this.txtCodDescuento = new System.Windows.Forms.TextBox();
             this.dpbDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             this.SuspendLayout();
@@ -84,6 +86,7 @@
             this.btnSalir.Size = new System.Drawing.Size(75, 35);
             this.btnSalir.TabIndex = 30;
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnGrabar
             // 
@@ -111,7 +114,7 @@
             this.dpbDetalle.Controls.Add(this.lblImporteTotal);
             this.dpbDetalle.Controls.Add(this.lblDescuento);
             this.dpbDetalle.Controls.Add(this.lblSubtotal);
-            this.dpbDetalle.Controls.Add(this._txtCantidad);
+            this.dpbDetalle.Controls.Add(this.txtCantidad);
             this.dpbDetalle.Controls.Add(this.txtImporte);
             this.dpbDetalle.Controls.Add(this.lblImporte);
             this.dpbDetalle.Controls.Add(this.btnCancelar);
@@ -122,7 +125,7 @@
             this.dpbDetalle.Controls.Add(this.lblPrecio);
             this.dpbDetalle.Controls.Add(this._lblCantidad);
             this.dpbDetalle.Controls.Add(this.lblProducto);
-            this.dpbDetalle.Controls.Add(this._cboArticulo);
+            this.dpbDetalle.Controls.Add(this.cboProducto);
             this.dpbDetalle.Location = new System.Drawing.Point(14, 78);
             this.dpbDetalle.Name = "dpbDetalle";
             this.dpbDetalle.Size = new System.Drawing.Size(777, 412);
@@ -183,14 +186,14 @@
             this.lblSubtotal.TabIndex = 28;
             this.lblSubtotal.Text = "Subtotal";
             // 
-            // _txtCantidad
+            // txtCantidad
             // 
-            this._txtCantidad.Location = new System.Drawing.Point(267, 29);
-            this._txtCantidad.Mask = "99999";
-            this._txtCantidad.Name = "_txtCantidad";
-            this._txtCantidad.Size = new System.Drawing.Size(41, 20);
-            this._txtCantidad.TabIndex = 1;
-            this._txtCantidad.ValidatingType = typeof(int);
+            this.txtCantidad.Location = new System.Drawing.Point(267, 29);
+            this.txtCantidad.Mask = "99999";
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(41, 20);
+            this.txtCantidad.TabIndex = 1;
+            this.txtCantidad.ValidatingType = typeof(int);
             // 
             // txtImporte
             // 
@@ -235,6 +238,7 @@
             this.btnAgregar.Size = new System.Drawing.Size(36, 36);
             this.btnAgregar.TabIndex = 5;
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // dgvDetalle
             // 
@@ -369,14 +373,14 @@
             this.lblProducto.TabIndex = 1;
             this.lblProducto.Text = "Producto";
             // 
-            // _cboArticulo
+            // cboProducto
             // 
-            this._cboArticulo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this._cboArticulo.FormattingEnabled = true;
-            this._cboArticulo.Location = new System.Drawing.Point(58, 28);
-            this._cboArticulo.Name = "_cboArticulo";
-            this._cboArticulo.Size = new System.Drawing.Size(133, 21);
-            this._cboArticulo.TabIndex = 0;
+            this.cboProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboProducto.FormattingEnabled = true;
+            this.cboProducto.Location = new System.Drawing.Point(58, 28);
+            this.cboProducto.Name = "cboProducto";
+            this.cboProducto.Size = new System.Drawing.Size(133, 21);
+            this.cboProducto.TabIndex = 0;
             // 
             // txtNroFact
             // 
@@ -386,22 +390,14 @@
             this.txtNroFact.Size = new System.Drawing.Size(100, 20);
             this.txtNroFact.TabIndex = 18;
             // 
-            // txtDireccion
+            // cboTipoCliente
             // 
-            this.txtDireccion.Enabled = false;
-            this.txtDireccion.Location = new System.Drawing.Point(327, 51);
-            this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(221, 20);
-            this.txtDireccion.TabIndex = 23;
-            // 
-            // cboCliente
-            // 
-            this.cboCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCliente.FormattingEnabled = true;
-            this.cboCliente.Location = new System.Drawing.Point(86, 51);
-            this.cboCliente.Name = "cboCliente";
-            this.cboCliente.Size = new System.Drawing.Size(143, 21);
-            this.cboCliente.TabIndex = 21;
+            this.cboTipoCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoCliente.FormattingEnabled = true;
+            this.cboTipoCliente.Location = new System.Drawing.Point(86, 51);
+            this.cboTipoCliente.Name = "cboTipoCliente";
+            this.cboTipoCliente.Size = new System.Drawing.Size(143, 21);
+            this.cboTipoCliente.TabIndex = 21;
             // 
             // cboTipoFact
             // 
@@ -420,20 +416,11 @@
             // 
             this.dtpFecha.CustomFormat = "";
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(628, 25);
+            this.dtpFecha.Location = new System.Drawing.Point(628, 24);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(100, 20);
             this.dtpFecha.TabIndex = 19;
             this.dtpFecha.Value = new System.DateTime(2019, 9, 29, 17, 20, 8, 0);
-            // 
-            // lblCodDescuento
-            // 
-            this.lblCodDescuento.AutoSize = true;
-            this.lblCodDescuento.Location = new System.Drawing.Point(256, 54);
-            this.lblCodDescuento.Name = "lblCodDescuento";
-            this.lblCodDescuento.Size = new System.Drawing.Size(59, 13);
-            this.lblCodDescuento.TabIndex = 26;
-            this.lblCodDescuento.Text = "Descuento";
             // 
             // lblNroFact
             // 
@@ -456,7 +443,7 @@
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Location = new System.Drawing.Point(564, 28);
+            this.lblFecha.Location = new System.Drawing.Point(564, 27);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(37, 13);
             this.lblFecha.TabIndex = 20;
@@ -471,27 +458,64 @@
             this.lblTipoFact.TabIndex = 17;
             this.lblTipoFact.Text = "Tipo Fact.";
             // 
+            // txtCUIT
+            // 
+            this.txtCUIT.Enabled = false;
+            this.txtCUIT.Location = new System.Drawing.Point(327, 54);
+            this.txtCUIT.Mask = "00-00000000-0";
+            this.txtCUIT.Name = "txtCUIT";
+            this.txtCUIT.Size = new System.Drawing.Size(100, 20);
+            this.txtCUIT.TabIndex = 32;
+            // 
+            // lblCUIT
+            // 
+            this.lblCUIT.AutoSize = true;
+            this.lblCUIT.Location = new System.Drawing.Point(268, 57);
+            this.lblCUIT.Name = "lblCUIT";
+            this.lblCUIT.Size = new System.Drawing.Size(32, 13);
+            this.lblCUIT.TabIndex = 34;
+            this.lblCUIT.Text = "CUIT";
+            // 
+            // lblCodDescuento
+            // 
+            this.lblCodDescuento.AutoSize = true;
+            this.lblCodDescuento.Location = new System.Drawing.Point(530, 61);
+            this.lblCodDescuento.Name = "lblCodDescuento";
+            this.lblCodDescuento.Size = new System.Drawing.Size(95, 13);
+            this.lblCodDescuento.TabIndex = 36;
+            this.lblCodDescuento.Text = "Codigo Descuento";
+            // 
+            // txtCodDescuento
+            // 
+            this.txtCodDescuento.Location = new System.Drawing.Point(628, 61);
+            this.txtCodDescuento.Name = "txtCodDescuento";
+            this.txtCodDescuento.Size = new System.Drawing.Size(100, 20);
+            this.txtCodDescuento.TabIndex = 37;
+            // 
             // frmFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(837, 550);
+            this.Controls.Add(this.txtCodDescuento);
+            this.Controls.Add(this.lblCodDescuento);
+            this.Controls.Add(this.txtCUIT);
+            this.Controls.Add(this.lblCUIT);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnGrabar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.dpbDetalle);
             this.Controls.Add(this.txtNroFact);
-            this.Controls.Add(this.txtDireccion);
-            this.Controls.Add(this.cboCliente);
+            this.Controls.Add(this.cboTipoCliente);
             this.Controls.Add(this.cboTipoFact);
             this.Controls.Add(this.dtpFecha);
-            this.Controls.Add(this.lblCodDescuento);
             this.Controls.Add(this.lblNroFact);
             this.Controls.Add(this.lblCliente);
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.lblTipoFact);
             this.Name = "frmFacturas";
             this.Text = "frmFacturas";
+            this.Load += new System.EventHandler(this.frmFacturas_Load);
             this.dpbDetalle.ResumeLayout(false);
             this.dpbDetalle.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).EndInit();
@@ -512,7 +536,7 @@
         private System.Windows.Forms.Label lblImporteTotal;
         private System.Windows.Forms.Label lblDescuento;
         private System.Windows.Forms.Label lblSubtotal;
-        private System.Windows.Forms.MaskedTextBox _txtCantidad;
+        private System.Windows.Forms.MaskedTextBox txtCantidad;
         private System.Windows.Forms.TextBox txtImporte;
         private System.Windows.Forms.Label lblImporte;
         private System.Windows.Forms.Button btnCancelar;
@@ -529,16 +553,18 @@
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.Label _lblCantidad;
         private System.Windows.Forms.Label lblProducto;
-        private System.Windows.Forms.ComboBox _cboArticulo;
+        private System.Windows.Forms.ComboBox cboProducto;
         private System.Windows.Forms.TextBox txtNroFact;
-        private System.Windows.Forms.TextBox txtDireccion;
-        private System.Windows.Forms.ComboBox cboCliente;
+        private System.Windows.Forms.ComboBox cboTipoCliente;
         private System.Windows.Forms.ComboBox cboTipoFact;
         private System.Windows.Forms.DateTimePicker dtpFecha;
-        private System.Windows.Forms.Label lblCodDescuento;
         private System.Windows.Forms.Label lblNroFact;
         private System.Windows.Forms.Label lblCliente;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblTipoFact;
+        private System.Windows.Forms.MaskedTextBox txtCUIT;
+        private System.Windows.Forms.Label lblCUIT;
+        private System.Windows.Forms.Label lblCodDescuento;
+        private System.Windows.Forms.TextBox txtCodDescuento;
     }
 }
