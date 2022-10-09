@@ -18,5 +18,8 @@ namespace AppBTS.Entidades
         public Usuario Id_cliente { get; set; }
         public bool Borrado { get; set; }
         public int Nro_factura { get; set; }
+
+        public IList<Detalle_Factura> FacturaDetalle { get; set; }
+        public Tipo_Cliente Tipo_cliente { get; set; }
     }
 }
