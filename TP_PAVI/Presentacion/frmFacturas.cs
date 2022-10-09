@@ -36,9 +36,9 @@ namespace AppBTS.Presentacion
         {
             InicializarFormulario();
 
-            CargarCombo(cboTipoFact, oTipoFacturaService.ObtenerTodos(), "IdTipoFactura", "IdTipoFactura");
-            CargarCombo(cboTipoCliente, oTipoClienteService.ObtenerTodos(), "NombreTipoCliente", "IdTipoCliente");
-            CargarCombo(cboProducto, oProductoService.ObtenerTodos(), "Nombre", "IdProducto");
+            CargarCombo(cboTipoFact, oTipoFacturaService.traerTodos(), "IdTipoFactura", "IdTipoFactura");
+            CargarCombo(cboTipoCliente, oTipoClienteService.traerTodos(), "NombreTipoCliente", "IdTipoCliente");
+            CargarCombo(cboProducto, oProductoService.traerTodos(), "Nombre", "IdProducto");
 
             dgvDetalle.DataSource = listaFacturaDetalle;
             cboTipoFact.SelectedIndex = -1;
@@ -156,42 +156,42 @@ namespace AppBTS.Presentacion
 
         private void InicializarDetalle()
         {
-            _cboArticulo.SelectedIndex = -1;
-            _txtCantidad.Text = "";
-            _txtPrecio.Text = 0.ToString("N2");
-            _txtImporte.Text = 0.ToString("N2");
+            cboProducto.SelectedIndex = -1;
+            txtCantidad.Text = "";
+            txtPrecio.Text = 0.ToString("N2");
+            txtImporte.Text = 0.ToString("N2");
         }
 
         private void _cboArticulo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_cboArticulo.SelectedItem != null)
+            if (cboProducto.SelectedItem != null)
             {
-                var producto = (Producto)_cboArticulo.SelectedItem;
-                _txtPrecio.Text = producto.Precio.ToString("C");
-                _txtCantidad.Enabled = true;
+                var producto = (Producto)cboProducto.SelectedItem;
+                txtPrecio.Text = producto.Precio.ToString("C");
+                txtCantidad.Enabled = true;
                 int cantidad = 0;
-                int.TryParse(_txtCantidad.Text, out cantidad);
-                _txtImporte.Text = (producto.Precio * cantidad).ToString("C");
-                _btnAgregar.Enabled = true;
+                int.TryParse(txtCantidad.Text, out cantidad);
+                txtImporte.Text = (producto.Precio * cantidad).ToString("C");
+                btnAgregar.Enabled = true;
             }
             else
             {
-                _btnAgregar.Enabled = false;
-                _txtCantidad.Enabled = false;
-                _txtCantidad.Text = "";
-                _txtPrecio.Text = "";
-                _txtImporte.Text = "";
+                btnAgregar.Enabled = false;
+                txtCantidad.Enabled = false;
+                txtCantidad.Text = "";
+                txtPrecio.Text = "";
+                txtImporte.Text = "";
             }
         }
 
         private void _txtCantidad_Leave(object sender, EventArgs e)
         {
-            if (_cboArticulo.SelectedItem != null)
+            if (cboProducto.SelectedItem != null)
             {
                 int cantidad = 0;
-                int.TryParse(_txtCantidad.Text, out cantidad);
-                var producto = (Producto)_cboArticulo.SelectedItem;
-                _txtImporte.Text = (producto.Precio * cantidad).ToString("C");
+                int.TryParse(txtCantidad.Text, out cantidad);
+                var producto = (Producto)cboProducto.SelectedItem;
+                txtImporte.Text = (producto.Precio * cantidad).ToString("C");
             }
         }
 
@@ -209,16 +209,17 @@ namespace AppBTS.Presentacion
         {
             if (dgvDetalle.CurrentRow != null)
             {
-                var detalleSeleccionado = (FacturaDetalle)dgvDetalle.CurrentRow.DataBoundItem;
+                var detalleSeleccionado = (Detalle_Factura)dgvDetalle.CurrentRow.DataBoundItem;
                 listaFacturaDetalle.Remove(detalleSeleccionado);
             }
         }
 
+        //este esta mal porque no lo hacemos así (para mí hay que hacerlo así pero con usuarios, soy vale)
         private void CboCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboCliente.SelectedItem != null)
+            if (cboTipoCliente.SelectedItem != null)
             {
-                var cliente = (Cliente)cboCliente.SelectedItem;
+                var cliente = (Cliente)cboTipoCliente.SelectedItem;
 
                 txtDireccion.Text = string.Concat(cliente.DomicilioCalle, cliente.DomicilioNumero);
                 txtCUIT.Text = cliente.CUIT;
