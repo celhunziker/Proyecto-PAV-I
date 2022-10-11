@@ -27,30 +27,47 @@ namespace AppBTS.Presentacion
         IMarcaBancoService oMarcaBancoService = new MarcaBancoService();
         public frmFacturas()
         {
-            dgvDetalle.AutoGenerateColumns = false;
+            
             InitializeComponent();
-
+            dgvDetalle.AutoGenerateColumns = false;
         }
 
         private void frmFacturas_Load(object sender, EventArgs e)
         {
             InicializarFormulario();
 
-            CargarCombo(cboTipoFact, oTipoFacturaService.traerTodos(), "IdTipoFactura", "IdTipoFactura");
-            CargarCombo(cboTipoCliente, oTipoClienteService.traerTodos(), "NombreTipoCliente", "IdTipoCliente");
-            CargarCombo(cboProducto, oProductoService.traerTodos(), "Nombre", "IdProducto");
+            CargarComboTipoFactura(cboTipoFact, oTipoFacturaService.traerTodos());
+            CargarComboTipoCliente(cboTipoCliente, oTipoClienteService.traerTodos());
+            CargarComboProducto(cboProducto, oProductoService.traerTodos());
 
             dgvDetalle.DataSource = listaFacturaDetalle;
             cboTipoFact.SelectedIndex = -1;
             cboTipoCliente.SelectedIndex = -1;
             cboProducto.SelectedIndex = -1;
         }
-        private void CargarCombo(ComboBox cbo, Object source, string display, String value)
+        private void CargarComboTipoFactura(ComboBox combo, List<Tipo_Factura> lista)
         {
-            cbo.ValueMember = value;
-            cbo.DisplayMember = display;
-            cbo.DataSource = source;
-            cbo.SelectedIndex = -1;
+            combo.DataSource = lista;
+            combo.DisplayMember = "Nombre";
+            combo.ValueMember = "Id_tipo_factura";
+            combo.SelectedIndex = -1;
+            combo.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+        private void CargarComboTipoCliente(ComboBox combo, List<Tipo_Cliente> lista)
+        {
+            combo.DataSource = lista;
+            combo.DisplayMember = "Nombre";
+            combo.ValueMember = "Id_tipo_cliente";
+            combo.SelectedIndex = -1;
+            combo.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+        private void CargarComboProducto(ComboBox combo, List<Producto> lista)
+        {
+            combo.DataSource = lista;
+            combo.DisplayMember = "NombreProducto";
+            combo.ValueMember = "Id_producto";
+            combo.SelectedIndex = -1;
+            combo.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -97,7 +114,7 @@ namespace AppBTS.Presentacion
         {
             try
             {
-                    Factura factura = new Factura
+                Factura factura = new Factura
                 {
                     Fecha = dtpFecha.Value,
                     Tipo_cliente = (Tipo_Cliente)cboTipoCliente.SelectedItem,
@@ -108,11 +125,11 @@ namespace AppBTS.Presentacion
                     //falta direccion
                 };
 
-                if (FacturaService.ValidarDatos(factura))
+                if (oFacturaService.ValidarDatos(factura))
                 {
-                    FacturaService.Crear(factura);
+                    oFacturaService.CrearFactura(factura);
 
-                    MessageBox.Show(string.Concat("La factura nro: ", factura.IdFactura, " se generó correctamente."), "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(string.Concat("La factura nro: ", factura.Id_factura, " se generó correctamente."), "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     InicializarFormulario();
                 }
@@ -122,11 +139,6 @@ namespace AppBTS.Presentacion
             {
                 MessageBox.Show("Error al registrar la factura! " + ex.Message + ex.StackTrace, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }
-
-        private bool ValidarDatos()
-        {
-            return true;
         }
 
         private void BtnNuevo_Click(object sender, EventArgs e)
@@ -215,16 +227,16 @@ namespace AppBTS.Presentacion
         }
 
         //este esta mal porque no lo hacemos así (para mí hay que hacerlo así pero con usuarios, soy vale)
-        private void CboCliente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboTipoCliente.SelectedItem != null)
-            {
-                var cliente = (Cliente)cboTipoCliente.SelectedItem;
+        //private void CboCliente_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (cboTipoCliente.SelectedItem != null)
+        //    {
+        //        var cliente = (Cliente)cboTipoCliente.SelectedItem;
 
-                txtDireccion.Text = string.Concat(cliente.DomicilioCalle, cliente.DomicilioNumero);
-                txtCUIT.Text = cliente.CUIT;
-            }
-        }
+        //        txtDireccion.Text = string.Concat(cliente.DomicilioCalle, cliente.DomicilioNumero);
+        //        txtCUIT.Text = cliente.CUIT;
+        //    }
+        //}
 
         private void _btnCancelar_Click(object sender, EventArgs e)
         {

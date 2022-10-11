@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AppBTS.Datos
 {
-    class BDHelper
+    class BDHelper 
     {
         enum ResultadoTransaccion
         {
@@ -25,11 +25,11 @@ namespace AppBTS.Datos
         private SqlTransaction transaccion;
         private ResultadoTransaccion miEstado = ResultadoTransaccion.exito;
         private tipoConexion miTipo = tipoConexion.simple;
-        private BDHelper()
+        private BDHelper() 
         {
             conexion = new SqlConnection();
             comando = new SqlCommand();
-            cadenaConexion = @"Data Source=DESKTOP-DF98FFV\SQLEXPRESS;Initial Catalog=TPPAV2;Integrated Security=True"; //Properties.Resources.StringConexion;
+            cadenaConexion = @"Data Source=valentina\sqlexpress;Initial Catalog=TPPAV2;Integrated Security=True"; //Properties.Resources.StringConexion;
         }
         public static BDHelper obtenerInstancia()
         {

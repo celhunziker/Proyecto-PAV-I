@@ -53,6 +53,7 @@
     <Compile Include="Datos\Daos\DetalleCobroDao.cs" />
     <Compile Include="Datos\Daos\DetalleFacturaDao.cs" />
     <Compile Include="Datos\Daos\DisciplinaDao.cs" />
+    <Compile Include="Datos\Daos\FacturaDao.cs" />
     <Compile Include="Datos\Daos\MarcaBancoDao.cs" />
     <Compile Include="Datos\Daos\MarcaDao.cs" />
     <Compile Include="Datos\Daos\MarcaTarjetaDao.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Datos\Daos\UnidadMedidaDao.cs" />
     <Compile Include="Datos\Interfaces\IClase.cs" />
     <Compile Include="Datos\Interfaces\IDisciplina.cs" />
+    <Compile Include="Datos\Interfaces\IFactura.cs" />
     <Compile Include="Datos\Interfaces\IMarca.cs" />
     <Compile Include="Datos\Interfaces\ICobro.cs" />
     <Compile Include="Datos\Interfaces\IDescuento.cs" />

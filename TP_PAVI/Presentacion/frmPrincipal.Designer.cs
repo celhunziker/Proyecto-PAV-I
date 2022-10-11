@@ -40,6 +40,7 @@
             this.soporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cOMPRARToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +62,8 @@
             this.marcasToolStripMenuItem,
             this.tipoDeProductosToolStripMenuItem,
             this.clasesToolStripMenuItem,
-            this.discplinasToolStripMenuItem});
+            this.discplinasToolStripMenuItem,
+            this.cOMPRARToolStripMenuItem});
             this.usuariosToolStripMenuItem1.Name = "usuariosToolStripMenuItem1";
             this.usuariosToolStripMenuItem1.Size = new System.Drawing.Size(60, 20);
             this.usuariosToolStripMenuItem1.Text = "Soporte";
@@ -134,6 +136,13 @@
             this.productosToolStripMenuItem.Text = "Productos";
             this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
             // 
+            // cOMPRARToolStripMenuItem
+            // 
+            this.cOMPRARToolStripMenuItem.Name = "cOMPRARToolStripMenuItem";
+            this.cOMPRARToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cOMPRARToolStripMenuItem.Text = "COMPRAR";
+            this.cOMPRARToolStripMenuItem.Click += new System.EventHandler(this.cOMPRARToolStripMenuItem_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,6 +179,7 @@
         private System.Windows.Forms.ToolStripMenuItem tipoProductosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clasesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem discplinasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cOMPRARToolStripMenuItem;
         //private System.Windows.Forms.ToolStripMenuItem marcasToolStripMenuItem;
     }
 }

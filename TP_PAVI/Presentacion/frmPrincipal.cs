@@ -96,5 +96,12 @@ namespace AppBTS
             fd = new frmDisciplina();
             fd.ShowDialog();
         }
+
+        private void cOMPRARToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFacturas ff;
+            ff = new frmFacturas();
+            ff.ShowDialog();
+        }
     }
 }
