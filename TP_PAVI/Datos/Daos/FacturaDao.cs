@@ -10,35 +10,66 @@ namespace AppBTS.Datos.Daos
 {
     internal class FacturaDao : IFactura
     {
-        public bool Create(Factura factura)
+        public bool InsertarFacturaConDetalle(Factura oFactura, Detalle_Factura oDetalleFactura)
         {
-            string consulta = "INSERT INTO Facturas (id_usuario_vendedor, id_tipo_factura, " +
-                "total, id_descuento, id_usuario_cliente, fecha, nroFactura, borrado)" +
-                            " VALUES (" +
-                            factura.Id_usuario_vendedor.Id_usuario + "," +
-                             factura.Tipo_factura.Id_tipo_factura + "," +
-                            factura.Total + "," +
-                            factura.Id_descuento.Id_descuento + "," +
-                            factura.Id_cliente.Id_usuario + ", '"+
-                            factura.Fecha.ToString("dd/MM/yyyy") + "'," +
-                            factura.Nro_factura+ ",0)";
+            bool aux = false;
+            //Insertar Bug
 
+            string consultaFactura = "INSERT into Facturas (id_usuario_vendedor,id_tipo_factura,total,id_descuento,id_usuario_cliente,fecha,nroFactura)"
+                                + "VALUES (" + oFactura.Id_usuario_vendedor + ","
+                                + oFactura.Tipo_factura.Id_tipo_factura + ","
+                                + oFactura.Total + ","
+                                + oFactura.Id_descuento + ","
+                                + oFactura.Id_cliente + ",'"
+                                + oFactura.Fecha.ToString("yyyy/MM/dd") + "',"
+                                + oFactura.Nro_factura + ")";
+            BDHelper.obtenerInstancia().conectarConTransaccion();
+            BDHelper.obtenerInstancia().EjecutarConTransaccion(consultaFactura);
 
-            BDHelper.obtenerInstancia().actualizar(consulta);
-            foreach (var itemFactura in factura.FacturaDetalle)
-            {
-                string consultaDetalle = "INSERT INTO Detalles_Facturas (id_factura, cantidad, " +
-                "subtotal, id_producto, borrado)" +
-                            " VALUES (" +
-                            factura.Id_factura + "," +
-                             itemFactura.Cantidad + "," +
-                            itemFactura.Subtotal + "," +
-                            itemFactura.Id_producto.Id_producto + ",0)";
-                BDHelper.obtenerInstancia().actualizar(consultaDetalle);
-            }
-            //VER ESTO
-            return (BDHelper.obtenerInstancia().actualizar(consulta)) == 1;
+            //Recuperar ID nuevo
+            var nuevoId = BDHelper.obtenerInstancia().ConsultaSQLScalar("SELECT @@identity");
+            oDetalleFactura.Id_factura.Id_factura = Convert.ToInt32(nuevoId);
+
+            //Insertar Historia con Nuevo ID
+            string consultaDetalleFactura = "INSERT into Detalles_Facturas (id_factura,cantidad,subtotal,id_producto)"
+                                        + "VALUES (" + oDetalleFactura.Id_factura.Id_factura + ","
+                                        + oDetalleFactura.Cantidad + ","
+                                        + oDetalleFactura.Subtotal + ", "
+                                        + oDetalleFactura.Id_producto + ")";
+
+            BDHelper.obtenerInstancia().EjecutarConTransaccion(consultaDetalleFactura);
+            aux = BDHelper.obtenerInstancia().Desconectar();
+            return aux;
         }
+        //public bool Create(Factura factura)
+        //{
+        //    string consulta = "INSERT INTO Facturas (id_usuario_vendedor, id_tipo_factura, " +
+        //        "total, id_descuento, id_usuario_cliente, fecha, nroFactura, borrado)" +
+        //                    " VALUES (" +
+        //                    factura.Id_usuario_vendedor.Id_usuario + "," +
+        //                     factura.Tipo_factura.Id_tipo_factura + "," +
+        //                    factura.Total + "," +
+        //                    factura.Id_descuento.Id_descuento + "," +
+        //                    factura.Id_cliente.Id_usuario + ", '"+
+        //                    factura.Fecha.ToString("dd/MM/yyyy") + "'," +
+        //                    factura.Nro_factura+ ",0)";
+
+
+        //    BDHelper.obtenerInstancia().actualizar(consulta);
+        //    foreach (var itemFactura in factura.FacturaDetalle)
+        //    {
+        //        string consultaDetalle = "INSERT INTO Detalles_Facturas (id_factura, cantidad, " +
+        //        "subtotal, id_producto, borrado)" +
+        //                    " VALUES (" +
+        //                    factura.Id_factura + "," +
+        //                     itemFactura.Cantidad + "," +
+        //                    itemFactura.Subtotal + "," +
+        //                    itemFactura.Id_producto.Id_producto + ",0)";
+        //        BDHelper.obtenerInstancia().actualizar(consultaDetalle);
+        //    }
+        //    //VER ESTO
+        //    return (BDHelper.obtenerInstancia().actualizar(consulta)) == 1;
+        //}
 
         //public bool Create(Factura factura)
         //{

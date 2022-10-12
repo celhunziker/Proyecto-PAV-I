@@ -10,6 +10,6 @@ namespace AppBTS.Datos.Interfaces
 {
     interface IFactura
     {
-        bool Create(Factura factura);
+        bool InsertarFacturaConDetalle(Factura oFactura, Detalle_Factura oDetalle);
     }
 }

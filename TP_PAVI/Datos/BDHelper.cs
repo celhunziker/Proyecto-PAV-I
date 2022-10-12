@@ -10,11 +10,11 @@ namespace AppBTS.Datos
 {
     class BDHelper 
     {
-        enum ResultadoTransaccion
+        enum ResultadoTransacción
         {
             exito, fracaso
         }
-        enum tipoConexion
+        enum TipoConexion
         {
             simple, transaccion
         }
@@ -23,13 +23,13 @@ namespace AppBTS.Datos
         private SqlCommand comando;
         private string cadenaConexion;
         private SqlTransaction transaccion;
-        private ResultadoTransaccion miEstado = ResultadoTransaccion.exito;
-        private tipoConexion miTipo = tipoConexion.simple;
+        private ResultadoTransacción miEstado = ResultadoTransacción.exito;
+        private TipoConexion miTipo = TipoConexion.simple;
         private BDHelper() 
         {
             conexion = new SqlConnection();
             comando = new SqlCommand();
-            cadenaConexion = @"Data Source=DESKTOP-DF98FFV\SQLEXPRESS;Initial Catalog=TPPAV2;Integrated Security=True"; //Properties.Resources.StringConexion;
+            cadenaConexion = @"Data Source=celinita\sqlexpress;Initial Catalog=TPPAV2;Integrated Security=True"; //Properties.Resources.StringConexion;
         }
         public static BDHelper obtenerInstancia()
         {
@@ -68,57 +68,116 @@ namespace AppBTS.Datos
         }
 
         //CAMBIAR CON VARIABLES DE ESTE PROYECTO
-
-        public void EjecutarSQLConTransaccion(string strSql)
-        {
-            //  Se utiliza para sentencias SQL del tipo Insert, Update, Delete con transaccion.
-            try
-            {
-                comando.CommandType = CommandType.Text;
-                comando.CommandText = strSql;
-                comando.ExecuteNonQuery();
-            }
-            catch
-            {
-                miEstado = ResultadoTransaccion.fracaso;
-            }
-        }
         public void conectarConTransaccion()
         {
-            miTipo = tipoConexion.transaccion;
-            miEstado = ResultadoTransaccion.exito;
+            miTipo = TipoConexion.transaccion;
+            miEstado = ResultadoTransacción.exito;
+
             conexion.ConnectionString = cadenaConexion;
             conexion.Open();
             transaccion = conexion.BeginTransaction();
             comando.Transaction = transaccion;
             comando.Connection = conexion;
         }
-        public void desconectar()
+
+        public bool Desconectar()
         {
-            if (miTipo == tipoConexion.transaccion)
+            if (miTipo == TipoConexion.transaccion)
             {
-                if (miEstado == ResultadoTransaccion.exito)
+                if (miEstado == ResultadoTransacción.exito)
                 {
                     transaccion.Commit();
-                    
-                    //MessageBox.Show("La trasacción resultó con éxito...");
                 }
                 else
                 {
                     transaccion.Rollback();
-                    //MessageBox.Show("La trasacción no pudo realizarce...");
                 }
-                miTipo = tipoConexion.simple;
+                miTipo = TipoConexion.simple;
             }
-
             if ((conexion.State == ConnectionState.Open))
             {
                 conexion.Close();
             }
-
-            // Dispose() libera los recursos asociados a la conexón
             conexion.Dispose();
-
+            if (miEstado.Equals(ResultadoTransacción.exito))
+                return true;
+            else
+                return false;
         }
+
+        public void EjecutarConTransaccion(string consulta)
+        {
+            try
+            {
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = consulta;
+                comando.ExecuteNonQuery();
+            }
+            catch
+            {
+                miEstado = ResultadoTransacción.fracaso;
+            }
+        }
+
+        public object ConsultaSQLScalar(string consulta) //Ejecuta una query que devuelve un sólo valor
+        {
+            comando.CommandType = CommandType.Text;
+            comando.CommandText = consulta;
+            return comando.ExecuteScalar();
+        }
+
+
+
+        //public void EjecutarSQLConTransaccion(string strSql)
+        //{
+        //    //  Se utiliza para sentencias SQL del tipo Insert, Update, Delete con transaccion.
+        //    try
+        //    {
+        //        comando.CommandType = CommandType.Text;
+        //        comando.CommandText = strSql;
+        //        comando.ExecuteNonQuery();
+        //    }
+        //    catch
+        //    {
+        //        miEstado = ResultadoTransaccion.fracaso;
+        //    }
+        //}
+        //public void conectarConTransaccion()
+        //{
+        //    miTipo = tipoConexion.transaccion;
+        //    miEstado = ResultadoTransaccion.exito;
+        //    conexion.ConnectionString = cadenaConexion;
+        //    conexion.Open();
+        //    transaccion = conexion.BeginTransaction();
+        //    comando.Transaction = transaccion;
+        //    comando.Connection = conexion;
+        //}
+        //public void desconectar()
+        //{
+        //    if (miTipo == tipoConexion.transaccion)
+        //    {
+        //        if (miEstado == ResultadoTransaccion.exito)
+        //        {
+        //            transaccion.Commit();
+
+        //            //MessageBox.Show("La trasacción resultó con éxito...");
+        //        }
+        //        else
+        //        {
+        //            transaccion.Rollback();
+        //            //MessageBox.Show("La trasacción no pudo realizarce...");
+        //        }
+        //        miTipo = tipoConexion.simple;
+        //    }
+
+        //    if ((conexion.State == ConnectionState.Open))
+        //    {
+        //        conexion.Close();
+        //    }
+
+        //    // Dispose() libera los recursos asociados a la conexón
+        //    conexion.Dispose();
+
+        //}
     }
 }

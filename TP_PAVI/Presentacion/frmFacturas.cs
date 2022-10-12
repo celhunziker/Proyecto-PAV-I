@@ -16,8 +16,16 @@ using System.Windows.Forms;
 
 namespace AppBTS.Presentacion
 {
+    public enum Modo
+    {
+        Create,
+        Read,
+        Update,
+        Delete
+    }
     public partial class frmFacturas : Form
     {
+        Modo modo = Modo.Create;
         private readonly BindingList<Detalle_Factura> listaFacturaDetalle = new BindingList<Detalle_Factura>();
         IFacturaService oFacturaService = new FacturaService();
         ITipoFacturaService oTipoFacturaService = new TipoFacturaService();
@@ -29,9 +37,15 @@ namespace AppBTS.Presentacion
         IDescuentoService oDescuentoService = new DescuentoService();
         IUsuarioService oUsuarioService = new UsuarioService();
         Usuario usuario_cliente = new Usuario();
+        Factura oFactura = new Factura();
+        Tipo_Factura oTipoFactura = new Tipo_Factura();
+        Tipo_Cliente oTipoCliente = new Tipo_Cliente();
+        Producto oProducto = new Producto();
+        Descuento oDescuento = new Descuento();
+        Detalle_Factura oDetalleFactura = new Detalle_Factura();
         public frmFacturas()
         {
-
+            //ver modos
             InitializeComponent();
         }
 
@@ -162,33 +176,76 @@ namespace AppBTS.Presentacion
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-            try
+            switch (modo)
             {
-                Factura factura = new Factura
-                {
-                    Fecha = dtpFecha.Value,
-                    Tipo_cliente = (Tipo_Cliente)cboTipoCliente.SelectedItem,
-                    Tipo_factura = (Tipo_Factura)cboTipoFact.SelectedItem,
-                    FacturaDetalle = listaFacturaDetalle,
-                    Total = float.Parse(txtSubtotal.Text),
-                    //Id_Descuento =(Descuento)txtDescuento.Text
-                    //falta direccion
-                };
+                case Modo.Create:
+                    {
+                        oFactura.Id_usuario_vendedor.Id_usuario = 1;
+                        oFactura.Tipo_factura.Id_tipo_factura = (int)cboTipoFact.SelectedValue;
+                        oFactura.Total = Convert.ToInt32(txtImporteTotal.Text);
+                        oFactura.Id_descuento.Codigo = txtCodDescuento.Text;
+                        oFactura.Id_cliente.CUIT = Convert.ToInt32(txtCUIT.Text);
+                        oFactura.Fecha = DateTime.Today;
+                        oFactura.Nro_factura = Convert.ToInt32(txtNroFact.Text);
+                        oFactura.Borrado = false;
+                        //usuario  logueado con perfil tester
 
-                if (oFacturaService.ValidarDatos(factura))
-                {
-                    oFacturaService.CrearFactura(factura);
+                        oDetalleFactura.Cantidad = Convert.ToInt32(txtCantidad.Text);
+                        oDetalleFactura.Id_producto.Id_producto = (int)cboProducto.SelectedValue;
+                        oDetalleFactura.Subtotal = Convert.ToInt32(txtImporte.Text);
 
-                    MessageBox.Show(string.Concat("La factura nro: ", factura.Id_factura, " se generó correctamente."), "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    InicializarFormulario();
-                }
+                        if (oFacturaService.CrearFacturaConDetalle(oFactura, oDetalleFactura))
+                        {
+                            MessageBox.Show("Se creó con éxito una nueva Factura.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al crear una nueva Factura.");
+                        }
 
+                        break;
+                    }
+                case Modo.Read:
+                    break;
+                case Modo.Update:
+                    {
+                        // update oBugSeleccionado
+                        break;
+                    }
+                case Modo.Delete:
+                    break;
+                default:
+                    break;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al registrar la factura! " + ex.Message + ex.StackTrace, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            this.Close();
+            //try
+            //{
+            //    Factura factura = new Factura
+            //    {
+            //        Fecha = dtpFecha.Value,
+            //        Tipo_cliente = (Tipo_Cliente)cboTipoCliente.SelectedItem,
+            //        Tipo_factura = (Tipo_Factura)cboTipoFact.SelectedItem,
+            //        FacturaDetalle = listaFacturaDetalle,
+            //        Total = float.Parse(txtSubtotal.Text),
+            //        //Id_Descuento =(Descuento)txtDescuento.Text
+            //        //falta direccion
+            //    };
+
+            //    if (oFacturaService.ValidarDatos(factura))
+            //    {
+            //        oFacturaService.CrearFactura(factura);
+
+            //        MessageBox.Show(string.Concat("La factura nro: ", factura.Id_factura, " se generó correctamente."), "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //        InicializarFormulario();
+            //    }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error al registrar la factura! " + ex.Message + ex.StackTrace, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
 
         private void BtnNuevo_Click(object sender, EventArgs e)
@@ -311,6 +368,11 @@ namespace AppBTS.Presentacion
         private bool validarCampoCUIT()
         {
             return (txtCUIT.Text != "");
+        }
+
+        private void btnNuevo_Click_1(object sender, EventArgs e)
+        {
+
         }
 
 

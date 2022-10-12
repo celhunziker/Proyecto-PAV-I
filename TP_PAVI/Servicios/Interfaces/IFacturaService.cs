@@ -10,6 +10,6 @@ namespace AppBTS.Servicios.Interfaces
     internal interface IFacturaService
     {
         bool ValidarDatos(Factura factura);
-        bool CrearFactura(Factura factura);
+        bool CrearFacturaConDetalle(Factura factura, Detalle_Factura detalle);
     }
 }

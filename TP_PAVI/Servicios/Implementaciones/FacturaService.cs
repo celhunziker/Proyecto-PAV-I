@@ -21,9 +21,9 @@ namespace AppBTS.Servicios.Implementaciones
 
             return true;
         }
-        public bool CrearFactura(Factura factura)
+        public bool CrearFacturaConDetalle(Factura factura, Detalle_Factura detalle)
         {
-            return dao.Create(factura);
+            return dao.InsertarFacturaConDetalle(factura, detalle);
         }
 
     }
