@@ -155,7 +155,7 @@ namespace AppBTS.Presentacion
         {
             return campo != "";
         }
-        private bool validarCampo(long campo)
+        private bool validarCampo(long? campo)
         {
             return campo != null;
         }

@@ -22,5 +22,6 @@ namespace AppBTS.Datos.Interfaces
         bool Modificar(Usuario usuario);
         bool Eliminar(int idUsuario);
         bool ExisteNombreUsuario(string Nombreusuario, int? IdUsuario);
+        Usuario BuscarPorCUIT(string CUIT);
     }
 }

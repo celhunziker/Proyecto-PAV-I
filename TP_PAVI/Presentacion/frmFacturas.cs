@@ -1,6 +1,7 @@
 ﻿using AppBTS.Datos.Interfaces;
 using AppBTS.Entidades;
 using AppBTS.Negocio;
+using AppBTS.Servicios;
 using AppBTS.Servicios.Implementaciones;
 using AppBTS.Servicios.Interfaces;
 using System;
@@ -17,7 +18,7 @@ namespace AppBTS.Presentacion
 {
     public partial class frmFacturas : Form
     {
-        private readonly BindingList<Detalle_Factura> listaFacturaDetalle;
+        private readonly BindingList<Detalle_Factura> listaFacturaDetalle = new BindingList<Detalle_Factura>();
         IFacturaService oFacturaService = new FacturaService();
         ITipoFacturaService oTipoFacturaService = new TipoFacturaService();
         ITipoClienteService oTipoClienteService = new TipoClienteService();
@@ -25,11 +26,13 @@ namespace AppBTS.Presentacion
         IMarcaTarjetaService oMarcaTarjetaService = new MarcaTarjetaService();
         IMedioPagoService oMedioPagoService = new MedioPagoService();
         IMarcaBancoService oMarcaBancoService = new MarcaBancoService();
+        IDescuentoService oDescuentoService = new DescuentoService();
+        IUsuarioService oUsuarioService = new UsuarioService();
+        Usuario usuario_cliente = new Usuario();
         public frmFacturas()
         {
-            
+
             InitializeComponent();
-            dgvDetalle.AutoGenerateColumns = false;
         }
 
         private void frmFacturas_Load(object sender, EventArgs e)
@@ -40,10 +43,10 @@ namespace AppBTS.Presentacion
             CargarComboTipoCliente(cboTipoCliente, oTipoClienteService.traerTodos());
             CargarComboProducto(cboProducto, oProductoService.traerTodos());
 
-            dgvDetalle.DataSource = listaFacturaDetalle;
             cboTipoFact.SelectedIndex = -1;
             cboTipoCliente.SelectedIndex = -1;
             cboProducto.SelectedIndex = -1;
+            ;
         }
         private void CargarComboTipoFactura(ComboBox combo, List<Tipo_Factura> lista)
         {
@@ -77,22 +80,65 @@ namespace AppBTS.Presentacion
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            
+            agregarDetalleListaFacturaDetalle();
+            CargarGrilla(dgvDetalle, listaFacturaDetalle);
+
+            
+            
+
+            //Detalle_Factura df = new Detalle_Factura();
+
+            ////id_factura e id_detalle_factura se ingresan o crean en mappeo
+            //df.NroItem = listaFacturaDetalleGrid.Count + 1;
+            //df.Id_producto = producto;
+            ////df.Descripcion = producto.Descripcion;
+            //df.Cantidad = cantidad;
+            //df.Subtotal = producto.Precio * cantidad;
+            //df.Borrado = false;
+
+            //Object aux = (Object)Activator.CreateInstance(typeof(Object), new object[] { NroItem, Id_producto, Descripcion, Cantidad, Precio, Subtotal }); 
+
+            //listaFacturaDetalleGrid.Add();
+            //listaFacturaDetalle.Add(df);
+
+            CalcularTotales();
+
+            InicializarDetalle();
+        }
+
+        private void agregarDetalleListaFacturaDetalle()
+        {
             int cantidad = 0;
             int.TryParse(txtCantidad.Text, out cantidad);
-
-            var producto = (Producto)cboProducto.SelectedItem;
+            Producto producto = (Producto)cboProducto.SelectedItem;
+            int idProd = producto.Id_producto;
             listaFacturaDetalle.Add(new Detalle_Factura()
             {
                 NroItem = listaFacturaDetalle.Count + 1,
                 Id_producto = producto,
                 Cantidad = cantidad,
                 Subtotal = producto.Precio * cantidad
+
             });
-
-            CalcularTotales();
-
-            InicializarDetalle();
         }
+
+        private void CargarGrilla(DataGridView grilla, BindingList<Detalle_Factura> lista)
+        {
+            grilla.Rows.Clear();
+
+            foreach (Detalle_Factura oDetalleFactura in lista)
+            {
+                grilla.Rows.Add(oDetalleFactura.NroItem,
+                                oDetalleFactura.Id_producto.Id_producto,
+                                oDetalleFactura.Id_producto.NombreProducto,
+                                oDetalleFactura.Id_producto.Descripcion,
+                                oDetalleFactura.Cantidad,
+                                oDetalleFactura.Id_producto.Precio,
+                                oDetalleFactura.Subtotal);
+            }
+        }
+
         private void CalcularTotales()
         {
             var subtotal = listaFacturaDetalle.Sum(p => p.Subtotal);
@@ -100,13 +146,17 @@ namespace AppBTS.Presentacion
 
             float descuento = 0;
             //llamar a función que hace select con el codigo de descuento y si hay que nos devuelva el mensaje
-
-            if (descuento == null)
+            Descuento oDescuento = oDescuentoService.traerPorCodigo(txtCodDescuento.Text);
+            if (oDescuento == null)
             {
                 descuento = 0;
+            } else
+            {
+                descuento = oDescuento.Porcentaje;
             }
 
             var importeTotal = subtotal - subtotal * descuento / 100;
+            txtDescuento.Text = descuento.ToString();
             txtImporteTotal.Text = importeTotal.ToString("C");
         }
 
@@ -161,8 +211,7 @@ namespace AppBTS.Presentacion
             txtCUIT.Text = "";
 
             InicializarDetalle();
-
-            dgvDetalle.DataSource = null;
+            // CLEAR ROWS
 
         }
 
@@ -174,11 +223,11 @@ namespace AppBTS.Presentacion
             txtImporte.Text = 0.ToString("N2");
         }
 
-        private void _cboArticulo_SelectedIndexChanged(object sender, EventArgs e)
+        private void cboProducto_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboProducto.SelectedItem != null)
             {
-                var producto = (Producto)cboProducto.SelectedItem;
+                Producto producto = (Producto)cboProducto.SelectedItem;
                 txtPrecio.Text = producto.Precio.ToString("C");
                 txtCantidad.Enabled = true;
                 int cantidad = 0;
@@ -196,25 +245,20 @@ namespace AppBTS.Presentacion
             }
         }
 
-        private void _txtCantidad_Leave(object sender, EventArgs e)
+        private void txtCantidad_Leave(object sender, EventArgs e)
         {
             if (cboProducto.SelectedItem != null)
             {
-                int cantidad = 0;
+                int cantidad;
                 int.TryParse(txtCantidad.Text, out cantidad);
-                var producto = (Producto)cboProducto.SelectedItem;
+                Producto producto = (Producto)cboProducto.SelectedItem;
                 txtImporte.Text = (producto.Precio * cantidad).ToString("C");
             }
         }
 
-        private void TxtDescuento_Leave(object sender, EventArgs e)
+        private void txtDescuento_Leave(object sender, EventArgs e)
         {
             CalcularTotales();
-            double descuento = 0;
-            if (double.TryParse(txtDescuento.Text, out descuento))
-            {
-                txtDescuento.Text = descuento.ToString("N2");
-            }
         }
 
         private void _btnQuitar_Click(object sender, EventArgs e)
@@ -242,6 +286,42 @@ namespace AppBTS.Presentacion
         {
             InicializarDetalle();
         }
+
+        private void btnCUIT_Click(object sender, EventArgs e)
+        {
+            if (validarCampoCUIT())
+            {
+                Usuario usuario = oUsuarioService.BuscarPorCUIT(txtCUIT.Text);
+                if(usuario != null)
+                {
+                    txtDireccion.Text = usuario.Direccion;
+                    usuario_cliente = usuario;
+                }
+                else
+                {
+                    MessageBox.Show("No existe un cliente registrado con ese CUIT.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No ingresó el CUIT.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            }
+        }
+
+        private bool validarCampoCUIT()
+        {
+            return (txtCUIT.Text != "");
+        }
+
+
+        //private void cboProducto_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (cboProducto.SelectedIndex!=-1) 
+        //    {
+        //        Producto producto = (Producto)cboProducto.SelectedItem;
+        //        txtPrecio.Text = producto.Precio.ToString();
+        //    }
+        //}
 
     }
 }

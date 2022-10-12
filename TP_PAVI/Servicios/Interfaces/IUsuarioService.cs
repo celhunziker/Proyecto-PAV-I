@@ -26,5 +26,6 @@ namespace AppBTS.Servicios.Interfaces
         bool ExisteNombreUsuario(string NombreUsuario, int? IdUsuario);
 
         bool Eliminar(int idUsuario);
+        Usuario BuscarPorCUIT(string CUIT);
     }
 }

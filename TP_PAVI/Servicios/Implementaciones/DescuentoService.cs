@@ -17,6 +17,12 @@ namespace AppBTS.Servicios.Implementaciones
         {
             dao = new DescuentoDao();
         }
+
+        public Descuento traerPorCodigo(string codigo)
+        {
+            return dao.recuperarPorCodigo(codigo);
+        }
+
         public List<Descuento> traerTodos()
         {
             return dao.RecuperarTodos();

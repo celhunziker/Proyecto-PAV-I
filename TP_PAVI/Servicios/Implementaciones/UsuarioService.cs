@@ -67,5 +67,9 @@ namespace AppBTS.Servicios
         {
             return dao.ExisteNombreUsuario(NombreUsuario, IdUsuario);
         }
+        public Usuario BuscarPorCUIT(string CUIT)
+        {
+            return dao.BuscarPorCUIT(CUIT);
+        }
     }
 }

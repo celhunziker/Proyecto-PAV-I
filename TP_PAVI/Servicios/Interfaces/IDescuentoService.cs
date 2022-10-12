@@ -10,5 +10,6 @@ namespace AppBTS.Servicios.Interfaces
     internal interface IDescuentoService
     {
         List<Descuento> traerTodos();
+        Descuento traerPorCodigo(string codigo);
     }
 }

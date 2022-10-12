@@ -265,6 +265,36 @@ namespace AppBTS.Datos.Daos
             return (BDHelper.obtenerInstancia().consultar(consulta).Rows.Count > 0);
         }
 
+        public Usuario BuscarPorCUIT(string CUIT)
+        {
+            string strSql = string.Concat(" SELECT id_usuario, ",
+                                              "        nombreUsuario, ",
+                                              "        u.nombre as nombre, ",
+                                              "        apellido, ",
+                                              "        email, ",
+                                              "        estado, ",
+                                              "        password, ",
+                                              "        direccion, ",
+                                              "        CUIT, ",
+                                              "        p.id_perfil, ",
+                                              "        p.nombre as perfil ",
+                                              "   FROM Usuarios u",
+                                              "  INNER JOIN Perfiles p ON u.id_perfil= p.id_perfil ",
+                                              "  WHERE u.borrado =0 AND u.estado = 'S' AND CUIT = ", Convert.ToInt64(CUIT));
+
+            
+
+            DataTable tabla = BDHelper.obtenerInstancia().consultar(strSql);
+            if (tabla.Rows.Count > 0) 
+            { 
+                return ObjectMapping(tabla.Rows[0]); 
+            }
+            else
+            {
+                return null;
+            }
+        }
+
     }
 }
 

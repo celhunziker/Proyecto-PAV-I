@@ -10,5 +10,6 @@ namespace AppBTS.Datos.Interfaces
     internal interface IDescuento
     {
         List<Descuento> RecuperarTodos();
+        Descuento recuperarPorCodigo(string codigo);
     }
 }

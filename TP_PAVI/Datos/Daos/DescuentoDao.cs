@@ -22,7 +22,7 @@ namespace AppBTS.Datos.Daos
                 lista.Add(oDescuento);
             }
             return lista;
-        }
+        } 
         public Descuento ObjectMapping(DataRow row)
         {
             Descuento oDescuento = new Descuento
@@ -34,6 +34,20 @@ namespace AppBTS.Datos.Daos
             };
 
             return oDescuento;
+        }
+
+        public Descuento recuperarPorCodigo(string codigo)
+        {
+            string consulta = "SELECT * FROM Descuentos WHERE borrado = 0 AND codigo='" + codigo + "' order by 2 ";
+            DataTable tabla = BDHelper.obtenerInstancia().consultar(consulta);
+            if (tabla.Rows.Count > 0)
+            {
+                return ObjectMapping(tabla.Rows[0]);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
