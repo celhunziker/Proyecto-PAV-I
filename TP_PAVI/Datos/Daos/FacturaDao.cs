@@ -1,7 +1,9 @@
-﻿using AppBTS.Datos.Interfaces;
+﻿ using AppBTS.Datos.Interfaces;
 using AppBTS.Entidades;
+using AppBTS.Negocio;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,7 +50,38 @@ namespace AppBTS.Datos.Daos
 
         private Factura ObtenerFactura(int nuevoId)
         {
-            ;
+            string strSql = string.Concat(" SELECT id_factura, ",
+                                               "        f.id_usuario_vendedor, ",
+                                               "        f.id_tipo_factura, ",
+                                               "        f.total, ",
+                                               "        f.id_descuento, ",
+                                               "        f.borrado, ",
+                                               "        f.id_usuario_cliente, ",
+                                               "        f.fecha, ",
+                                               "        f.nroFactura ",
+                                               "   FROM Facturas f INNER JOIN Usuarios u1 ON f.id_usuario_vendedor=u1.id_usuario",
+                                               " INNER JOIN Usuarios u2 ON f.id_usuario_cliente=u2.id_usuario",
+                                               " INNER JOIN Tipos_Facturas tf ON f.id_tipo_factura=tf.id_tipo_factura",
+                                               " INNER JOIN Descuento d ON f.id_descuento=d.id_descuento",
+                                               "  WHERE f.borrado=0 AND f.id_factura = ", Convert.ToInt64(nuevoId));
+            DataTable tabla = BDHelper.obtenerInstancia().consultar(strSql);
+            if (tabla.Rows.Count > 0)
+            {
+                return ObjectMapping(tabla.Rows[0]);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private Factura ObjectMapping(DataRow dataRow)
+        {
+            Factura factura = new Factura();
+            factura.Id_factura = Convert.ToInt32(dataRow[0]);
+
+            //LLAMAR USUARIO DAO Y QUE NOS CREE EL LOS USUARIOS
+
         }
         //public bool Create(Factura factura)
         //{
