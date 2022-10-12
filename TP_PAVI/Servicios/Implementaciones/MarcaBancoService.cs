@@ -1,4 +1,6 @@
-﻿using AppBTS.Entidades;
+﻿using AppBTS.Datos.Daos;
+using AppBTS.Datos.Interfaces;
+using AppBTS.Entidades;
 using AppBTS.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,9 +12,14 @@ namespace AppBTS.Servicios.Implementaciones
 {
     internal class MarcaBancoService : IMarcaBancoService
     {
+        private IMarcaBanco dao;
+        public MarcaBancoService()
+        {
+            dao = new MarcaBancoDao();
+        }
         public List<Marca_Banco> traerTodos()
         {
-            throw new NotImplementedException();
+            return dao.RecuperarTodos();
         }
     }
 }

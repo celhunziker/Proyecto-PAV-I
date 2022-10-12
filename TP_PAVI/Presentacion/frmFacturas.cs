@@ -45,6 +45,7 @@ namespace AppBTS.Presentacion
         Detalle_Factura oDetalleFactura = new Detalle_Factura();
         Usuario usuario_vendedor = new Usuario();
         float importeGeneral = new float();
+        List<int> listaCuotas = new List<int>(new int[] { 1,2,3,4,5,6 });
         public frmFacturas(Usuario usuario)
         {
             //ver modos
@@ -59,12 +60,85 @@ namespace AppBTS.Presentacion
             CargarComboTipoFactura(cboTipoFact, oTipoFacturaService.traerTodos());
             CargarComboTipoCliente(cboTipoCliente, oTipoClienteService.traerTodos());
             CargarComboProducto(cboProducto, oProductoService.traerTodos());
+            CargarComboMedioPago(cboMedioPago, oMedioPagoService.traerTodos());
+            CargarComboMarcaBanco(cboMarcaBanco, oMarcaBancoService.traerTodos());
+            CargarComboMarcaTarjeta(cboMarcaTarjeta, oMarcaTarjetaService.traerTodos());
+            CargarComboCuota(cboCuotas);
 
             cboTipoFact.SelectedIndex = -1;
             cboTipoCliente.SelectedIndex = -1;
             cboProducto.SelectedIndex = -1;
-            ;
+            habilitarCamposMedioPago(false);
+            habilitarCamposDetalleFactura(true);
         }
+
+        private void habilitarCamposMedioPago(bool opcion)
+        {
+            cboMedioPago.Enabled = opcion;
+            cboMarcaTarjeta.Enabled = opcion;
+            cboMarcaBanco.Enabled = opcion;
+            cboCuotas.Enabled = opcion;
+            txtCodAutorizacion.Enabled = opcion;
+            txtMonto.Enabled = opcion;
+            txtValorCuota.Enabled = opcion;
+            btnAgregarMedioPago.Enabled = opcion;
+            btnCancelarMedioPago.Enabled = opcion;
+            btnQuitarMedioPago.Enabled = opcion;
+            dvgMedioPago.Enabled = opcion;
+            btnVolverDetalle.Enabled = opcion;
+        }
+        private void habilitarCamposDetalleFactura(bool opcion)
+        {
+            cboTipoFact.Enabled = opcion;
+            cboTipoCliente.Enabled = opcion;
+            txtNroFact.Enabled = opcion;
+            dtpFecha.Enabled = opcion;
+            txtCUIT.Enabled = opcion;
+            txtDescuento.Enabled = opcion;
+            btnCUIT.Enabled = opcion;
+            cboProducto.Enabled = opcion;
+            txtCantidad.Enabled = opcion;
+            btnAgregar.Enabled = opcion;
+            btnQuitar.Enabled = opcion;
+            btnCancelar.Enabled = opcion;
+            dgvDetalle.Enabled = opcion;
+            btnPasarMedioPago.Enabled = opcion;
+        }
+
+        private void CargarComboMedioPago(ComboBox combo, List<Medio_Pago> lista)
+        {
+            combo.DataSource = lista;
+            combo.DisplayMember = "NombreMedioCobro";
+            combo.ValueMember = "Id_medio_cobro";
+            combo.SelectedIndex = -1;
+            combo.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        private void CargarComboCuota(ComboBox cboCuotas)
+        {
+            cboCuotas.DataSource = listaCuotas;
+            cboCuotas.SelectedIndex = -1;
+            cboCuotas.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        private void CargarComboMarcaTarjeta(ComboBox combo, List<Marca_Tarjeta> lista)
+        {
+            combo.DataSource = lista;
+            combo.DisplayMember = "Nombre";
+            combo.ValueMember = "Id_marca_tarjeta";
+            combo.SelectedIndex = -1;
+            combo.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        private void CargarComboMarcaBanco(ComboBox combo, List<Marca_Banco> lista)
+        {
+            combo.DataSource = lista;
+            combo.DisplayMember = "NombreMarcaBanco";
+            combo.ValueMember = "Id_marca_banco";
+            combo.SelectedIndex = -1;
+            combo.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
         private void CargarComboTipoFactura(ComboBox combo, List<Tipo_Factura> lista)
         {
             combo.DataSource = lista;
@@ -379,9 +453,16 @@ namespace AppBTS.Presentacion
             return (txtCUIT.Text != "");
         }
 
-        private void btnNuevo_Click_1(object sender, EventArgs e)
+        private void btnMedioPago_Click(object sender, EventArgs e)
         {
+            habilitarCamposMedioPago(true);
+            habilitarCamposDetalleFactura(false);
+        }
 
+        private void btnVolverDetalle_Click(object sender, EventArgs e)
+        {
+            habilitarCamposMedioPago(false);
+            habilitarCamposDetalleFactura(true);
         }
 
 

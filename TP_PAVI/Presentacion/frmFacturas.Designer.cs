@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dpbDetalle = new System.Windows.Forms.GroupBox();
+            this.btnPasarMedioPago = new System.Windows.Forms.Button();
             this.txtImporteTotal = new System.Windows.Forms.TextBox();
             this.txtDescuento = new System.Windows.Forms.TextBox();
             this.txtSubtotal = new System.Windows.Forms.TextBox();
@@ -44,6 +45,9 @@
             this.txtCantidad = new System.Windows.Forms.MaskedTextBox();
             this.txtImporte = new System.Windows.Forms.TextBox();
             this.lblImporte = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnQuitar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.dgvDetalle = new System.Windows.Forms.DataGridView();
             this.NroItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +61,8 @@
             this._lblCantidad = new System.Windows.Forms.Label();
             this.lblProducto = new System.Windows.Forms.Label();
             this.cboProducto = new System.Windows.Forms.ComboBox();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnGrabar = new System.Windows.Forms.Button();
             this.txtNroFactMal = new System.Windows.Forms.TextBox();
             this.cboTipoCliente = new System.Windows.Forms.ComboBox();
             this.cboTipoFact = new System.Windows.Forms.ComboBox();
@@ -73,47 +79,42 @@
             this.btnCUIT = new System.Windows.Forms.Button();
             this.txtCUIT = new System.Windows.Forms.TextBox();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.btnGrabar = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnQuitar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnCancelarMedioPago = new System.Windows.Forms.Button();
+            this.btnQuitarMedioPago = new System.Windows.Forms.Button();
+            this.btnAgregarMedioPago = new System.Windows.Forms.Button();
             this.lblTotal = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.cboCuotas = new System.Windows.Forms.ComboBox();
             this.lblCuotas = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.cboMarcaTarjeta = new System.Windows.Forms.ComboBox();
-            this.lblMarcaTarjeta = new System.Windows.Forms.Label();
-            this.cboMarcaBanco = new System.Windows.Forms.ComboBox();
-            this.lblMarcaBanco = new System.Windows.Forms.Label();
-            this.cboMedioPago = new System.Windows.Forms.ComboBox();
-            this.lblMedioPago = new System.Windows.Forms.Label();
-            this.btnMedioPago = new System.Windows.Forms.Button();
-            this.txtMonto = new System.Windows.Forms.TextBox();
-            this.lblMonto = new System.Windows.Forms.Label();
+            this.dvgMedioPago = new System.Windows.Forms.DataGridView();
             this.MedioPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MarcaBanco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MarcaTarjeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cuotas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValorCuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboMarcaTarjeta = new System.Windows.Forms.ComboBox();
+            this.lblMarcaTarjeta = new System.Windows.Forms.Label();
+            this.cboMarcaBanco = new System.Windows.Forms.ComboBox();
+            this.lblMarcaBanco = new System.Windows.Forms.Label();
+            this.cboMedioPago = new System.Windows.Forms.ComboBox();
+            this.lblMedioPago = new System.Windows.Forms.Label();
+            this.txtMonto = new System.Windows.Forms.TextBox();
+            this.lblMonto = new System.Windows.Forms.Label();
             this.lblValorCuota = new System.Windows.Forms.Label();
             this.txtValorCuota = new System.Windows.Forms.TextBox();
             this.lblCodAutorizacion = new System.Windows.Forms.Label();
             this.txtCodAutorizacion = new System.Windows.Forms.TextBox();
             this.txtNroFact = new System.Windows.Forms.TextBox();
+            this.btnVolverDetalle = new System.Windows.Forms.Button();
             this.dpbDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgMedioPago)).BeginInit();
             this.SuspendLayout();
             // 
             // dpbDetalle
             // 
-            this.dpbDetalle.Controls.Add(this.btnMedioPago);
+            this.dpbDetalle.Controls.Add(this.btnPasarMedioPago);
             this.dpbDetalle.Controls.Add(this.txtImporteTotal);
             this.dpbDetalle.Controls.Add(this.txtDescuento);
             this.dpbDetalle.Controls.Add(this.txtSubtotal);
@@ -140,6 +141,16 @@
             this.dpbDetalle.TabIndex = 27;
             this.dpbDetalle.TabStop = false;
             this.dpbDetalle.Text = "Detalle";
+            // 
+            // btnPasarMedioPago
+            // 
+            this.btnPasarMedioPago.Location = new System.Drawing.Point(74, 354);
+            this.btnPasarMedioPago.Name = "btnPasarMedioPago";
+            this.btnPasarMedioPago.Size = new System.Drawing.Size(137, 23);
+            this.btnPasarMedioPago.TabIndex = 31;
+            this.btnPasarMedioPago.Text = "Pasar a medio pago";
+            this.btnPasarMedioPago.UseVisualStyleBackColor = true;
+            this.btnPasarMedioPago.Click += new System.EventHandler(this.btnMedioPago_Click);
             // 
             // txtImporteTotal
             // 
@@ -223,18 +234,46 @@
             this.lblImporte.TabIndex = 8;
             this.lblImporte.Text = "Importe";
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Image = global::AppBTS.Properties.Resources.Cancelar3;
+            this.btnCancelar.Location = new System.Drawing.Point(729, 19);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(38, 36);
+            this.btnCancelar.TabIndex = 7;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            // 
+            // btnQuitar
+            // 
+            this.btnQuitar.Image = global::AppBTS.Properties.Resources.delete_exit;
+            this.btnQuitar.Location = new System.Drawing.Point(685, 19);
+            this.btnQuitar.Name = "btnQuitar";
+            this.btnQuitar.Size = new System.Drawing.Size(38, 36);
+            this.btnQuitar.TabIndex = 6;
+            this.btnQuitar.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Image = global::AppBTS.Properties.Resources.grabar2;
+            this.btnAgregar.Location = new System.Drawing.Point(643, 19);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(36, 36);
+            this.btnAgregar.TabIndex = 5;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
             // dgvDetalle
             // 
             this.dgvDetalle.AllowUserToAddRows = false;
             this.dgvDetalle.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NroItem,
@@ -244,26 +283,26 @@
             this.Cantidad,
             this.Precio,
             this.Subtotal});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDetalle.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDetalle.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvDetalle.Location = new System.Drawing.Point(13, 61);
             this.dgvDetalle.MultiSelect = false;
             this.dgvDetalle.Name = "dgvDetalle";
             this.dgvDetalle.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetalle.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetalle.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvDetalle.RowHeadersWidth = 51;
             this.dgvDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDetalle.Size = new System.Drawing.Size(754, 252);
@@ -295,8 +334,8 @@
             // 
             // Descripcion
             // 
-            dataGridViewCellStyle2.NullValue = null;
-            this.Descripcion.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.NullValue = null;
+            this.Descripcion.DefaultCellStyle = dataGridViewCellStyle8;
             this.Descripcion.HeaderText = "Descripción";
             this.Descripcion.MinimumWidth = 6;
             this.Descripcion.Name = "Descripcion";
@@ -313,8 +352,8 @@
             // 
             // Precio
             // 
-            dataGridViewCellStyle3.Format = "C2";
-            this.Precio.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Format = "C2";
+            this.Precio.DefaultCellStyle = dataGridViewCellStyle9;
             this.Precio.HeaderText = "Precio";
             this.Precio.MinimumWidth = 6;
             this.Precio.Name = "Precio";
@@ -323,8 +362,8 @@
             // 
             // Subtotal
             // 
-            dataGridViewCellStyle4.Format = "C2";
-            this.Subtotal.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Format = "C2";
+            this.Subtotal.DefaultCellStyle = dataGridViewCellStyle10;
             this.Subtotal.HeaderText = "Importe";
             this.Subtotal.MinimumWidth = 6;
             this.Subtotal.Name = "Subtotal";
@@ -375,6 +414,25 @@
             this.cboProducto.Size = new System.Drawing.Size(133, 21);
             this.cboProducto.TabIndex = 0;
             this.cboProducto.SelectedIndexChanged += new System.EventHandler(this.cboProducto_SelectedIndexChanged);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Image = global::AppBTS.Properties.Resources.new_file;
+            this.btnNuevo.Location = new System.Drawing.Point(227, 368);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(75, 36);
+            this.btnNuevo.TabIndex = 28;
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            // 
+            // btnGrabar
+            // 
+            this.btnGrabar.Image = global::AppBTS.Properties.Resources.documentediting;
+            this.btnGrabar.Location = new System.Drawing.Point(308, 369);
+            this.btnGrabar.Name = "btnGrabar";
+            this.btnGrabar.Size = new System.Drawing.Size(75, 35);
+            this.btnGrabar.TabIndex = 29;
+            this.btnGrabar.UseVisualStyleBackColor = true;
+            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
             // txtNroFactMal
             // 
@@ -522,80 +580,32 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // btnGrabar
+            // btnCancelarMedioPago
             // 
-            this.btnGrabar.Image = global::AppBTS.Properties.Resources.documentediting;
-            this.btnGrabar.Location = new System.Drawing.Point(308, 369);
-            this.btnGrabar.Name = "btnGrabar";
-            this.btnGrabar.Size = new System.Drawing.Size(75, 35);
-            this.btnGrabar.TabIndex = 29;
-            this.btnGrabar.UseVisualStyleBackColor = true;
-            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
+            this.btnCancelarMedioPago.Image = global::AppBTS.Properties.Resources.Cancelar3;
+            this.btnCancelarMedioPago.Location = new System.Drawing.Point(750, 606);
+            this.btnCancelarMedioPago.Name = "btnCancelarMedioPago";
+            this.btnCancelarMedioPago.Size = new System.Drawing.Size(38, 36);
+            this.btnCancelarMedioPago.TabIndex = 55;
+            this.btnCancelarMedioPago.UseVisualStyleBackColor = true;
             // 
-            // btnNuevo
+            // btnQuitarMedioPago
             // 
-            this.btnNuevo.Image = global::AppBTS.Properties.Resources.new_file;
-            this.btnNuevo.Location = new System.Drawing.Point(227, 368);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(75, 36);
-            this.btnNuevo.TabIndex = 28;
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click_1);
+            this.btnQuitarMedioPago.Image = global::AppBTS.Properties.Resources.delete_exit;
+            this.btnQuitarMedioPago.Location = new System.Drawing.Point(706, 606);
+            this.btnQuitarMedioPago.Name = "btnQuitarMedioPago";
+            this.btnQuitarMedioPago.Size = new System.Drawing.Size(38, 36);
+            this.btnQuitarMedioPago.TabIndex = 54;
+            this.btnQuitarMedioPago.UseVisualStyleBackColor = true;
             // 
-            // btnCancelar
+            // btnAgregarMedioPago
             // 
-            this.btnCancelar.Image = global::AppBTS.Properties.Resources.Cancelar3;
-            this.btnCancelar.Location = new System.Drawing.Point(729, 19);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(38, 36);
-            this.btnCancelar.TabIndex = 7;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // btnQuitar
-            // 
-            this.btnQuitar.Image = global::AppBTS.Properties.Resources.delete_exit;
-            this.btnQuitar.Location = new System.Drawing.Point(685, 19);
-            this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(38, 36);
-            this.btnQuitar.TabIndex = 6;
-            this.btnQuitar.UseVisualStyleBackColor = true;
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Image = global::AppBTS.Properties.Resources.grabar2;
-            this.btnAgregar.Location = new System.Drawing.Point(643, 19);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(36, 36);
-            this.btnAgregar.TabIndex = 5;
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // button1
-            // 
-            this.button1.Image = global::AppBTS.Properties.Resources.Cancelar3;
-            this.button1.Location = new System.Drawing.Point(750, 606);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(38, 36);
-            this.button1.TabIndex = 55;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Image = global::AppBTS.Properties.Resources.delete_exit;
-            this.button2.Location = new System.Drawing.Point(706, 606);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(38, 36);
-            this.button2.TabIndex = 54;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Image = global::AppBTS.Properties.Resources.grabar2;
-            this.button3.Location = new System.Drawing.Point(664, 606);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(36, 36);
-            this.button3.TabIndex = 53;
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAgregarMedioPago.Image = global::AppBTS.Properties.Resources.grabar2;
+            this.btnAgregarMedioPago.Location = new System.Drawing.Point(664, 606);
+            this.btnAgregarMedioPago.Name = "btnAgregarMedioPago";
+            this.btnAgregarMedioPago.Size = new System.Drawing.Size(36, 36);
+            this.btnAgregarMedioPago.TabIndex = 53;
+            this.btnAgregarMedioPago.UseVisualStyleBackColor = true;
             // 
             // lblTotal
             // 
@@ -631,20 +641,50 @@
             this.lblCuotas.TabIndex = 49;
             this.lblCuotas.Text = "Cuotas";
             // 
-            // dataGridView1
+            // dvgMedioPago
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dvgMedioPago.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvgMedioPago.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MedioPago,
             this.MarcaBanco,
             this.MarcaTarjeta,
             this.Cuotas,
             this.ValorCuota,
             this.dataGridViewTextBoxColumn1});
-            this.dataGridView1.Location = new System.Drawing.Point(52, 580);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(606, 118);
-            this.dataGridView1.TabIndex = 48;
+            this.dvgMedioPago.Location = new System.Drawing.Point(52, 580);
+            this.dvgMedioPago.Name = "dvgMedioPago";
+            this.dvgMedioPago.Size = new System.Drawing.Size(606, 118);
+            this.dvgMedioPago.TabIndex = 48;
+            // 
+            // MedioPago
+            // 
+            this.MedioPago.HeaderText = "Medio Pago";
+            this.MedioPago.Name = "MedioPago";
+            // 
+            // MarcaBanco
+            // 
+            this.MarcaBanco.HeaderText = "Marca Banco";
+            this.MarcaBanco.Name = "MarcaBanco";
+            // 
+            // MarcaTarjeta
+            // 
+            this.MarcaTarjeta.HeaderText = "Marca Tarjeta";
+            this.MarcaTarjeta.Name = "MarcaTarjeta";
+            // 
+            // Cuotas
+            // 
+            this.Cuotas.HeaderText = "Cuotas";
+            this.Cuotas.Name = "Cuotas";
+            // 
+            // ValorCuota
+            // 
+            this.ValorCuota.HeaderText = "Valor Cuota";
+            this.ValorCuota.Name = "ValorCuota";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Monto";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // cboMarcaTarjeta
             // 
@@ -700,15 +740,6 @@
             this.lblMedioPago.TabIndex = 42;
             this.lblMedioPago.Text = "Medio Pago";
             // 
-            // btnMedioPago
-            // 
-            this.btnMedioPago.Location = new System.Drawing.Point(74, 354);
-            this.btnMedioPago.Name = "btnMedioPago";
-            this.btnMedioPago.Size = new System.Drawing.Size(137, 23);
-            this.btnMedioPago.TabIndex = 31;
-            this.btnMedioPago.Text = "Pasar a medio pago";
-            this.btnMedioPago.UseVisualStyleBackColor = true;
-            // 
             // txtMonto
             // 
             this.txtMonto.Location = new System.Drawing.Point(92, 554);
@@ -724,36 +755,6 @@
             this.lblMonto.Size = new System.Drawing.Size(37, 13);
             this.lblMonto.TabIndex = 57;
             this.lblMonto.Text = "Monto";
-            // 
-            // MedioPago
-            // 
-            this.MedioPago.HeaderText = "Medio Pago";
-            this.MedioPago.Name = "MedioPago";
-            // 
-            // MarcaBanco
-            // 
-            this.MarcaBanco.HeaderText = "Marca Banco";
-            this.MarcaBanco.Name = "MarcaBanco";
-            // 
-            // MarcaTarjeta
-            // 
-            this.MarcaTarjeta.HeaderText = "Marca Tarjeta";
-            this.MarcaTarjeta.Name = "MarcaTarjeta";
-            // 
-            // Cuotas
-            // 
-            this.Cuotas.HeaderText = "Cuotas";
-            this.Cuotas.Name = "Cuotas";
-            // 
-            // ValorCuota
-            // 
-            this.ValorCuota.HeaderText = "Valor Cuota";
-            this.ValorCuota.Name = "ValorCuota";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Monto";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // lblValorCuota
             // 
@@ -794,11 +795,22 @@
             this.txtNroFact.Size = new System.Drawing.Size(100, 20);
             this.txtNroFact.TabIndex = 62;
             // 
+            // btnVolverDetalle
+            // 
+            this.btnVolverDetalle.Location = new System.Drawing.Point(648, 550);
+            this.btnVolverDetalle.Name = "btnVolverDetalle";
+            this.btnVolverDetalle.Size = new System.Drawing.Size(137, 23);
+            this.btnVolverDetalle.TabIndex = 32;
+            this.btnVolverDetalle.Text = "Volver a detalle";
+            this.btnVolverDetalle.UseVisualStyleBackColor = true;
+            this.btnVolverDetalle.Click += new System.EventHandler(this.btnVolverDetalle_Click);
+            // 
             // frmFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(837, 749);
+            this.Controls.Add(this.btnVolverDetalle);
             this.Controls.Add(this.txtNroFact);
             this.Controls.Add(this.lblCodAutorizacion);
             this.Controls.Add(this.txtCodAutorizacion);
@@ -806,14 +818,14 @@
             this.Controls.Add(this.txtValorCuota);
             this.Controls.Add(this.lblMonto);
             this.Controls.Add(this.txtMonto);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnCancelarMedioPago);
+            this.Controls.Add(this.btnQuitarMedioPago);
+            this.Controls.Add(this.btnAgregarMedioPago);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.cboCuotas);
             this.Controls.Add(this.lblCuotas);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dvgMedioPago);
             this.Controls.Add(this.cboMarcaTarjeta);
             this.Controls.Add(this.lblMarcaTarjeta);
             this.Controls.Add(this.cboMarcaBanco);
@@ -843,7 +855,7 @@
             this.dpbDetalle.ResumeLayout(false);
             this.dpbDetalle.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgMedioPago)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -895,15 +907,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Subtotal;
-        private System.Windows.Forms.Button btnMedioPago;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnPasarMedioPago;
+        private System.Windows.Forms.Button btnCancelarMedioPago;
+        private System.Windows.Forms.Button btnQuitarMedioPago;
+        private System.Windows.Forms.Button btnAgregarMedioPago;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.ComboBox cboCuotas;
         private System.Windows.Forms.Label lblCuotas;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dvgMedioPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn MedioPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn MarcaBanco;
         private System.Windows.Forms.DataGridViewTextBoxColumn MarcaTarjeta;
@@ -923,5 +935,6 @@
         private System.Windows.Forms.Label lblCodAutorizacion;
         private System.Windows.Forms.TextBox txtCodAutorizacion;
         private System.Windows.Forms.TextBox txtNroFact;
+        private System.Windows.Forms.Button btnVolverDetalle;
     }
 }
