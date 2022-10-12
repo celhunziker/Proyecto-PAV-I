@@ -9,7 +9,7 @@ using AppBTS.Entidades;
 
 namespace AppBTS.Negocio
 {
-    class Usuario
+    public class Usuario
     {
         private int id_usuario;
         public int Id_usuario

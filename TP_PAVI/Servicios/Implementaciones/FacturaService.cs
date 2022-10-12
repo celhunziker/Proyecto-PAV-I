@@ -12,6 +12,10 @@ namespace AppBTS.Servicios.Implementaciones
     internal class FacturaService : IFacturaService
     {
         private FacturaDao dao;
+        public FacturaService()
+        {
+            dao = new FacturaDao();
+        }
         public bool ValidarDatos(Factura factura)
         {
             if (factura.FacturaDetalle.Count == 0)

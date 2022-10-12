@@ -8,14 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AppBTS.Negocio;
+using AppBTS.Servicios.Interfaces;
+using AppBTS.Servicios;
 
 namespace AppBTS
 {
     public partial class frmPrincipal : Form
     {
+        Usuario usuario_logueado = new Usuario();
+        IUsuarioService oUsuarioService = new UsuarioService();
         public frmPrincipal()
         {
             InitializeComponent();
+            
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
@@ -26,10 +32,13 @@ namespace AppBTS
             fl.ShowDialog();
 
             if (fl.MiUsuario.Id_usuario == 0)
-                this.Close();
-            else
+            { this.Close(); }
+            else {
                 this.Show();
                 this.Text += " - Usuario: " + fl.MiUsuario.Nombre;
+                usuario_logueado = oUsuarioService.traerPorId(fl.MiUsuario.Id_usuario);
+            }
+                
 
             fl.Dispose();
         }
@@ -99,9 +108,18 @@ namespace AppBTS
 
         private void cOMPRARToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmFacturas ff;
-            ff = new frmFacturas();
-            ff.ShowDialog();
+            
+            if(usuario_logueado.Id_perfil.IdPerfil == 12)
+            {
+                frmFacturas ff;
+                ff = new frmFacturas(usuario_logueado);
+                ff.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No se tiene acceso.");
+            }
+            
         }
     }
 }

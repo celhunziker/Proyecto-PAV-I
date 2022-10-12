@@ -28,7 +28,11 @@ namespace AppBTS.Datos.Daos
 
             //Recuperar ID nuevo
             var nuevoId = BDHelper.obtenerInstancia().ConsultaSQLScalar("SELECT @@identity");
-            oDetalleFactura.Id_factura.Id_factura = Convert.ToInt32(nuevoId);
+            if(nuevoId == null)
+            {
+                nuevoId = 1;
+            }
+            oDetalleFactura.Id_factura = ObtenerFactura(nuevoId);
 
             //Insertar Historia con Nuevo ID
             string consultaDetalleFactura = "INSERT into Detalles_Facturas (id_factura,cantidad,subtotal,id_producto)"
@@ -40,6 +44,11 @@ namespace AppBTS.Datos.Daos
             BDHelper.obtenerInstancia().EjecutarConTransaccion(consultaDetalleFactura);
             aux = BDHelper.obtenerInstancia().Desconectar();
             return aux;
+        }
+
+        private Factura ObtenerFactura(int nuevoId)
+        {
+            ;
         }
         //public bool Create(Factura factura)
         //{

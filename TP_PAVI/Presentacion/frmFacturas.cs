@@ -43,10 +43,13 @@ namespace AppBTS.Presentacion
         Producto oProducto = new Producto();
         Descuento oDescuento = new Descuento();
         Detalle_Factura oDetalleFactura = new Detalle_Factura();
-        public frmFacturas()
+        Usuario usuario_vendedor = new Usuario();
+        float importeGeneral = new float();
+        public frmFacturas(Usuario usuario)
         {
             //ver modos
             InitializeComponent();
+            this.usuario_vendedor = usuario;
         }
 
         private void frmFacturas_Load(object sender, EventArgs e)
@@ -172,27 +175,33 @@ namespace AppBTS.Presentacion
             var importeTotal = subtotal - subtotal * descuento / 100;
             txtDescuento.Text = descuento.ToString();
             txtImporteTotal.Text = importeTotal.ToString("C");
+            importeGeneral = (float)importeTotal;
         }
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
+            //string importe = txtImporteTotal.Text;
+            //importe = importe.Replace("$", "");
+            //float importeFloat = float.Parse(importe);
             switch (modo)
             {
                 case Modo.Create:
                     {
-                        oFactura.Id_usuario_vendedor.Id_usuario = 1;
-                        oFactura.Tipo_factura.Id_tipo_factura = (int)cboTipoFact.SelectedValue;
-                        oFactura.Total = Convert.ToInt32(txtImporteTotal.Text);
-                        oFactura.Id_descuento.Codigo = txtCodDescuento.Text;
-                        oFactura.Id_cliente.CUIT = Convert.ToInt32(txtCUIT.Text);
+                        Descuento oDescuento = oDescuentoService.traerPorCodigo(txtCodDescuento.Text);
+
+                        oFactura.Id_usuario_vendedor = usuario_vendedor;
+                        oFactura.Tipo_factura = (Tipo_Factura)cboTipoFact.SelectedItem;
+                        oFactura.Total = importeGeneral;
+                        oFactura.Id_descuento = oDescuento;
+                        oFactura.Id_cliente = usuario_cliente;
                         oFactura.Fecha = DateTime.Today;
                         oFactura.Nro_factura = Convert.ToInt32(txtNroFact.Text);
                         oFactura.Borrado = false;
-                        //usuario  logueado con perfil tester
 
-                        oDetalleFactura.Cantidad = Convert.ToInt32(txtCantidad.Text);
-                        oDetalleFactura.Id_producto.Id_producto = (int)cboProducto.SelectedValue;
-                        oDetalleFactura.Subtotal = Convert.ToInt32(txtImporte.Text);
+                        oFactura.FacturaDetalle = listaFacturaDetalle;
+                        //oDetalleFactura.Cantidad = listaFacturaDetalle;
+                        //oDetalleFactura.Id_producto = (Producto)cboProducto.SelectedItem;
+                        //oDetalleFactura.Subtotal = float.Parse(txtImporte.Text);
 
 
                         if (oFacturaService.CrearFacturaConDetalle(oFactura, oDetalleFactura))
@@ -259,9 +268,9 @@ namespace AppBTS.Presentacion
             Usuario usuario = new Usuario();
             btnAgregar.Enabled = false;
             txtDescuento.Text = (0).ToString("N2");
-            txtNroFact.Text = "1";
+            txtNroFactMal.Text = "1";
             cboTipoFact.SelectedIndex = -1;
-            txtNroFact.Text = "";
+            txtNroFactMal.Text = "";
             txtDireccion.Text = usuario.Direccion;
             cboTipoCliente.SelectedIndex = -1;
             txtDireccion.Text = "";
