@@ -278,7 +278,7 @@ namespace AppBTS.Presentacion
                         //oDetalleFactura.Subtotal = float.Parse(txtImporte.Text);
 
 
-                        if (oFacturaService.CrearFacturaConDetalle(oFactura, oDetalleFactura))
+                        if (oFacturaService.Create(oFactura))
                         {
                             MessageBox.Show("Se creó con éxito una nueva Factura.");
                         }

@@ -11,5 +11,6 @@ namespace AppBTS.Servicios.Interfaces
     {
         bool ValidarDatos(Factura factura);
         bool CrearFacturaConDetalle(Factura factura, Detalle_Factura detalle);
+        bool Create(Factura factura);
     }
 }

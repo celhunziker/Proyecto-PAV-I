@@ -100,7 +100,6 @@
     <Compile Include="Entidades\Tipo_Producto.cs" />
     <Compile Include="Entidades\Unidad_Medida.cs" />
     <Compile Include="Entidades\Usuario.cs" />
-    <Compile Include="Presentacion\DetalleFactura.cs" />
     <Compile Include="Presentacion\frmDisciplina.cs">
       <SubType>Form</SubType>
     </Compile>
