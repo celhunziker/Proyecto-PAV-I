@@ -82,15 +82,20 @@ namespace AppBTS.Datos.Daos
         //}
         public bool Create(Factura factura)
         {
+            int descuento = 0;
+            if (factura.Id_descuento != null)
+            {
+                descuento = factura.Id_descuento.Id_descuento;
+            }
             string consulta = "INSERT INTO Facturas (id_usuario_vendedor, id_tipo_factura, " +
                 "total, id_descuento, id_usuario_cliente, fecha, nroFactura, borrado)" +
                             " VALUES (" +
                             factura.Id_usuario_vendedor.Id_usuario + "," +
                              factura.Tipo_factura.Id_tipo_factura + "," +
                             factura.Total + "," +
-                            factura.Id_descuento.Id_descuento + "," +
+                            descuento + "," +
                             factura.Id_cliente.Id_usuario + ", '" +
-                            factura.Fecha.ToString("dd/MM/yyyy") + "'," +
+                            factura.Fecha + "'," +
                             factura.Nro_factura + ",0)";
 
             BDHelper.obtenerInstancia().conectarConTransaccion();
