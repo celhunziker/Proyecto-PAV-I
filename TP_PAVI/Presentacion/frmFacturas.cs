@@ -94,7 +94,6 @@ namespace AppBTS.Presentacion
             txtNroFact.Enabled = opcion;
             dtpFecha.Enabled = opcion;
             txtCUIT.Enabled = opcion;
-            txtDescuento.Enabled = opcion;
             btnCUIT.Enabled = opcion;
             cboProducto.Enabled = opcion;
             txtCantidad.Enabled = opcion;
@@ -174,7 +173,9 @@ namespace AppBTS.Presentacion
             
             agregarDetalleListaFacturaDetalle();
             CargarGrilla(dgvDetalle, listaFacturaDetalle);
+            CalcularTotales();
 
+            InicializarDetalle();
             
             
 
@@ -193,9 +194,7 @@ namespace AppBTS.Presentacion
             //listaFacturaDetalleGrid.Add();
             //listaFacturaDetalle.Add(df);
 
-            CalcularTotales();
-
-            InicializarDetalle();
+            
         }
 
         private void agregarDetalleListaFacturaDetalle()
@@ -401,13 +400,24 @@ namespace AppBTS.Presentacion
             CalcularTotales();
         }
 
-        private void _btnQuitar_Click(object sender, EventArgs e)
+        private void btnQuitar_Click(object sender, EventArgs e)
         {
             if (dgvDetalle.CurrentRow != null)
             {
-                var detalleSeleccionado = (Detalle_Factura)dgvDetalle.CurrentRow.DataBoundItem;
-                listaFacturaDetalle.Remove(detalleSeleccionado);
+                int nroItem = Convert.ToInt32(dgvDetalle.CurrentRow.Cells[0].Value);
+                listaFacturaDetalle.RemoveAt(nroItem-1);
+                foreach (Detalle_Factura detalle in listaFacturaDetalle)
+                {
+                    if (detalle.NroItem > nroItem)
+                    {
+                        detalle.NroItem = detalle.NroItem-1;
+                    }
+                }
+                dgvDetalle.Rows.RemoveAt(dgvDetalle.SelectedRows[0].Index);
             }
+            CargarGrilla(dgvDetalle, listaFacturaDetalle);
+            CalcularTotales();
+            InicializarDetalle();
         }
 
         //este esta mal porque no lo hacemos así (para mí hay que hacerlo así pero con usuarios, soy vale)
@@ -422,8 +432,11 @@ namespace AppBTS.Presentacion
         //    }
         //}
 
-        private void _btnCancelar_Click(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
+            listaFacturaDetalle.Clear();
+            CargarGrilla(dgvDetalle, listaFacturaDetalle);
+            CalcularTotales();
             InicializarDetalle();
         }
 
@@ -440,6 +453,7 @@ namespace AppBTS.Presentacion
                 else
                 {
                     MessageBox.Show("No existe un cliente registrado con ese CUIT.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    // ACA AGREGAR LA OPCION DE DAR DE ALTA UN NUEVO USUARIO SI EL CUIT NO EXISTE
                 }
             }
             else
@@ -459,11 +473,29 @@ namespace AppBTS.Presentacion
             habilitarCamposDetalleFactura(false);
         }
 
+        
+
+        //COBRO
         private void btnVolverDetalle_Click(object sender, EventArgs e)
+                {
+                    habilitarCamposMedioPago(false);
+                    habilitarCamposDetalleFactura(true);
+                }
+
+        private void btnQuitarMedioPago_Click(object sender, EventArgs e)
         {
-            habilitarCamposMedioPago(false);
-            habilitarCamposDetalleFactura(true);
+            if (dgvDetalle.CurrentRow != null)
+            {
+                var detalleSeleccionado = (Detalle_Factura)dgvDetalle.CurrentRow.DataBoundItem;
+                listaFacturaDetalle.Remove(detalleSeleccionado);
+            }
         }
+
+        private void btnAgregarMedioPago_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
 
         //private void cboProducto_SelectedIndexChanged(object sender, EventArgs e)
