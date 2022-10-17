@@ -203,15 +203,24 @@ namespace AppBTS.Presentacion
             int cantidad = 0;
             int.TryParse(txtCantidad.Text, out cantidad);
             Producto producto = (Producto)cboProducto.SelectedItem;
-            int idProd = producto.Id_producto;
-            listaFacturaDetalle.Add(new Detalle_Factura()
-            {
-                NroItem = listaFacturaDetalle.Count + 1,
-                Id_producto = producto,
-                Cantidad = cantidad,
-                Subtotal = producto.Precio * cantidad
+            if (producto.Stock >= cantidad) {
+                int idProd = producto.Id_producto;
+                listaFacturaDetalle.Add(new Detalle_Factura()
+                {
+                    NroItem = listaFacturaDetalle.Count + 1,
+                    Id_producto = producto,
+                    Cantidad = cantidad,
+                    Subtotal = producto.Precio * cantidad
 
-            });
+                }
+                );
+                oProductoService.ReducirStock(idProd, cantidad);
+            }
+            else
+            {
+                MessageBox.Show("No hay stock disponible");
+            }
+            
         }
 
         private void CargarGrilla(DataGridView grilla, BindingList<Detalle_Factura> lista)

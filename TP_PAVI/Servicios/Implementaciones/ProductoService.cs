@@ -63,5 +63,10 @@ namespace AppBTS.Servicios.Implementaciones
         {
             return dao.ExisteNombreProducto(NombreProducto, IdProducto);
         }
+
+        public bool ReducirStock(int idProducto, int cantidad)
+        {
+            return dao.ReducirStock(idProducto, cantidad);
+        }
     }
 }

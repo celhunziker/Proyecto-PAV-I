@@ -288,6 +288,12 @@ namespace AppBTS.Datos.Daos
             }
             return (BDHelper.obtenerInstancia().consultar(consulta).Rows.Count > 0);
         }
-
+        public bool ReducirStock(int idProducto, int cantidad)
+        {
+            string consulta = " UPDATE Productos SET stock = stock - " +
+                cantidad +
+               " WHERE id_producto = " + idProducto;
+            return (BDHelper.obtenerInstancia().actualizar(consulta) == 1);
+        }
     }
 }

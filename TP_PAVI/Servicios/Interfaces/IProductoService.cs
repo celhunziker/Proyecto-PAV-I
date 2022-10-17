@@ -26,5 +26,6 @@ namespace AppBTS.Servicios.Interfaces
 
         bool ExisteNombreProducto(string nombreProducto, int? idProducto);
         bool Eliminar(int idProducto);
+        bool ReducirStock(int idProd, int cantidad);
     }
 }

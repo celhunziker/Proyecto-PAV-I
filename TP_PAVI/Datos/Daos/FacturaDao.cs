@@ -95,7 +95,7 @@ namespace AppBTS.Datos.Daos
                             factura.Total + "," +
                             descuento + "," +
                             factura.Id_cliente.Id_usuario + ", '" +
-                            factura.Fecha + "'," +
+                            factura.Fecha.ToString("MM/dd/yyyy")+ "'," +
                             factura.Nro_factura + ",0)";
 
             BDHelper.obtenerInstancia().conectarConTransaccion();
