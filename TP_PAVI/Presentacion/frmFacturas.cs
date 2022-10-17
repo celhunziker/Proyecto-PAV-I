@@ -94,6 +94,7 @@ namespace AppBTS.Presentacion
             txtNroFact.Enabled = opcion;
             dtpFecha.Enabled = opcion;
             txtCUIT.Enabled = opcion;
+            txtDescuento.Enabled = opcion;
             btnCUIT.Enabled = opcion;
             cboProducto.Enabled = opcion;
             txtCantidad.Enabled = opcion;
@@ -176,8 +177,8 @@ namespace AppBTS.Presentacion
             CalcularTotales();
 
             InicializarDetalle();
-            
-            
+
+
 
             //Detalle_Factura df = new Detalle_Factura();
 
@@ -194,7 +195,9 @@ namespace AppBTS.Presentacion
             //listaFacturaDetalleGrid.Add();
             //listaFacturaDetalle.Add(df);
 
-            
+            CalcularTotales();
+
+            InicializarDetalle();
         }
 
         private void agregarDetalleListaFacturaDetalle()
@@ -213,6 +216,7 @@ namespace AppBTS.Presentacion
 
                 }
                 );
+                //ver cómo hacer para que sólo se haga si se crea bien la factura
                 oProductoService.ReducirStock(idProd, cantidad);
             }
             else
@@ -482,14 +486,14 @@ namespace AppBTS.Presentacion
             habilitarCamposDetalleFactura(false);
         }
 
-        
+
 
         //COBRO
         private void btnVolverDetalle_Click(object sender, EventArgs e)
-                {
-                    habilitarCamposMedioPago(false);
-                    habilitarCamposDetalleFactura(true);
-                }
+        {
+            habilitarCamposMedioPago(false);
+            habilitarCamposDetalleFactura(true);
+        }
 
         private void btnQuitarMedioPago_Click(object sender, EventArgs e)
         {
@@ -504,6 +508,7 @@ namespace AppBTS.Presentacion
         {
 
         }
+
 
 
 
