@@ -82,12 +82,12 @@ namespace AppBTS.Datos.Daos
         //}
         public bool Create(Factura factura)
         {
-            int descuento = 0;
+            int descuento;
+            string consulta;
             if (factura.Id_descuento != null)
             {
                 descuento = factura.Id_descuento.Id_descuento;
-            }
-            string consulta = "INSERT INTO Facturas (id_usuario_vendedor, id_tipo_factura, " +
+                consulta = "INSERT INTO Facturas (id_usuario_vendedor, id_tipo_factura, " +
                 "total, id_descuento, id_usuario_cliente, fecha, nroFactura, borrado)" +
                             " VALUES (" +
                             factura.Id_usuario_vendedor.Id_usuario + "," +
@@ -95,17 +95,34 @@ namespace AppBTS.Datos.Daos
                             factura.Total + "," +
                             descuento + "," +
                             factura.Id_cliente.Id_usuario + ", '" +
-                            factura.Fecha.ToString("MM/dd/yyyy")+ "'," +
+                            factura.Fecha.ToString("yyyy/MM/dd") + "'," +
                             factura.Nro_factura + ",0)";
+            } else
+            {
+                consulta = "INSERT INTO Facturas (id_usuario_vendedor, id_tipo_factura, " +
+                "total, id_descuento, id_usuario_cliente, fecha, nroFactura, borrado)" +
+                            " VALUES (" +
+                            factura.Id_usuario_vendedor.Id_usuario + "," +
+                             factura.Tipo_factura.Id_tipo_factura + "," +
+                            factura.Total + "," +
+                            "NULL" + "," +
+                            factura.Id_cliente.Id_usuario + ", '" +
+                            factura.Fecha.ToString("yyyy/MM/dd") + "'," +
+                            factura.Nro_factura + ",0)";
+            }
+            
 
+            
+            
             BDHelper.obtenerInstancia().conectarConTransaccion();
             BDHelper.obtenerInstancia().EjecutarConTransaccion(consulta);
-                foreach (var itemFactura in factura.FacturaDetalle)
+            var id_factura = BDHelper.obtenerInstancia().ConsultaSQLScalar("SELECT IDENT_CURRENT('Facturas')");
+                foreach (Detalle_Factura itemFactura in factura.FacturaDetalle)
                 {
                     string consultaDetalle = "INSERT INTO Detalles_Facturas (id_factura, cantidad, " +
                     "subtotal, id_producto, borrado)" +
                                 " VALUES (" +
-                                factura.Id_factura + "," +
+                                id_factura + "," +
                                  itemFactura.Cantidad + "," +
                                 itemFactura.Subtotal + "," +
                                 itemFactura.Id_producto.Id_producto + ",0)";
