@@ -217,7 +217,7 @@
             this.txtCantidad.TabIndex = 1;
             this.txtCantidad.Text = "1";
             this.txtCantidad.ValidatingType = typeof(int);
-            this.txtCantidad.Leave += new System.EventHandler(this.txtCantidad_Leave);
+            this.txtCantidad.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCantidad_KeyUp);
             // 
             // txtImporte
             // 

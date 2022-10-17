@@ -94,7 +94,6 @@ namespace AppBTS.Presentacion
             txtNroFact.Enabled = opcion;
             dtpFecha.Enabled = opcion;
             txtCUIT.Enabled = opcion;
-            txtDescuento.Enabled = opcion;
             btnCUIT.Enabled = opcion;
             cboProducto.Enabled = opcion;
             txtCantidad.Enabled = opcion;
@@ -217,7 +216,7 @@ namespace AppBTS.Presentacion
                 }
                 );
                 //ver cómo hacer para que sólo se haga si se crea bien la factura
-                oProductoService.ReducirStock(idProd, cantidad);
+                //oProductoService.ReducirStock(idProd, cantidad);
             }
             else
             {
@@ -284,6 +283,10 @@ namespace AppBTS.Presentacion
                         oFactura.Nro_factura = Convert.ToInt32(txtNroFact.Text);
                         oFactura.Borrado = false;
 
+                        // ME PARECE QUE HAY QUE CAMBIAR LA BD, USAR UN STRING PARA NRO FACTURA ASI PODEMOS USAR LA FUNCION PAD LEFT Y
+                        // QUE SEA "00000000004" EL NRO FACTURA, SIENDO 4 EL ID_FACTURA (OSEA LO HARIAMOS DEL LADO DEL DAO YA QUE
+                        // NECESITAMOS RECUPERAR EL IDENTITY (ID_FACTURA ))
+                        
                         oFactura.FacturaDetalle = listaFacturaDetalle;
                         //oDetalleFactura.Cantidad = listaFacturaDetalle;
                         //oDetalleFactura.Id_producto = (Producto)cboProducto.SelectedItem;
@@ -292,6 +295,12 @@ namespace AppBTS.Presentacion
 
                         if (oFacturaService.Create(oFactura))
                         {
+                            
+                            foreach (Detalle_Factura detalle in oFactura.FacturaDetalle)
+                            {
+                                oProductoService.ReducirStock(detalle.Id_producto.Id_producto, detalle.Cantidad);
+                                //MessageBox.Show("Se actualizo el producto " + detalle.Id_producto.Id_producto + ", nuevo stock: " + (detalle.Id_producto.Stock-detalle.Cantidad) + " stock anterior: " + detalle.Id_producto.Stock + ", cantidad: " + detalle.Cantidad);
+                            }
                             MessageBox.Show("Se creó con éxito una nueva Factura.");
                         }
                         else
@@ -397,16 +406,7 @@ namespace AppBTS.Presentacion
             }
         }
 
-        private void txtCantidad_Leave(object sender, EventArgs e)
-        {
-            if (cboProducto.SelectedItem != null)
-            {
-                int cantidad;
-                int.TryParse(txtCantidad.Text, out cantidad);
-                Producto producto = (Producto)cboProducto.SelectedItem;
-                txtImporte.Text = (producto.Precio * cantidad).ToString("C");
-            }
-        }
+        
 
         private void txtDescuento_Leave(object sender, EventArgs e)
         {
@@ -501,6 +501,7 @@ namespace AppBTS.Presentacion
             {
                 var detalleSeleccionado = (Detalle_Factura)dgvDetalle.CurrentRow.DataBoundItem;
                 listaFacturaDetalle.Remove(detalleSeleccionado);
+                //MAL, VER COMO ESTA IMPLEMENTADO EN DET_FACTURA
             }
         }
 
@@ -512,6 +513,18 @@ namespace AppBTS.Presentacion
         private void btnNuevo_Click_1(object sender, EventArgs e)
         {
 
+        }
+        
+
+        private void txtCantidad_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (cboProducto.SelectedItem != null)
+            {
+                int cantidad;
+                int.TryParse(txtCantidad.Text, out cantidad);
+                Producto producto = (Producto)cboProducto.SelectedItem;
+                txtImporte.Text = (producto.Precio * cantidad).ToString("C");
+            }
         }
 
 
