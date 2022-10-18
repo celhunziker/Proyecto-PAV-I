@@ -130,6 +130,21 @@ namespace AppBTS.Datos.Daos
                     BDHelper.obtenerInstancia().EjecutarConTransaccion(consultaDetalle); 
                      
                 }
+                foreach (Detalle_Cobro itemCobro in factura.DetalleCobro) 
+                {
+                //DA EL MISMO ERROR QUE CON DESCUENTO
+                string consultaDetalleCobro = "INSERT INTO Detalles_Cobros (id_factura, id_medio_cobro," +
+                "id_marca_banco, id_marca_tarjeta, cuotas, monto, valor_cuota, codigo_autorizacion, borrado)" +
+                " VALUES (" +
+                id_factura + "," +
+                itemCobro.Medio_pago.Id_medio_cobro + "," +
+                itemCobro.Id_marca_banco.Id_marca_banco + "," +
+                itemCobro.Id_marca_tarjeta.Id_Marca_Tarjeta + "," +
+                itemCobro.Cuotas + "," +
+                itemCobro.Valor_couta + "," +
+                itemCobro.Codigo_confirmacion + ",0";
+                BDHelper.obtenerInstancia().EjecutarConTransaccion(consultaDetalleCobro);
+            }
             
             //VER ESTO
             return BDHelper.obtenerInstancia().Desconectar();

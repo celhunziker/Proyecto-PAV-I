@@ -20,6 +20,7 @@ namespace AppBTS.Entidades
         public int Nro_factura { get; set; }
 
         public IList<Detalle_Factura> FacturaDetalle { get; set; }
+        public IList<Detalle_Cobro> DetalleCobro { get; set; }
         public Tipo_Cliente Tipo_cliente { get; set; }
     }
 }

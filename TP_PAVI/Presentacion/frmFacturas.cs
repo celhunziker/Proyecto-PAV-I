@@ -27,6 +27,7 @@ namespace AppBTS.Presentacion
     {
         Modo modo = Modo.Create;
         private readonly BindingList<Detalle_Factura> listaFacturaDetalle = new BindingList<Detalle_Factura>();
+        private readonly BindingList<Detalle_Cobro> listaDetalleCobro = new BindingList<Detalle_Cobro>();
         IFacturaService oFacturaService = new FacturaService();
         ITipoFacturaService oTipoFacturaService = new TipoFacturaService();
         ITipoClienteService oTipoClienteService = new TipoClienteService();
@@ -84,7 +85,7 @@ namespace AppBTS.Presentacion
             btnAgregarMedioPago.Enabled = opcion;
             btnCancelarMedioPago.Enabled = opcion;
             btnQuitarMedioPago.Enabled = opcion;
-            dvgMedioPago.Enabled = opcion;
+            dgvMedioCobro.Enabled = opcion;
             btnVolverDetalle.Enabled = opcion;
         }
         private void habilitarCamposDetalleFactura(bool opcion)
@@ -288,6 +289,7 @@ namespace AppBTS.Presentacion
                         // NECESITAMOS RECUPERAR EL IDENTITY (ID_FACTURA ))
                         
                         oFactura.FacturaDetalle = listaFacturaDetalle;
+                        oFactura.DetalleCobro = listaDetalleCobro;
                         //oDetalleFactura.Cantidad = listaFacturaDetalle;
                         //oDetalleFactura.Id_producto = (Producto)cboProducto.SelectedItem;
                         //oDetalleFactura.Subtotal = float.Parse(txtImporte.Text);
@@ -507,8 +509,136 @@ namespace AppBTS.Presentacion
 
         private void btnAgregarMedioPago_Click(object sender, EventArgs e)
         {
+            agregarDetalleCobroListaDetalleCobro();
+            CargarGrillaMedioCobro(dgvMedioCobro, listaDetalleCobro);
+            CalcularTotalesMedioCobro();
 
+            InicializarDetalleCobro();
         }
+
+        private void InicializarDetalleCobro()
+        {
+            cboMarcaBanco.SelectedIndex = -1;
+            cboMarcaTarjeta.SelectedIndex = -1;
+            cboCuotas.SelectedIndex = -1;
+            cboMedioPago.SelectedIndex = -1;
+            txtValorCuota.Text = 0.ToString("N2");
+            txtCodAutorizacion.Text = "";
+            txtMonto.Text = "";
+        }
+
+        private void CalcularTotalesMedioCobro()
+        {
+            var monto = listaDetalleCobro.Sum(p => p.Monto);
+            txtCorroborarMonto.Text = monto.ToString();
+
+            var importeTotal = monto ;
+            txtCorroborarMonto.Text = importeTotal.ToString("C");
+        }
+
+        private void CargarGrillaMedioCobro(DataGridView grilla, BindingList<Detalle_Cobro> lista)
+        {
+            grilla.Rows.Clear();
+
+            foreach (Detalle_Cobro oDetalleCobro in lista)
+            {
+                if(oDetalleCobro.Medio_pago.Id_medio_cobro == 1 || oDetalleCobro.Medio_pago.Id_medio_cobro == 4)
+                {
+                    grilla.Rows.Add(oDetalleCobro.Medio_pago.NombreMedioCobro,
+                                null,
+                                null,
+                                null,
+                                null,
+                                oDetalleCobro.Monto,
+                                null);
+                }
+                else
+                {
+                    if(oDetalleCobro.Medio_pago.Id_medio_cobro == 2)
+                    {
+                        grilla.Rows.Add(oDetalleCobro.Medio_pago.NombreMedioCobro,
+                                oDetalleCobro.Id_marca_banco.NombreMarcaBanco,
+                                oDetalleCobro.Id_marca_tarjeta.Nombre,
+                                oDetalleCobro.Cuotas,
+                                oDetalleCobro.Valor_couta,
+                                oDetalleCobro.Monto,
+                                oDetalleCobro.Codigo_confirmacion
+
+                                );
+                    }
+                    else
+                    {
+                        if(oDetalleCobro.Medio_pago.Id_medio_cobro == 3)
+                        {
+                            grilla.Rows.Add(oDetalleCobro.Medio_pago.NombreMedioCobro,
+                                oDetalleCobro.Id_marca_banco.NombreMarcaBanco,
+                                oDetalleCobro.Id_marca_tarjeta.Nombre,
+                                null,
+                                null,
+                                oDetalleCobro.Monto,
+                                oDetalleCobro.Codigo_confirmacion
+                                );
+                        }
+                    }
+                }
+                
+            }
+        }
+
+        private void agregarDetalleCobroListaDetalleCobro()
+        {
+            int monto = 0;
+            int.TryParse(txtMonto.Text, out monto);
+            Medio_Pago medio_pago = (Medio_Pago)cboMedioPago.SelectedItem;
+            Marca_Tarjeta marca_tarjeta = new Marca_Tarjeta();
+            Marca_Banco marca_banco = new Marca_Banco();
+            int cuotas = 0;
+            int valor_cuota = 0;
+            int codigo_confirmacion = 0;
+            //HACERLO CON UN SWITCH CASE
+            if (medio_pago.Id_medio_cobro == 1 || medio_pago.Id_medio_cobro == 4)
+            {
+                marca_tarjeta = null;
+                marca_banco = null;
+                cuotas = 0;
+                valor_cuota = 0;
+                codigo_confirmacion = 0;
+            }
+            else
+            {
+                if (medio_pago.Id_medio_cobro == 2)
+                {
+                    marca_tarjeta = (Marca_Tarjeta)cboMarcaTarjeta.SelectedItem;
+                    marca_banco = (Marca_Banco)cboMarcaBanco.SelectedItem;
+                    cuotas = cboCuotas.SelectedIndex;
+                    valor_cuota = Convert.ToInt32(txtValorCuota.Text);
+                    codigo_confirmacion = Convert.ToInt32(txtCodAutorizacion.Text);
+                }
+                else
+                {
+                    if (medio_pago.Id_medio_cobro == 3)
+                    {
+                        marca_tarjeta = (Marca_Tarjeta)cboMarcaTarjeta.SelectedItem;
+                        marca_banco = (Marca_Banco)cboMarcaBanco.SelectedItem;
+                        cuotas = 0;
+                        valor_cuota = 0;
+                        codigo_confirmacion = Convert.ToInt32(txtCodAutorizacion.Text);
+                    }
+                }
+            }
+            listaDetalleCobro.Add(new Detalle_Cobro()
+            {
+                Medio_pago = medio_pago,
+                Monto = monto,
+                Cuotas = cuotas,
+                Valor_couta = valor_cuota,
+                Codigo_confirmacion = codigo_confirmacion,
+                Id_marca_banco = marca_banco,
+                Id_marca_tarjeta = marca_tarjeta
+
+            }
+                ); ;
+            }
 
         private void btnNuevo_Click_1(object sender, EventArgs e)
         {
@@ -526,7 +656,6 @@ namespace AppBTS.Presentacion
                 txtImporte.Text = (producto.Precio * cantidad).ToString("C");
             }
         }
-
 
 
 
