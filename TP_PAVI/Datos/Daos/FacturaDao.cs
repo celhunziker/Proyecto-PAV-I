@@ -96,7 +96,7 @@ namespace AppBTS.Datos.Daos
                             descuento + "," +
                             factura.Id_cliente.Id_usuario + ", '" +
                             factura.Fecha.ToString("yyyy/MM/dd") + "'," +
-                            factura.Nro_factura + ",0)";
+                            "NULL" + ",0)";
             } else
             {
                 consulta = "INSERT INTO Facturas (id_usuario_vendedor, id_tipo_factura, " +
@@ -108,7 +108,7 @@ namespace AppBTS.Datos.Daos
                             "NULL" + "," +
                             factura.Id_cliente.Id_usuario + ", '" +
                             factura.Fecha.ToString("yyyy/MM/dd") + "'," +
-                            factura.Nro_factura + ",0)";
+                            "NULL" + ",0)";
             }
             
 
@@ -117,7 +117,10 @@ namespace AppBTS.Datos.Daos
             BDHelper.obtenerInstancia().conectarConTransaccion();
             BDHelper.obtenerInstancia().EjecutarConTransaccion(consulta);
             var id_factura = BDHelper.obtenerInstancia().ConsultaSQLScalar("SELECT IDENT_CURRENT('Facturas')");
-                foreach (Detalle_Factura itemFactura in factura.FacturaDetalle)
+            string nroFactura = (id_factura.ToString()).PadLeft(8, '0');
+            consulta = "UPDATE FACTURAS SET nroFactura='" + nroFactura + "' WHERE id_factura=" + id_factura;
+            BDHelper.obtenerInstancia().EjecutarConTransaccion(consulta);
+            foreach (Detalle_Factura itemFactura in factura.FacturaDetalle)
                 {
                     string consultaDetalle = "INSERT INTO Detalles_Facturas (id_factura, cantidad, " +
                     "subtotal, id_producto, borrado)" +

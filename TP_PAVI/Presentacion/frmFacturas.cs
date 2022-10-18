@@ -281,7 +281,6 @@ namespace AppBTS.Presentacion
                         oFactura.Id_descuento = oDescuento;
                         oFactura.Id_cliente = usuario_cliente;
                         oFactura.Fecha = DateTime.Today;
-                        oFactura.Nro_factura = Convert.ToInt32(txtNroFact.Text);
                         oFactura.Borrado = false;
 
                         // ME PARECE QUE HAY QUE CAMBIAR LA BD, USAR UN STRING PARA NRO FACTURA ASI PODEMOS USAR LA FUNCION PAD LEFT Y
@@ -499,12 +498,15 @@ namespace AppBTS.Presentacion
 
         private void btnQuitarMedioPago_Click(object sender, EventArgs e)
         {
-            if (dgvDetalle.CurrentRow != null)
+            if (dgvMedioCobro.CurrentRow != null)
             {
-                var detalleSeleccionado = (Detalle_Factura)dgvDetalle.CurrentRow.DataBoundItem;
-                listaFacturaDetalle.Remove(detalleSeleccionado);
-                //MAL, VER COMO ESTA IMPLEMENTADO EN DET_FACTURA
+                int i = dgvMedioCobro.CurrentRow.Index;
+                listaDetalleCobro.RemoveAt(i);
+                dgvMedioCobro.Rows.RemoveAt(dgvMedioCobro.CurrentRow.Index);
             }
+            CargarGrillaMedioCobro(dgvMedioCobro, listaDetalleCobro);
+            CalcularTotalesMedioCobro();
+            InicializarDetalleCobro();
         }
 
         private void btnAgregarMedioPago_Click(object sender, EventArgs e)
@@ -655,6 +657,15 @@ namespace AppBTS.Presentacion
                 Producto producto = (Producto)cboProducto.SelectedItem;
                 txtImporte.Text = (producto.Precio * cantidad).ToString("C");
             }
+        }
+
+        private void btnCancelarMedioPago_Click(object sender, EventArgs e)
+        {
+            listaDetalleCobro.Clear();
+            CargarGrillaMedioCobro(dgvMedioCobro, listaDetalleCobro);
+            CalcularTotalesMedioCobro();
+
+            InicializarDetalleCobro();
         }
 
 
