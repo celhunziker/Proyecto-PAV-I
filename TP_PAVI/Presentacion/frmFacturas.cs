@@ -23,6 +23,7 @@ namespace AppBTS.Presentacion
         Update,
         Delete
     }
+    //CUIT A USAR 55881111112
     public partial class frmFacturas : Form
     {
         Modo modo = Modo.Create;
@@ -524,7 +525,7 @@ namespace AppBTS.Presentacion
 
         private void btnAgregarMedioPago_Click(object sender, EventArgs e)
         {
-            CalcularValorCuota();
+            //CalcularValorCuota();
             agregarDetalleCobroListaDetalleCobro();
             CargarGrillaMedioCobro(dgvMedioCobro, listaDetalleCobro);
             CalcularTotalesMedioCobro();
@@ -546,7 +547,7 @@ namespace AppBTS.Presentacion
         private void CalcularValorCuota()
         {
             var monto = Convert.ToInt32(txtMonto.Text);
-            var cantCuotas = Convert.ToInt32(cboCuotas.Text);
+            var cantCuotas = Convert.ToInt32(cboCuotas.SelectedItem);
             var valorCuota = monto / cantCuotas;
             txtValorCuota.Text = valorCuota.ToString("C");
 

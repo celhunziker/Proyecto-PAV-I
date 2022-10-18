@@ -136,16 +136,42 @@ namespace AppBTS.Datos.Daos
                 foreach (Detalle_Cobro itemCobro in factura.DetalleCobro) 
                 {
                 //DA EL MISMO ERROR QUE CON DESCUENTO
+                int marca_banco = 0;
+                int marca_tarjeta = 0;
+                int cuotas = 0;
+                float valor_cuota = 0;
+                int cod_confirmacion = 0;
+                if (itemCobro.Id_marca_banco != null)
+                {
+                    marca_banco = itemCobro.Id_marca_banco.Id_marca_banco;
+                }
+                if (itemCobro.Id_marca_tarjeta != null)
+                {
+                    marca_tarjeta = itemCobro.Id_marca_tarjeta.Id_Marca_Tarjeta;
+                }
+                if (itemCobro.Cuotas != null)
+                {
+                    cuotas = itemCobro.Cuotas;
+                }
+                if (itemCobro.Valor_couta != null)
+                {
+                    valor_cuota = itemCobro.Valor_couta;
+                }
+                if (itemCobro.Codigo_confirmacion != null)
+                {
+                    cod_confirmacion = itemCobro.Codigo_confirmacion;
+                }
                 string consultaDetalleCobro = "INSERT INTO Detalles_Cobros (id_factura, id_medio_cobro," +
                 "id_marca_banco, id_marca_tarjeta, cuotas, monto, valor_cuota, codigo_autorizacion, borrado)" +
                 " VALUES (" +
                 id_factura + "," +
                 itemCobro.Medio_pago.Id_medio_cobro + "," +
-                itemCobro.Id_marca_banco.Id_marca_banco + "," +
-                itemCobro.Id_marca_tarjeta.Id_Marca_Tarjeta + "," +
-                itemCobro.Cuotas + "," +
-                itemCobro.Valor_couta + "," +
-                itemCobro.Codigo_confirmacion + ",0";
+                marca_banco + "," +
+                marca_tarjeta + "," +
+                cuotas + "," +
+                itemCobro.Monto + "," +
+                valor_cuota + "," +
+                cod_confirmacion + ",0)";
                 BDHelper.obtenerInstancia().EjecutarConTransaccion(consultaDetalleCobro);
             }
             
