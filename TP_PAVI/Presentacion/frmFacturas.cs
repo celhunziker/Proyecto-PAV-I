@@ -52,6 +52,13 @@ namespace AppBTS.Presentacion
             //ver modos
             InitializeComponent();
             this.usuario_vendedor = usuario;
+
+
+        }
+        void Program_MyEvent(object sender, EventArgs e)
+        {
+            if (txtCUIT.Text.Length > 0 && /*txtCantidad.Text.Length > 0 &&*/ cboTipoFact.SelectedIndex >= 0 && cboTipoCliente.SelectedIndex >= 0 && dgvDetalle.Rows.Count > 0 /*&& cboProducto.SelectedIndex >= 0*/)
+                btnPasarMedioPago.Enabled = true;
         }
 
         private void frmFacturas_Load(object sender, EventArgs e)
@@ -71,17 +78,24 @@ namespace AppBTS.Presentacion
             cboProducto.SelectedIndex = -1;
             habilitarCamposMedioPago(false);
             habilitarCamposDetalleFactura(true);
+            btnPasarMedioPago.Enabled = false;
+            txtCUIT.TextChanged += Program_MyEvent;
+            cboTipoFact.SelectionChangeCommitted += Program_MyEvent;
+            cboTipoCliente.SelectionChangeCommitted += Program_MyEvent;
+            dgvDetalle.RowsAdded += Program_MyEvent;
+            //cboProducto.SelectionChangeCommitted += Program_MyEvent;
+            //txtCantidad.TextChanged += Program_MyEvent;
         }
 
         private void habilitarCamposMedioPago(bool opcion)
         {
             cboMedioPago.Enabled = opcion;
-            cboMarcaTarjeta.Enabled = opcion;
-            cboMarcaBanco.Enabled = opcion;
-            cboCuotas.Enabled = opcion;
-            txtCodAutorizacion.Enabled = opcion;
-            txtMonto.Enabled = opcion;
-            txtValorCuota.Enabled = opcion;
+            cboMarcaTarjeta.Enabled = false;
+            cboMarcaBanco.Enabled = false;
+            cboCuotas.Enabled = false;
+            txtCodAutorizacion.Enabled = false;
+            txtMonto.Enabled = false;
+            txtValorCuota.Enabled = false;
             btnAgregarMedioPago.Enabled = opcion;
             btnCancelarMedioPago.Enabled = opcion;
             btnQuitarMedioPago.Enabled = opcion;
@@ -102,7 +116,6 @@ namespace AppBTS.Presentacion
             btnQuitar.Enabled = opcion;
             btnCancelar.Enabled = opcion;
             dgvDetalle.Enabled = opcion;
-            btnPasarMedioPago.Enabled = opcion;
         }
 
         private void CargarComboMedioPago(ComboBox combo, List<Medio_Pago> lista)
@@ -511,10 +524,11 @@ namespace AppBTS.Presentacion
 
         private void btnAgregarMedioPago_Click(object sender, EventArgs e)
         {
+            CalcularValorCuota();
             agregarDetalleCobroListaDetalleCobro();
             CargarGrillaMedioCobro(dgvMedioCobro, listaDetalleCobro);
             CalcularTotalesMedioCobro();
-
+           
             InicializarDetalleCobro();
         }
 
@@ -527,6 +541,15 @@ namespace AppBTS.Presentacion
             txtValorCuota.Text = 0.ToString("N2");
             txtCodAutorizacion.Text = "";
             txtMonto.Text = "";
+        }
+
+        private void CalcularValorCuota()
+        {
+            var monto = Convert.ToInt32(txtMonto.Text);
+            var cantCuotas = Convert.ToInt32(cboCuotas.Text);
+            var valorCuota = monto / cantCuotas;
+            txtValorCuota.Text = valorCuota.ToString("C");
+
         }
 
         private void CalcularTotalesMedioCobro()
@@ -666,6 +689,43 @@ namespace AppBTS.Presentacion
             CalcularTotalesMedioCobro();
 
             InicializarDetalleCobro();
+        }
+
+
+        private void cboMedioPago_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (cboMedioPago.Text == "Crédito")
+            {
+                cboMarcaBanco.Enabled = true;
+                cboMarcaTarjeta.Enabled = true;
+                cboCuotas.Enabled = true;
+                txtValorCuota.Enabled = true;
+                txtMonto.Enabled = true;
+                txtCodAutorizacion.Enabled = true;
+            }
+            if (cboMedioPago.Text == "Débito")
+            {
+                cboMarcaBanco.Enabled = true;
+                cboMarcaTarjeta.Enabled = true;
+                txtCodAutorizacion.Enabled = true;
+                txtMonto.Enabled = true;
+                cboCuotas.Enabled = false;
+                txtValorCuota.Enabled = false;
+            }
+            if (cboMedioPago.Text == "Transferencia" || cboMedioPago.Text == "Efectivo")
+            {
+                txtMonto.Enabled = true;
+                cboMarcaBanco.Enabled = false;
+                cboMarcaTarjeta.Enabled = false;
+                cboCuotas.Enabled = false;
+                txtValorCuota.Enabled = false;
+                txtCodAutorizacion.Enabled = false;
+            }
+        }
+
+        private void txtValorCuota_Leave(object sender, EventArgs e)
+        {
+            CalcularValorCuota();
         }
 
 
