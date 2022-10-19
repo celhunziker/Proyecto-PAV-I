@@ -136,11 +136,11 @@ namespace AppBTS.Datos.Daos
                 foreach (Detalle_Cobro itemCobro in factura.DetalleCobro) 
                 {
                 //DA EL MISMO ERROR QUE CON DESCUENTO
-                int marca_banco = 0;
-                int marca_tarjeta = 0;
-                int cuotas = 0;
-                float valor_cuota = 0;
-                int cod_confirmacion = 0;
+                Object marca_banco = "NULL";
+                Object marca_tarjeta = "NULL";
+                Object cuotas = "NULL";
+                Object valor_cuota = "NULL";
+                Object cod_confirmacion = "NULL";
                 if (itemCobro.Id_marca_banco != null)
                 {
                     marca_banco = itemCobro.Id_marca_banco.Id_marca_banco;
@@ -149,15 +149,15 @@ namespace AppBTS.Datos.Daos
                 {
                     marca_tarjeta = itemCobro.Id_marca_tarjeta.Id_Marca_Tarjeta;
                 }
-                if (itemCobro.Cuotas != null)
+                if (itemCobro.Cuotas != 0)
                 {
                     cuotas = itemCobro.Cuotas;
                 }
-                if (itemCobro.Valor_couta != null)
+                if (itemCobro.Valor_couta != 0)
                 {
                     valor_cuota = itemCobro.Valor_couta;
                 }
-                if (itemCobro.Codigo_confirmacion != null)
+                if (itemCobro.Codigo_confirmacion != 0)
                 {
                     cod_confirmacion = itemCobro.Codigo_confirmacion;
                 }

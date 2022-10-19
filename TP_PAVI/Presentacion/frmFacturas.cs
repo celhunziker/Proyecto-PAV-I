@@ -300,44 +300,58 @@ namespace AppBTS.Presentacion
                         // ME PARECE QUE HAY QUE CAMBIAR LA BD, USAR UN STRING PARA NRO FACTURA ASI PODEMOS USAR LA FUNCION PAD LEFT Y
                         // QUE SEA "00000000004" EL NRO FACTURA, SIENDO 4 EL ID_FACTURA (OSEA LO HARIAMOS DEL LADO DEL DAO YA QUE
                         // NECESITAMOS RECUPERAR EL IDENTITY (ID_FACTURA ))
-                        
+
                         oFactura.FacturaDetalle = listaFacturaDetalle;
                         oFactura.DetalleCobro = listaDetalleCobro;
                         //oDetalleFactura.Cantidad = listaFacturaDetalle;
                         //oDetalleFactura.Id_producto = (Producto)cboProducto.SelectedItem;
                         //oDetalleFactura.Subtotal = float.Parse(txtImporte.Text);
-
-
-                        if (oFacturaService.Create(oFactura))
+                        if (txtCorroborarMonto.Text == txtImporteTotal.Text)
                         {
-                            
-                            foreach (Detalle_Factura detalle in oFactura.FacturaDetalle)
+
+                            if (oFacturaService.Create(oFactura))
                             {
-                                oProductoService.ReducirStock(detalle.Id_producto.Id_producto, detalle.Cantidad);
-                                //MessageBox.Show("Se actualizo el producto " + detalle.Id_producto.Id_producto + ", nuevo stock: " + (detalle.Id_producto.Stock-detalle.Cantidad) + " stock anterior: " + detalle.Id_producto.Stock + ", cantidad: " + detalle.Cantidad);
+
+                                foreach (Detalle_Factura detalle in oFactura.FacturaDetalle)
+                                {
+                                    oProductoService.ReducirStock(detalle.Id_producto.Id_producto, detalle.Cantidad);
+                                    //MessageBox.Show("Se actualizo el producto " + detalle.Id_producto.Id_producto + ", nuevo stock: " + (detalle.Id_producto.Stock-detalle.Cantidad) + " stock anterior: " + detalle.Id_producto.Stock + ", cantidad: " + detalle.Cantidad);
+                                }
+                                MessageBox.Show("Se creó con éxito una nueva Factura.");
                             }
-                            MessageBox.Show("Se creó con éxito una nueva Factura.");
+                            else
+                            {
+                                MessageBox.Show("Error al crear una nueva Factura.");
+                            }
+                            this.Close();
                         }
                         else
                         {
-                            MessageBox.Show("Error al crear una nueva Factura.");
+                            MessageBox.Show("EL IMPORTE TOTAL NO COINCIDE CON EL MONTO A PAGAR.");
                         }
 
-                        break;
+                            break;
+                        
                     }
                 case Modo.Read:
+                    this.Close();
                     break;
                 case Modo.Update:
                     {
-                        // update oBugSeleccionado
+                        this.Close();
                         break;
+                        
                     }
                 case Modo.Delete:
+                    this.Close();
                     break;
+                    
                 default:
+                    this.Close();
                     break;
+                    
             }
-            this.Close();
+            
             //try
             //{
             //    Factura factura = new Factura
@@ -539,7 +553,7 @@ namespace AppBTS.Presentacion
             cboMarcaTarjeta.SelectedIndex = -1;
             cboCuotas.SelectedIndex = -1;
             cboMedioPago.SelectedIndex = -1;
-            txtValorCuota.Text = 0.ToString("N2");
+            txtValorCuota.Text = "";
             txtCodAutorizacion.Text = "";
             txtMonto.Text = "";
         }
@@ -615,11 +629,12 @@ namespace AppBTS.Presentacion
         {
             int monto = 0;
             int.TryParse(txtMonto.Text, out monto);
+            //int monto = Convert.ToInt32(txtCorroborarMonto.Text);
             Medio_Pago medio_pago = (Medio_Pago)cboMedioPago.SelectedItem;
             Marca_Tarjeta marca_tarjeta = new Marca_Tarjeta();
             Marca_Banco marca_banco = new Marca_Banco();
             int cuotas = 0;
-            int valor_cuota = 0;
+            float valor_cuota = 0;
             int codigo_confirmacion = 0;
             //HACERLO CON UN SWITCH CASE
             if (medio_pago.Id_medio_cobro == 1 || medio_pago.Id_medio_cobro == 4)
@@ -637,7 +652,9 @@ namespace AppBTS.Presentacion
                     marca_tarjeta = (Marca_Tarjeta)cboMarcaTarjeta.SelectedItem;
                     marca_banco = (Marca_Banco)cboMarcaBanco.SelectedItem;
                     cuotas = cboCuotas.SelectedIndex;
-                    valor_cuota = Convert.ToInt32(txtValorCuota.Text);
+                    //valor_cuota = Convert.ToInt32(txtValorCuota.Text);
+                    float contenido = string.IsNullOrEmpty(txtValorCuota.Text) ? (float)0 : float.Parse(txtValorCuota.Text);
+                    //valor_cuota = (float)Convert.ToDouble(txtValorCuota.Text);
                     codigo_confirmacion = Convert.ToInt32(txtCodAutorizacion.Text);
                 }
                 else
