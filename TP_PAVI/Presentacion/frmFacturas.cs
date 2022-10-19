@@ -107,7 +107,7 @@ namespace AppBTS.Presentacion
         {
             cboTipoFact.Enabled = opcion;
             cboTipoCliente.Enabled = opcion;
-            txtNroFact.Enabled = opcion;
+            //txtNroFact.Enabled = opcion;
             dtpFecha.Enabled = opcion;
             txtCUIT.Enabled = opcion;
             btnCUIT.Enabled = opcion;
@@ -192,26 +192,9 @@ namespace AppBTS.Presentacion
 
             InicializarDetalle();
 
+            //CalcularTotales();
 
-
-            //Detalle_Factura df = new Detalle_Factura();
-
-            ////id_factura e id_detalle_factura se ingresan o crean en mappeo
-            //df.NroItem = listaFacturaDetalleGrid.Count + 1;
-            //df.Id_producto = producto;
-            ////df.Descripcion = producto.Descripcion;
-            //df.Cantidad = cantidad;
-            //df.Subtotal = producto.Precio * cantidad;
-            //df.Borrado = false;
-
-            //Object aux = (Object)Activator.CreateInstance(typeof(Object), new object[] { NroItem, Id_producto, Descripcion, Cantidad, Precio, Subtotal }); 
-
-            //listaFacturaDetalleGrid.Add();
-            //listaFacturaDetalle.Add(df);
-
-            CalcularTotales();
-
-            InicializarDetalle();
+            //InicializarDetalle();
         }
 
         private void agregarDetalleListaFacturaDetalle()
@@ -318,6 +301,8 @@ namespace AppBTS.Presentacion
                                     //MessageBox.Show("Se actualizo el producto " + detalle.Id_producto.Id_producto + ", nuevo stock: " + (detalle.Id_producto.Stock-detalle.Cantidad) + " stock anterior: " + detalle.Id_producto.Stock + ", cantidad: " + detalle.Cantidad);
                                 }
                                 MessageBox.Show("Se creó con éxito una nueva Factura.");
+                                MessageBox.Show(MostrarFactura(oFactura));
+                                
                             }
                             else
                             {
@@ -351,34 +336,17 @@ namespace AppBTS.Presentacion
                     break;
                     
             }
-            
-            //try
-            //{
-            //    Factura factura = new Factura
-            //    {
-            //        Fecha = dtpFecha.Value,
-            //        Tipo_cliente = (Tipo_Cliente)cboTipoCliente.SelectedItem,
-            //        Tipo_factura = (Tipo_Factura)cboTipoFact.SelectedItem,
-            //        FacturaDetalle = listaFacturaDetalle,
-            //        Total = float.Parse(txtSubtotal.Text),
-            //        //Id_Descuento =(Descuento)txtDescuento.Text
-            //        //falta direccion
-            //    };
+        }
 
-            //    if (oFacturaService.ValidarDatos(factura))
-            //    {
-            //        oFacturaService.CrearFactura(factura);
-
-            //        MessageBox.Show(string.Concat("La factura nro: ", factura.Id_factura, " se generó correctamente."), "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //        InicializarFormulario();
-            //    }
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Error al registrar la factura! " + ex.Message + ex.StackTrace, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+        private string MostrarFactura(Factura oFactura)
+        {
+            string factura = "Factura N° " + oFactura.Id_factura +
+                "\t Fecha: " + oFactura.Fecha +
+                "\t Tipo Factura: " + oFactura.Tipo_factura.Nombre +
+                "\t CUIT cliente: " + oFactura.Id_cliente.CUIT +
+                "\t CUIT vendedor: " + oFactura.Id_usuario_vendedor.CUIT +
+                "\t Total: " + oFactura.Total;
+            return factura;
         }
 
         private void BtnNuevo_Click(object sender, EventArgs e)
@@ -392,9 +360,7 @@ namespace AppBTS.Presentacion
             Usuario usuario = new Usuario();
             btnAgregar.Enabled = false;
             txtDescuento.Text = (0).ToString("N2");
-            txtNroFactMal.Text = "1";
             cboTipoFact.SelectedIndex = -1;
-            txtNroFactMal.Text = "";
             txtDireccion.Text = usuario.Direccion;
             cboTipoCliente.SelectedIndex = -1;
             txtDireccion.Text = "";
@@ -495,6 +461,7 @@ namespace AppBTS.Presentacion
                 else
                 {
                     MessageBox.Show("No existe un cliente registrado con ese CUIT.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    txtCUIT.Clear();
                     // ACA AGREGAR LA OPCION DE DAR DE ALTA UN NUEVO USUARIO SI EL CUIT NO EXISTE
                 }
             }
@@ -511,8 +478,17 @@ namespace AppBTS.Presentacion
 
         private void btnMedioPago_Click(object sender, EventArgs e)
         {
-            habilitarCamposMedioPago(true);
-            habilitarCamposDetalleFactura(false);
+            if(txtDireccion.Text == "")
+            {
+                MessageBox.Show("No buscó el cliente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            }
+            else
+            {
+                habilitarCamposMedioPago(true);
+                habilitarCamposDetalleFactura(false);
+            }
+            
+
         }
 
 
@@ -540,11 +516,50 @@ namespace AppBTS.Presentacion
         private void btnAgregarMedioPago_Click(object sender, EventArgs e)
         {
             //CalcularValorCuota();
-            agregarDetalleCobroListaDetalleCobro();
-            CargarGrillaMedioCobro(dgvMedioCobro, listaDetalleCobro);
-            CalcularTotalesMedioCobro();
-           
-            InicializarDetalleCobro();
+            if (ValidarCamposCobro()) {
+                agregarDetalleCobroListaDetalleCobro();
+                CargarGrillaMedioCobro(dgvMedioCobro, listaDetalleCobro);
+                CalcularTotalesMedioCobro();
+
+                InicializarDetalleCobro();
+            }
+            else
+            {
+                MessageBox.Show("FALTA COMPLETAR CAMPOS.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            };
+            
+        }
+
+        private bool ValidarCamposCobro()
+        {
+            bool validador = false;
+            if(cboMedioPago.SelectedValue != null)
+            {
+                if(cboMedioPago.Text == "Crédito")
+                {
+                    validador = (cboMarcaBanco.SelectedValue != null &&
+                        cboMarcaTarjeta.SelectedValue != null && 
+                        cboCuotas.SelectedValue != null &&
+                        txtValorCuota.Text != "" &&
+                        txtMonto.Text != "" &&
+                        txtCodAutorizacion.Text != "");
+                }
+                if (cboMedioPago.Text == "Débito")
+                {
+                    validador = (cboMarcaBanco.SelectedValue != null &&
+                        cboMarcaTarjeta.SelectedValue != null &&
+                        txtMonto.Text != "" &&
+                        txtCodAutorizacion.Text != "");
+                }
+                if (cboMedioPago.Text == "Transferencia" || cboMedioPago.Text == "Efectivo")
+                {
+                    validador = (
+                        txtMonto.Text != "" );
+                }
+            }
+            else { validador = false; }
+            return validador;
+            
         }
 
         private void InicializarDetalleCobro()

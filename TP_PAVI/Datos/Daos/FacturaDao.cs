@@ -110,13 +110,14 @@ namespace AppBTS.Datos.Daos
                             factura.Fecha.ToString("yyyy/MM/dd") + "'," +
                             "NULL" + ",0)";
             }
-            
 
-            
-            
+
+
+
             BDHelper.obtenerInstancia().conectarConTransaccion();
             BDHelper.obtenerInstancia().EjecutarConTransaccion(consulta);
             var id_factura = BDHelper.obtenerInstancia().ConsultaSQLScalar("SELECT IDENT_CURRENT('Facturas')");
+            factura.Id_factura =Convert.ToInt32(id_factura);
             string nroFactura = (id_factura.ToString()).PadLeft(8, '0');
             consulta = "UPDATE FACTURAS SET nroFactura='" + nroFactura + "' WHERE id_factura=" + id_factura;
             BDHelper.obtenerInstancia().EjecutarConTransaccion(consulta);
@@ -135,7 +136,6 @@ namespace AppBTS.Datos.Daos
                 }
                 foreach (Detalle_Cobro itemCobro in factura.DetalleCobro) 
                 {
-                //DA EL MISMO ERROR QUE CON DESCUENTO
                 Object marca_banco = "NULL";
                 Object marca_tarjeta = "NULL";
                 Object cuotas = "NULL";
