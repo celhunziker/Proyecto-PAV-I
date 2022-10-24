@@ -24,8 +24,8 @@ namespace AppBTS.Presentacion
 
         private void frmReporteProductosVendidos_Load(object sender, EventArgs e)
         {
-            this.dsReporteProductosVendidosBindingSource.DataSource = this.dsReporteProductosVendidos;
-            this.rpvProductosVendidos.RefreshReport();
+            //this.dsReporteProductosVendidosBindingSource.DataSource = this.dsReporteProductosVendidos;
+            //this.rpvProductosVendidos.RefreshReport();
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)
@@ -35,7 +35,9 @@ namespace AppBTS.Presentacion
                 rpvProductosVendidos.LocalReport.SetParameters(new ReportParameter[]
                                    { new ReportParameter("prFechaDesde", dtpFechaDesde.Value.ToString("dd/MM/yyyy")),
                                      new ReportParameter("prFechaHasta", dtpFechaHasta.Value.ToString("dd/MM/yyyy"))});
-                this.dsReporteProductosVendidosBindingSource.DataSource = oFactura.RecuperarProductosAgrupados(dtpFechaDesde.Value.ToString("yyyy-MM-dd"),dtpFechaHasta.Value.ToString("yyyy-MM-dd"));
+                rpvProductosVendidos.LocalReport.DataSources.Clear();
+                rpvProductosVendidos.LocalReport.DataSources.Add(new ReportDataSource("DSReporteProductosVendidos", oFactura.RecuperarProductosAgrupados(dtpFechaDesde.Value.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.ToString("yyyy-MM-dd"))));
+                rpvProductosVendidos.RefreshReport();
             }
         }
 
