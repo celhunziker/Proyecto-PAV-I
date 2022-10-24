@@ -36,11 +36,12 @@
             this.tipoDeProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clasesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.discplinasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cOMPRARToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.soporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cOMPRARToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteProductosVendidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,7 +64,8 @@
             this.tipoDeProductosToolStripMenuItem,
             this.clasesToolStripMenuItem,
             this.discplinasToolStripMenuItem,
-            this.cOMPRARToolStripMenuItem});
+            this.cOMPRARToolStripMenuItem,
+            this.reporteProductosVendidosToolStripMenuItem});
             this.usuariosToolStripMenuItem1.Name = "usuariosToolStripMenuItem1";
             this.usuariosToolStripMenuItem1.Size = new System.Drawing.Size(60, 20);
             this.usuariosToolStripMenuItem1.Text = "Soporte";
@@ -71,44 +73,51 @@
             // usuariosToolStripMenuItem2
             // 
             this.usuariosToolStripMenuItem2.Name = "usuariosToolStripMenuItem2";
-            this.usuariosToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.usuariosToolStripMenuItem2.Size = new System.Drawing.Size(223, 22);
             this.usuariosToolStripMenuItem2.Text = "Usuarios";
             this.usuariosToolStripMenuItem2.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // productosToolStripMenuItem1
             // 
             this.productosToolStripMenuItem1.Name = "productosToolStripMenuItem1";
-            this.productosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.productosToolStripMenuItem1.Size = new System.Drawing.Size(223, 22);
             this.productosToolStripMenuItem1.Text = "Productos";
             this.productosToolStripMenuItem1.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
             // 
             // marcasToolStripMenuItem
             // 
             this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
-            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.marcasToolStripMenuItem.Text = "Marcas";
             this.marcasToolStripMenuItem.Click += new System.EventHandler(this.marcasToolStripMenuItem_Click);
             // 
             // tipoDeProductosToolStripMenuItem
             // 
             this.tipoDeProductosToolStripMenuItem.Name = "tipoDeProductosToolStripMenuItem";
-            this.tipoDeProductosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tipoDeProductosToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.tipoDeProductosToolStripMenuItem.Text = "Tipo de Productos";
             this.tipoDeProductosToolStripMenuItem.Click += new System.EventHandler(this.tipoProductosToolStripMenuItem_Click);
             // 
             // clasesToolStripMenuItem
             // 
             this.clasesToolStripMenuItem.Name = "clasesToolStripMenuItem";
-            this.clasesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clasesToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.clasesToolStripMenuItem.Text = "Clases";
             this.clasesToolStripMenuItem.Click += new System.EventHandler(this.clasesToolStripMenuItem_Click);
             // 
             // discplinasToolStripMenuItem
             // 
             this.discplinasToolStripMenuItem.Name = "discplinasToolStripMenuItem";
-            this.discplinasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.discplinasToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.discplinasToolStripMenuItem.Text = "Disciplinas";
             this.discplinasToolStripMenuItem.Click += new System.EventHandler(this.disciplinasToolStripMenuItem_Click);
+            // 
+            // cOMPRARToolStripMenuItem
+            // 
+            this.cOMPRARToolStripMenuItem.Name = "cOMPRARToolStripMenuItem";
+            this.cOMPRARToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.cOMPRARToolStripMenuItem.Text = "COMPRAR";
+            this.cOMPRARToolStripMenuItem.Click += new System.EventHandler(this.cOMPRARToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -136,12 +145,12 @@
             this.productosToolStripMenuItem.Text = "Productos";
             this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
             // 
-            // cOMPRARToolStripMenuItem
+            // reporteProductosVendidosToolStripMenuItem
             // 
-            this.cOMPRARToolStripMenuItem.Name = "cOMPRARToolStripMenuItem";
-            this.cOMPRARToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.cOMPRARToolStripMenuItem.Text = "COMPRAR";
-            this.cOMPRARToolStripMenuItem.Click += new System.EventHandler(this.cOMPRARToolStripMenuItem_Click);
+            this.reporteProductosVendidosToolStripMenuItem.Name = "reporteProductosVendidosToolStripMenuItem";
+            this.reporteProductosVendidosToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.reporteProductosVendidosToolStripMenuItem.Text = "Reporte Productos Vendidos";
+            this.reporteProductosVendidosToolStripMenuItem.Click += new System.EventHandler(this.reporteProductosVendidosToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -180,6 +189,7 @@
         private System.Windows.Forms.ToolStripMenuItem clasesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem discplinasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cOMPRARToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteProductosVendidosToolStripMenuItem;
         //private System.Windows.Forms.ToolStripMenuItem marcasToolStripMenuItem;
     }
 }

@@ -46,6 +46,15 @@ namespace AppBTS.Datos.Daos
             //aux = BDHelper.obtenerInstancia().Desconectar();
             return true;
         }
+
+        internal DataTable RecuperarProductosAgrupados(string fechaDesde, string fechaHasta)
+        {
+            string strSql = "SELECT p.nombre, p.precio, SUM(df.cantidad)  FROM FACTURAS f JOIN " +
+                "DETALLES_FACTURAS df ON f.id_factura=df.id_factura JOIN PRODUCTOS p ON p.id_producto=df.id_producto" +
+                "WHERE f.fecha BETWEEN " + fechaDesde + " AND " + fechaHasta + " GROUP BY p.nombre, p.precio";
+            return BDHelper.obtenerInstancia().consultar(strSql);
+        }
+
         //private Factura ObtenerFactura(int nuevoId)
         //{
         //    string strSql = string.Concat(" SELECT id_factura, ",

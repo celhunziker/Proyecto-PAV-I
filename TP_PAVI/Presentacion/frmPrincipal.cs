@@ -121,5 +121,19 @@ namespace AppBTS
             }
             
         }
+
+        private void reporteProductosVendidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (usuario_logueado.Id_perfil.IdPerfil == 12)
+            {
+                frmReporteProductosVendidos frpv;
+                frpv = new frmReporteProductosVendidos();
+                frpv.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No se tiene acceso.");
+            }
+        }
     }
 }

@@ -3,6 +3,7 @@ using AppBTS.Entidades;
 using AppBTS.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,11 @@ namespace AppBTS.Servicios.Implementaciones
         public bool Create(Factura factura)
         {
             return dao.Create(factura);
+        }
+
+        public DataTable RecuperarProductosAgrupados(string fechaDesde, string fechaHasta)
+        {
+            return dao.RecuperarProductosAgrupados(fechaDesde, fechaHasta);
         }
     }
 }

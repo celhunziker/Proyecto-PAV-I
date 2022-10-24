@@ -1,6 +1,7 @@
 ﻿using AppBTS.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,5 +13,6 @@ namespace AppBTS.Servicios.Interfaces
         bool ValidarDatos(Factura factura);
         bool CrearFacturaConDetalle(Factura factura, Detalle_Factura detalle);
         bool Create(Factura factura);
+        DataTable RecuperarProductosAgrupados(string fechaDesde, string fechaHasta);
     }
 }
