@@ -47,11 +47,27 @@ namespace AppBTS.Datos.Daos
             return true;
         }
 
-        internal DataTable RecuperarProductosAgrupados(string fechaDesde, string fechaHasta)
+        internal DataTable RecuperarProductosAgrupados(string fechaDesde, string fechaHasta, int orden, float monto_minimo, float monto_maximo)
         {
             string strSql = "SELECT p.id_producto as Id_producto, p.nombre as Producto, p.precio as Precio, SUM(df.cantidad) as Cantidad FROM FACTURAS f JOIN " +
                 "DETALLES_FACTURAS df ON f.id_factura=df.id_factura JOIN PRODUCTOS p ON p.id_producto=df.id_producto" +
-                " WHERE f.fecha BETWEEN '" + fechaDesde + "' AND '" + fechaHasta + "' GROUP BY p.nombre, p.precio, p.id_producto ORDER BY p.id_producto";
+                " WHERE f.fecha BETWEEN '" + fechaDesde + "' AND '" + fechaHasta + "' GROUP BY p.nombre, p.precio, p.id_producto " +
+                " HAVING SUM(df.cantidad*p.precio) BETWEEN " + monto_minimo + " AND " + monto_maximo;
+            switch (orden)
+            {
+                case 0:
+                    strSql += " ORDER BY p.id_producto";
+                    break;
+                case 1:
+                    strSql += " ORDER BY p.nombre";
+                    break;
+                case 2:
+                    strSql += " ORDER BY SUM(df.cantidad)";
+                    break;
+                case 3:
+                    strSql += " ORDER BY SUM(df.cantidad*p.precio)";
+                    break;
+            }
             return BDHelper.obtenerInstancia().consultar(strSql);
         }
         internal DataTable RecuperarMediosPagoAgrupados(string fechaDesde, string fechaHasta, int orden, float monto_minimo, float monto_maximo)

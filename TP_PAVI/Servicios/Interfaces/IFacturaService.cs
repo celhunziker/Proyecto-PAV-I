@@ -13,7 +13,7 @@ namespace AppBTS.Servicios.Interfaces
         bool ValidarDatos(Factura factura);
         bool CrearFacturaConDetalle(Factura factura, Detalle_Factura detalle);
         bool Create(Factura factura);
-        DataTable RecuperarProductosAgrupados(string fechaDesde, string fechaHasta);
+        DataTable RecuperarProductosAgrupados(string fechaDesde, string fechaHasta, int orden, float monto_minimo, float monto_maximo);
         DataTable RecuperarMediosPagoAgrupados(string fechaDesde, string fechaHasta, int orden, float monto_minimo, float monto_maximo);
     }
 }

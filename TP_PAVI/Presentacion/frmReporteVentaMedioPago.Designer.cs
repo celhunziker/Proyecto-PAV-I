@@ -155,6 +155,7 @@
             this.txtMontoMaximo.Name = "txtMontoMaximo";
             this.txtMontoMaximo.Size = new System.Drawing.Size(100, 20);
             this.txtMontoMaximo.TabIndex = 17;
+            this.txtMontoMaximo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontoMaximo_KeyPress);
             // 
             // label2
             // 

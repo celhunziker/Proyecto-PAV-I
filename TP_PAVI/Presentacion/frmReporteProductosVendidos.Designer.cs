@@ -37,6 +37,13 @@
             this.rpvProductosVendidos = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dsReporteProductosVendidos = new AppBTS.Reportes.DSReporteProductosVendidos();
             this.dsReporteProductosVendidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cboOrden = new System.Windows.Forms.ComboBox();
+            this.lblOrden = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtMontoMaximo = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtMontoMinimo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dsReporteProductosVendidos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsReporteProductosVendidosBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -88,7 +95,7 @@
             // rpvProductosVendidos
             // 
             this.rpvProductosVendidos.LocalReport.ReportEmbeddedResource = "AppBTS.Reportes.rptProductosVendidos.rdlc";
-            this.rpvProductosVendidos.Location = new System.Drawing.Point(21, 101);
+            this.rpvProductosVendidos.Location = new System.Drawing.Point(12, 188);
             this.rpvProductosVendidos.Name = "rpvProductosVendidos";
             this.rpvProductosVendidos.ServerReport.BearerToken = null;
             this.rpvProductosVendidos.Size = new System.Drawing.Size(767, 337);
@@ -104,11 +111,85 @@
             this.dsReporteProductosVendidosBindingSource.DataSource = this.dsReporteProductosVendidos;
             this.dsReporteProductosVendidosBindingSource.Position = 0;
             // 
+            // cboOrden
+            // 
+            this.cboOrden.AllowDrop = true;
+            this.cboOrden.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboOrden.FormattingEnabled = true;
+            this.cboOrden.Items.AddRange(new object[] {
+            "Id producto",
+            "Nombre producto",
+            "Unidades Vendidas",
+            "Dinero generado"});
+            this.cboOrden.Location = new System.Drawing.Point(172, 88);
+            this.cboOrden.Name = "cboOrden";
+            this.cboOrden.Size = new System.Drawing.Size(200, 21);
+            this.cboOrden.TabIndex = 12;
+            // 
+            // lblOrden
+            // 
+            this.lblOrden.AutoSize = true;
+            this.lblOrden.Location = new System.Drawing.Point(97, 91);
+            this.lblOrden.Name = "lblOrden";
+            this.lblOrden.Size = new System.Drawing.Size(66, 13);
+            this.lblOrden.TabIndex = 13;
+            this.lblOrden.Text = "Ordenar por:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(125, 127);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(36, 13);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "desde";
+            // 
+            // txtMontoMaximo
+            // 
+            this.txtMontoMaximo.Location = new System.Drawing.Point(319, 124);
+            this.txtMontoMaximo.Name = "txtMontoMaximo";
+            this.txtMontoMaximo.Size = new System.Drawing.Size(100, 20);
+            this.txtMontoMaximo.TabIndex = 22;
+            this.txtMontoMaximo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontoMaximo_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(280, 127);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "hasta";
+            // 
+            // txtMontoMinimo
+            // 
+            this.txtMontoMinimo.Location = new System.Drawing.Point(171, 124);
+            this.txtMontoMinimo.Name = "txtMontoMinimo";
+            this.txtMontoMinimo.Size = new System.Drawing.Size(100, 20);
+            this.txtMontoMinimo.TabIndex = 20;
+            this.txtMontoMinimo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontoMinimo_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(63, 127);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Monto:";
+            // 
             // frmReporteProductosVendidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 537);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtMontoMaximo);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtMontoMinimo);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblOrden);
+            this.Controls.Add(this.cboOrden);
             this.Controls.Add(this.rpvProductosVendidos);
             this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.lblFechaHasta);
@@ -135,5 +216,12 @@
         private Microsoft.Reporting.WinForms.ReportViewer rpvProductosVendidos;
         private Reportes.DSReporteProductosVendidos dsReporteProductosVendidos;
         private System.Windows.Forms.BindingSource dsReporteProductosVendidosBindingSource;
+        private System.Windows.Forms.ComboBox cboOrden;
+        private System.Windows.Forms.Label lblOrden;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtMontoMaximo;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtMontoMinimo;
+        private System.Windows.Forms.Label label1;
     }
 }
