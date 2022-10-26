@@ -135,5 +135,19 @@ namespace AppBTS
                 MessageBox.Show("No se tiene acceso.");
             }
         }
+
+        private void reporteMedioPagoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (usuario_logueado.Id_perfil.IdPerfil == 12)
+            {
+                frmReporteVentaMedioPago fvmp;
+                fvmp = new frmReporteVentaMedioPago();
+                fvmp.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No se tiene acceso.");
+            }
+        }
     }
 }

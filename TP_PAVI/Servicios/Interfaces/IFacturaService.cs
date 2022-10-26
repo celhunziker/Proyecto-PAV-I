@@ -14,5 +14,6 @@ namespace AppBTS.Servicios.Interfaces
         bool CrearFacturaConDetalle(Factura factura, Detalle_Factura detalle);
         bool Create(Factura factura);
         DataTable RecuperarProductosAgrupados(string fechaDesde, string fechaHasta);
+        DataTable RecuperarMediosPagoAgrupados(string fechaDesde, string fechaHasta, int orden, float monto_minimo, float monto_maximo);
     }
 }

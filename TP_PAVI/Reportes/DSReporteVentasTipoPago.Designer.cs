@@ -20,17 +20,17 @@ namespace AppBTS.Reportes {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DSReporteProductosVendidos")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DSReporteVentasTipoPago")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DSReporteProductosVendidos : global::System.Data.DataSet {
+    public partial class DSReporteVentasTipoPago : global::System.Data.DataSet {
         
-        private DTReporteProductosVendidosDataTable tableDTReporteProductosVendidos;
+        private DSReporteVentaTipoPagoDataTable tableDSReporteVentaTipoPago;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public DSReporteProductosVendidos() {
+        public DSReporteVentasTipoPago() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace AppBTS.Reportes {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected DSReporteProductosVendidos(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DSReporteVentasTipoPago(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace AppBTS.Reportes {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["DTReporteProductosVendidos"] != null)) {
-                    base.Tables.Add(new DTReporteProductosVendidosDataTable(ds.Tables["DTReporteProductosVendidos"]));
+                if ((ds.Tables["DSReporteVentaTipoPago"] != null)) {
+                    base.Tables.Add(new DSReporteVentaTipoPagoDataTable(ds.Tables["DSReporteVentaTipoPago"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace AppBTS.Reportes {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DTReporteProductosVendidosDataTable DTReporteProductosVendidos {
+        public DSReporteVentaTipoPagoDataTable DSReporteVentaTipoPago {
             get {
-                return this.tableDTReporteProductosVendidos;
+                return this.tableDSReporteVentaTipoPago;
             }
         }
         
@@ -127,7 +127,7 @@ namespace AppBTS.Reportes {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DSReporteProductosVendidos cln = ((DSReporteProductosVendidos)(base.Clone()));
+            DSReporteVentasTipoPago cln = ((DSReporteVentasTipoPago)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace AppBTS.Reportes {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["DTReporteProductosVendidos"] != null)) {
-                    base.Tables.Add(new DTReporteProductosVendidosDataTable(ds.Tables["DTReporteProductosVendidos"]));
+                if ((ds.Tables["DSReporteVentaTipoPago"] != null)) {
+                    base.Tables.Add(new DSReporteVentaTipoPagoDataTable(ds.Tables["DSReporteVentaTipoPago"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace AppBTS.Reportes {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableDTReporteProductosVendidos = ((DTReporteProductosVendidosDataTable)(base.Tables["DTReporteProductosVendidos"]));
+            this.tableDSReporteVentaTipoPago = ((DSReporteVentaTipoPagoDataTable)(base.Tables["DSReporteVentaTipoPago"]));
             if ((initTable == true)) {
-                if ((this.tableDTReporteProductosVendidos != null)) {
-                    this.tableDTReporteProductosVendidos.InitVars();
+                if ((this.tableDSReporteVentaTipoPago != null)) {
+                    this.tableDSReporteVentaTipoPago.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace AppBTS.Reportes {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DSReporteProductosVendidos";
+            this.DataSetName = "DSReporteVentasTipoPago";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DSReporteProductosVendidos.xsd";
+            this.Namespace = "http://tempuri.org/DSReporteVentasTipoPago.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableDTReporteProductosVendidos = new DTReporteProductosVendidosDataTable();
-            base.Tables.Add(this.tableDTReporteProductosVendidos);
+            this.tableDSReporteVentaTipoPago = new DSReporteVentaTipoPagoDataTable();
+            base.Tables.Add(this.tableDSReporteVentaTipoPago);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeDTReporteProductosVendidos() {
+        private bool ShouldSerializeDSReporteVentaTipoPago() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace AppBTS.Reportes {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DSReporteProductosVendidos ds = new DSReporteProductosVendidos();
+            DSReporteVentasTipoPago ds = new DSReporteVentasTipoPago();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,27 +270,25 @@ namespace AppBTS.Reportes {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void DTReporteProductosVendidosRowChangeEventHandler(object sender, DTReporteProductosVendidosRowChangeEvent e);
+        public delegate void DSReporteVentaTipoPagoRowChangeEventHandler(object sender, DSReporteVentaTipoPagoRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DTReporteProductosVendidosDataTable : global::System.Data.TypedTableBase<DTReporteProductosVendidosRow> {
+        public partial class DSReporteVentaTipoPagoDataTable : global::System.Data.TypedTableBase<DSReporteVentaTipoPagoRow> {
             
-            private global::System.Data.DataColumn columnProducto;
+            private global::System.Data.DataColumn columnMedio_pago;
             
-            private global::System.Data.DataColumn columnPrecio;
+            private global::System.Data.DataColumn columnIngreso;
             
-            private global::System.Data.DataColumn columnCantidad;
-            
-            private global::System.Data.DataColumn columnId_producto;
+            private global::System.Data.DataColumn columnId_medio_pago;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DTReporteProductosVendidosDataTable() {
-                this.TableName = "DTReporteProductosVendidos";
+            public DSReporteVentaTipoPagoDataTable() {
+                this.TableName = "DSReporteVentaTipoPago";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -298,7 +296,7 @@ namespace AppBTS.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal DTReporteProductosVendidosDataTable(global::System.Data.DataTable table) {
+            internal DSReporteVentaTipoPagoDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -315,40 +313,32 @@ namespace AppBTS.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected DTReporteProductosVendidosDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected DSReporteVentaTipoPagoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ProductoColumn {
+            public global::System.Data.DataColumn Medio_pagoColumn {
                 get {
-                    return this.columnProducto;
+                    return this.columnMedio_pago;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn PrecioColumn {
+            public global::System.Data.DataColumn IngresoColumn {
                 get {
-                    return this.columnPrecio;
+                    return this.columnIngreso;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn CantidadColumn {
+            public global::System.Data.DataColumn Id_medio_pagoColumn {
                 get {
-                    return this.columnCantidad;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Id_productoColumn {
-                get {
-                    return this.columnId_producto;
+                    return this.columnId_medio_pago;
                 }
             }
             
@@ -363,48 +353,47 @@ namespace AppBTS.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DTReporteProductosVendidosRow this[int index] {
+            public DSReporteVentaTipoPagoRow this[int index] {
                 get {
-                    return ((DTReporteProductosVendidosRow)(this.Rows[index]));
+                    return ((DSReporteVentaTipoPagoRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DTReporteProductosVendidosRowChangeEventHandler DTReporteProductosVendidosRowChanging;
+            public event DSReporteVentaTipoPagoRowChangeEventHandler DSReporteVentaTipoPagoRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DTReporteProductosVendidosRowChangeEventHandler DTReporteProductosVendidosRowChanged;
+            public event DSReporteVentaTipoPagoRowChangeEventHandler DSReporteVentaTipoPagoRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DTReporteProductosVendidosRowChangeEventHandler DTReporteProductosVendidosRowDeleting;
+            public event DSReporteVentaTipoPagoRowChangeEventHandler DSReporteVentaTipoPagoRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DTReporteProductosVendidosRowChangeEventHandler DTReporteProductosVendidosRowDeleted;
+            public event DSReporteVentaTipoPagoRowChangeEventHandler DSReporteVentaTipoPagoRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddDTReporteProductosVendidosRow(DTReporteProductosVendidosRow row) {
+            public void AddDSReporteVentaTipoPagoRow(DSReporteVentaTipoPagoRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DTReporteProductosVendidosRow AddDTReporteProductosVendidosRow(string Producto, string Precio, string Cantidad, int Id_producto) {
-                DTReporteProductosVendidosRow rowDTReporteProductosVendidosRow = ((DTReporteProductosVendidosRow)(this.NewRow()));
+            public DSReporteVentaTipoPagoRow AddDSReporteVentaTipoPagoRow(string Medio_pago, string Ingreso, string Id_medio_pago) {
+                DSReporteVentaTipoPagoRow rowDSReporteVentaTipoPagoRow = ((DSReporteVentaTipoPagoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Producto,
-                        Precio,
-                        Cantidad,
-                        Id_producto};
-                rowDTReporteProductosVendidosRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDTReporteProductosVendidosRow);
-                return rowDTReporteProductosVendidosRow;
+                        Medio_pago,
+                        Ingreso,
+                        Id_medio_pago};
+                rowDSReporteVentaTipoPagoRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDSReporteVentaTipoPagoRow);
+                return rowDSReporteVentaTipoPagoRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                DTReporteProductosVendidosDataTable cln = ((DTReporteProductosVendidosDataTable)(base.Clone()));
+                DSReporteVentaTipoPagoDataTable cln = ((DSReporteVentaTipoPagoDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -412,55 +401,52 @@ namespace AppBTS.Reportes {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new DTReporteProductosVendidosDataTable();
+                return new DSReporteVentaTipoPagoDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnProducto = base.Columns["Producto"];
-                this.columnPrecio = base.Columns["Precio"];
-                this.columnCantidad = base.Columns["Cantidad"];
-                this.columnId_producto = base.Columns["Id_producto"];
+                this.columnMedio_pago = base.Columns["Medio_pago"];
+                this.columnIngreso = base.Columns["Ingreso"];
+                this.columnId_medio_pago = base.Columns["Id_medio_pago"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnProducto = new global::System.Data.DataColumn("Producto", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnProducto);
-                this.columnPrecio = new global::System.Data.DataColumn("Precio", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPrecio);
-                this.columnCantidad = new global::System.Data.DataColumn("Cantidad", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCantidad);
-                this.columnId_producto = new global::System.Data.DataColumn("Id_producto", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId_producto);
+                this.columnMedio_pago = new global::System.Data.DataColumn("Medio_pago", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMedio_pago);
+                this.columnIngreso = new global::System.Data.DataColumn("Ingreso", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIngreso);
+                this.columnId_medio_pago = new global::System.Data.DataColumn("Id_medio_pago", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId_medio_pago);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DTReporteProductosVendidosRow NewDTReporteProductosVendidosRow() {
-                return ((DTReporteProductosVendidosRow)(this.NewRow()));
+            public DSReporteVentaTipoPagoRow NewDSReporteVentaTipoPagoRow() {
+                return ((DSReporteVentaTipoPagoRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DTReporteProductosVendidosRow(builder);
+                return new DSReporteVentaTipoPagoRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(DTReporteProductosVendidosRow);
+                return typeof(DSReporteVentaTipoPagoRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.DTReporteProductosVendidosRowChanged != null)) {
-                    this.DTReporteProductosVendidosRowChanged(this, new DTReporteProductosVendidosRowChangeEvent(((DTReporteProductosVendidosRow)(e.Row)), e.Action));
+                if ((this.DSReporteVentaTipoPagoRowChanged != null)) {
+                    this.DSReporteVentaTipoPagoRowChanged(this, new DSReporteVentaTipoPagoRowChangeEvent(((DSReporteVentaTipoPagoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -468,8 +454,8 @@ namespace AppBTS.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.DTReporteProductosVendidosRowChanging != null)) {
-                    this.DTReporteProductosVendidosRowChanging(this, new DTReporteProductosVendidosRowChangeEvent(((DTReporteProductosVendidosRow)(e.Row)), e.Action));
+                if ((this.DSReporteVentaTipoPagoRowChanging != null)) {
+                    this.DSReporteVentaTipoPagoRowChanging(this, new DSReporteVentaTipoPagoRowChangeEvent(((DSReporteVentaTipoPagoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -477,8 +463,8 @@ namespace AppBTS.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.DTReporteProductosVendidosRowDeleted != null)) {
-                    this.DTReporteProductosVendidosRowDeleted(this, new DTReporteProductosVendidosRowChangeEvent(((DTReporteProductosVendidosRow)(e.Row)), e.Action));
+                if ((this.DSReporteVentaTipoPagoRowDeleted != null)) {
+                    this.DSReporteVentaTipoPagoRowDeleted(this, new DSReporteVentaTipoPagoRowChangeEvent(((DSReporteVentaTipoPagoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -486,14 +472,14 @@ namespace AppBTS.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.DTReporteProductosVendidosRowDeleting != null)) {
-                    this.DTReporteProductosVendidosRowDeleting(this, new DTReporteProductosVendidosRowChangeEvent(((DTReporteProductosVendidosRow)(e.Row)), e.Action));
+                if ((this.DSReporteVentaTipoPagoRowDeleting != null)) {
+                    this.DSReporteVentaTipoPagoRowDeleting(this, new DSReporteVentaTipoPagoRowChangeEvent(((DSReporteVentaTipoPagoRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveDTReporteProductosVendidosRow(DTReporteProductosVendidosRow row) {
+            public void RemoveDSReporteVentaTipoPagoRow(DSReporteVentaTipoPagoRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -502,7 +488,7 @@ namespace AppBTS.Reportes {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DSReporteProductosVendidos ds = new DSReporteProductosVendidos();
+                DSReporteVentasTipoPago ds = new DSReporteVentasTipoPago();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -520,7 +506,7 @@ namespace AppBTS.Reportes {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DTReporteProductosVendidosDataTable";
+                attribute2.FixedValue = "DSReporteVentaTipoPagoDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -564,131 +550,101 @@ namespace AppBTS.Reportes {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class DTReporteProductosVendidosRow : global::System.Data.DataRow {
+        public partial class DSReporteVentaTipoPagoRow : global::System.Data.DataRow {
             
-            private DTReporteProductosVendidosDataTable tableDTReporteProductosVendidos;
+            private DSReporteVentaTipoPagoDataTable tableDSReporteVentaTipoPago;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal DTReporteProductosVendidosRow(global::System.Data.DataRowBuilder rb) : 
+            internal DSReporteVentaTipoPagoRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableDTReporteProductosVendidos = ((DTReporteProductosVendidosDataTable)(this.Table));
+                this.tableDSReporteVentaTipoPago = ((DSReporteVentaTipoPagoDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Producto {
+            public string Medio_pago {
                 get {
                     try {
-                        return ((string)(this[this.tableDTReporteProductosVendidos.ProductoColumn]));
+                        return ((string)(this[this.tableDSReporteVentaTipoPago.Medio_pagoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Producto\' de la tabla \'DTReporteProductosVendidos\' es DBN" +
-                                "ull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDTReporteProductosVendidos.ProductoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Precio {
-                get {
-                    try {
-                        return ((string)(this[this.tableDTReporteProductosVendidos.PrecioColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Precio\' de la tabla \'DTReporteProductosVendidos\' es DBNul" +
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Medio_pago\' de la tabla \'DSReporteVentaTipoPago\' es DBNul" +
                                 "l.", e);
                     }
                 }
                 set {
-                    this[this.tableDTReporteProductosVendidos.PrecioColumn] = value;
+                    this[this.tableDSReporteVentaTipoPago.Medio_pagoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Cantidad {
+            public string Ingreso {
                 get {
                     try {
-                        return ((string)(this[this.tableDTReporteProductosVendidos.CantidadColumn]));
+                        return ((string)(this[this.tableDSReporteVentaTipoPago.IngresoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Cantidad\' de la tabla \'DTReporteProductosVendidos\' es DBN" +
-                                "ull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Ingreso\' de la tabla \'DSReporteVentaTipoPago\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDTReporteProductosVendidos.CantidadColumn] = value;
+                    this[this.tableDSReporteVentaTipoPago.IngresoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Id_producto {
+            public string Id_medio_pago {
                 get {
                     try {
-                        return ((int)(this[this.tableDTReporteProductosVendidos.Id_productoColumn]));
+                        return ((string)(this[this.tableDSReporteVentaTipoPago.Id_medio_pagoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id_producto\' de la tabla \'DTReporteProductosVendidos\' es " +
-                                "DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id_medio_pago\' de la tabla \'DSReporteVentaTipoPago\' es DB" +
+                                "Null.", e);
                     }
                 }
                 set {
-                    this[this.tableDTReporteProductosVendidos.Id_productoColumn] = value;
+                    this[this.tableDSReporteVentaTipoPago.Id_medio_pagoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsProductoNull() {
-                return this.IsNull(this.tableDTReporteProductosVendidos.ProductoColumn);
+            public bool IsMedio_pagoNull() {
+                return this.IsNull(this.tableDSReporteVentaTipoPago.Medio_pagoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetProductoNull() {
-                this[this.tableDTReporteProductosVendidos.ProductoColumn] = global::System.Convert.DBNull;
+            public void SetMedio_pagoNull() {
+                this[this.tableDSReporteVentaTipoPago.Medio_pagoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsPrecioNull() {
-                return this.IsNull(this.tableDTReporteProductosVendidos.PrecioColumn);
+            public bool IsIngresoNull() {
+                return this.IsNull(this.tableDSReporteVentaTipoPago.IngresoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetPrecioNull() {
-                this[this.tableDTReporteProductosVendidos.PrecioColumn] = global::System.Convert.DBNull;
+            public void SetIngresoNull() {
+                this[this.tableDSReporteVentaTipoPago.IngresoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsCantidadNull() {
-                return this.IsNull(this.tableDTReporteProductosVendidos.CantidadColumn);
+            public bool IsId_medio_pagoNull() {
+                return this.IsNull(this.tableDSReporteVentaTipoPago.Id_medio_pagoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetCantidadNull() {
-                this[this.tableDTReporteProductosVendidos.CantidadColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsId_productoNull() {
-                return this.IsNull(this.tableDTReporteProductosVendidos.Id_productoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetId_productoNull() {
-                this[this.tableDTReporteProductosVendidos.Id_productoColumn] = global::System.Convert.DBNull;
+            public void SetId_medio_pagoNull() {
+                this[this.tableDSReporteVentaTipoPago.Id_medio_pagoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -696,22 +652,22 @@ namespace AppBTS.Reportes {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class DTReporteProductosVendidosRowChangeEvent : global::System.EventArgs {
+        public class DSReporteVentaTipoPagoRowChangeEvent : global::System.EventArgs {
             
-            private DTReporteProductosVendidosRow eventRow;
+            private DSReporteVentaTipoPagoRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DTReporteProductosVendidosRowChangeEvent(DTReporteProductosVendidosRow row, global::System.Data.DataRowAction action) {
+            public DSReporteVentaTipoPagoRowChangeEvent(DSReporteVentaTipoPagoRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DTReporteProductosVendidosRow Row {
+            public DSReporteVentaTipoPagoRow Row {
                 get {
                     return this.eventRow;
                 }

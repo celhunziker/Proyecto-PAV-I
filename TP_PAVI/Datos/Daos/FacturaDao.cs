@@ -49,9 +49,29 @@ namespace AppBTS.Datos.Daos
 
         internal DataTable RecuperarProductosAgrupados(string fechaDesde, string fechaHasta)
         {
-            string strSql = "SELECT p.nombre as Producto, p.precio as Precio, SUM(df.cantidad) as Cantidad FROM FACTURAS f JOIN " +
+            string strSql = "SELECT p.id_producto as Id_producto, p.nombre as Producto, p.precio as Precio, SUM(df.cantidad) as Cantidad FROM FACTURAS f JOIN " +
                 "DETALLES_FACTURAS df ON f.id_factura=df.id_factura JOIN PRODUCTOS p ON p.id_producto=df.id_producto" +
-                " WHERE f.fecha BETWEEN '" + fechaDesde + "' AND '" + fechaHasta + "' GROUP BY p.nombre, p.precio";
+                " WHERE f.fecha BETWEEN '" + fechaDesde + "' AND '" + fechaHasta + "' GROUP BY p.nombre, p.precio, p.id_producto ORDER BY p.id_producto";
+            return BDHelper.obtenerInstancia().consultar(strSql);
+        }
+        internal DataTable RecuperarMediosPagoAgrupados(string fechaDesde, string fechaHasta, int orden, float monto_minimo, float monto_maximo)
+        {
+            string strSql = "SELECT mp.id_medio_cobro AS Id_medio_pago, mp.nombre AS Medio_pago, " +
+                "SUM(dc.monto) as Ingreso FROM FACTURAS F " +
+                "JOIN Detalles_Cobros DC ON f.id_factura=dc.id_factura " +
+                "JOIN Medios_Pagos mp ON mp.id_medio_cobro=dc.id_medio_cobro " +
+                " WHERE f.fecha BETWEEN '" + fechaDesde + "' AND '" + fechaHasta + "" +
+                "'" +
+                " GROUP BY mp.nombre, mp.id_medio_cobro" +
+                " HAVING SUM(dc.monto) BETWEEN " + monto_minimo +" AND " + monto_maximo;
+            if (orden == 0)
+            {
+                strSql += " ORDER BY mp.id_medio_cobro";
+            }
+            else
+            {
+                strSql += " ORDER BY mp.nombre";
+            }
             return BDHelper.obtenerInstancia().consultar(strSql);
         }
 

@@ -145,6 +145,12 @@
     <Compile Include="Presentacion\frmReporteProductosVendidos.Designer.cs">
       <DependentUpon>frmReporteProductosVendidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\frmReporteVentaMedioPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmReporteVentaMedioPago.Designer.cs">
+      <DependentUpon>frmReporteVentaMedioPago.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\frmTipoProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,10 +225,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reportes\DSReporteProductosVendidos.cs">
+      <DependentUpon>DSReporteProductosVendidos.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\DSReporteProductosVendidos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DSReporteProductosVendidos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\DSReporteVentasTipoPago.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSReporteVentasTipoPago.xsd</DependentUpon>
     </Compile>
     <Compile Include="Servicios\Implementaciones\ClaseService.cs" />
     <Compile Include="Servicios\Implementaciones\DescuentoService.cs" />
@@ -298,6 +312,9 @@
     <EmbeddedResource Include="Presentacion\frmReporteProductosVendidos.resx">
       <DependentUpon>frmReporteProductosVendidos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmReporteVentaMedioPago.resx">
+      <DependentUpon>frmReporteVentaMedioPago.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmTipoProducto.resx">
       <DependentUpon>frmTipoProducto.cs</DependentUpon>
     </EmbeddedResource>
@@ -315,6 +332,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptVentaMedioPago.rdlc" />
     <EmbeddedResource Include="Reportes\rptProductosVendidos.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -341,6 +359,17 @@
     </None>
     <None Include="Reportes\DSReporteProductosVendidos.xss">
       <DependentUpon>DSReporteProductosVendidos.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\DSReporteVentasTipoPago.xsc">
+      <DependentUpon>DSReporteVentasTipoPago.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\DSReporteVentasTipoPago.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSReporteVentasTipoPago.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\DSReporteVentasTipoPago.xss">
+      <DependentUpon>DSReporteVentasTipoPago.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

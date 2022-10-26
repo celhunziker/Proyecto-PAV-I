@@ -9,15 +9,16 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="DSReporteProductosVendidos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="DSReporteProductosVendidos" msprop:Generator_DataSetName="DSReporteProductosVendidos">
+  <xs:element name="DSReporteProductosVendidos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DSReporteProductosVendidos" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSReporteProductosVendidos">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DTReporteProductosVendidos" msprop:Generator_RowEvHandlerName="DTReporteProductosVendidosRowChangeEventHandler" msprop:Generator_RowDeletedName="DTReporteProductosVendidosRowDeleted" msprop:Generator_RowDeletingName="DTReporteProductosVendidosRowDeleting" msprop:Generator_RowEvArgName="DTReporteProductosVendidosRowChangeEvent" msprop:Generator_TablePropName="DTReporteProductosVendidos" msprop:Generator_RowChangedName="DTReporteProductosVendidosRowChanged" msprop:Generator_RowChangingName="DTReporteProductosVendidosRowChanging" msprop:Generator_TableClassName="DTReporteProductosVendidosDataTable" msprop:Generator_RowClassName="DTReporteProductosVendidosRow" msprop:Generator_TableVarName="tableDTReporteProductosVendidos" msprop:Generator_UserTableName="DTReporteProductosVendidos">
+        <xs:element name="DTReporteProductosVendidos" msprop:Generator_RowClassName="DTReporteProductosVendidosRow" msprop:Generator_RowEvHandlerName="DTReporteProductosVendidosRowChangeEventHandler" msprop:Generator_RowDeletedName="DTReporteProductosVendidosRowDeleted" msprop:Generator_RowDeletingName="DTReporteProductosVendidosRowDeleting" msprop:Generator_RowEvArgName="DTReporteProductosVendidosRowChangeEvent" msprop:Generator_TablePropName="DTReporteProductosVendidos" msprop:Generator_RowChangedName="DTReporteProductosVendidosRowChanged" msprop:Generator_UserTableName="DTReporteProductosVendidos" msprop:Generator_RowChangingName="DTReporteProductosVendidosRowChanging" msprop:Generator_TableClassName="DTReporteProductosVendidosDataTable" msprop:Generator_TableVarName="tableDTReporteProductosVendidos">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Producto" msprop:Generator_ColumnPropNameInRow="Producto" msprop:Generator_ColumnPropNameInTable="ProductoColumn" msprop:Generator_ColumnVarNameInTable="columnProducto" msprop:Generator_UserColumnName="Producto" type="xs:string" minOccurs="0" />
-              <xs:element name="Precio" msprop:Generator_ColumnPropNameInRow="Precio" msprop:Generator_ColumnPropNameInTable="PrecioColumn" msprop:Generator_ColumnVarNameInTable="columnPrecio" msprop:Generator_UserColumnName="Precio" type="xs:string" minOccurs="0" />
-              <xs:element name="Cantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_UserColumnName="Cantidad" type="xs:string" minOccurs="0" />
+              <xs:element name="Producto" msprop:Generator_UserColumnName="Producto" msprop:Generator_ColumnPropNameInTable="ProductoColumn" msprop:Generator_ColumnPropNameInRow="Producto" msprop:Generator_ColumnVarNameInTable="columnProducto" type="xs:string" minOccurs="0" />
+              <xs:element name="Precio" msprop:Generator_UserColumnName="Precio" msprop:Generator_ColumnPropNameInTable="PrecioColumn" msprop:Generator_ColumnPropNameInRow="Precio" msprop:Generator_ColumnVarNameInTable="columnPrecio" type="xs:string" minOccurs="0" />
+              <xs:element name="Cantidad" msprop:Generator_UserColumnName="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" type="xs:string" minOccurs="0" />
+              <xs:element name="Id_producto" msprop:Generator_ColumnPropNameInRow="Id_producto" msprop:Generator_ColumnPropNameInTable="Id_productoColumn" msprop:Generator_ColumnVarNameInTable="columnId_producto" msprop:Generator_UserColumnName="Id_producto" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSReporteVentasTipoPago" targetNamespace="http://tempuri.org/DSReporteVentasTipoPago.xsd" xmlns:mstns="http://tempuri.org/DSReporteVentasTipoPago.xsd" xmlns="http://tempuri.org/DSReporteVentasTipoPago.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSReporteVentasTipoPago" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="DSReporteVentasTipoPago" msprop:Generator_DataSetName="DSReporteVentasTipoPago">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DSReporteVentaTipoPago" msprop:Generator_RowEvHandlerName="DSReporteVentaTipoPagoRowChangeEventHandler" msprop:Generator_RowDeletedName="DSReporteVentaTipoPagoRowDeleted" msprop:Generator_RowDeletingName="DSReporteVentaTipoPagoRowDeleting" msprop:Generator_RowEvArgName="DSReporteVentaTipoPagoRowChangeEvent" msprop:Generator_TablePropName="DSReporteVentaTipoPago" msprop:Generator_RowChangedName="DSReporteVentaTipoPagoRowChanged" msprop:Generator_RowChangingName="DSReporteVentaTipoPagoRowChanging" msprop:Generator_TableClassName="DSReporteVentaTipoPagoDataTable" msprop:Generator_RowClassName="DSReporteVentaTipoPagoRow" msprop:Generator_TableVarName="tableDSReporteVentaTipoPago" msprop:Generator_UserTableName="DSReporteVentaTipoPago">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Medio_pago" msprop:Generator_ColumnPropNameInRow="Medio_pago" msprop:Generator_ColumnPropNameInTable="Medio_pagoColumn" msprop:Generator_ColumnVarNameInTable="columnMedio_pago" msprop:Generator_UserColumnName="Medio_pago" type="xs:string" minOccurs="0" />
+              <xs:element name="Ingreso" msprop:Generator_ColumnPropNameInRow="Ingreso" msprop:Generator_ColumnPropNameInTable="IngresoColumn" msprop:Generator_ColumnVarNameInTable="columnIngreso" msprop:Generator_UserColumnName="Ingreso" type="xs:string" minOccurs="0" />
+              <xs:element name="Id_medio_pago" msprop:Generator_ColumnPropNameInRow="Id_medio_pago" msprop:Generator_ColumnPropNameInTable="Id_medio_pagoColumn" msprop:Generator_ColumnVarNameInTable="columnId_medio_pago" msprop:Generator_UserColumnName="Id_medio_pago" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
