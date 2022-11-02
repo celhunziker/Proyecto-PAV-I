@@ -71,9 +71,8 @@
             this.cOMPRARToolStripMenuItem,
             this.reporteProductosVendidosToolStripMenuItem,
             this.reporteMedioPagoToolStripMenuItem,
-            this.reporteTipoProductoToolStripMenuItem});
-            this.reporteMedioPagoToolStripMenuItem,
-            this.reporteVendedorToolStripMenuItem});
+            this.reporteTipoProductoToolStripMenuItem,
+            this.reporteVendedorToolStripMenuItem });
             this.usuariosToolStripMenuItem1.Name = "usuariosToolStripMenuItem1";
             this.usuariosToolStripMenuItem1.Size = new System.Drawing.Size(76, 24);
             this.usuariosToolStripMenuItem1.Text = "Soporte";
