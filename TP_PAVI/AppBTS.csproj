@@ -97,6 +97,14 @@
     <Compile Include="Datos\Interfaces\ITipoProducto.cs" />
     <Compile Include="Datos\Interfaces\IUnidadMedida.cs" />
     <Compile Include="Datos\Interfaces\IUsuario.cs" />
+    <Compile Include="Reportes\DSReporteVendedor.cs">
+      <DependentUpon>DSReporteVendedor.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\DSReporteVendedor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSReporteVendedor.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Entidades\Clase.cs" />
     <Compile Include="Entidades\Descuento.cs" />
     <Compile Include="Entidades\Detalle_Cobro.cs" />
@@ -144,6 +152,12 @@
     </Compile>
     <Compile Include="Presentacion\frmReporteProductosVendidos.Designer.cs">
       <DependentUpon>frmReporteProductosVendidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmReporteVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmReporteVendedor.Designer.cs">
+      <DependentUpon>frmReporteVendedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\frmReporteVentaMedioPago.cs">
       <SubType>Form</SubType>
@@ -273,6 +287,11 @@
     <Compile Include="Servicios\Interfaces\IUnidadMedidaService.cs" />
     <Compile Include="Servicios\Interfaces\IUsuarioService.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="TPPAV2DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TPPAV2DataSet.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Presentacion\frmClases.resx">
       <DependentUpon>frmClases.cs</DependentUpon>
     </EmbeddedResource>
@@ -312,6 +331,9 @@
     <EmbeddedResource Include="Presentacion\frmReporteProductosVendidos.resx">
       <DependentUpon>frmReporteProductosVendidos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmReporteVendedor.resx">
+      <DependentUpon>frmReporteVendedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmReporteVentaMedioPago.resx">
       <DependentUpon>frmReporteVentaMedioPago.cs</DependentUpon>
     </EmbeddedResource>
@@ -332,8 +354,20 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptVendedores.rdlc" />
     <EmbeddedResource Include="Reportes\rptVentaMedioPago.rdlc" />
     <EmbeddedResource Include="Reportes\rptProductosVendidos.rdlc" />
+    <None Include="Reportes\DSReporteVendedor.xsc">
+      <DependentUpon>DSReporteVendedor.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\DSReporteVendedor.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSReporteVendedor.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\DSReporteVendedor.xss">
+      <DependentUpon>DSReporteVendedor.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -370,6 +404,17 @@
     </None>
     <None Include="Reportes\DSReporteVentasTipoPago.xss">
       <DependentUpon>DSReporteVentasTipoPago.xsd</DependentUpon>
+    </None>
+    <None Include="TPPAV2DataSet.xsc">
+      <DependentUpon>TPPAV2DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TPPAV2DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TPPAV2DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TPPAV2DataSet.xss">
+      <DependentUpon>TPPAV2DataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

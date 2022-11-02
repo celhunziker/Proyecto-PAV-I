@@ -91,6 +91,27 @@ namespace AppBTS.Datos.Daos
             return BDHelper.obtenerInstancia().consultar(strSql);
         }
 
+        internal DataTable RecuperarVendedorAgrupados(string fechaDesde, string fechaHasta, int orden, float monto_minimo, float monto_maximo)
+        {
+            string strSql = "SELECT v.id_usuario AS Id_vendedor, v.nombre AS Nombre, " +
+                "SUM(dc.monto) as Ingreso FROM FACTURAS F " +
+                "JOIN Detalles_Cobros DC ON f.id_factura=dc.id_factura " +
+                "JOIN Usuarios v ON v.id_usuario=f.id_usuario_vendedor " +
+                " WHERE f.fecha BETWEEN '" + fechaDesde + "' AND '" + fechaHasta + "" +
+                "'" +
+                " GROUP BY v.nombre, v.id_usuario" +
+                " HAVING SUM(dc.monto) BETWEEN " + monto_minimo + " AND " + monto_maximo;
+            if (orden == 0)
+            {
+                strSql += " ORDER BY v.id_usuario";
+            }
+            else
+            {
+                strSql += " ORDER BY v.nombre";
+            }
+            return BDHelper.obtenerInstancia().consultar(strSql);
+        }
+
         //private Factura ObtenerFactura(int nuevoId)
         //{
         //    string strSql = string.Concat(" SELECT id_factura, ",

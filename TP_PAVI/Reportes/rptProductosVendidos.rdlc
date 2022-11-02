@@ -36,7 +36,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DSReporteProductosVendidos</rd:DataSetName>
-        <rd:SchemaPath>C:\Proyecto-PAV-I\TP_PAVI\Reportes\DSReporteProductosVendidos.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Proyecto PAV\Proyecto-PAV-I\TP_PAVI\Reportes\DSReporteProductosVendidos.xsd</rd:SchemaPath>
         <rd:TableName>DTReporteProductosVendidos</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />

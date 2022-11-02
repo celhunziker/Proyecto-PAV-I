@@ -149,5 +149,19 @@ namespace AppBTS
                 MessageBox.Show("No se tiene acceso.");
             }
         }
+
+        private void reporteVendedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (usuario_logueado.Id_perfil.IdPerfil == 12)
+            {
+                frmReporteVendedor fv;
+                fv = new frmReporteVendedor();
+                fv.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No se tiene acceso.");
+            }
+        }
     }
 }
