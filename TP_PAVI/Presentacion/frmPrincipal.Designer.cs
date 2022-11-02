@@ -43,6 +43,7 @@
             this.soporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteTipoProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteVendedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +70,8 @@
             this.discplinasToolStripMenuItem,
             this.cOMPRARToolStripMenuItem,
             this.reporteProductosVendidosToolStripMenuItem,
+            this.reporteMedioPagoToolStripMenuItem,
+            this.reporteTipoProductoToolStripMenuItem});
             this.reporteMedioPagoToolStripMenuItem,
             this.reporteVendedorToolStripMenuItem});
             this.usuariosToolStripMenuItem1.Name = "usuariosToolStripMenuItem1";
@@ -134,7 +137,7 @@
             // reporteMedioPagoToolStripMenuItem
             // 
             this.reporteMedioPagoToolStripMenuItem.Name = "reporteMedioPagoToolStripMenuItem";
-            this.reporteMedioPagoToolStripMenuItem.Size = new System.Drawing.Size(280, 26);
+            this.reporteMedioPagoToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.reporteMedioPagoToolStripMenuItem.Text = "Reporte Medio Pago";
             this.reporteMedioPagoToolStripMenuItem.Click += new System.EventHandler(this.reporteMedioPagoToolStripMenuItem_Click);
             // 
@@ -164,12 +167,17 @@
             this.productosToolStripMenuItem.Text = "Productos";
             this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
             // 
+            // reporteTipoProductoToolStripMenuItem
             // reporteVendedorToolStripMenuItem
             // 
             this.reporteVendedorToolStripMenuItem.Name = "reporteVendedorToolStripMenuItem";
             this.reporteVendedorToolStripMenuItem.Size = new System.Drawing.Size(280, 26);
             this.reporteVendedorToolStripMenuItem.Text = "Reporte Vendedor";
             this.reporteVendedorToolStripMenuItem.Click += new System.EventHandler(this.reporteVendedorToolStripMenuItem_Click);
+            this.reporteTipoProductoToolStripMenuItem.Name = "reporteTipoProductoToolStripMenuItem";
+            this.reporteTipoProductoToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.reporteTipoProductoToolStripMenuItem.Text = "Reporte Tipo Producto";
+            this.reporteTipoProductoToolStripMenuItem.Click += new System.EventHandler(this.reporteTipoProductoToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -211,6 +219,7 @@
         private System.Windows.Forms.ToolStripMenuItem reporteProductosVendidosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteMedioPagoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteVendedorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteTipoProductoToolStripMenuItem;
         //private System.Windows.Forms.ToolStripMenuItem marcasToolStripMenuItem;
     }
 }

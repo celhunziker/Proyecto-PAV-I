@@ -90,6 +90,25 @@ namespace AppBTS.Datos.Daos
             }
             return BDHelper.obtenerInstancia().consultar(strSql);
         }
+        internal DataTable RecuperarTipoProductosAgrupados(string fechaDesde, string fechaHasta, int orden)
+        {
+            string strSql = "SELECT tp.id_tipo_producto as Id_tipo_producto, tp.nombre as Nombre, tp.descripcion as Descripcion, SUM(df.cantidad) as Cantidad FROM FACTURAS f JOIN " +
+                "DETALLES_FACTURAS df ON f.id_factura=df.id_factura JOIN PRODUCTOS p ON p.id_producto=df.id_producto JOIN TIPOS_PRODUCTOS tp ON tp.id_tipo_producto=p.tipo_producto" +
+                " WHERE f.fecha BETWEEN '" + fechaDesde + "' AND '" + fechaHasta + "' GROUP BY tp.nombre, tp.id_tipo_producto, tp.descripcion ";
+            switch (orden)
+            {
+                case 0:
+                    strSql += " ORDER BY tp.id_tipo_producto";
+                    break;
+                case 1:
+                    strSql += " ORDER BY tp.nombre";
+                    break;
+                case 2:
+                    strSql += " ORDER BY SUM(df.cantidad)";
+                    break;
+            }
+            return BDHelper.obtenerInstancia().consultar(strSql);
+        }
 
         internal DataTable RecuperarVendedorAgrupados(string fechaDesde, string fechaHasta, int orden, float monto_minimo, float monto_maximo)
         {
