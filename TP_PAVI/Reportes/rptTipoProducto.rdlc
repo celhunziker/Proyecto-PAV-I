@@ -11,7 +11,7 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="dataset1">
+    <DataSet Name="DSReporteTipoProducto">
       <Query>
         <DataSourceName>DSReporteTipoProducto</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
@@ -36,7 +36,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DSReporteTipoProducto</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\Almacen Informatico\OneDrive\Documentos\2022\PAV\proyectosgit\Proyecto-PAV-I\TP_PAVI\Reportes\DSReporteTipoProducto.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Proyecto PAV\Proyecto-PAV-I\TP_PAVI\Reportes\DSReporteTipoProducto.xsd</rd:SchemaPath>
         <rd:TableName>dtTipoProducto</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
@@ -559,7 +559,7 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>dataset1</DataSetName>
+            <DataSetName>DSReporteTipoProducto</DataSetName>
             <Top>6.53203cm</Top>
             <Left>6.13014cm</Left>
             <Height>2.12604cm</Height>
@@ -915,7 +915,7 @@
                 <VerticalAlign>Top</VerticalAlign>
               </Style>
             </ChartNoDataMessage>
-            <DataSetName>dataset1</DataSetName>
+            <DataSetName>DSReporteTipoProducto</DataSetName>
             <Top>9.89224cm</Top>
             <Left>8.83391cm</Left>
             <Height>5cm</Height>
@@ -1031,14 +1031,6 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="prMontoMinimo">
-      <DataType>String</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="prMontoMaximo">
-      <DataType>String</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -1059,16 +1051,6 @@
           <ColumnIndex>2</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>prOrden</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>3</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>prMontoMinimo</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>1</RowIndex>
-          <ParameterName>prMontoMaximo</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
