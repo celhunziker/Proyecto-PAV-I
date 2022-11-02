@@ -38,11 +38,12 @@
             this.discplinasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cOMPRARToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteProductosVendidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteMedioPagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.soporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reporteMedioPagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteTipoProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +68,8 @@
             this.discplinasToolStripMenuItem,
             this.cOMPRARToolStripMenuItem,
             this.reporteProductosVendidosToolStripMenuItem,
-            this.reporteMedioPagoToolStripMenuItem});
+            this.reporteMedioPagoToolStripMenuItem,
+            this.reporteTipoProductoToolStripMenuItem});
             this.usuariosToolStripMenuItem1.Name = "usuariosToolStripMenuItem1";
             this.usuariosToolStripMenuItem1.Size = new System.Drawing.Size(60, 20);
             this.usuariosToolStripMenuItem1.Text = "Soporte";
@@ -128,6 +130,13 @@
             this.reporteProductosVendidosToolStripMenuItem.Text = "Reporte Productos Vendidos";
             this.reporteProductosVendidosToolStripMenuItem.Click += new System.EventHandler(this.reporteProductosVendidosToolStripMenuItem_Click);
             // 
+            // reporteMedioPagoToolStripMenuItem
+            // 
+            this.reporteMedioPagoToolStripMenuItem.Name = "reporteMedioPagoToolStripMenuItem";
+            this.reporteMedioPagoToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.reporteMedioPagoToolStripMenuItem.Text = "Reporte Medio Pago";
+            this.reporteMedioPagoToolStripMenuItem.Click += new System.EventHandler(this.reporteMedioPagoToolStripMenuItem_Click);
+            // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
@@ -154,12 +163,12 @@
             this.productosToolStripMenuItem.Text = "Productos";
             this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
             // 
-            // reporteMedioPagoToolStripMenuItem
+            // reporteTipoProductoToolStripMenuItem
             // 
-            this.reporteMedioPagoToolStripMenuItem.Name = "reporteMedioPagoToolStripMenuItem";
-            this.reporteMedioPagoToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
-            this.reporteMedioPagoToolStripMenuItem.Text = "Reporte Medio Pago";
-            this.reporteMedioPagoToolStripMenuItem.Click += new System.EventHandler(this.reporteMedioPagoToolStripMenuItem_Click);
+            this.reporteTipoProductoToolStripMenuItem.Name = "reporteTipoProductoToolStripMenuItem";
+            this.reporteTipoProductoToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.reporteTipoProductoToolStripMenuItem.Text = "Reporte Tipo Producto";
+            this.reporteTipoProductoToolStripMenuItem.Click += new System.EventHandler(this.reporteTipoProductoToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -200,6 +209,7 @@
         private System.Windows.Forms.ToolStripMenuItem cOMPRARToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteProductosVendidosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteMedioPagoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteTipoProductoToolStripMenuItem;
         //private System.Windows.Forms.ToolStripMenuItem marcasToolStripMenuItem;
     }
 }

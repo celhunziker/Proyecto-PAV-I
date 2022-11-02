@@ -149,5 +149,18 @@ namespace AppBTS
                 MessageBox.Show("No se tiene acceso.");
             }
         }
+        private void reporteTipoProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (usuario_logueado.Id_perfil.IdPerfil == 12)
+            {
+                frmReporteTipoProducto fvmp;
+                fvmp = new frmReporteTipoProducto();
+                fvmp.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No se tiene acceso.");
+            }
+        }
     }
 }
