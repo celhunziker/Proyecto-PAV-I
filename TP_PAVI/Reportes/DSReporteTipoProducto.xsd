@@ -9,16 +9,16 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="DSReporteTipoProducto" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="DSReporteTipoProducto" msprop:Generator_DataSetName="DSReporteTipoProducto">
+  <xs:element name="DSReporteTipoProducto" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DSReporteTipoProducto" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSReporteTipoProducto">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="dtTipoProducto" msprop:Generator_RowEvHandlerName="dtTipoProductoRowChangeEventHandler" msprop:Generator_RowDeletedName="dtTipoProductoRowDeleted" msprop:Generator_RowDeletingName="dtTipoProductoRowDeleting" msprop:Generator_RowEvArgName="dtTipoProductoRowChangeEvent" msprop:Generator_TablePropName="dtTipoProducto" msprop:Generator_RowChangedName="dtTipoProductoRowChanged" msprop:Generator_RowChangingName="dtTipoProductoRowChanging" msprop:Generator_TableClassName="dtTipoProductoDataTable" msprop:Generator_RowClassName="dtTipoProductoRow" msprop:Generator_TableVarName="tabledtTipoProducto" msprop:Generator_UserTableName="dtTipoProducto">
+        <xs:element name="DTReporteTipoProducto" msprop:Generator_RowClassName="DTReporteTipoProductoRow" msprop:Generator_RowEvHandlerName="DTReporteTipoProductoRowChangeEventHandler" msprop:Generator_RowDeletedName="DTReporteTipoProductoRowDeleted" msprop:Generator_RowDeletingName="DTReporteTipoProductoRowDeleting" msprop:Generator_RowEvArgName="DTReporteTipoProductoRowChangeEvent" msprop:Generator_TablePropName="DTReporteTipoProducto" msprop:Generator_RowChangedName="DTReporteTipoProductoRowChanged" msprop:Generator_UserTableName="DTReporteTipoProducto" msprop:Generator_RowChangingName="DTReporteTipoProductoRowChanging" msprop:Generator_TableClassName="DTReporteTipoProductoDataTable" msprop:Generator_TableVarName="tableDTReporteTipoProducto">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Id_tipo_producto" msprop:Generator_ColumnPropNameInRow="Id_tipo_producto" msprop:Generator_ColumnPropNameInTable="Id_tipo_productoColumn" msprop:Generator_ColumnVarNameInTable="columnId_tipo_producto" msprop:Generator_UserColumnName="Id_tipo_producto" type="xs:int" minOccurs="0" />
-              <xs:element name="Nombre" msprop:Generator_ColumnPropNameInRow="Nombre" msprop:Generator_ColumnPropNameInTable="NombreColumn" msprop:Generator_ColumnVarNameInTable="columnNombre" msprop:Generator_UserColumnName="Nombre" type="xs:string" minOccurs="0" />
-              <xs:element name="Desccripcion" msprop:Generator_ColumnPropNameInRow="Desccripcion" msprop:Generator_ColumnPropNameInTable="DesccripcionColumn" msprop:Generator_ColumnVarNameInTable="columnDesccripcion" msprop:Generator_UserColumnName="Desccripcion" type="xs:string" minOccurs="0" />
-              <xs:element name="Cantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_UserColumnName="Cantidad" type="xs:double" minOccurs="0" />
+              <xs:element name="Id_tipo_producto" msprop:Generator_UserColumnName="Id_tipo_producto" msprop:Generator_ColumnPropNameInTable="Id_tipo_productoColumn" msprop:Generator_ColumnPropNameInRow="Id_tipo_producto" msprop:Generator_ColumnVarNameInTable="columnId_tipo_producto" type="xs:int" minOccurs="0" />
+              <xs:element name="Nombre" msprop:Generator_UserColumnName="Nombre" msprop:Generator_ColumnPropNameInTable="NombreColumn" msprop:Generator_ColumnPropNameInRow="Nombre" msprop:Generator_ColumnVarNameInTable="columnNombre" type="xs:string" minOccurs="0" />
+              <xs:element name="Desccripcion" msprop:Generator_UserColumnName="Desccripcion" msprop:Generator_ColumnPropNameInTable="DesccripcionColumn" msprop:Generator_ColumnPropNameInRow="Desccripcion" msprop:Generator_ColumnVarNameInTable="columnDesccripcion" type="xs:string" minOccurs="0" />
+              <xs:element name="Cantidad" msprop:Generator_UserColumnName="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

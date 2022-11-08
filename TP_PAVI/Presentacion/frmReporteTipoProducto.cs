@@ -32,15 +32,17 @@ namespace AppBTS.Presentacion
         {
             if (dtpFechaDesde.Value <= dtpFechaHasta.Value)
             {
-                //float monto_minimo = string.IsNullOrEmpty(txtMontoMinimo.Text) ? (float)0 : float.Parse(txtMontoMinimo.Text);
-                //float monto_maximo = string.IsNullOrEmpty(txtMontoMaximo.Text) ? (float)float.MaxValue : float.Parse(txtMontoMaximo.Text);
+                float monto_minimo = string.IsNullOrEmpty(txtMontoMinimo.Text) ? (float)0 : float.Parse(txtMontoMinimo.Text);
+                float monto_maximo = string.IsNullOrEmpty(txtMontoMaximo.Text) ? (float)float.MaxValue : float.Parse(txtMontoMaximo.Text);
                 rpvTipoProducto.LocalReport.SetParameters(new ReportParameter[]
                                    { new ReportParameter("prFechaDesde", dtpFechaDesde.Value.ToString("dd/MM/yyyy")),
                                      new ReportParameter("prFechaHasta", dtpFechaHasta.Value.ToString("dd/MM/yyyy")),
                                      new ReportParameter("prOrden", cboTipoProducto.SelectedItem.ToString()),
+                                     new ReportParameter("prMontoMinimo", monto_minimo.ToString()),
+                                     new ReportParameter("prMontoMaximo", monto_maximo.ToString()),
                                      });
                 rpvTipoProducto.LocalReport.DataSources.Clear();
-                rpvTipoProducto.LocalReport.DataSources.Add(new ReportDataSource("DSReporteTipoProducto", oFactura.RecuperarTipoProductosAgrupados(dtpFechaDesde.Value.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.ToString("yyyy-MM-dd"), cboTipoProducto.SelectedIndex)));
+                rpvTipoProducto.LocalReport.DataSources.Add(new ReportDataSource("DSReporteTipoProducto", oFactura.RecuperarTipoProductosAgrupados(dtpFechaDesde.Value.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.ToString("yyyy-MM-dd"), cboTipoProducto.SelectedIndex, monto_minimo, monto_maximo)));
                 rpvTipoProducto.RefreshReport();
             }
         }

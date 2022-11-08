@@ -31,7 +31,7 @@ namespace AppBTS.Datos
             comando = new SqlCommand();
             //cadenaConexion = @"Data Source=celinita\sqlexpress;Initial Catalog=TPPAV2;Integrated Security=True"; //Properties.Resources.StringConexion;
             //cadenaConexion = @"Data Source=valentina\sqlexpress;Initial Catalog=TPPAV2;Integrated Security=True";
-            cadenaConexion = @"Data Source=celinita\sqlexpress;Initial Catalog=TPPAV2;Integrated Security=True";
+            cadenaConexion = @"Data Source=DESKTOP-FEI1S5V\SQLEXPRESS;Initial Catalog=TPPAV2;Integrated Security=True";
         }
         public static BDHelper obtenerInstancia()
         {

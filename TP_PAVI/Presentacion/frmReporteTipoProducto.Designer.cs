@@ -36,6 +36,11 @@
             this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
             this.rpvTipoProducto = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtMontoMaximo = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtMontoMinimo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cboTipoProducto
@@ -46,28 +51,25 @@
             "id tipo producto",
             "nombre",
             "cantidad"});
-            this.cboTipoProducto.Location = new System.Drawing.Point(157, 118);
-            this.cboTipoProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboTipoProducto.Location = new System.Drawing.Point(118, 96);
             this.cboTipoProducto.Name = "cboTipoProducto";
-            this.cboTipoProducto.Size = new System.Drawing.Size(160, 24);
+            this.cboTipoProducto.Size = new System.Drawing.Size(121, 21);
             this.cboTipoProducto.TabIndex = 25;
             // 
             // lblMedioPago
             // 
             this.lblMedioPago.AutoSize = true;
-            this.lblMedioPago.Location = new System.Drawing.Point(65, 122);
-            this.lblMedioPago.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMedioPago.Location = new System.Drawing.Point(49, 99);
             this.lblMedioPago.Name = "lblMedioPago";
-            this.lblMedioPago.Size = new System.Drawing.Size(79, 16);
+            this.lblMedioPago.Size = new System.Drawing.Size(63, 13);
             this.lblMedioPago.TabIndex = 24;
             this.lblMedioPago.Text = "Ordenar por";
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Location = new System.Drawing.Point(591, 26);
-            this.btnConsultar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnConsultar.Location = new System.Drawing.Point(443, 21);
             this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(219, 71);
+            this.btnConsultar.Size = new System.Drawing.Size(164, 58);
             this.btnConsultar.TabIndex = 23;
             this.btnConsultar.Text = "CONSULTAR";
             this.btnConsultar.UseVisualStyleBackColor = true;
@@ -76,56 +78,97 @@
             // lblFechaHasta
             // 
             this.lblFechaHasta.AutoSize = true;
-            this.lblFechaHasta.Location = new System.Drawing.Point(65, 78);
-            this.lblFechaHasta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFechaHasta.Location = new System.Drawing.Point(49, 63);
             this.lblFechaHasta.Name = "lblFechaHasta";
-            this.lblFechaHasta.Size = new System.Drawing.Size(81, 16);
+            this.lblFechaHasta.Size = new System.Drawing.Size(66, 13);
             this.lblFechaHasta.TabIndex = 22;
             this.lblFechaHasta.Text = "Fecha hasta";
             // 
             // lblFechaDesde
             // 
             this.lblFechaDesde.AutoSize = true;
-            this.lblFechaDesde.Location = new System.Drawing.Point(61, 26);
-            this.lblFechaDesde.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFechaDesde.Location = new System.Drawing.Point(46, 21);
             this.lblFechaDesde.Name = "lblFechaDesde";
-            this.lblFechaDesde.Size = new System.Drawing.Size(87, 16);
+            this.lblFechaDesde.Size = new System.Drawing.Size(69, 13);
             this.lblFechaDesde.TabIndex = 21;
             this.lblFechaDesde.Text = "Fecha desde";
             // 
             // dtpFechaHasta
             // 
             this.dtpFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaHasta.Location = new System.Drawing.Point(161, 70);
-            this.dtpFechaHasta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpFechaHasta.Location = new System.Drawing.Point(121, 57);
             this.dtpFechaHasta.Name = "dtpFechaHasta";
-            this.dtpFechaHasta.Size = new System.Drawing.Size(265, 22);
+            this.dtpFechaHasta.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaHasta.TabIndex = 20;
             // 
             // dtpFechaDesde
             // 
             this.dtpFechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaDesde.Location = new System.Drawing.Point(161, 26);
-            this.dtpFechaDesde.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpFechaDesde.Location = new System.Drawing.Point(121, 21);
             this.dtpFechaDesde.Name = "dtpFechaDesde";
-            this.dtpFechaDesde.Size = new System.Drawing.Size(265, 22);
+            this.dtpFechaDesde.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaDesde.TabIndex = 19;
             // 
             // rpvTipoProducto
             // 
             this.rpvTipoProducto.LocalReport.ReportEmbeddedResource = "AppBTS.Reportes.rptTipoProducto.rdlc";
-            this.rpvTipoProducto.Location = new System.Drawing.Point(65, 215);
-            this.rpvTipoProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rpvTipoProducto.Location = new System.Drawing.Point(49, 175);
             this.rpvTipoProducto.Name = "rpvTipoProducto";
             this.rpvTipoProducto.ServerReport.BearerToken = null;
-            this.rpvTipoProducto.Size = new System.Drawing.Size(909, 302);
+            this.rpvTipoProducto.Size = new System.Drawing.Size(682, 246);
             this.rpvTipoProducto.TabIndex = 31;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(114, 141);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(36, 13);
+            this.label3.TabIndex = 36;
+            this.label3.Text = "desde";
+            // 
+            // txtMontoMaximo
+            // 
+            this.txtMontoMaximo.Location = new System.Drawing.Point(330, 141);
+            this.txtMontoMaximo.Name = "txtMontoMaximo";
+            this.txtMontoMaximo.Size = new System.Drawing.Size(100, 20);
+            this.txtMontoMaximo.TabIndex = 35;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(291, 144);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 13);
+            this.label2.TabIndex = 34;
+            this.label2.Text = "hasta";
+            // 
+            // txtMontoMinimo
+            // 
+            this.txtMontoMinimo.Location = new System.Drawing.Point(160, 138);
+            this.txtMontoMinimo.Name = "txtMontoMinimo";
+            this.txtMontoMinimo.Size = new System.Drawing.Size(100, 20);
+            this.txtMontoMinimo.TabIndex = 33;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(52, 141);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "Monto:";
             // 
             // frmReporteTipoProducto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtMontoMaximo);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtMontoMinimo);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.rpvTipoProducto);
             this.Controls.Add(this.cboTipoProducto);
             this.Controls.Add(this.lblMedioPago);
@@ -134,7 +177,6 @@
             this.Controls.Add(this.lblFechaDesde);
             this.Controls.Add(this.dtpFechaHasta);
             this.Controls.Add(this.dtpFechaDesde);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmReporteTipoProducto";
             this.Text = "frmReporteTipoProducto";
             this.Load += new System.EventHandler(this.frmReporteTipoProducto_Load);
@@ -152,5 +194,10 @@
         private System.Windows.Forms.DateTimePicker dtpFechaHasta;
         private System.Windows.Forms.DateTimePicker dtpFechaDesde;
         private Microsoft.Reporting.WinForms.ReportViewer rpvTipoProducto;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtMontoMaximo;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtMontoMinimo;
+        private System.Windows.Forms.Label label1;
     }
 }

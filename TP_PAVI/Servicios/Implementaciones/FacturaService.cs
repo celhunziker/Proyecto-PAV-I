@@ -45,9 +45,9 @@ namespace AppBTS.Servicios.Implementaciones
             return dao.RecuperarMediosPagoAgrupados(fechaDesde, fechaHasta, orden, monto_minimo, monto_maximo);
         }
 
-        public DataTable RecuperarTipoProductosAgrupados(string fechaDesde, string fechaHasta, int orden)
+        public DataTable RecuperarTipoProductosAgrupados(string fechaDesde, string fechaHasta, int orden, float monto_minimo, float monto_maximo)
         {
-            return dao.RecuperarTipoProductosAgrupados(fechaDesde, fechaHasta, orden);
+            return dao.RecuperarTipoProductosAgrupados(fechaDesde, fechaHasta, orden, monto_minimo, monto_maximo);
         }
 
         public DataTable RecuperarVendedorAgrupados(string fechaDesde, string fechaHasta, int orden, float monto_minimo, float monto_maximo)
