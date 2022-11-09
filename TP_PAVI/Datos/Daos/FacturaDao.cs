@@ -92,12 +92,21 @@ namespace AppBTS.Datos.Daos
         }
         internal DataTable RecuperarTipoProductosAgrupados(string fechaDesde, string fechaHasta, int orden, float monto_minimo, float monto_maximo)
         {
-            string strSql = "SELECT tp.id_tipo_producto as Id_tipo_producto, tp.nombre as Nombre, " +
-                "tp.descripcion as Desccripcion, SUM(df.cantidad) as Cantidad, df.subtotal FROM FACTURAS f JOIN " +
-                "DETALLES_FACTURAS df ON f.id_factura=df.id_factura JOIN PRODUCTOS p ON p.id_producto=df.id_producto JOIN " +
-                " TIPOS_PRODUCTOS tp ON tp.id_tipo_producto=p.tipo_producto" +
-                " WHERE f.fecha BETWEEN '" + fechaDesde + "' AND '" + fechaHasta + "' GROUP BY tp.nombre, tp.id_tipo_producto, tp.descripcion, df.subtotal " +
-                "HAVING SUM(df.cantidad * df.subtotal) BETWEEN " + monto_minimo + " AND " + monto_maximo;
+            //string strSql = "SELECT tp.id_tipo_producto as Id_tipo_producto, tp.nombre as Nombre, " +
+            //    "tp.descripcion as Desccripcion, SUM(df.cantidad) as Cantidad, df.subtotal FROM FACTURAS f JOIN " +
+            //    "DETALLES_FACTURAS df ON f.id_factura=df.id_factura JOIN PRODUCTOS p ON p.id_producto=df.id_producto JOIN " +
+            //    " TIPOS_PRODUCTOS tp ON tp.id_tipo_producto=p.tipo_producto" +
+            //    " WHERE f.fecha BETWEEN '" + fechaDesde + "' AND '" + fechaHasta + "' GROUP BY tp.nombre, tp.id_tipo_producto, tp.descripcion, df.subtotal " +
+            //    "HAVING SUM(df.cantidad * df.subtotal) BETWEEN " + monto_minimo + " AND " + monto_maximo;
+            string strSql = "SELECT tp.id_tipo_producto as Id_tipo_producto, " +
+                "tp.descripcion as Desccripcion, " +
+                "tp.nombre as Nombre, SUM(df.cantidad) as Cantidad " +
+                "FROM FACTURAS f JOIN DETALLES_FACTURAS df ON f.id_factura=df.id_factura  " +
+                "JOIN PRODUCTOS p ON p.id_producto=df.id_producto  " +
+                "JOIN  TIPOS_PRODUCTOS tp ON tp.id_tipo_producto=p.tipo_producto " +
+                " WHERE f.fecha BETWEEN '" + fechaDesde + "' AND '" + fechaHasta + "'" +
+                " GROUP BY tp.nombre, tp.id_tipo_producto, tp.descripcion HAVING SUM(df.cantidad * df.subtotal)" +
+                " BETWEEN " + monto_minimo + " AND " + monto_maximo;
             switch (orden)
             {
                 case 0:
