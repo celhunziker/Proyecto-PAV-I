@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AppBTS.Presentacion
 {
@@ -58,8 +59,10 @@ namespace AppBTS.Presentacion
         }
         void Program_MyEvent(object sender, EventArgs e)
         {
-            if (txtCUIT.Text.Length > 0 && /*txtCantidad.Text.Length > 0 &&*/ cboTipoFact.SelectedIndex >= 0 && cboTipoCliente.SelectedIndex >= 0 && dgvDetalle.Rows.Count > 0 /*&& cboProducto.SelectedIndex >= 0*/)
+            if (txtDireccion.Text.Length > 0 && /*txtCantidad.Text.Length > 0 &&*/ cboTipoFact.SelectedIndex >= 0 && cboTipoCliente.SelectedIndex >= 0 && dgvDetalle.Rows.Count > 0 /*&& cboProducto.SelectedIndex >= 0*/)
+            { 
                 btnPasarMedioPago.Enabled = true;
+            } 
         }
 
         private void frmFacturas_Load(object sender, EventArgs e)
@@ -80,7 +83,7 @@ namespace AppBTS.Presentacion
             habilitarCamposMedioPago(false);
             habilitarCamposDetalleFactura(true);
             btnPasarMedioPago.Enabled = false;
-            txtCUIT.TextChanged += Program_MyEvent;
+            txtDireccion.TextChanged += Program_MyEvent;
             cboTipoFact.SelectionChangeCommitted += Program_MyEvent;
             cboTipoCliente.SelectionChangeCommitted += Program_MyEvent;
             dgvDetalle.RowsAdded += Program_MyEvent;
@@ -90,6 +93,7 @@ namespace AppBTS.Presentacion
 
         private void habilitarCamposMedioPago(bool opcion)
         {
+            btnPasarMedioPago.Enabled = false;
             cboMedioPago.Enabled = opcion;
             cboMarcaTarjeta.Enabled = false;
             cboMarcaBanco.Enabled = false;
@@ -101,7 +105,7 @@ namespace AppBTS.Presentacion
             btnCancelarMedioPago.Enabled = opcion;
             btnQuitarMedioPago.Enabled = opcion;
             dgvMedioCobro.Enabled = opcion;
-            btnVolverDetalle.Enabled = opcion;
+            btnGrabar.Enabled = opcion;
         }
         private void habilitarCamposDetalleFactura(bool opcion)
         {
@@ -117,6 +121,7 @@ namespace AppBTS.Presentacion
             btnQuitar.Enabled = opcion;
             btnCancelar.Enabled = opcion;
             dgvDetalle.Enabled = opcion;
+            btnGrabar.Enabled =! opcion;
         }
 
         private void CargarComboMedioPago(ComboBox combo, List<Medio_Pago> lista)
@@ -185,16 +190,33 @@ namespace AppBTS.Presentacion
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            
-            agregarDetalleListaFacturaDetalle();
-            CargarGrilla(dgvDetalle, listaFacturaDetalle);
-            CalcularTotales();
+            if (CamposAgregarDetalle())
+            {
+                cboProducto.BackColor = Color.White;
+                txtCantidad.BackColor = Color.White;
+                agregarDetalleListaFacturaDetalle();
+                CargarGrilla(dgvDetalle, listaFacturaDetalle);
+                CalcularTotales();
 
-            InicializarDetalle();
+                InicializarDetalle();
+            }
+            else
+                MessageBox.Show("Faltan Completar Campos!");
 
             //CalcularTotales();
 
             //InicializarDetalle();
+        }
+
+        private bool CamposAgregarDetalle()
+        {
+            bool validador = (cboProducto.SelectedValue != null && txtCantidad.Text.Length > 0);
+            if (cboProducto.SelectedValue == null)
+                CambiarFondo(cboProducto);
+            if (txtCantidad.Text == "")
+                txtCantidad.BackColor = Color.Red;
+            return validador;
+            
         }
 
         private void agregarDetalleListaFacturaDetalle()
@@ -270,53 +292,57 @@ namespace AppBTS.Presentacion
             {
                 case Modo.Create:
                     {
-                        Descuento oDescuento = oDescuentoService.traerPorCodigo(txtCodDescuento.Text);
-
-                        oFactura.Id_usuario_vendedor = usuario_vendedor;
-                        oFactura.Tipo_factura = (Tipo_Factura)cboTipoFact.SelectedItem;
-                        oFactura.Total = importeGeneral;
-                        oFactura.Id_descuento = oDescuento;
-                        oFactura.Id_cliente = usuario_cliente;
-                        oFactura.Fecha = DateTime.Today;
-                        oFactura.Borrado = false;
-
-                        // ME PARECE QUE HAY QUE CAMBIAR LA BD, USAR UN STRING PARA NRO FACTURA ASI PODEMOS USAR LA FUNCION PAD LEFT Y
-                        // QUE SEA "00000000004" EL NRO FACTURA, SIENDO 4 EL ID_FACTURA (OSEA LO HARIAMOS DEL LADO DEL DAO YA QUE
-                        // NECESITAMOS RECUPERAR EL IDENTITY (ID_FACTURA ))
-
-                        oFactura.FacturaDetalle = listaFacturaDetalle;
-                        oFactura.DetalleCobro = listaDetalleCobro;
-                        //oDetalleFactura.Cantidad = listaFacturaDetalle;
-                        //oDetalleFactura.Id_producto = (Producto)cboProducto.SelectedItem;
-                        //oDetalleFactura.Subtotal = float.Parse(txtImporte.Text);
-                        if (txtCorroborarMonto.Text == txtImporteTotal.Text)
+                        if(ValidarCamposFactura())
                         {
+                            Descuento oDescuento = oDescuentoService.traerPorCodigo(txtCodDescuento.Text);
 
-                            if (oFacturaService.Create(oFactura))
+                            oFactura.Id_usuario_vendedor = usuario_vendedor;
+                            oFactura.Tipo_factura = (Tipo_Factura)cboTipoFact.SelectedItem;
+                            oFactura.Total = importeGeneral;
+                            oFactura.Id_descuento = oDescuento;
+                            oFactura.Id_cliente = usuario_cliente;
+                            oFactura.Fecha = DateTime.Today;
+                            oFactura.Borrado = false;
+
+                            // ME PARECE QUE HAY QUE CAMBIAR LA BD, USAR UN STRING PARA NRO FACTURA ASI PODEMOS USAR LA FUNCION PAD LEFT Y
+                            // QUE SEA "00000000004" EL NRO FACTURA, SIENDO 4 EL ID_FACTURA (OSEA LO HARIAMOS DEL LADO DEL DAO YA QUE
+                            // NECESITAMOS RECUPERAR EL IDENTITY (ID_FACTURA ))
+
+                            oFactura.FacturaDetalle = listaFacturaDetalle;
+                            oFactura.DetalleCobro = listaDetalleCobro;
+                            //oDetalleFactura.Cantidad = listaFacturaDetalle;
+                            //oDetalleFactura.Id_producto = (Producto)cboProducto.SelectedItem;
+                            //oDetalleFactura.Subtotal = float.Parse(txtImporte.Text);
+                            if (txtCorroborarMonto.Text == txtImporteTotal.Text)
                             {
 
-                                foreach (Detalle_Factura detalle in oFactura.FacturaDetalle)
+                                if (oFacturaService.Create(oFactura))
                                 {
-                                    oProductoService.ReducirStock(detalle.Id_producto.Id_producto, detalle.Cantidad);
-                                    //MessageBox.Show("Se actualizo el producto " + detalle.Id_producto.Id_producto + ", nuevo stock: " + (detalle.Id_producto.Stock-detalle.Cantidad) + " stock anterior: " + detalle.Id_producto.Stock + ", cantidad: " + detalle.Cantidad);
+
+                                    foreach (Detalle_Factura detalle in oFactura.FacturaDetalle)
+                                    {
+                                        oProductoService.ReducirStock(detalle.Id_producto.Id_producto, detalle.Cantidad);
+                                        //MessageBox.Show("Se actualizo el producto " + detalle.Id_producto.Id_producto + ", nuevo stock: " + (detalle.Id_producto.Stock-detalle.Cantidad) + " stock anterior: " + detalle.Id_producto.Stock + ", cantidad: " + detalle.Cantidad);
+                                    }
+                                    MessageBox.Show("Se creó con éxito una nueva Factura.");
+                                    MessageBox.Show(MostrarFactura(oFactura));
+
                                 }
-                                MessageBox.Show("Se creó con éxito una nueva Factura.");
-                                MessageBox.Show(MostrarFactura(oFactura));
-                                
+                                else
+                                {
+                                    MessageBox.Show("Error al crear una nueva Factura.");
+                                }
+                                this.Close();
                             }
                             else
                             {
-                                MessageBox.Show("Error al crear una nueva Factura.");
+                                MessageBox.Show("EL IMPORTE TOTAL NO COINCIDE CON EL MONTO A PAGAR.");
                             }
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("EL IMPORTE TOTAL NO COINCIDE CON EL MONTO A PAGAR.");
-                        }
-
                             break;
-                        
+                        }
+                        break;
+
+
                     }
                 case Modo.Read:
                     this.Close();
@@ -336,6 +362,20 @@ namespace AppBTS.Presentacion
                     break;
                     
             }
+        }
+
+        private bool ValidarCamposFactura()
+        {
+            bool validador = false;
+            txtCorroborarMonto.BackColor = Color.White;
+            if (dgvDetalle.Rows.Count > 0)
+                validador = true;
+            else
+            {
+                validador = false;
+            }
+            return validador;   
+
         }
 
         private string MostrarFactura(Factura oFactura)
@@ -413,16 +453,18 @@ namespace AppBTS.Presentacion
             if (dgvDetalle.CurrentRow != null)
             {
                 int nroItem = Convert.ToInt32(dgvDetalle.CurrentRow.Cells[0].Value);
-                listaFacturaDetalle.RemoveAt(nroItem-1);
+                listaFacturaDetalle.RemoveAt(nroItem - 1);
                 foreach (Detalle_Factura detalle in listaFacturaDetalle)
                 {
                     if (detalle.NroItem > nroItem)
                     {
-                        detalle.NroItem = detalle.NroItem-1;
+                        detalle.NroItem = detalle.NroItem - 1;
                     }
                 }
                 dgvDetalle.Rows.RemoveAt(dgvDetalle.SelectedRows[0].Index);
             }
+            else
+                MessageBox.Show("Debe elegir una fila para borrar!");
             CargarGrilla(dgvDetalle, listaFacturaDetalle);
             CalcularTotales();
             InicializarDetalle();
@@ -442,10 +484,20 @@ namespace AppBTS.Presentacion
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            listaFacturaDetalle.Clear();
-            CargarGrilla(dgvDetalle, listaFacturaDetalle);
-            CalcularTotales();
-            InicializarDetalle();
+            if (dgvDetalle.Rows.Count > 0)
+            {
+                if (MessageBox.Show("¿Está seguro que quiere borrar los detalles de la factura?", "Borrando Detalles Factura", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                {
+                    listaFacturaDetalle.Clear();
+                    CargarGrilla(dgvDetalle, listaFacturaDetalle);
+                    CalcularTotales();
+                    InicializarDetalle();
+                }
+            }
+            else
+                MessageBox.Show("No hay ningun detalle para borrar!");
+                
+            
         }
 
         private void btnCUIT_Click(object sender, EventArgs e)
@@ -453,7 +505,8 @@ namespace AppBTS.Presentacion
             if (validarCampoCUIT())
             {
                 Usuario usuario = oUsuarioService.BuscarPorCUIT(txtCUIT.Text);
-                if(usuario != null)
+                txtCUIT.BackColor = Color.White;
+                if (usuario != null)
                 {
                     txtDireccion.Text = usuario.Direccion;
                     usuario_cliente = usuario;
@@ -462,12 +515,16 @@ namespace AppBTS.Presentacion
                 {
                     MessageBox.Show("No existe un cliente registrado con ese CUIT.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     txtCUIT.Clear();
+                    txtCUIT.BackColor = Color.Red;
+                    txtCUIT.Focus();
                     // ACA AGREGAR LA OPCION DE DAR DE ALTA UN NUEVO USUARIO SI EL CUIT NO EXISTE
                 }
             }
             else
             {
                 MessageBox.Show("No ingresó el CUIT.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                txtCUIT.BackColor = Color.Red;
+                txtCUIT.Focus();
             }
         }
 
@@ -478,15 +535,28 @@ namespace AppBTS.Presentacion
 
         private void btnMedioPago_Click(object sender, EventArgs e)
         {
-            if(txtDireccion.Text == "")
-            {
-                MessageBox.Show("No buscó el cliente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Question);
-            }
-            else
-            {
+            //if(txtDireccion.Text == "")
+            //{
+            //    MessageBox.Show("No buscó el cliente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            //    btnCUIT.BackColor = Color.Red;
+            //    btnCUIT.Focus();
+            //}
+            //if (cboTipoFact.SelectedValue == null)
+            //    CambiarFondo(cboTipoFact);
+            //if (cboTipoCliente.SelectedValue == null)
+            //    CambiarFondo(cboTipoFact);
+            //if (dtpFecha.Value == null)
+            //{
+            //    dtpFecha.CalendarTitleBackColor = Color.Red;
+            //    dtpFecha.Focus();
+            //}
+            //if (txtDireccion.Text == "" && cboTipoFact.SelectedValue == null && cboTipoCliente.SelectedValue == null && dtpFecha.Value == null)
+            //    MessageBox.Show("Faltan Completar Campos!");
+            //else if(txtDireccion.Text != "" && cboTipoFact.SelectedValue != null && cboTipoCliente.SelectedValue != null && dtpFecha.Value != null)
+            //{
                 habilitarCamposMedioPago(true);
                 habilitarCamposDetalleFactura(false);
-            }
+            //}
             
 
         }
@@ -494,11 +564,7 @@ namespace AppBTS.Presentacion
 
 
         //COBRO
-        private void btnVolverDetalle_Click(object sender, EventArgs e)
-        {
-            habilitarCamposMedioPago(false);
-            habilitarCamposDetalleFactura(true);
-        }
+       
 
         private void btnQuitarMedioPago_Click(object sender, EventArgs e)
         {
@@ -508,6 +574,8 @@ namespace AppBTS.Presentacion
                 listaDetalleCobro.RemoveAt(i);
                 dgvMedioCobro.Rows.RemoveAt(dgvMedioCobro.CurrentRow.Index);
             }
+            else
+                MessageBox.Show("Debe elegir una fila para borrar!");
             CargarGrillaMedioCobro(dgvMedioCobro, listaDetalleCobro);
             CalcularTotalesMedioCobro();
             InicializarDetalleCobro();
@@ -520,7 +588,7 @@ namespace AppBTS.Presentacion
                 agregarDetalleCobroListaDetalleCobro();
                 CargarGrillaMedioCobro(dgvMedioCobro, listaDetalleCobro);
                 CalcularTotalesMedioCobro();
-
+                ReiniciarCobro();
                 InicializarDetalleCobro();
             }
             else
@@ -530,19 +598,42 @@ namespace AppBTS.Presentacion
             
         }
 
+        private void ReiniciarCobro()
+        {
+            cboMedioPago.BackColor = Color.White;
+            cboMarcaBanco.BackColor = Color.White;
+            cboMarcaTarjeta.BackColor = Color.White;
+            cboCuotas.BackColor = Color.White;
+            txtMonto.BackColor = Color.White;
+            txtValorCuota.BackColor = Color.White;
+            txtCodAutorizacion.BackColor = Color.White;
+        }
+
         private bool ValidarCamposCobro()
         {
             bool validador = false;
             if(cboMedioPago.SelectedValue != null)
             {
-                if(cboMedioPago.Text == "Crédito")
+                if (cboMedioPago.Text == "Crédito")
                 {
                     validador = (cboMarcaBanco.SelectedValue != null &&
-                        cboMarcaTarjeta.SelectedValue != null && 
+                        cboMarcaTarjeta.SelectedValue != null &&
                         cboCuotas.SelectedValue != null &&
                         txtValorCuota.Text != "" &&
                         txtMonto.Text != "" &&
                         txtCodAutorizacion.Text != "");
+                    if (cboMarcaBanco.SelectedValue == null)
+                        CambiarFondo(cboMarcaBanco);
+                    if (cboMarcaTarjeta.SelectedValue == null)
+                        CambiarFondo(cboMarcaTarjeta);
+                    if (cboCuotas.SelectedValue == null)
+                        CambiarFondo(cboCuotas);
+                    if (txtValorCuota.Text == "")
+                        CambiarFondo(txtValorCuota);
+                    if (txtMonto.Text == "")
+                        CambiarFondo(txtMonto);
+                    if (txtCodAutorizacion.Text == "")
+                        CambiarFondo(txtCodAutorizacion);
                 }
                 if (cboMedioPago.Text == "Débito")
                 {
@@ -550,16 +641,38 @@ namespace AppBTS.Presentacion
                         cboMarcaTarjeta.SelectedValue != null &&
                         txtMonto.Text != "" &&
                         txtCodAutorizacion.Text != "");
+                    if (cboMarcaBanco.SelectedValue == null)
+                        CambiarFondo(cboMarcaBanco);
+                    if (cboMarcaTarjeta.SelectedValue == null)
+                        CambiarFondo(cboMarcaTarjeta);
+                    if (txtMonto.Text == "")
+                        CambiarFondo(txtMonto);
+                    if (txtCodAutorizacion.Text == "")
+                        CambiarFondo(txtCodAutorizacion);
                 }
                 if (cboMedioPago.Text == "Transferencia" || cboMedioPago.Text == "Efectivo")
                 {
                     validador = (
                         txtMonto.Text != "" );
+                    if (txtMonto.Text == "")
+                        CambiarFondo(txtMonto);
                 }
             }
             else { validador = false; }
             return validador;
             
+        }
+
+        private void CambiarFondo(TextBox txt)
+        {
+            txt.BackColor = Color.Red;
+            txt.Focus();
+        }
+
+        private void CambiarFondo(ComboBox cbo)
+        {
+            cbo.BackColor = Color.Red;
+            cbo.Focus();
         }
 
         private void InicializarDetalleCobro()
@@ -717,11 +830,19 @@ namespace AppBTS.Presentacion
 
         private void btnCancelarMedioPago_Click(object sender, EventArgs e)
         {
-            listaDetalleCobro.Clear();
-            CargarGrillaMedioCobro(dgvMedioCobro, listaDetalleCobro);
-            CalcularTotalesMedioCobro();
+            if (dgvDetalle.Rows.Count > 0)
+            {
+                if (MessageBox.Show("¿Está seguro que quiere borrar los detalles de la factura?", "Borrando Detalles Factura", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                {
+                    listaDetalleCobro.Clear();
+                    CargarGrillaMedioCobro(dgvMedioCobro, listaDetalleCobro);
+                    CalcularTotalesMedioCobro();
 
-            InicializarDetalleCobro();
+                    InicializarDetalleCobro();
+                }
+            }
+            else
+                MessageBox.Show("No hay ningun detalle para borrar!");
         }
 
 
@@ -759,6 +880,11 @@ namespace AppBTS.Presentacion
         private void txtValorCuota_Leave(object sender, EventArgs e)
         {
             CalcularValorCuota();
+        }
+
+        private void dgvDetalle_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
 
