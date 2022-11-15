@@ -122,9 +122,9 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.lblId);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmTipoProductoABM";
-            this.Text = "frmTipoProductoABM";
+            this.Text = "Tipo Producto ABM";
             this.Load += new System.EventHandler(this.frmTipoProductoABM_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

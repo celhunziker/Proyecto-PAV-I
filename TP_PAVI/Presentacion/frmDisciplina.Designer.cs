@@ -180,7 +180,7 @@
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnNuevo);
             this.Name = "frmDisciplina";
-            this.Text = "frmDisciplina";
+            this.Text = "Disciplina";
             this.Load += new System.EventHandler(this.frmDisciplina_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdDisciplina)).EndInit();
             this.ResumeLayout(false);

@@ -180,7 +180,7 @@
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnNuevo);
             this.Name = "frmMarcas";
-            this.Text = "frmMarcas";
+            this.Text = "Marcas";
             this.Load += new System.EventHandler(this.frmMarcas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdMarcas)).EndInit();
             this.ResumeLayout(false);

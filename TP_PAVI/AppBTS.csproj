@@ -141,12 +141,6 @@
     <Compile Include="Presentacion\frmFacturas.Designer.cs">
       <DependentUpon>frmFacturas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\frmMedioPago.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentacion\frmMedioPago.Designer.cs">
-      <DependentUpon>frmMedioPago.cs</DependentUpon>
-    </Compile>
     <Compile Include="Presentacion\frmReporteProductosVendidos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -326,9 +320,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmMarcasABM.resx">
       <DependentUpon>frmMarcasABM.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\frmMedioPago.resx">
-      <DependentUpon>frmMedioPago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>

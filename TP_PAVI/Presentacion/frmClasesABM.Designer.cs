@@ -149,7 +149,7 @@
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.lblId);
             this.Name = "frmClasesABM";
-            this.Text = "frmClasesABM";
+            this.Text = "Clases ABM";
             this.Load += new System.EventHandler(this.frmClasesABM_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

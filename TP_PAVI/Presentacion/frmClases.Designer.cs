@@ -259,7 +259,7 @@
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.cboDiasSemana);
             this.Name = "frmClases";
-            this.Text = "frmClases";
+            this.Text = "Clases";
             this.Load += new System.EventHandler(this.frmClases_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdClases)).EndInit();
             this.ResumeLayout(false);

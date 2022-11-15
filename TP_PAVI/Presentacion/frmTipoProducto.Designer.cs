@@ -47,10 +47,9 @@
             // chkTodos
             // 
             this.chkTodos.AutoSize = true;
-            this.chkTodos.Location = new System.Drawing.Point(296, 121);
-            this.chkTodos.Margin = new System.Windows.Forms.Padding(4);
+            this.chkTodos.Location = new System.Drawing.Point(222, 98);
             this.chkTodos.Name = "chkTodos";
-            this.chkTodos.Size = new System.Drawing.Size(69, 20);
+            this.chkTodos.Size = new System.Drawing.Size(56, 17);
             this.chkTodos.TabIndex = 48;
             this.chkTodos.Text = "Todos";
             this.chkTodos.UseVisualStyleBackColor = true;
@@ -58,19 +57,17 @@
             // 
             // txtNombreTipoProducto
             // 
-            this.txtNombreTipoProducto.Location = new System.Drawing.Point(296, 77);
-            this.txtNombreTipoProducto.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNombreTipoProducto.Location = new System.Drawing.Point(222, 63);
             this.txtNombreTipoProducto.Name = "txtNombreTipoProducto";
-            this.txtNombreTipoProducto.Size = new System.Drawing.Size(376, 22);
+            this.txtNombreTipoProducto.Size = new System.Drawing.Size(283, 20);
             this.txtNombreTipoProducto.TabIndex = 45;
             // 
             // lblNombreTipoProducto
             // 
             this.lblNombreTipoProducto.AutoSize = true;
-            this.lblNombreTipoProducto.Location = new System.Drawing.Point(144, 80);
-            this.lblNombreTipoProducto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombreTipoProducto.Location = new System.Drawing.Point(108, 65);
             this.lblNombreTipoProducto.Name = "lblNombreTipoProducto";
-            this.lblNombreTipoProducto.Size = new System.Drawing.Size(144, 16);
+            this.lblNombreTipoProducto.Size = new System.Drawing.Size(114, 13);
             this.lblNombreTipoProducto.TabIndex = 46;
             this.lblNombreTipoProducto.Text = "Nombre Tipo Producto";
             // 
@@ -83,14 +80,13 @@
             this.IDProducto,
             this.NombreTipoProducto,
             this.Descripcion});
-            this.grdTipoProducto.Location = new System.Drawing.Point(147, 171);
-            this.grdTipoProducto.Margin = new System.Windows.Forms.Padding(4);
+            this.grdTipoProducto.Location = new System.Drawing.Point(110, 139);
             this.grdTipoProducto.MultiSelect = false;
             this.grdTipoProducto.Name = "grdTipoProducto";
             this.grdTipoProducto.ReadOnly = true;
             this.grdTipoProducto.RowHeadersWidth = 51;
             this.grdTipoProducto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdTipoProducto.Size = new System.Drawing.Size(526, 150);
+            this.grdTipoProducto.Size = new System.Drawing.Size(394, 122);
             this.grdTipoProducto.TabIndex = 38;
             this.grdTipoProducto.SelectionChanged += new System.EventHandler(this.grdTipoProducto_SelectionChanged);
             // 
@@ -121,10 +117,9 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Image = global::AppBTS.Properties.Resources.actualizar;
-            this.btnLimpiar.Location = new System.Drawing.Point(786, 136);
-            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLimpiar.Location = new System.Drawing.Point(590, 110);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(100, 58);
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 47);
             this.btnLimpiar.TabIndex = 42;
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
@@ -132,10 +127,9 @@
             // btnConsultar
             // 
             this.btnConsultar.Image = global::AppBTS.Properties.Resources.buscar1;
-            this.btnConsultar.Location = new System.Drawing.Point(786, 71);
-            this.btnConsultar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnConsultar.Location = new System.Drawing.Point(590, 58);
             this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(99, 58);
+            this.btnConsultar.Size = new System.Drawing.Size(74, 47);
             this.btnConsultar.TabIndex = 43;
             this.btnConsultar.UseVisualStyleBackColor = true;
             this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
@@ -143,10 +137,9 @@
             // btnSalir
             // 
             this.btnSalir.Image = global::AppBTS.Properties.Resources.logout_door;
-            this.btnSalir.Location = new System.Drawing.Point(786, 364);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSalir.Location = new System.Drawing.Point(590, 296);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(65, 58);
+            this.btnSalir.Size = new System.Drawing.Size(49, 47);
             this.btnSalir.TabIndex = 44;
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -154,10 +147,9 @@
             // btnBorrar
             // 
             this.btnBorrar.Image = global::AppBTS.Properties.Resources.delete_exit;
-            this.btnBorrar.Location = new System.Drawing.Point(252, 364);
-            this.btnBorrar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBorrar.Location = new System.Drawing.Point(189, 296);
             this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Size = new System.Drawing.Size(99, 58);
+            this.btnBorrar.Size = new System.Drawing.Size(74, 47);
             this.btnBorrar.TabIndex = 41;
             this.btnBorrar.UseVisualStyleBackColor = true;
             this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
@@ -165,10 +157,9 @@
             // btnEditar
             // 
             this.btnEditar.Image = global::AppBTS.Properties.Resources.documentediting;
-            this.btnEditar.Location = new System.Drawing.Point(146, 364);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEditar.Location = new System.Drawing.Point(110, 296);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(100, 58);
+            this.btnEditar.Size = new System.Drawing.Size(75, 47);
             this.btnEditar.TabIndex = 40;
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
@@ -176,19 +167,18 @@
             // btnNuevo
             // 
             this.btnNuevo.Image = global::AppBTS.Properties.Resources.new_file;
-            this.btnNuevo.Location = new System.Drawing.Point(36, 364);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNuevo.Location = new System.Drawing.Point(27, 296);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(100, 58);
+            this.btnNuevo.Size = new System.Drawing.Size(75, 47);
             this.btnNuevo.TabIndex = 39;
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // frmTipoProducto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(937, 461);
+            this.ClientSize = new System.Drawing.Size(703, 375);
             this.Controls.Add(this.chkTodos);
             this.Controls.Add(this.txtNombreTipoProducto);
             this.Controls.Add(this.lblNombreTipoProducto);
@@ -199,8 +189,9 @@
             this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnNuevo);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmTipoProducto";
-            this.Text = "frmTipoProducto";
+            this.Text = "Tipo Producto";
             this.Load += new System.EventHandler(this.frmTipoProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdTipoProducto)).EndInit();
             this.ResumeLayout(false);

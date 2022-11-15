@@ -36,6 +36,14 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.grdUsuarios = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Perfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CUIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnConsultar = new System.Windows.Forms.Button();
@@ -50,14 +58,6 @@
             this.chkTodos = new System.Windows.Forms.CheckBox();
             this.txtCUIT = new System.Windows.Forms.TextBox();
             this.lblCUIT = new System.Windows.Forms.Label();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Perfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CUIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,6 +134,66 @@
             this.grdUsuarios.Size = new System.Drawing.Size(697, 122);
             this.grdUsuarios.TabIndex = 13;
             this.grdUsuarios.SelectionChanged += new System.EventHandler(this.grdUsuarios_SelectionChanged);
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 50;
+            // 
+            // NombreUsuario
+            // 
+            this.NombreUsuario.HeaderText = "Nombre Usuario";
+            this.NombreUsuario.MinimumWidth = 6;
+            this.NombreUsuario.Name = "NombreUsuario";
+            this.NombreUsuario.ReadOnly = true;
+            this.NombreUsuario.Width = 125;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.MinimumWidth = 6;
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 200;
+            // 
+            // Apellido
+            // 
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.MinimumWidth = 6;
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            this.Apellido.Width = 125;
+            // 
+            // Email
+            // 
+            this.Email.HeaderText = "Email";
+            this.Email.MinimumWidth = 6;
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            this.Email.Width = 250;
+            // 
+            // Perfil
+            // 
+            this.Perfil.HeaderText = "Perfil";
+            this.Perfil.MinimumWidth = 6;
+            this.Perfil.Name = "Perfil";
+            this.Perfil.ReadOnly = true;
+            this.Perfil.Width = 125;
+            // 
+            // CUIT
+            // 
+            this.CUIT.HeaderText = "CUIT";
+            this.CUIT.Name = "CUIT";
+            this.CUIT.ReadOnly = true;
+            // 
+            // Direccion
+            // 
+            this.Direccion.HeaderText = "Dirección";
+            this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
             // 
             // btnLimpiar
             // 
@@ -260,66 +320,6 @@
             this.lblCUIT.TabIndex = 18;
             this.lblCUIT.Text = "CUIT";
             // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 50;
-            // 
-            // NombreUsuario
-            // 
-            this.NombreUsuario.HeaderText = "Nombre Usuario";
-            this.NombreUsuario.MinimumWidth = 6;
-            this.NombreUsuario.Name = "NombreUsuario";
-            this.NombreUsuario.ReadOnly = true;
-            this.NombreUsuario.Width = 125;
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.MinimumWidth = 6;
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 200;
-            // 
-            // Apellido
-            // 
-            this.Apellido.HeaderText = "Apellido";
-            this.Apellido.MinimumWidth = 6;
-            this.Apellido.Name = "Apellido";
-            this.Apellido.ReadOnly = true;
-            this.Apellido.Width = 125;
-            // 
-            // Email
-            // 
-            this.Email.HeaderText = "Email";
-            this.Email.MinimumWidth = 6;
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            this.Email.Width = 250;
-            // 
-            // Perfil
-            // 
-            this.Perfil.HeaderText = "Perfil";
-            this.Perfil.MinimumWidth = 6;
-            this.Perfil.Name = "Perfil";
-            this.Perfil.ReadOnly = true;
-            this.Perfil.Width = 125;
-            // 
-            // CUIT
-            // 
-            this.CUIT.HeaderText = "CUIT";
-            this.CUIT.Name = "CUIT";
-            this.CUIT.ReadOnly = true;
-            // 
-            // Direccion
-            // 
-            this.Direccion.HeaderText = "Dirección";
-            this.Direccion.Name = "Direccion";
-            this.Direccion.ReadOnly = true;
-            // 
             // frmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -346,7 +346,7 @@
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.cboPerfil);
             this.Name = "frmUsuarios";
-            this.Text = "ABM Usuarios";
+            this.Text = "Usuarios";
             this.Load += new System.EventHandler(this.frmUsuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdUsuarios)).EndInit();
             this.ResumeLayout(false);

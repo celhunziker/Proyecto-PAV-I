@@ -51,7 +51,7 @@
             this.txtEmail.Location = new System.Drawing.Point(221, 223);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(283, 20);
-            this.txtEmail.TabIndex = 18;
+            this.txtEmail.TabIndex = 11;
             this.txtEmail.Click += new System.EventHandler(this.txtEmail_Click);
             // 
             // txtPassword
@@ -60,7 +60,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(100, 20);
-            this.txtPassword.TabIndex = 17;
+            this.txtPassword.TabIndex = 9;
             this.txtPassword.Click += new System.EventHandler(this.txtPassword_Click);
             // 
             // txtNombre
@@ -68,7 +68,7 @@
             this.txtNombre.Location = new System.Drawing.Point(222, 115);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(283, 20);
-            this.txtNombre.TabIndex = 16;
+            this.txtNombre.TabIndex = 5;
             this.txtNombre.Click += new System.EventHandler(this.txtNombre_Click);
             // 
             // label5
@@ -77,7 +77,7 @@
             this.label5.Location = new System.Drawing.Point(150, 265);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 13);
-            this.label5.TabIndex = 23;
+            this.label5.TabIndex = 12;
             this.label5.Text = "Perfil (*)";
             // 
             // label4
@@ -86,7 +86,7 @@
             this.label4.Location = new System.Drawing.Point(146, 227);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 13);
-            this.label4.TabIndex = 22;
+            this.label4.TabIndex = 10;
             this.label4.Text = "E-mail (*)";
             // 
             // label3
@@ -95,7 +95,7 @@
             this.label3.Location = new System.Drawing.Point(128, 188);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 13);
-            this.label3.TabIndex = 21;
+            this.label3.TabIndex = 8;
             this.label3.Text = "Password (*)";
             // 
             // label2
@@ -104,7 +104,7 @@
             this.label2.Location = new System.Drawing.Point(137, 119);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 13);
-            this.label2.TabIndex = 19;
+            this.label2.TabIndex = 4;
             this.label2.Text = "Nombre (*)";
             // 
             // cboPerfil
@@ -114,7 +114,7 @@
             this.cboPerfil.Location = new System.Drawing.Point(221, 258);
             this.cboPerfil.Name = "cboPerfil";
             this.cboPerfil.Size = new System.Drawing.Size(283, 21);
-            this.cboPerfil.TabIndex = 20;
+            this.cboPerfil.TabIndex = 13;
             this.cboPerfil.Click += new System.EventHandler(this.cboPerfil_Click);
             // 
             // txtId
@@ -123,7 +123,7 @@
             this.txtId.Location = new System.Drawing.Point(222, 44);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(100, 20);
-            this.txtId.TabIndex = 14;
+            this.txtId.TabIndex = 1;
             // 
             // label1
             // 
@@ -131,7 +131,7 @@
             this.label1.Location = new System.Drawing.Point(165, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(16, 13);
-            this.label1.TabIndex = 15;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Id";
             // 
             // btnAceptar
@@ -139,7 +139,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(190, 310);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(109, 45);
-            this.btnAceptar.TabIndex = 24;
+            this.btnAceptar.TabIndex = 14;
             this.btnAceptar.Text = "ACEPTAR";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -149,7 +149,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(350, 310);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(116, 45);
-            this.btnCancelar.TabIndex = 25;
+            this.btnCancelar.TabIndex = 15;
             this.btnCancelar.Text = "CANCELAR";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -160,7 +160,7 @@
             this.txtNombreUsuario.Location = new System.Drawing.Point(222, 80);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.Size = new System.Drawing.Size(283, 20);
-            this.txtNombreUsuario.TabIndex = 26;
+            this.txtNombreUsuario.TabIndex = 3;
             this.txtNombreUsuario.Click += new System.EventHandler(this.txtNombreUsuario_Click);
             // 
             // lblNombreUsuario
@@ -169,7 +169,7 @@
             this.lblNombreUsuario.Location = new System.Drawing.Point(98, 81);
             this.lblNombreUsuario.Name = "lblNombreUsuario";
             this.lblNombreUsuario.Size = new System.Drawing.Size(96, 13);
-            this.lblNombreUsuario.TabIndex = 27;
+            this.lblNombreUsuario.TabIndex = 2;
             this.lblNombreUsuario.Text = "Nombre Usuario (*)";
             // 
             // txtApellido
@@ -177,7 +177,7 @@
             this.txtApellido.Location = new System.Drawing.Point(222, 151);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(283, 20);
-            this.txtApellido.TabIndex = 28;
+            this.txtApellido.TabIndex = 7;
             this.txtApellido.Click += new System.EventHandler(this.txtApellido_Click);
             // 
             // lblApellid
@@ -186,7 +186,7 @@
             this.lblApellid.Location = new System.Drawing.Point(137, 152);
             this.lblApellid.Name = "lblApellid";
             this.lblApellid.Size = new System.Drawing.Size(57, 13);
-            this.lblApellid.TabIndex = 29;
+            this.lblApellid.TabIndex = 6;
             this.lblApellid.Text = "Apellido (*)";
             // 
             // frmUsuariosABM
