@@ -94,6 +94,7 @@
             this.txtContenido.Name = "txtContenido";
             this.txtContenido.Size = new System.Drawing.Size(100, 20);
             this.txtContenido.TabIndex = 33;
+            this.txtContenido.Click += new System.EventHandler(this.txtContenido_Click);
             this.txtContenido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContenido_KeyPress);
             // 
             // txtNombreProducto
@@ -102,6 +103,7 @@
             this.txtNombreProducto.Name = "txtNombreProducto";
             this.txtNombreProducto.Size = new System.Drawing.Size(283, 20);
             this.txtNombreProducto.TabIndex = 32;
+            this.txtNombreProducto.Click += new System.EventHandler(this.txtNombreProducto_Click);
             // 
             // lblUnidadDeMedida
             // 
@@ -155,6 +157,7 @@
             this.cboUnidadDeMedida.Name = "cboUnidadDeMedida";
             this.cboUnidadDeMedida.Size = new System.Drawing.Size(283, 21);
             this.cboUnidadDeMedida.TabIndex = 46;
+            this.cboUnidadDeMedida.Click += new System.EventHandler(this.cboUnidadDeMedida_Click);
             // 
             // cboMarca
             // 
@@ -164,6 +167,7 @@
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(283, 21);
             this.cboMarca.TabIndex = 47;
+            this.cboMarca.Click += new System.EventHandler(this.cboMarca_Click);
             // 
             // cboTipoProducto
             // 
@@ -173,6 +177,7 @@
             this.cboTipoProducto.Name = "cboTipoProducto";
             this.cboTipoProducto.Size = new System.Drawing.Size(283, 21);
             this.cboTipoProducto.TabIndex = 48;
+            this.cboTipoProducto.Click += new System.EventHandler(this.cboTipoProducto_Click);
             // 
             // lblDescripcion
             // 
@@ -197,6 +202,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(100, 20);
             this.txtPrecio.TabIndex = 51;
+            this.txtPrecio.Click += new System.EventHandler(this.txtPrecio_Click);
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // lblPrecio
@@ -214,6 +220,7 @@
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(100, 20);
             this.txtStock.TabIndex = 53;
+            this.txtStock.Click += new System.EventHandler(this.txtStock_Click);
             // 
             // lblStock
             // 

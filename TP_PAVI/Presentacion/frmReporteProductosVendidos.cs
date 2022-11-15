@@ -30,20 +30,24 @@ namespace AppBTS.Presentacion
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            if (dtpFechaDesde.Value <= dtpFechaHasta.Value)
+            float monto_minimo = string.IsNullOrEmpty(txtMontoMinimo.Text) ? (float)0 : float.Parse(txtMontoMinimo.Text);
+            float monto_maximo = string.IsNullOrEmpty(txtMontoMaximo.Text) ? (float)float.MaxValue : float.Parse(txtMontoMaximo.Text);
+            if (monto_minimo<monto_maximo && monto_minimo >= 0 && monto_maximo >= 0)
             {
-                float monto_minimo = string.IsNullOrEmpty(txtMontoMinimo.Text) ? (float)0 : float.Parse(txtMontoMinimo.Text);
-                float monto_maximo = string.IsNullOrEmpty(txtMontoMaximo.Text) ? (float)float.MaxValue : float.Parse(txtMontoMaximo.Text);
-                rpvProductosVendidos.LocalReport.SetParameters(new ReportParameter[]
-                                   { new ReportParameter("prFechaDesde", dtpFechaDesde.Value.ToString("dd/MM/yyyy")),
-                                     new ReportParameter("prFechaHasta", dtpFechaHasta.Value.ToString("dd/MM/yyyy")),
-                                     new ReportParameter("prOrden", cboOrden.SelectedItem.ToString()),
-                                     new ReportParameter("prMontoMinimo", monto_minimo.ToString()),
-                                     new ReportParameter("prMontoMaximo", monto_maximo.ToString())});
-                rpvProductosVendidos.LocalReport.DataSources.Clear();
-                rpvProductosVendidos.LocalReport.DataSources.Add(new ReportDataSource("DSReporteProductosVendidos", oFactura.RecuperarProductosAgrupados(dtpFechaDesde.Value.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.ToString("yyyy-MM-dd"), cboOrden.SelectedIndex, monto_minimo, monto_maximo)));
-                rpvProductosVendidos.RefreshReport();
+                if (dtpFechaDesde.Value <= dtpFechaHasta.Value)
+                {
+                    rpvProductosVendidos.LocalReport.SetParameters(new ReportParameter[]
+                                       { new ReportParameter("prFechaDesde", dtpFechaDesde.Value.ToString("dd/MM/yyyy")),
+                                         new ReportParameter("prFechaHasta", dtpFechaHasta.Value.ToString("dd/MM/yyyy")),
+                                         new ReportParameter("prOrden", cboOrden.SelectedItem.ToString()),
+                                         new ReportParameter("prMontoMinimo", monto_minimo.ToString()),
+                                         new ReportParameter("prMontoMaximo", monto_maximo.ToString())});
+                    rpvProductosVendidos.LocalReport.DataSources.Clear();
+                    rpvProductosVendidos.LocalReport.DataSources.Add(new ReportDataSource("DSReporteProductosVendidos", oFactura.RecuperarProductosAgrupados(dtpFechaDesde.Value.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.ToString("yyyy-MM-dd"), cboOrden.SelectedIndex, monto_minimo, monto_maximo)));
+                    rpvProductosVendidos.RefreshReport();
+                }
             }
+            
         }
         private bool alreadyExist(string _text, ref char KeyChar)
         {

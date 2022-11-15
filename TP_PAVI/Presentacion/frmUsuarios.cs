@@ -119,17 +119,20 @@ namespace AppBTS.Presentacion
         }
         private void cargarConConsulta()
         {
+            long varCUIT = string.IsNullOrEmpty(txtCUIT.Text) ? 0 : Convert.ToInt64(txtCUIT.Text);
             if (cboPerfil.SelectedValue != null)
             {
-                List<Usuario> lista = oUsuario.RecuperarFiltrados(txtNombreUsuario.Text, txtNombre.Text, txtApellido.Text, txtEmail.Text, (int)cboPerfil.SelectedValue, Convert.ToInt64(txtCUIT.Text));
+                
+                List<Usuario> lista = oUsuario.RecuperarFiltrados(txtNombreUsuario.Text, txtNombre.Text, txtApellido.Text, txtEmail.Text, (int)cboPerfil.SelectedValue, varCUIT);
                 CargarGrilla(grdUsuarios, lista);
+                
             }
             else
             {
                 if (validarCamposUsuario(txtNombreUsuario.Text, txtNombre.Text,
             txtApellido.Text, txtEmail.Text, txtCUIT.Text) || (chkTodos.Checked))
                 {
-                    List<Usuario> lista = oUsuario.RecuperarFiltrados(txtNombreUsuario.Text, txtNombre.Text, txtApellido.Text, txtEmail.Text, null, 0);
+                    List<Usuario> lista = oUsuario.RecuperarFiltrados(txtNombreUsuario.Text, txtNombre.Text, txtApellido.Text, txtEmail.Text, null, varCUIT);
                     CargarGrilla(grdUsuarios, lista);
                 }
                 else

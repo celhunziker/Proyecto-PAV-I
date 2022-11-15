@@ -88,6 +88,7 @@
             this.txtNombreMarca.Name = "txtNombreMarca";
             this.txtNombreMarca.Size = new System.Drawing.Size(283, 20);
             this.txtNombreMarca.TabIndex = 53;
+            this.txtNombreMarca.Click += new System.EventHandler(this.txtNombreMarca_Click);
             // 
             // frmMarcasABM
             // 

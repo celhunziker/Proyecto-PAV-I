@@ -105,6 +105,7 @@ namespace AppBTS.Presentacion
             {
                 //FALTA LO DE LOS COSOS ROJOS
                 MessageBox.Show("Faltan completar campos.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                marcarNoEscritoClase(cboDisciplinas, cboDiasSemana);
             }
         }
 
@@ -124,6 +125,29 @@ namespace AppBTS.Presentacion
         {
             return validarCampo(horario) && validarCampo(disciplina)
                 && validarCampo(diaSemana);
+        }
+
+        
+        public void marcarNoEscritoCampo(ComboBox comboBox)
+        {
+            if (!validarCampo(comboBox.SelectedIndex))
+            {
+                comboBox.BackColor = Color.Red;
+            }
+        }
+        public void marcarNoEscritoClase(ComboBox cboDisciplinas, ComboBox cboDiasSemana)
+        {
+            marcarNoEscritoCampo(cboDisciplinas); marcarNoEscritoCampo(cboDiasSemana);
+
+        }
+        private void cboDisciplinas_Click(object sender, EventArgs e)
+        {
+            cboDisciplinas.BackColor = Color.White;
+        }
+
+        private void cboDiasSemana_Click(object sender, EventArgs e)
+        {
+            cboDiasSemana.BackColor = Color.White;
         }
     }
 }

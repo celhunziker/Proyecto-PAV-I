@@ -81,6 +81,7 @@ namespace AppBTS.Presentacion
             else
             {
                 MessageBox.Show("Faltan completar campos.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                marcarNoEscritoDisciplina(txtDisciplina);
             }
         }
 
@@ -96,6 +97,24 @@ namespace AppBTS.Presentacion
         private bool validarCampo(string campo)
         {
             return campo != "";
+        }
+
+        public void marcarNoEscritoCampo(TextBox textBox)
+        {
+            if (!validarCampo(textBox.Text))
+            {
+                textBox.BackColor = Color.Red;
+            }
+        }
+        public void marcarNoEscritoDisciplina(TextBox nombreDisciplina)
+        {
+            marcarNoEscritoCampo(nombreDisciplina);
+
+        }
+
+        private void txtDisciplina_Click(object sender, EventArgs e)
+        {
+            txtDisciplina.BackColor = Color.White;
         }
     }
 }

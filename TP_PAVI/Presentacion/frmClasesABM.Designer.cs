@@ -48,6 +48,7 @@
             this.cboDisciplinas.Name = "cboDisciplinas";
             this.cboDisciplinas.Size = new System.Drawing.Size(283, 21);
             this.cboDisciplinas.TabIndex = 64;
+            this.cboDisciplinas.Click += new System.EventHandler(this.cboDisciplinas_Click);
             // 
             // cboDiasSemana
             // 
@@ -57,6 +58,7 @@
             this.cboDiasSemana.Name = "cboDiasSemana";
             this.cboDiasSemana.Size = new System.Drawing.Size(283, 21);
             this.cboDiasSemana.TabIndex = 63;
+            this.cboDiasSemana.Click += new System.EventHandler(this.cboDiasSemana_Click);
             // 
             // lblDiaSemana
             // 

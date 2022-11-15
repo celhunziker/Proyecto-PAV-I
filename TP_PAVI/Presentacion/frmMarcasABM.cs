@@ -84,6 +84,7 @@ namespace AppBTS.Presentacion
             else
             {
                 MessageBox.Show("Faltan completar campos.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                marcarNoEscritoMarca(txtNombreMarca);
             }
         }
 
@@ -99,6 +100,23 @@ namespace AppBTS.Presentacion
         private bool validarCampo(string campo)
         {
             return campo != "";
+        }
+        public void marcarNoEscritoCampo(TextBox textBox)
+        {
+            if (!validarCampo(textBox.Text))
+            {
+                textBox.BackColor = Color.Red;
+            }
+        }
+        public void marcarNoEscritoMarca(TextBox nombreMarca)
+        {
+            marcarNoEscritoCampo(nombreMarca);
+
+        }
+
+        private void txtNombreMarca_Click(object sender, EventArgs e)
+        {
+            txtNombreMarca.BackColor = Color.White;
         }
     }
 }

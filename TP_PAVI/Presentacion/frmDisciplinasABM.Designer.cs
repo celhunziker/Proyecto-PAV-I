@@ -62,6 +62,7 @@
             this.txtDisciplina.Name = "txtDisciplina";
             this.txtDisciplina.Size = new System.Drawing.Size(283, 20);
             this.txtDisciplina.TabIndex = 62;
+            this.txtDisciplina.Click += new System.EventHandler(this.txtDisciplina_Click);
             // 
             // lblNombre
             // 

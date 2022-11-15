@@ -40,29 +40,26 @@
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(285, 163);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDescripcion.Location = new System.Drawing.Point(214, 132);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(356, 122);
+            this.txtDescripcion.Size = new System.Drawing.Size(268, 100);
             this.txtDescripcion.TabIndex = 66;
             // 
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(191, 186);
-            this.lblDescripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDescripcion.Location = new System.Drawing.Point(143, 151);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(79, 16);
+            this.lblDescripcion.Size = new System.Drawing.Size(63, 13);
             this.lblDescripcion.TabIndex = 65;
             this.lblDescripcion.Text = "Descripción";
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(455, 312);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelar.Location = new System.Drawing.Point(341, 254);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(155, 55);
+            this.btnCancelar.Size = new System.Drawing.Size(116, 45);
             this.btnCancelar.TabIndex = 59;
             this.btnCancelar.Text = "CANCELAR";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -70,10 +67,9 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(198, 312);
-            this.btnAceptar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAceptar.Location = new System.Drawing.Point(148, 254);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(145, 55);
+            this.btnAceptar.Size = new System.Drawing.Size(109, 45);
             this.btnAceptar.TabIndex = 58;
             this.btnAceptar.Text = "ACEPTAR";
             this.btnAceptar.UseVisualStyleBackColor = true;
@@ -81,46 +77,43 @@
             // 
             // txtNombreTipoProducto
             // 
-            this.txtNombreTipoProducto.Location = new System.Drawing.Point(285, 117);
-            this.txtNombreTipoProducto.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNombreTipoProducto.Location = new System.Drawing.Point(214, 95);
             this.txtNombreTipoProducto.Name = "txtNombreTipoProducto";
-            this.txtNombreTipoProducto.Size = new System.Drawing.Size(376, 22);
+            this.txtNombreTipoProducto.Size = new System.Drawing.Size(283, 20);
             this.txtNombreTipoProducto.TabIndex = 53;
+            this.txtNombreTipoProducto.Click += new System.EventHandler(this.txtNombreTipoProducto_Click);
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(117, 120);
-            this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombre.Location = new System.Drawing.Point(88, 98);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(160, 16);
+            this.lblNombre.Size = new System.Drawing.Size(127, 13);
             this.lblNombre.TabIndex = 55;
             this.lblNombre.Text = "Nombre Tipo Producto (*)";
             // 
             // txtId
             // 
             this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(287, 73);
-            this.txtId.Margin = new System.Windows.Forms.Padding(4);
+            this.txtId.Location = new System.Drawing.Point(215, 59);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(132, 22);
+            this.txtId.Size = new System.Drawing.Size(100, 20);
             this.txtId.TabIndex = 51;
             // 
             // lblId
             // 
             this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(253, 77);
-            this.lblId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblId.Location = new System.Drawing.Point(190, 63);
             this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(18, 16);
+            this.lblId.Size = new System.Drawing.Size(16, 13);
             this.lblId.TabIndex = 52;
             this.lblId.Text = "Id";
             // 
             // frmTipoProductoABM
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 422);
+            this.ClientSize = new System.Drawing.Size(600, 343);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.btnCancelar);
@@ -129,6 +122,7 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.lblId);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmTipoProductoABM";
             this.Text = "frmTipoProductoABM";
             this.Load += new System.EventHandler(this.frmTipoProductoABM_Load);

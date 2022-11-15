@@ -136,6 +136,7 @@ namespace AppBTS.Presentacion
             else
             {
                 MessageBox.Show("Faltan completar campos.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                marcarNoEscritoProducto(txtNombreProducto, cboTipoProducto, cboMarca, txtContenido, cboUnidadDeMedida, txtPrecio, txtStock);
             }
         }
 
@@ -226,6 +227,28 @@ namespace AppBTS.Presentacion
             }
         }
 
+        public void marcarNoEscritoCampo(TextBox textBox)
+        {
+            if (!validarCampo(textBox.Text))
+            {
+                textBox.BackColor = Color.Red;
+            }
+        }
+        public void marcarNoEscritoCampo(ComboBox comboBox)
+        {
+            if (!validarCampo(comboBox.SelectedIndex))
+            {
+                comboBox.BackColor = Color.Red;
+            }
+        }
+        public void marcarNoEscritoProducto(TextBox nombreProducto, ComboBox tipoProducto, ComboBox marca, TextBox contenido, ComboBox unidadDeMedida, TextBox precio, TextBox stock)
+        {
+            marcarNoEscritoCampo(nombreProducto); marcarNoEscritoCampo(tipoProducto);
+            marcarNoEscritoCampo(marca); marcarNoEscritoCampo(contenido);
+            marcarNoEscritoCampo(unidadDeMedida); marcarNoEscritoCampo(precio);
+            marcarNoEscritoCampo(stock);
+
+        }
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar)
@@ -273,6 +296,41 @@ namespace AppBTS.Presentacion
 
                 }
             }
+        }
+
+        private void txtNombreProducto_Click(object sender, EventArgs e)
+        {
+            txtNombreProducto.BackColor = Color.White;
+        }
+
+        private void cboTipoProducto_Click(object sender, EventArgs e)
+        {
+            cboTipoProducto.BackColor = Color.White;
+        }
+
+        private void cboMarca_Click(object sender, EventArgs e)
+        {
+            cboMarca.BackColor = Color.White;
+        }
+
+        private void txtContenido_Click(object sender, EventArgs e)
+        {
+            txtContenido.BackColor = Color.White;
+        }
+
+        private void cboUnidadDeMedida_Click(object sender, EventArgs e)
+        {
+            cboUnidadDeMedida.BackColor = Color.White;
+        }
+
+        private void txtPrecio_Click(object sender, EventArgs e)
+        {
+            txtPrecio.BackColor = Color.White;
+        }
+
+        private void txtStock_Click(object sender, EventArgs e)
+        {
+            txtStock.BackColor = Color.White;
         }
     }
 }
