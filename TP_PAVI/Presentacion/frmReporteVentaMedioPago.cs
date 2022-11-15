@@ -26,14 +26,16 @@ namespace AppBTS.Presentacion
         {
             //this.dsReporteProductosVendidosBindingSource.DataSource = this.dsReporteProductosVendidos;
             //this.rpvProductosVendidos.RefreshReport();
+            cboMedioPago.SelectedIndex = 0;
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            if (dtpFechaDesde.Value <= dtpFechaHasta.Value)
+            float monto_minimo = string.IsNullOrEmpty(txtMontoMinimo.Text) ? (float)0 : float.Parse(txtMontoMinimo.Text);
+            float monto_maximo = string.IsNullOrEmpty(txtMontoMaximo.Text) ? (float) 99999999 : float.Parse(txtMontoMaximo.Text);
+            if (dtpFechaDesde.Value <= dtpFechaHasta.Value && monto_minimo < monto_maximo)
             {
-                float monto_minimo = string.IsNullOrEmpty(txtMontoMinimo.Text) ? (float)0 : float.Parse(txtMontoMinimo.Text);
-                float monto_maximo = string.IsNullOrEmpty(txtMontoMaximo.Text) ? (float) float.MaxValue : float.Parse(txtMontoMaximo.Text);
+                
                 rpvVentaMedioPago.LocalReport.SetParameters(new ReportParameter[]
                                    { new ReportParameter("prFechaDesde", dtpFechaDesde.Value.ToString("dd/MM/yyyy")),
                                      new ReportParameter("prFechaHasta", dtpFechaHasta.Value.ToString("dd/MM/yyyy")),
@@ -45,6 +47,29 @@ namespace AppBTS.Presentacion
                 rpvVentaMedioPago.LocalReport.DataSources.Add(new ReportDataSource("DSReporteVentaMedioPago", oFactura.RecuperarMediosPagoAgrupados(dtpFechaDesde.Value.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.ToString("yyyy-MM-dd"), cboMedioPago.SelectedIndex, monto_minimo, monto_maximo)));
                 rpvVentaMedioPago.RefreshReport();
             }
+            else
+            {
+                if (dtpFechaDesde.Value > dtpFechaHasta.Value && monto_minimo >= monto_maximo)
+                { 
+                    MessageBox.Show("La fecha desde debe ser menor que la fecha hasta y el monto minimo no debe superar o ser igual al monto maximo.");
+                    marcarTextBox(txtMontoMaximo);
+                    marcarTextBox(txtMontoMinimo);
+                } else 
+                {
+                if (dtpFechaDesde.Value > dtpFechaHasta.Value) { MessageBox.Show("La fecha desde debe ser menor que la fecha hasta."); }
+                if (monto_minimo >= monto_maximo) { 
+                        MessageBox.Show("El monto minimo no debe superar o ser igual al monto maximo.");
+                        marcarTextBox(txtMontoMaximo);
+                        marcarTextBox(txtMontoMinimo);
+
+                    } 
+                }
+            }
+        }
+
+        private void marcarTextBox(TextBox textBox)
+        {
+            textBox.BackColor = Color.Red;
         }
 
         private bool alreadyExist(string _text, ref char KeyChar)
@@ -120,6 +145,16 @@ namespace AppBTS.Presentacion
                     }
                 }
             }
+        }
+
+        private void txtMontoMinimo_Click(object sender, EventArgs e)
+        {
+            txtMontoMinimo.BackColor = Color.White;
+        }
+
+        private void txtMontoMaximo_Click(object sender, EventArgs e)
+        {
+            txtMontoMaximo.BackColor = Color.White;
         }
     }
 }

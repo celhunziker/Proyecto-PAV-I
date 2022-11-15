@@ -150,6 +150,7 @@
             this.txtMontoMaximo.Name = "txtMontoMaximo";
             this.txtMontoMaximo.Size = new System.Drawing.Size(100, 20);
             this.txtMontoMaximo.TabIndex = 22;
+            this.txtMontoMaximo.Click += new System.EventHandler(this.txtMontoMaximo_Click);
             this.txtMontoMaximo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontoMaximo_KeyPress);
             // 
             // label2
@@ -167,6 +168,7 @@
             this.txtMontoMinimo.Name = "txtMontoMinimo";
             this.txtMontoMinimo.Size = new System.Drawing.Size(100, 20);
             this.txtMontoMinimo.TabIndex = 20;
+            this.txtMontoMinimo.Click += new System.EventHandler(this.txtMontoMinimo_Click);
             this.txtMontoMinimo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontoMinimo_KeyPress);
             // 
             // label1
